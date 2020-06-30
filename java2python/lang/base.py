@@ -47,7 +47,8 @@
 # instances.
 #
 
-from cStringIO import StringIO
+#from cStringIO import StringIO
+from io import StringIO
 
 from antlr3 import ANTLRStringStream as StringStream, CommonTokenStream as TokenStream
 from antlr3.tree import CommonTreeAdaptor, CommonTree
@@ -87,11 +88,6 @@ class Tokens(object):
         """ Well-known method types. """
         mod = self.module
         return (mod.VOID_METHOD_DECL, mod.FUNCTION_METHOD_DECL, )
-
-    @property
-    def primitiveTypeNames(self):
-        """ Type name of well-known primitive types """
-        return ('bool', 'str', 'int', 'long', 'float', )
 
     @property
     def module(self):

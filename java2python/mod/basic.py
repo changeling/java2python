@@ -7,8 +7,6 @@ from logging import info, warn
 from os import path
 from re import sub as rxsub
 
-from java2python.lib import FS
-
 
 def shebangLine(module):
     """ yields the canonical python shebang line. """
@@ -36,7 +34,7 @@ def simpleDocString(obj):
 
 
 def commentedImports(module, expr):
-    module.factory.comment(parent=module, left=expr, fs='#import {left}')
+    module.factory.comment(parent=module, left=expr, fs='import: {left}')
 
 
 def simpleImports(module, expr):
@@ -109,13 +107,11 @@ def overloadedClassMethods(method):
     cls = method.parent
     methods = [o for o in cls.children if o.isMethod and o.name==method.name]
     if len(methods) == 1:
-        if methods[0].overloaded:
-            yield methods[0].overloaded
         return
     for i, m in enumerate(methods[1:]):
         args = [p['type'] for p in m.parameters]
         args = ', '.join(args)
-        m.overloaded = '@{0}.register({1})'.format(method.name, args)
+        m.decorators.append('@{0}.register({1})'.format(method.name, args))
         m.name = '{0}_{1}'.format(method.name, i)
     # for this one only:
     yield '@overloaded'
@@ -133,6 +129,8 @@ def maybeAbstractMethod(method):
 
 def maybeSynchronizedMethod(method):
     if 'synchronized' in method.modifiers:
+        module = method.parents(lambda x:x.isModule).next()
+        module.needsSyncHelpers = True
         yield '@synchronized'
 
 
@@ -156,11 +154,6 @@ def maybeBsr(module):
     if getattr(module, 'needsBsrFunc', False):
         for line in getBsrSrc().split('\n'):
             yield line
-
-
-def maybeAbstractHelpers(module):
-    if getattr(module, 'needsAbstractHelpers', False):
-        yield 'from abc import ABCMeta, abstractmethod'
 
 
 def maybeSyncHelpers(module):
@@ -232,21 +225,3 @@ def zopeImplementsClassHead(obj):
     if implAny(obj):
         for cls in obj.bases:
             yield 'zope.interface.implements({})'.format(cls)
-
-
-def moveStaticExpressions(cls):
-    name = '{}.'.format(cls.name) # notice the dot
-    exprs = [child for child in cls.children if child.isExpression and name in str(child)]
-    module = cls.parents(lambda x:x.isModule).next()
-    for expr in exprs:
-        cls.children.remove(expr)
-        newExpr = module.factory.expr(fs=name + '{right}', right=expr)
-        module.adopt(newExpr, index=len(module.children))
-
-
-def castCtor(expr, node):
-    expr.fs = FS.l + '(' + FS.r + ')'
-
-
-def castDrop(expr, node):
-    expr.fs = FS.r

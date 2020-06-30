@@ -13,9 +13,11 @@
 # are usually a sign of a bad design and/or language limitations, and
 # this case is no exception.
 
-from cStringIO import StringIO
-from functools import partial
-from itertools import chain, ifilter, imap
+#from cStringIO import StringIO
+from io import StringIO
+from functools import partial, reduce
+#from itertools import chain, ifilter, imap
+from itertools import chain
 
 from java2python.lang import tokens
 from java2python.lib import FS, colors
@@ -74,7 +76,8 @@ class FactoryTypeDetector(type):
             pass
 
 
-class Base(object):
+#class Base(object):
+class Base(object, metaclass=FactoryTypeDetector):
     """ Base -> base class for formatting Python output.
 
     This class defines a large set of attributes and methods for the
@@ -119,7 +122,6 @@ class Base(object):
         self.children = []
         self.config = config
         self.decorators = []
-        self.overloaded = None
         self.factory = Factory(config)
         self.modifiers = []
         self.name = name
@@ -162,7 +164,9 @@ class Base(object):
                     return name
                 if name in method.variables:
                     return name
-                return ('cls' if method.isStatic else 'self') + '.' + name
+                #return ('cls' if method.isStatic else 'self') + '.' + name
+                ## Below change make by VSK on Apr 16, 2020 so as to not generate any Python classmethods for ASKE
+                return ('self' if method.isStatic else 'self') + '.' + name
         return name
 
     def configHandler(self, part, suffix='Handler', default=None):
@@ -173,20 +177,20 @@ class Base(object):
     def configHandlers(self, part, suffix='Handlers'):
         """ Returns config handlers for this type of template """
         name = '{0}{1}{2}'.format(self.typeName, part, suffix)
-        return imap(self.toIter, chain(*self.config.every(name, [])))
+        return map(self.toIter, self.config.last(name, ()))
 
     def dump(self, fd, level=0):
         """ Writes the Python source code for this template to the given file. """
         indent, isNotNone = level * self.indent, lambda x:x is not None
         lineFormat = '{0}{1}\n'.format
-        for line in ifilter(isNotNone, self.iterPrologue()):
+        for line in filter(isNotNone, self.iterPrologue()):
             line = lineFormat(indent, line)
             fd.write(line if line.strip() else '\n')
-        for item in ifilter(isNotNone, self.iterHead()):
+        for item in filter(isNotNone, self.iterHead()):
             item.dump(fd, level+1)
         for item in self.iterBody():
             item.dump(fd, level+1)
-        for line in ifilter(isNotNone, self.iterEpilogue()):
+        for line in filter(isNotNone, self.iterEpilogue()):
             line = lineFormat(indent, line)
             fd.write(line if line.strip() else '\n')
 
@@ -200,7 +204,7 @@ class Base(object):
         """ Writes a debug string for this template to the given file. """
         indent, default = self.indent, lambda x, y:None
         fd.write('{0}{1!r}\n'.format(indent*level, self))
-        for child in ifilter(None, self.children):
+        for child in filter(None, self.children):
             getattr(child, 'dumpRepr', default)(fd, level+1)
 
     @property
@@ -230,7 +234,7 @@ class Base(object):
     def iterHead(self):
         """ Yields the items in the head of this template. """
         items = chain(*(h(self) for h in self.configHandlers('Head')))
-        return imap(self.toExpr, items)
+        return map(self.toExpr, items)
 
     def iterBody(self):
         """ Yields the items in the body of this template. """
@@ -310,10 +314,6 @@ class Expression(Base):
         if isinstance(self.right, (basestring, )) and self.right:
             parts.append(colors.white('right:') + colors.yellow(self.right))
             showfs = False
-        if self.modifiers:
-            parts.append(colors.white('modifiers:') + colors.cyan(','.join(self.modifiers)))
-        if self.type:
-            parts.append(colors.white('type:') + colors.cyan(self.type))
         if showfs:
             parts.append(colors.white('format:') + colors.yellow(self.fs))
         if self.tail:

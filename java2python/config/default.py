@@ -24,9 +24,7 @@ commentPrefix = '# '
 modulePrologueHandlers = [
     basic.shebangLine,
     basic.simpleDocString,
-    'from __future__ import print_function',
     basic.maybeBsr,
-    basic.maybeAbstractHelpers,
     basic.maybeSyncHelpers,
 ]
 
@@ -71,7 +69,6 @@ interfaceBaseHandlers = [
 # name.  It's commented out because its output differs so greatly
 # from its input, and because it's really not very useful.
 classPostWalkHandlers = [
-    basic.moveStaticExpressions,
     ## basic.classContentSort,
 ]
 
@@ -99,9 +96,9 @@ methodHeadHandlers = [
 methodPrologueHandlers = [
     basic.maybeAbstractMethod,
     basic.maybeClassMethod,
-    basic.overloadedClassMethods,
     # NB:  synchronized should come after classmethod
     basic.maybeSynchronizedMethod,
+    basic.overloadedClassMethods,
 ]
 
 
@@ -133,7 +130,7 @@ modulePackageDeclarationHandler = basic.commentedPackages
 
 # This handler is turns java imports into python imports. No mapping
 # of packages is performed:
-# moduleImportDeclarationHandler = basic.simpleImports
+moduleImportDeclarationHandler = basic.simpleImports
 
 # This import decl. handler can be used instead to produce comments
 # instead of import statements:
@@ -150,26 +147,15 @@ astTransforms = [
     (Type('TRUE'),  transform.true2True),
     (Type('IDENT'), transform.keywordSafeIdent),
 
-    (Type('DECIMAL_LITERAL'), transform.syntaxSafeDecimalLiteral),
-    (Type('FLOATING_POINT_LITERAL'), transform.syntaxSafeFloatLiteral),
 
-    (Type('TYPE') > Type('BOOLEAN'), transform.typeSub),
-    (Type('TYPE') > Type('BYTE'), transform.typeSub),
-    (Type('TYPE') > Type('CHAR'), transform.typeSub),
-    (Type('TYPE') > Type('FLOAT'), transform.typeSub),
-    (Type('TYPE') > Type('INT'), transform.typeSub),
-    (Type('TYPE') > Type('SHORT'), transform.typeSub),
-    (Type('TYPE') > Type('LONG'), transform.typeSub),
-    (Type('TYPE') > Type('DOUBLE'), transform.typeSub),
+    (Type('FLOATING_POINT_LITERAL'),
+     transform.syntaxSafeFloatLiteral),
 
-    (Type('METHOD_CALL') > Type('DOT') > Type('IDENT', 'length'),
-     transform.lengthToLen),
+    (Type('TYPE') > Type('BOOLEAN'),
+     transform.typeSub),
 
-    (Type('METHOD_CALL') > Type('DOT') > (
-        Type('IDENT', 'String') +
-        Type('IDENT', 'format')
-        ),
-     transform.formatString),
+    (Type('TYPE') > Type('DOUBLE'),
+     transform.typeSub),
 
     (Type('TYPE') > Type('QUALIFIED_TYPE_IDENT') > Type('IDENT'),
      transform.typeSub),
@@ -183,12 +169,6 @@ astTransforms = [
 # in method declarations.  set to 0 to disable.
 #minIndentParams = 5
 
-# Specifies handler for cast operations of non-primitive types are handled
-# (primitive types are automatically handled).  Use basic.castDrop to leave
-# cast expressions out of generated source.  Use basic.castCtor to transform
-# casts into constructor calls.  Or you can specify a function of your own.
-expressionCastHandler = basic.castDrop
-
 
 # Values below are used by the handlers.  They're here for
 # convenience.
@@ -196,8 +176,12 @@ expressionCastHandler = basic.castDrop
 
 # module output subs.
 moduleOutputSubs = [
-    (r'System\.out\.println\((.*)\)', r'print(\1)'),
-    (r'System\.out\.print_\((.*?)\)', r'print(\1, end="")'),
+    #(r'System\.out\.println\((.*)\)', r'print \1'),
+    #(r'System\.out\.print_\((.*?)\)', r'print \1,'),
+    # Below modifications made by VSK on Apr 14, 2020 to ignore all Java print statement hereafter
+    (r'System\.out\.println\((.*)\)', r''),
+    (r'System\.out\.print_\((.*?)\)', r''),
+    (r'System\.out\.printf\((.*?)\)', r''),
     (r'(.*?)\.equals\((.*?)\)', r'\1 == \2'),
     (r'(.*?)\.equalsIgnoreCase\((.*?)\)', r'\1.lower() == \2.lower()'),
     (r'([\w.]+)\.size\(\)', r'len(\1)'),
@@ -205,47 +189,25 @@ moduleOutputSubs = [
     (r'(\s)(\S*?)(\.toString\(\))', r'\1\2.__str__()'),
     (r'(\s)def toString', r'\1def __str__'),
     (r'(\s)(\S*?)(\.toLowerCase\(\))', r'\1\2.lower()'),
+    (r'(\s)(\S*?)(\.length\(\))', r'\1len(\2)'),
     (r'(.*?)IndexOutOfBoundsException\((.*?)\)', r'\1IndexError(\2)'),
     (r'\.__class__\.getName\(\)', '.__class__.__name__'),
     (r'\.getClass\(\)', '.__class__'),
     (r'\.getName\(\)', '.__name__'),
     (r'\.getInterfaces\(\)', '.__bases__'),
-    (r'String\.valueOf\((.*?)\)', r'str(\1)'),
+    #(r'String\.valueOf\((.*?)\)', r'str(\1)'),
     #(r'(\s)(\S*?)(\.toString\(\))', r'\1str(\2)'),
-    (r'Math\.', ''),
 ]
 
 
 typeSubs = {
     'Boolean' : 'bool',
     'boolean' : 'bool',
-
-    'Byte' : 'int',
-    'byte' : 'int',
-
-    'Char' : 'str',
-    'char' : 'str',
-
-    'Integer' : 'int',
-    'int' : 'int',
-
-    'Short' : 'int',
-    'short' : 'int',
-
-    'Long' : 'long',
-    'long' : 'long',
-
-    'Float' : 'float',
-    'float' : 'float',
-
-    'Double' : 'float',
-    'double' : 'float',
-
-    'String' : 'str',
-    'java.lang.String' : 'str',
-
-    'Object' : 'object',
-
     'IndexOutOfBoundsException' : 'IndexError',
-    'IOException': 'IOError',
-    }
+    'Integer' : 'int',
+    'Object' : 'object',
+    'String' : 'str',
+    'char' : 'str',
+    'double' : 'float',
+    'java.lang.String' : 'str',
+}

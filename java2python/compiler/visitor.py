@@ -13,7 +13,8 @@
 
 
 from functools import reduce, partial
-from itertools import ifilter, ifilterfalse, izip, tee
+#from itertools import ifilter, ifilterfalse, izip, tee
+from itertools import filterfalse, tee
 from logging import debug, warn
 from re import compile as recompile, sub as resub
 
@@ -46,9 +47,9 @@ class Base(object):
         """ Add comments to the template from tokens in the tree. """
         prefix = self.config.last('commentPrefix', '# ')
         cache, parser, comTypes = memo.comments, tree.parser, tokens.commentTypes
-        comNew = lambda t:t.type in comTypes and (t.index not in cache)
+        comNew = lambda t:t.type in comTypes and t.index not in cache
 
-        for tok in ifilter(comNew, parser.input.tokens[memo.last:index]):
+        for tok in filter(comNew, parser.input.tokens[memo.last:index]):
             cache.add(tok.index)
 
             # loop over parents until we find the top expression
@@ -70,7 +71,8 @@ class Base(object):
     def stripComment(self, text):
         """ Regex substitutions for comments; removes comment characters. """
         subText = lambda value, regex:resub(regex, '', value)
-        for text in ifilter(unicode.strip, text.split('\n')):
+        #for text in filter(unicode.strip, text.split('\n')):
+        for text in filter(str.strip, text.split('\n')):
             yield reduce(subText, self.commentSubs, text)
 
     def walk(self, tree, memo=None):
@@ -95,7 +97,7 @@ class Base(object):
 
     def zipWalk(self, nodes, visitors, memo):
         """ Walk the given nodes zipped with the given visitors. """
-        for node, visitor in izip(nodes, visitors):
+        for node, visitor in zip(nodes, visitors):
             visitor.walk(node, memo)
 
     def nodeTypeToString(self, node):
@@ -118,10 +120,7 @@ class TypeAcceptor(object):
         """ Creates an accept function for the given factory type. """
         def acceptType(self, node, memo):
             """ Creates and returns a new template for a type. """
-            try:
-                name = node.firstChildOfType(tokens.IDENT).text
-            except (AttributeError, ):
-                return
+            name = node.firstChildOfType(tokens.IDENT).text
             self.variables.append(name)
             return getattr(self.factory, ft)(name=name, parent=self)
         return acceptType
@@ -129,12 +128,7 @@ class TypeAcceptor(object):
     acceptAt = makeAcceptType('at')
     acceptClass = makeAcceptType('klass')
     acceptEnum = makeAcceptType('enum')
-    _acceptInterface = makeAcceptType('interface')
-
-    def acceptInterface(self, node, memo):
-        module = self.parents(lambda x:x.isModule).next()
-        module.needsAbstractHelpers = True
-        return self._acceptInterface(node, memo)
+    acceptInterface = makeAcceptType('interface')
 
 
 class Module(TypeAcceptor, Base):
@@ -161,9 +155,9 @@ class ModifiersAcceptor(object):
     def acceptModifierList(self, node, memo):
         """ Accept and process class and method modifiers. """
         isAnno = lambda token:token.type==tokens.AT
-        for ano in ifilter(isAnno, node.children):
+        for ano in filter(isAnno, node.children):
             self.nodesToAnnos(ano, memo)
-        for mod in ifilterfalse(isAnno, node.children):
+        for mod in filterfalse(isAnno, node.children):
             self.nodesToModifiers(mod, node)
         return self
 
@@ -178,7 +172,7 @@ class ModifiersAcceptor(object):
             if defKey:
                 deco = self.factory.expr(left=name, fs='@{left}({right})')
                 deco.right = right = self.factory.expr(parent=deco)
-                right.walk(defKey.firstChild(), memo)
+                right.walk(defKey.firstChild())
             else:
                 deco = self.factory.expr(left=name, fs='@{left}({right})')
                 arg = deco.right = self.factory.expr(parent=deco)
@@ -195,8 +189,9 @@ class ModifiersAcceptor(object):
         """ Convert the modifiers in the given branch to template modifiers. """
         if root.parentType in tokens.methodTypes:
             self.modifiers.extend(n.text for n in root.children)
-            if self.isStatic and self.parameters:
-                self.parameters[0]['name'] = 'cls'
+	    ## Below two lines commented out by VSK on April 16, 2020 to ensure that no Python classmethods are generated for ASKE
+            #if self.isStatic and self.parameters:
+            #    self.parameters[0]['name'] = 'cls'
         self.modifiers.append(branch.text)
 
 
@@ -207,17 +202,14 @@ class VarAcceptor(object):
         """ Creates a new expression for a variable declaration. """
         varDecls = node.firstChildOfType(tokens.VAR_DECLARATOR_LIST)
         for varDecl in varDecls.childrenOfType(tokens.VAR_DECLARATOR):
+            ## The bottom two lines are a hack added by Vijay Kumar (Dec 26, 2019)
+            ##if not varDecl.firstChildOfType(tokens.EXPR) and not node.firstChildOfType(tokens.TYPE).firstChildOfType(tokens.ARRAY_DECLARATOR_LIST):
+            ##    continue       
             ident = varDecl.firstChildOfType(tokens.IDENT)
             self.variables.append(ident.text)
-
             identExp = self.factory.expr(left=ident.text, parent=self)
-            identExp.type = self.nodeTypeToString(node)
-            if node.firstChildOfType(tokens.MODIFIER_LIST):
-                identExp.modifiers = [child.text for child in node.firstChildOfType(tokens.MODIFIER_LIST).children]
-
             declExp = varDecl.firstChildOfType(tokens.EXPR)
             assgnExp = identExp.pushRight(' = ')
-
             declArr = varDecl.firstChildOfType(tokens.ARRAY_INITIALIZER)
             if declExp:
                 assgnExp.walk(declExp, memo)
@@ -233,10 +225,12 @@ class VarAcceptor(object):
                 if node.firstChildOfType(tokens.TYPE).firstChildOfType(tokens.ARRAY_DECLARATOR_LIST):
                     val = assgnExp.pushRight('[]')
                 else:
-                    if node.firstChildOfType(tokens.TYPE).firstChild().type != tokens.QUALIFIED_TYPE_IDENT:
-                        val = assgnExp.pushRight('{0}()'.format(identExp.type))
+                    typ = self.nodeTypeToString(node)
+                    if typ in ('int','float','bool','string'):
+                        val = assgnExp.pushRight(str(eval('{0}()'.format(typ))))
                     else:
-                        val = assgnExp.pushRight('None')
+                        val = assgnExp.pushRight('{0}()'.format(typ))
+
         return self
 
 
@@ -366,7 +360,7 @@ class Interface(Class):
     """ Interface -> accepts AST branches for Java interfaces. """
 
 
-class MethodContent(VarAcceptor, Base):
+class MethodContent(Base):
     """ MethodContent -> accepts trees for blocks within methods. """
 
     def acceptAssert(self, node, memo):
@@ -407,10 +401,6 @@ class MethodContent(VarAcceptor, Base):
 
     def acceptContinue(self, node, memo):
         """ Accept and process a continue statement. """
-        parent = node.parents(lambda x: x.type in {tokens.FOR, tokens.FOR_EACH, tokens.DO, tokens.WHILE}).next()
-        if parent.type == tokens.FOR:
-            updateStat = self.factory.expr(parent=self)
-            updateStat.walk(parent.firstChildOfType(tokens.FOR_UPDATE), memo)
         contStat = self.factory.statement('continue', fs=FS.lsr, parent=self)
         if len(node.children):
             warn('Detected unhandled continue statement with label; generated code incorrect.')
@@ -444,20 +434,17 @@ class MethodContent(VarAcceptor, Base):
 
     def acceptFor(self, node, memo):
         """ Accept and process a 'for' statement. """
-        self.walk(node.firstChildOfType(tokens.FOR_INIT), memo)
+        self.walk(node.firstChildOfType(tokens.FOR_INIT))
         whileStat = self.factory.statement('while', fs=FS.lsrc, parent=self)
         cond = node.firstChildOfType(tokens.FOR_CONDITION)
         if not cond.children:
             whileStat.expr.right = 'True'
         else:
-            whileStat.expr.walk(cond, memo)
+            whileStat.expr.walk(cond)
         whileBlock = self.factory.methodContent(parent=self)
-        if not node.firstChildOfType(tokens.BLOCK_SCOPE).children:
-            self.factory.expr(left='pass', parent=whileBlock)
-        else:
-            whileBlock.walk(node.firstChildOfType(tokens.BLOCK_SCOPE), memo)
+        whileBlock.walk(node.firstChildOfType(tokens.BLOCK_SCOPE))
         updateStat = self.factory.expr(parent=whileBlock)
-        updateStat.walk(node.firstChildOfType(tokens.FOR_UPDATE), memo)
+        updateStat.walk(node.firstChildOfType(tokens.FOR_UPDATE))
 
     def acceptForEach(self, node, memo):
         """ Accept and process a 'for each' style statement. """
@@ -494,24 +481,16 @@ class MethodContent(VarAcceptor, Base):
                 else:
                     nextBlock = self.factory.methodContent(parent=self)
                 nextBlock.walk(nextNode.children[1], memo)
-
-                try:
-                    nextNode = nextNode.children[2]
-                except (IndexError, ):
-                    nextType = None
-                else:
-                    nextType = nextNode.type
+                nextNode = nextNode.children[2]
+                nextType = nextNode.type
 
             if nextType == tokens.EXPR:
                 elseStat = self.factory.statement('else', fs=FS.lc, parent=self)
                 elseBlock = self.factory.expr(parent=elseStat)
                 elseBlock.walk(nextNode, memo)
-            elif nextType: # nextType != tokens.BLOCK_SCOPE:
-                elseStat = self.factory.statement('else', fs=FS.lc, parent=self)
-                if nextNode.children:
-                    self.factory.methodContent(parent=self).walk(nextNode, memo)
-                else:
-                    self.factory.expr(left='pass', parent=elseStat)
+            else: # nextType != tokens.BLOCK_SCOPE:
+                self.factory.statement('else', fs=FS.lc, parent=self)
+                self.factory.methodContent(parent=self).walk(nextNode, memo)
 
 
     def acceptSwitch(self, node, memo):
@@ -528,8 +507,8 @@ class MethodContent(VarAcceptor, Base):
             return
         # we have at least one node...
         parExpr = self.factory.expr(parent=self)
-        parExpr.walk(parNode, memo)
-        eqFs = FS.l + ' == ' + FS.r
+        parExpr.walk(parNode)
+        eqFs = FS.l + '==' + FS.r
         for caseIdx, caseNode in enumerate(caseNodes):
             isDefault, isFirst = caseNode.type==tokens.DEFAULT, caseIdx==0
 
@@ -542,7 +521,7 @@ class MethodContent(VarAcceptor, Base):
 
             if not isDefault:
                 right = self.factory.expr(parent=parExpr)
-                right.walk(caseNode.firstChildOfType(tokens.EXPR), memo)
+                right.walk(caseNode.firstChildOfType(tokens.EXPR))
                 caseExpr.expr.right = self.factory.expr(left=parExpr, right=right, fs=eqFs)
                 caseContent = self.factory.methodContent(parent=self)
                 for child in caseNode.children[1:]:
@@ -625,7 +604,7 @@ class MethodContent(VarAcceptor, Base):
             whileStat.walk(blkNode, memo)
 
 
-class Method(ModifiersAcceptor, MethodContent):
+class Method(VarAcceptor, ModifiersAcceptor, MethodContent):
     """ Method -> accepts AST branches for method-level objects. """
 
     def acceptFormalParamStdDecl(self, node, memo):
@@ -664,7 +643,7 @@ class Expression(Base):
         """ Accept and processes an operator expression. """
         factory = self.factory.expr
         self.fs = FS.l + ' ' + node.text + ' ' + FS.r
-        self.left, self.right = visitors = factory(parent=self), factory(parent=self)
+        self.left, self.right = visitors = factory(parent=self), factory()
         self.zipWalk(node.children, visitors, memo)
 
     acceptAnd = nodeOpExpr
@@ -701,6 +680,7 @@ class Expression(Base):
         return acceptPreformatted
 
     acceptArrayElementAccess = makeNodePreformattedExpr(FS.l + '[' + FS.r + ']')
+    acceptCastExpr  = makeNodePreformattedExpr(FS.l + '(' + FS.r + ')' ) # problem?
     acceptDiv = makeNodePreformattedExpr(FS.l + ' / ' + FS.r)
     acceptLogicalAnd = makeNodePreformattedExpr(FS.l + ' and ' + FS.r)
     acceptLogicalNot = makeNodePreformattedExpr('not ' + FS.l)
@@ -711,29 +691,6 @@ class Expression(Base):
     acceptStar = makeNodePreformattedExpr(FS.l + ' * ' + FS.r)
     acceptUnaryMinus = makeNodePreformattedExpr('-' + FS.l)
     acceptUnaryPlus = makeNodePreformattedExpr('+' + FS.l)
-
-    def acceptCastExpr(self, node, memo):
-        """ Accept and process a cast expression. """
-        # If the type of casting is a primitive type,
-        # then do the cast, else drop it.
-        factory = self.factory.expr
-        typeTok = node.firstChildOfType(tokens.TYPE)
-        typeIdent = typeTok.firstChild()
-        typeName = typeIdent.text
-        if typeIdent.type == tokens.QUALIFIED_TYPE_IDENT:
-            typeName = typeIdent.firstChild().text
-
-        if typeName in tokens.primitiveTypeNames:
-            # Cast using the primitive type constructor
-            self.fs = typeName + '(' + FS.r + ')'
-        else:
-            handler = self.configHandler('Cast')
-            if handler:
-                handler(self, node)
-            else:
-                warn('No handler to perform cast of non-primitive type %s.', typeName)
-        self.left, self.right = visitors = factory(parent=self), factory(parent=self)
-        self.zipWalk(node.children, visitors, memo)
 
     def makeAcceptPrePost(suffix, pre):
         """ Make an accept method for pre- and post- assignment expressions. """
@@ -847,7 +804,7 @@ class Expression(Base):
 
     def acceptStaticArrayCreator(self, node, memo):
         """ Accept and process a static array expression. """
-        self.right = self.factory.expr(fs='[None] * {left}')
+        self.right = self.factory.expr(fs='[None]*{left}')
         self.right.left = self.factory.expr()
         self.right.left.walk(node.firstChildOfType(tokens.EXPR), memo)
 
