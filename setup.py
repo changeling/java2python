@@ -46,9 +46,8 @@ setup(
     author='Troy Melhase',
     author_email='troy@troy.io',
 
-    url='https://github.com/natural/java2python/',
-    download_url='https://github.com/downloads/natural/java2python/java2python-0.5.1.tar.gz',
-
+    url='https://github.com/GEGlobalResearch/java2python/',
+    download_url='https://github.com/GEGlobalResearch/java2python/archive/master.zip',
     keywords=['java', 'java2python', 'compiler'],
     classifiers=filter(None, classifiers.split('\n')),
 
@@ -81,6 +80,7 @@ setup(
         ('doc', doc_files()),
         ],
 
-    install_requires=['antlr_python_runtime==3.1.3'],
-
+    install_requires=[
+        'antlr_python_runtime@https://github.com/altigee/antlr-python3-runtime-3.1.3/archive/master.zip',
+    ],
     )
