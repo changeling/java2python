@@ -157,7 +157,7 @@ class Base(object, metaclass=FactoryTypeDetector):
         for klass in self.parents(lambda v:v.isClass):
             if name in klass.variables:
                 try:
-                    method = self.parents(lambda v:v.isMethod).next()
+                    method = next(self.parents(lambda v:v.isMethod))
                 except (StopIteration, ):
                     return name
                 if name in [p['name'] for p in method.parameters]:

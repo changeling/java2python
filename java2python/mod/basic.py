@@ -129,13 +129,13 @@ def maybeAbstractMethod(method):
 
 def maybeSynchronizedMethod(method):
     if 'synchronized' in method.modifiers:
-        module = method.parents(lambda x:x.isModule).next()
+        module = next(method.parents(lambda x:x.isModule))
         module.needsSyncHelpers = True
         yield '@synchronized'
 
 
 def globalNameCounter(original, counter=count()):
-    return '__{0}_{1}'.format(original, counter.next())
+    return '__{0}_{1}'.format(original, next(counter))
 
 
 def getBsrSrc():
