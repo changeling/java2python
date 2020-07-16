@@ -180,13 +180,13 @@ class LocalTree(CommonTree):
                 args[2] = ' ' + self.colorText(ttyp, token.text)
             for com in self.selectComments(start, seen):
                 for line in self.colorComments(com):
-                    print >> fd, '{0}{1}'.format(indent, line)
-            print >> fd, nform.format(*args)
+                    print(f'{indent}{line}', file=fd)
+            print(nform.format(*args), file=fd)
             for child in root.getChildren():
                 innerDump(child, offset+1)
             for com in self.selectComments(root.tokenStopIndex, seen):
                 for line in self.colorComments(com):
-                    print >> fd, '{0}{1}'.format(indent, line)
+                    print(f'{indent}{line}', file=fd)
         innerDump(self, level)
 
     def dumps(self, level=0):

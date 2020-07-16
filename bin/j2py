@@ -143,16 +143,16 @@ def runTransform(options):
 
     if options.lexertokens:
         for idx, tok in enumerate(tree.parser.input.tokens):
-            print >> sys.stderr, '{0}  {1}'.format(idx, tok)
-        print >> sys.stderr
+            print(f'{idx}  {tok}', file=sys.stderr)
+        print(file=sys.stderr)
 
     if options.javaast:
         tree.dump(sys.stderr)
-        print >> sys.stderr
+        print(file=sys.stderr)
 
     if options.pytree:
         module.dumpRepr(sys.stderr)
-        print >> sys.stderr
+        print(file=sys.stderr)
 
     if not options.skipsource:
         if fileout == filedefault:
@@ -160,7 +160,7 @@ def runTransform(options):
         else:
             output = open(fileout, 'w')
         module.name = path.splitext(filein)[0] if filein != '-' else '<stdin>'
-        print >> output, source
+        print(source, file=output)
 
     if not options.skipcompile:
         try:
