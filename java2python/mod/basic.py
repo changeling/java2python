@@ -30,7 +30,7 @@ def simpleDocString(obj):
 
     This generator works for modules, classes, and functions.
     """
-    yield '""" generated source for {0} {1} """'.format(obj.typeName, obj.name)
+    yield f'"""java2py generated source for {obj.typeName} {obj.name}."""'
 
 
 def commentedImports(module, expr):
@@ -78,11 +78,11 @@ if __name__ == '__main__':
 
 def scriptMainStanza(module):
     def filterClass(x):
-        return x.isClass and x.name==module.name
+        return x.isClass and x.name == module.name
 
     def filterMethod(x):
         return x.isMethod and x.isPublic and x.isStatic and \
-               x.isVoid and x.name=='main'
+               x.isVoid and x.name == 'main'
 
     for cls in [c for c in module.children if filterClass(c)]:
         if [m for m in cls.children if filterMethod(m)]:
@@ -105,7 +105,7 @@ def overloadedClassMethods(method):
     class) methods, only instance methods.
     """
     cls = method.parent
-    methods = [o for o in cls.children if o.isMethod and o.name==method.name]
+    methods = [o for o in cls.children if o.isMethod and o.name == method.name]
     if len(methods) == 1:
         return
     for i, m in enumerate(methods[1:]):
@@ -129,7 +129,7 @@ def maybeAbstractMethod(method):
 
 def maybeSynchronizedMethod(method):
     if 'synchronized' in method.modifiers:
-        module = method.parents(lambda x:x.isModule).next()
+        module = method.parents(lambda x: x.isModule).next()
         module.needsSyncHelpers = True
         yield '@synchronized'
 
@@ -163,7 +163,7 @@ def maybeSyncHelpers(module):
 
 
 def classContentSort(obj):
-    isMethod = lambda x:x and x.isMethod
+    isMethod = lambda x: x and x.isMethod
 
     def iterBody(body):
         group = []
@@ -211,9 +211,9 @@ def zopeInterfaceBases(obj):
 
 
 def implAny(obj):
-    for module in obj.parents(lambda x:x.isModule):
+    for module in obj.parents(lambda x: x.isModule):
         for name in obj.bases:
-            if any(module.find(lambda v:v.name == name)):
+            if any(module.find(lambda v: v.name == name)):
                 return True
 
 

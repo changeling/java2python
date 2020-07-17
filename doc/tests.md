@@ -57,7 +57,7 @@ You run it like this:
 ```bash
 $ ./runj2py Class01.java
 #!/usr/bin/env python
-""" generated source for module Class01 """
+"""java2py generated source for module Class01."""
 class Class01(object):
 ...
 ```

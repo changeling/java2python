@@ -38,15 +38,15 @@ $ j2py HelloWorld.java
 ```
 ```python
 #!/usr/bin/env python
-""" generated source for module HelloWorld """
+"""java2py generated source for module HelloWorld."""
 
 #  This is the HelloWorld class with a single method.
 class HelloWorld(object):
-    """ generated source for class HelloWorld """
+    """java2py generated source for class HelloWorld."""
 
     @classmethod
     def main(cls, args):
-        """ generated source for method main """
+        """java2py generated source for method main."""
         print "Hello, world."
 
 if __name__ == '__main__':
