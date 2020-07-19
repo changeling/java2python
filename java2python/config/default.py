@@ -217,35 +217,35 @@ moduleOutputSubs = [
 
 
 typeSubs = {
-    'Boolean' : 'bool',
-    'boolean' : 'bool',
+    'Boolean': 'bool',
+    'boolean': 'bool',
 
-    'Byte' : 'int',
-    'byte' : 'int',
+    'Byte': 'int',
+    'byte': 'int',
 
-    'Char' : 'str',
-    'char' : 'str',
+    'Char': 'str',
+    'char': 'str',
 
-    'Integer' : 'int',
-    'int' : 'int',
+    'Integer': 'int',
+    'int': 'int',
 
-    'Short' : 'int',
-    'short' : 'int',
+    'Short': 'int',
+    'short': 'int',
 
-    'Long' : 'long',
-    'long' : 'long',
+    'Long': 'long',
+    'long': 'long',
 
-    'Float' : 'float',
-    'float' : 'float',
+    'Float': 'float',
+    'float': 'float',
 
-    'Double' : 'float',
-    'double' : 'float',
+    'Double': 'float',
+    'double': 'float',
 
-    'String' : 'str',
-    'java.lang.String' : 'str',
+    'String': 'str',
+    'java.lang.String': 'str',
 
-    'Object' : 'object',
+    'Object': 'object',
 
-    'IndexOutOfBoundsException' : 'IndexError',
+    'IndexOutOfBoundsException': 'IndexError',
     'IOException': 'IOError',
     }
