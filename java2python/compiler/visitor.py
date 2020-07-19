@@ -14,11 +14,13 @@
 
 from functools import reduce, partial
 from itertools import ifilter, ifilterfalse, izip, tee
-from logging import debug, warn
+from logging import debug, warn, warning
 from re import compile as recompile, sub as resub
+from traceback import format_exc
 
 from java2python.lang import tokens
 from java2python.lib import FS
+
 
 
 class Memo(object):
@@ -35,7 +37,11 @@ class Base(object):
 
     def accept(self, node, memo):
         """ Accept a node, possibly creating a child visitor. """
-        tokType = tokens.map.get(node.token.type)
+        if node and node.token:
+            tokType = tokens.map.get(node.token.type)
+        else:
+            warning(format_exc())
+            return
         missing = lambda node, memo:self
         call = getattr(self, 'accept{0}'.format(tokens.title(tokType)), missing)
         if call is missing:
@@ -79,7 +85,11 @@ class Base(object):
             return
         memo = Memo() if memo is None else memo
         comIns = self.insertComments
-        comIns(self, tree, tree.tokenStartIndex, memo)
+        try:
+            comIns(self, tree, tree.tokenStartIndex, memo)
+        except:
+            warning(format_exc())
+            pass
         visitor = self.accept(tree, memo)
         if visitor:
             for child in tree.children:
@@ -129,12 +139,7 @@ class TypeAcceptor(object):
     acceptAt = makeAcceptType('at')
     acceptClass = makeAcceptType('klass')
     acceptEnum = makeAcceptType('enum')
-    _acceptInterface = makeAcceptType('interface')
-
-    def acceptInterface(self, node, memo):
-        module = self.parents(lambda x:x.isModule).next()
-        module.needsAbstractHelpers = True
-        return self._acceptInterface(node, memo)
+    acceptInterface = makeAcceptType('interface')
 
 
 class Module(TypeAcceptor, Base):
@@ -233,10 +238,7 @@ class VarAcceptor(object):
                 if node.firstChildOfType(tokens.TYPE).firstChildOfType(tokens.ARRAY_DECLARATOR_LIST):
                     val = assgnExp.pushRight('[]')
                 else:
-                    if node.firstChildOfType(tokens.TYPE).firstChild().type != tokens.QUALIFIED_TYPE_IDENT:
-                        val = assgnExp.pushRight('{0}()'.format(identExp.type))
-                    else:
-                        val = assgnExp.pushRight('None')
+                    val = assgnExp.pushRight('{0}()'.format(identExp.type))
         return self
 
 
@@ -366,7 +368,7 @@ class Interface(Class):
     """ Interface -> accepts AST branches for Java interfaces. """
 
 
-class MethodContent(VarAcceptor, Base):
+class MethodContent(Base):
     """ MethodContent -> accepts trees for blocks within methods. """
 
     def acceptAssert(self, node, memo):
@@ -407,10 +409,6 @@ class MethodContent(VarAcceptor, Base):
 
     def acceptContinue(self, node, memo):
         """ Accept and process a continue statement. """
-        parent = node.parents(lambda x: x.type in {tokens.FOR, tokens.FOR_EACH, tokens.DO, tokens.WHILE}).next()
-        if parent.type == tokens.FOR:
-            updateStat = self.factory.expr(parent=self)
-            updateStat.walk(parent.firstChildOfType(tokens.FOR_UPDATE), memo)
         contStat = self.factory.statement('continue', fs=FS.lsr, parent=self)
         if len(node.children):
             warn('Detected unhandled continue statement with label; generated code incorrect.')
@@ -452,7 +450,7 @@ class MethodContent(VarAcceptor, Base):
         else:
             whileStat.expr.walk(cond, memo)
         whileBlock = self.factory.methodContent(parent=self)
-        if not node.firstChildOfType(tokens.BLOCK_SCOPE).children:
+        if not node.firstChildOfType(tokens.BLOCK_SCOPE) or not node.firstChildOfType(tokens.BLOCK_SCOPE).children:
             self.factory.expr(left='pass', parent=whileBlock)
         else:
             whileBlock.walk(node.firstChildOfType(tokens.BLOCK_SCOPE), memo)
@@ -524,12 +522,12 @@ class MethodContent(VarAcceptor, Base):
         lblNode = node.firstChildOfType(tokens.SWITCH_BLOCK_LABEL_LIST)
         caseNodes = lblNode.children
         # empty switch statement
-        if not len(caseNodes):
+        if not caseNodes:
             return
         # we have at least one node...
         parExpr = self.factory.expr(parent=self)
         parExpr.walk(parNode, memo)
-        eqFs = FS.l + ' == ' + FS.r
+        eqFs = FS.l + '==' + FS.r
         for caseIdx, caseNode in enumerate(caseNodes):
             isDefault, isFirst = caseNode.type==tokens.DEFAULT, caseIdx==0
 
@@ -547,7 +545,7 @@ class MethodContent(VarAcceptor, Base):
                 caseContent = self.factory.methodContent(parent=self)
                 for child in caseNode.children[1:]:
                     caseContent.walk(child, memo)
-                if not caseNode.children[1:]:
+                if not caseNode.children or not caseNode.children[1:]:
                     self.factory.expr(left='pass', parent=caseContent)
             if isDefault:
                 if isFirst:
@@ -619,13 +617,13 @@ class MethodContent(VarAcceptor, Base):
         parNode, blkNode = node.children
         whileStat = self.factory.statement('while', fs=FS.lsrc, parent=self)
         whileStat.expr.walk(parNode, memo)
-        if not blkNode.children:
+        if not blkNode or not blkNode.children:
             self.factory.expr(left='pass', parent=whileStat)
         else:
             whileStat.walk(blkNode, memo)
 
 
-class Method(ModifiersAcceptor, MethodContent):
+class Method(VarAcceptor, ModifiersAcceptor, MethodContent):
     """ Method -> accepts AST branches for method-level objects. """
 
     def acceptFormalParamStdDecl(self, node, memo):
@@ -847,7 +845,7 @@ class Expression(Base):
 
     def acceptStaticArrayCreator(self, node, memo):
         """ Accept and process a static array expression. """
-        self.right = self.factory.expr(fs='[None] * {left}')
+        self.right = self.factory.expr(fs='[None]*{left}')
         self.right.left = self.factory.expr()
         self.right.left.walk(node.firstChildOfType(tokens.EXPR), memo)
 
