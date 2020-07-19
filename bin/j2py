@@ -6,10 +6,11 @@ This is all very ordinary.  We import the package bits, open and read
 a file, translate it, and write it out.
 
 """
+import io
 import sys
 from argparse import ArgumentParser, ArgumentTypeError
 from collections import defaultdict
-from logging import _levelNames as logLevels, exception, warning, info, basicConfig
+from logging import _nameToLevel as logLevels, exception, warning, info, basicConfig
 from os import path, makedirs
 from time import time
 
@@ -60,8 +61,8 @@ def runOneOrMany(options):
     """ Runs our main transformer with each of the input files. """
     infile, outfile = options.inputfile, options.outputfile
 
-    if infile and not isinstance(infile, file) and path.isdir(infile):
-        if outfile and not isinstance(outfile, file) and not path.isdir(outfile):
+    if infile and not isinstance(infile, io.IOBase) and path.isdir(infile):
+        if outfile and not isinstance(outfile, io.IOBase) and not path.isdir(outfile):
             warning('Must specify output directory or stdout when using input directory.')
             return 2
         def walker(arg, dirname, files):
@@ -69,7 +70,7 @@ def runOneOrMany(options):
                 fullname = path.join(dirname, name)
                 options.inputfile = fullname
                 info('opening %s', fullname)
-                if outfile and outfile != '-' and not isinstance(outfile, file):
+                if outfile and outfile != '-' and not isinstance(outfile, io.IOBase):
                     full = path.abspath(path.join(outfile, fullname))
                     head, tail = path.split(full)
                     tail = path.splitext(tail)[0] + '.py'
@@ -89,15 +90,15 @@ def runTransform(options):
     timed['overall']
 
     filein = fileout = filedefault = '-'
-    if options.inputfile and not isinstance(options.inputfile, file):
+    if options.inputfile and not isinstance(options.inputfile, io.IOBase):
         filein = options.inputfile
-    if options.outputfile and not isinstance(options.outputfile, file):
+    if options.outputfile and not isinstance(options.outputfile, io.IOBase):
         fileout = options.outputfile
     elif fileout != filedefault:
         fileout = '%s.py' % (path.splitext(filein)[0])
 
     configs = options.configs
-    if options.configdirs and not isinstance(filein, file):
+    if options.configdirs and not isinstance(filein, io.IOBase):
         for configdir in options.configdirs:
             dirname = configFromDir(filein, configdir)
             if path.exists(dirname):
@@ -225,7 +226,7 @@ def configScript(argv):
         default=False, action='store_true')
     add('-l', '--log-level', dest='loglevel',
         help='Set log level by name or value.',
-        default='WARN', type=logLevel)
+        default='WARNING', type=logLevel)
     add('-n', '--no-defaults', dest='includedefaults',
         help='Ignore default configuration module.',
         default=True, action='store_false')
