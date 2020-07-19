@@ -12,7 +12,7 @@
 # understand how and when selectors are associated with these callables.
 
 import re
-from logging import warn
+from logging import warning
 
 import keyword
 import types
@@ -165,11 +165,11 @@ def formatString(node, config):
         format = call_args[0].firstChild()
         if format.type == tokens.IDENT:
             # String variable
-            warn('Formatting string %s is not automatically translated.'
+            warning('Formatting string %s is not automatically translated.'
                 % str(format.token.text))
         else:
             # Function that returns String
-            warn('Formatting string returned by %s() is not automatically translated.'
+            warning('Formatting string returned by %s() is not automatically translated.'
                 % str(format.firstChildOfType(tokens.IDENT).token.text))
 
     left_ident = dot.children[0]

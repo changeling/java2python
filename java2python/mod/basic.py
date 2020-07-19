@@ -3,7 +3,7 @@
 # java2python.mod.basic -> functions to revise generated source strings.
 
 from itertools import count
-from logging import info, warn
+from logging import info, warning
 from os import path
 from re import sub as rxsub
 
@@ -50,11 +50,11 @@ def commentedPackages(module, expr):
 def namespacePackages(module, expr):
     source = module.sourceFilename
     if not source:
-        warn('namespace package not created; source input not named.')
+        warning('namespace package not created; source input not named.')
         return
     initname = path.join(path.dirname(source), '__init__.py')
     if path.exists(initname):
-        warn('namespace package not created; __init__.py exists.')
+        warning('namespace package not created; __init__.py exists.')
         return
     with open(initname, 'w') as initfile:
         initfile.write('from pkgutil import extend_path\n')

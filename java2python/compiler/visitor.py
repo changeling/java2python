@@ -14,7 +14,7 @@
 
 from functools import reduce, partial
 from itertools import filterfalse, tee
-from logging import debug, warn, warning
+from logging import debug, warning
 from re import compile as recompile, sub as resub
 from traceback import format_exc
 
@@ -389,7 +389,7 @@ class MethodContent(Base):
                 break
         if insert:
             if len(node.children):
-                warn('Detected unhandled break statement with label; generated code incorrect.')
+                warning('Detected unhandled break statement with label; generated code incorrect.')
             breakStat = self.factory.statement('break', parent=self)
 
     def acceptCatch(self, node, memo):
@@ -411,7 +411,7 @@ class MethodContent(Base):
         """ Accept and process a continue statement. """
         contStat = self.factory.statement('continue', fs=FS.lsr, parent=self)
         if len(node.children):
-            warn('Detected unhandled continue statement with label; generated code incorrect.')
+            warning('Detected unhandled continue statement with label; generated code incorrect.')
 
     def acceptDo(self, node, memo):
         """ Accept and process a do-while block. """
@@ -729,7 +729,7 @@ class Expression(Base):
             if handler:
                 handler(self, node)
             else:
-                warn('No handler to perform cast of non-primitive type %s.', typeName)
+                warning('No handler to perform cast of non-primitive type %s.', typeName)
         self.left, self.right = visitors = factory(parent=self), factory(parent=self)
         self.zipWalk(node.children, visitors, memo)
 
