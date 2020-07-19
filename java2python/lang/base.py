@@ -47,7 +47,7 @@
 # instances.
 #
 
-#from cStringIO import StringIO
+# from cStringIO import StringIO
 from io import StringIO
 
 from antlr3 import ANTLRStringStream as StringStream, CommonTokenStream as TokenStream
@@ -57,24 +57,24 @@ from java2python.lib import colors
 
 
 class Tokens(object):
-    """ Tokens -> simplifies token id-name and name-id mapping. """
+    """Tokens -> simplifies token id-name and name-id mapping."""
 
     def __init__(self):
         self.cache, self.parserModule = {}, None
 
     def __getattr__(self, name):
-        """ tokenname -> tokenvalue """
+        """tokenname -> tokenvalue"""
         return getattr(self.module, name)
 
     @property
     def commentTypes(self):
-        """ Well-known comment types. """
+        """Well-known comment types."""
         mod = self.module
         return (mod.COMMENT, mod.LINE_COMMENT, mod.JAVADOC_COMMENT, )
 
     @property
     def map(self):
-        """ (tokentype, tokenname) mapping as a dictionary """
+        """(tokentype, tokenname) mapping as a dictionary."""
         cache, module = self.cache, self.module
         if cache:
             return cache
@@ -85,13 +85,13 @@ class Tokens(object):
 
     @property
     def methodTypes(self):
-        """ Well-known method types. """
+        """Well-known method types."""
         mod = self.module
         return (mod.VOID_METHOD_DECL, mod.FUNCTION_METHOD_DECL, )
 
     @property
     def module(self):
-        """ Provides lazy import to the parser module. """
+        """Provide lazy import to the parser module."""
         module = self.parserModule
         if module:
             return module
@@ -101,7 +101,7 @@ class Tokens(object):
 
     @staticmethod
     def title(name):
-        """ Returns a nice title given a token type name. """
+        """Return a nice title given a token type name."""
         return ''.join(part.title() for part in name.split('_'))
 
 
@@ -110,29 +110,30 @@ tokens = Tokens()
 
 
 class TreeAdaptor(CommonTreeAdaptor):
-    """ TreeAdaptor -> defered tree node creator (for parsers). """
+    """TreeAdaptor -> defered tree node creator (for parsers)."""
 
     def __init__(self, lexer, parser):
         # CommonTreeAdaptor doesn't need to be __init__'ed
         self.lexer, self.parser = lexer, parser
 
     def createWithPayload(self, payload):
-        """ Returns a new tree for the calling parser. """
+        """Return a new tree for the calling parser."""
         return LocalTree(payload, self.lexer, self.parser)
 
 
 class LocalTree(CommonTree):
-    """ LocalTree -> like CommonTree, but with more stuff. """
+    """LocalTree -> like CommonTree, but with more stuff."""
+
     colorTypeMap = {
-        'CLASS'            : colors.green,
-        'JAVA_SOURCE'      : colors.green,
-        'VOID_METHOD_DECL' : colors.green,
-        'IDENT'            : colors.yellow,
-        'TYPE'             : colors.magenta,
-        'EXPR'             : colors.blue,
-        'TRUE'             : colors.yellow,
-        'FALSE'            : colors.yellow,
-        'NULL'             : colors.yellow,
+        'CLASS':             colors.green,
+        'JAVA_SOURCE':       colors.green,
+        'VOID_METHOD_DECL':  colors.green,
+        'IDENT':             colors.yellow,
+        'TYPE':              colors.magenta,
+        'EXPR':              colors.blue,
+        'TRUE':              colors.yellow,
+        'FALSE':             colors.yellow,
+        'NULL':              colors.yellow,
     }
 
     def __init__(self, payload, lexer=None, parser=None):
@@ -140,28 +141,29 @@ class LocalTree(CommonTree):
         self.lexer, self.parser = lexer, parser
 
     def childrenOfType(self, type):
-        """ Returns a generator yielding children of this tree of the given type. """
-        return (c for c in self.children if c.type==type)
+        """Return a generator yielding children of this tree of the given type."""
+        return (c for c in self.children if c.type == type)
 
     def colorType(self, tokenType):
-        """ Returns a color suitable for the given token type. """
+        """Return a color suitable for the given token type."""
         return self.colorTypeMap.get(tokenType, colors.white)(tokenType)
 
     def colorText(self, tokenType, tokenText):
-        """ Returns a colorized string from the given token type and text. """
+        """Return a colorized string from the given token type and text."""
         return self.colorTypeMap.get(tokenType, colors.white)(tokenText)
 
     def colorComments(self, token):
-        """ Formats, colors, and returns the comment text from the given token. """
+        """Formats, colors, and returns the comment text from the given token."""
         ttyp = tokens.map.get(token.type)
         text = token.text.replace('\n', '\\n').replace('\r', '\\r').replace('\t', '\\t')
         item = '{0} [{1}:{2}] {3}'.format(ttyp, token.start, token.stop, text)
         yield colors.black(item)
 
     def dump(self, fd, level=0):
-        """ Writes a debug representation of this tree to the given file. """
-        extras = lambda x, y:x and (x != y)
+        """Write a debug representation of this tree to the given file."""
+        extras = lambda x, y: x and (x != y)
         seen, nform = set(), '{0}{1}{2}{3}'
+
         def innerDump(root, offset):
             token, indent = root.token, '    ' * offset
             start, stop = root.tokenStartIndex, root.tokenStopIndex
@@ -190,18 +192,18 @@ class LocalTree(CommonTree):
         innerDump(self, level)
 
     def dumps(self, level=0):
-        """ Dump this token to a string. """
+        """Dump this token to a string."""
         fd = StringIO()
         self.dump(fd, level)
         return fd.getvalue()
 
     def dupNode(self):
-        """ Called by the parser to create a duplicate of this tree. """
-        get = lambda v:getattr(self, v, None)
+        """Called by the parser to create a duplicate of this tree."""
+        get = lambda v: getattr(self, v, None)
         return LocalTree(self, get('lexer'), get('parser'))
 
-    def findChildren(self, pred=lambda c:True):
-        """ Depth-first search that yields nodes meeting the predicate. """
+    def findChildren(self, pred=lambda c: True):
+        """Depth-first search that yields nodes meeting the predicate."""
         for child in self.children:
             if pred(child):
                 yield child
@@ -209,18 +211,18 @@ class LocalTree(CommonTree):
                 yield sub
 
     def findChildrenOfType(self, type):
-        """ Depth-first search that yields nodes of the given type. """
-        return self.findChildren(lambda c:c.type==type)
+        """Depth-first search that yields nodes of the given type."""
+        return self.findChildren(lambda c: c.type == type)
 
     def firstChild(self, default=None):
-        """ Returns the first child of this tree or the default. """
+        """Return the first child of this tree or the default."""
         try:
             return self.children[0]
         except (IndexError, ):
             return default
 
     def firstChildOfType(self, type, default=None):
-        """ Returns the first child of this tree that matches the given type. """
+        """Return the first child of this tree that matches the given type."""
         for child in self.children:
             if child.type == type:
                 return child
@@ -228,16 +230,16 @@ class LocalTree(CommonTree):
 
     @property
     def isJavaSource(self):
-        """ True if this tree is the outer most type. """
+        """Boolean: True if this tree is the outer most type."""
         return self.token.type == tokens.JAVA_SOURCE
 
     @property
     def parentType(self):
-        """ Returns the type of the parent tree. """
+        """Return the type of the parent tree."""
         return self.parent.type
 
-    def parents(self, pred=lambda v:True):
-        """ Yield each parent in the family tree. """
+    def parents(self, pred=lambda v: True):
+        """Yield each parent in the family tree."""
         while self:
             if pred(self):
                 yield self
@@ -245,20 +247,20 @@ class LocalTree(CommonTree):
 
     @property
     def parserTokens(self):
-        """ Returns the sequence of tokens used to create this tree. """
+        """Return the sequence of tokens used to create this tree."""
         return self.parser.input.tokens[self.tokenStartIndex:self.tokenStopIndex]
 
     def selectComments(self, stop, memo):
-        """ Returns the comment tokens for this tree up to the given index. """
-        pred = lambda k:k.type in tokens.commentTypes and k.index not in memo
+        """Return the comment tokens for this tree up to the given index."""
+        pred = lambda k: k.type in tokens.commentTypes and k.index not in memo
         ctoks = [t for t in self.parser.input.tokens[0:stop] if pred(t)]
         memo.update(t.index for t in ctoks)
         return ctoks
 
     @property
     def withinExpr(self):
-        """ True if this tree is contained within an expression. """
-        self = getattr(self.parent, 'parent', None) # skip first expr
+        """Boolean: True if this tree is contained within an expression."""
+        self = getattr(self.parent, 'parent', None)  # skip first expr
         while self:
             if self.type in (tokens.EXPR, ):
                 return True

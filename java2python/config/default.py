@@ -109,7 +109,7 @@ enumValueHandler = basic.enumConstStrings
 
 # Alternatively, you can use this handler to construct enum values as
 # integers.
-#enumValueHandler = basic.enumConstInts
+# enumValueHandler = basic.enumConstInts
 
 
 # When the compiler needs to make up a variable name (for example, to
@@ -167,7 +167,7 @@ astTransforms = [
 
 # minimum parameter count to trigger indentation of parameter names
 # in method declarations.  set to 0 to disable.
-#minIndentParams = 5
+# minIndentParams = 5
 
 
 # Values below are used by the handlers.  They're here for
@@ -176,16 +176,17 @@ astTransforms = [
 
 # module output subs.
 moduleOutputSubs = [
-    #(r'System\.out\.println\((.*)\)', r'print \1'),
-    #(r'System\.out\.print_\((.*?)\)', r'print \1,'),
-    # Below modifications made by VSK on Apr 14, 2020 to ignore all Java print statement hereafter
+    # (r'System\.out\.println\((.*)\)', r'print \1'),
+    # (r'System\.out\.print_\((.*?)\)', r'print \1,'),
+    # Below modifications made by VSK on Apr 14, 2020 to ignore all Java print
+    # statement hereafter
     (r'System\.out\.println\((.*)\)', r''),
     (r'System\.out\.print_\((.*?)\)', r''),
     (r'System\.out\.printf\((.*?)\)', r''),
     (r'(.*?)\.equals\((.*?)\)', r'\1 == \2'),
     (r'(.*?)\.equalsIgnoreCase\((.*?)\)', r'\1.lower() == \2.lower()'),
     (r'([\w.]+)\.size\(\)', r'len(\1)'),
-    #(r'(\w+)\.get\((.*?)\)', r'\1[\2]'),
+    # (r'(\w+)\.get\((.*?)\)', r'\1[\2]'),
     (r'(\s)(\S*?)(\.toString\(\))', r'\1\2.__str__()'),
     (r'(\s)def toString', r'\1def __str__'),
     (r'(\s)(\S*?)(\.toLowerCase\(\))', r'\1\2.lower()'),
@@ -195,19 +196,19 @@ moduleOutputSubs = [
     (r'\.getClass\(\)', '.__class__'),
     (r'\.getName\(\)', '.__name__'),
     (r'\.getInterfaces\(\)', '.__bases__'),
-    #(r'String\.valueOf\((.*?)\)', r'str(\1)'),
-    #(r'(\s)(\S*?)(\.toString\(\))', r'\1str(\2)'),
+    # (r'String\.valueOf\((.*?)\)', r'str(\1)'),
+    # (r'(\s)(\S*?)(\.toString\(\))', r'\1str(\2)'),
 ]
 
 
 typeSubs = {
-    'Boolean' : 'bool',
-    'boolean' : 'bool',
-    'IndexOutOfBoundsException' : 'IndexError',
-    'Integer' : 'int',
-    'Object' : 'object',
-    'String' : 'str',
-    'char' : 'str',
-    'double' : 'float',
-    'java.lang.String' : 'str',
+    'Boolean': 'bool',
+    'boolean': 'bool',
+    'IndexOutOfBoundsException': 'IndexError',
+    'Integer': 'int',
+    'Object': 'object',
+    'String': 'str',
+    'char': 'str',
+    'double': 'float',
+    'java.lang.String': 'str',
 }

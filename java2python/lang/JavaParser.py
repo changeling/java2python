@@ -6,193 +6,191 @@ from antlr3.compat import set, frozenset
 
 from antlr3.tree import *
 
-
-
 # for convenience in actions
 HIDDEN = BaseRecognizer.HIDDEN
 
 # token types
-PACKAGE=84
-EXPONENT=173
-STAR=49
-WHILE=103
-MOD=32
-MOD_ASSIGN=33
-CASE=58
-CHAR=60
-NEW=82
-DO=64
-GENERIC_TYPE_PARAM_LIST=138
-CLASS_INSTANCE_INITIALIZER=121
-ARRAY_ELEMENT_ACCESS=115
-FOR_CONDITION=129
-NOT=34
-VAR_DECLARATION=160
-ANNOTATION_METHOD_DECL=109
-EOF=-1
-DIV_ASSIGN=14
-LOGICAL_AND=26
-BREAK=56
-UNARY_PLUS=159
-BIT_SHIFT_RIGHT_ASSIGN=9
-TYPE=157
-RPAREN=43
-INC=21
-FINAL=70
-IMPORT=78
-STRING_LITERAL=170
-FOR_UPDATE=132
-FLOATING_POINT_LITERAL=168
-CAST_EXPR=118
-NOT_EQUAL=35
-VOID_METHOD_DECL=163
-THIS=95
-RETURN=88
-DOUBLE=65
-ENUM_TOP_LEVEL_SCOPE=125
-VOID=101
-SUPER=92
-COMMENT=181
-ANNOTATION_INIT_KEY_LIST=107
-JAVA_ID_START=178
-FLOAT_TYPE_SUFFIX=174
-PRE_DEC=149
-RBRACK=41
-IMPLEMENTS_CLAUSE=140
-SWITCH_BLOCK_LABEL_LIST=154
-LINE_COMMENT=182
-PRIVATE=85
-STATIC=90
-BLOCK_SCOPE=117
-ANNOTATION_INIT_DEFAULT_KEY=106
-SWITCH=93
-NULL=83
-VAR_DECLARATOR=161
-MINUS_ASSIGN=31
-ELSE=66
-STRICTFP=91
-CHARACTER_LITERAL=169
-PRE_INC=150
-ANNOTATION_LIST=108
-ELLIPSIS=17
-NATIVE=81
-OCTAL_ESCAPE=177
-UNARY_MINUS=158
-THROWS=97
-LCURLY=23
-INT=79
-FORMAL_PARAM_VARARG_DECL=135
-METHOD_CALL=144
-ASSERT=54
-TRY=100
-INTERFACE_TOP_LEVEL_SCOPE=139
-SHIFT_LEFT=45
-WS=180
-SHIFT_RIGHT=47
-FORMAL_PARAM_STD_DECL=134
-LOCAL_MODIFIER_LIST=142
-OR=36
-LESS_THAN=25
-SHIFT_RIGHT_ASSIGN=48
-EXTENDS_BOUND_LIST=127
-JAVA_SOURCE=143
-CATCH=59
-FALSE=69
-INTEGER_TYPE_SUFFIX=172
-DECIMAL_LITERAL=167
-THROW=96
-FOR_INIT=131
-DEC=12
-PROTECTED=86
-CLASS=61
-LBRACK=22
-BIT_SHIFT_RIGHT=8
-THROWS_CLAUSE=156
-GREATER_OR_EQUAL=19
-FOR=73
-THIS_CONSTRUCTOR_CALL=155
-LOGICAL_NOT=27
-JAVADOC_COMMENT=183
-FLOAT=72
-ABSTRACT=53
-AND=4
-POST_DEC=147
-AND_ASSIGN=5
-STATIC_ARRAY_CREATOR=152
-MODIFIER_LIST=145
-ANNOTATION_SCOPE=110
-LPAREN=29
-IF=74
-AT=7
-ESCAPE_SEQUENCE=175
-CONSTRUCTOR_DECL=124
-LABELED_STATEMENT=141
-UNICODE_ESCAPE=176
-EXPR=126
-SYNCHRONIZED=94
-BOOLEAN=55
-CLASS_TOP_LEVEL_SCOPE=123
-IMPLEMENTS=75
-CONTINUE=62
-COMMA=11
-TRANSIENT=98
-EQUAL=18
-XOR_ASSIGN=52
-LOGICAL_OR=28
-IDENT=164
-QUALIFIED_TYPE_IDENT=151
-ARGUMENT_LIST=112
-PLUS=38
-HEX_LITERAL=165
-ANNOTATION_INIT_BLOCK=105
-DOT=15
-SHIFT_LEFT_ASSIGN=46
-FORMAL_PARAM_LIST=133
-GENERIC_TYPE_ARG_LIST=137
-ANNOTATION_TOP_LEVEL_SCOPE=111
-DOTSTAR=16
-BYTE=57
-XOR=51
-JAVA_ID_PART=179
-GREATER_THAN=20
-VOLATILE=102
-PARENTESIZED_EXPR=146
-CLASS_STATIC_INITIALIZER=122
-ARRAY_DECLARATOR_LIST=114
-LESS_OR_EQUAL=24
-DEFAULT=63
-OCTAL_LITERAL=166
-HEX_DIGIT=171
-SHORT=89
-INSTANCEOF=76
-MINUS=30
-EXTENDS_CLAUSE=128
-TRUE=99
-SEMI=44
-STAR_ASSIGN=50
-VAR_DECLARATOR_LIST=162
-ARRAY_DECLARATOR=113
-COLON=10
-OR_ASSIGN=37
-ENUM=67
-QUESTION=40
-FINALLY=71
-RCURLY=42
-PLUS_ASSIGN=39
-ASSIGN=6
-ANNOTATION_INIT_ARRAY_ELEMENT=104
-FUNCTION_METHOD_DECL=136
-INTERFACE=77
-POST_INC=148
-DIV=13
-CLASS_CONSTRUCTOR_CALL=120
-LONG=80
-FOR_EACH=130
-EXTENDS=68
-PUBLIC=87
-ARRAY_INITIALIZER=116
-CATCH_CLAUSE_LIST=119
-SUPER_CONSTRUCTOR_CALL=153
+PACKAGE = 84
+EXPONENT = 173
+STAR = 49
+WHILE = 103
+MOD = 32
+MOD_ASSIGN = 33
+CASE = 58
+CHAR = 60
+NEW = 82
+DO = 64
+GENERIC_TYPE_PARAM_LIST = 138
+CLASS_INSTANCE_INITIALIZER = 121
+ARRAY_ELEMENT_ACCESS = 115
+FOR_CONDITION = 129
+NOT = 34
+VAR_DECLARATION = 160
+ANNOTATION_METHOD_DECL = 109
+EOF = -1
+DIV_ASSIGN = 14
+LOGICAL_AND = 26
+BREAK = 56
+UNARY_PLUS = 159
+BIT_SHIFT_RIGHT_ASSIGN = 9
+TYPE = 157
+RPAREN = 43
+INC = 21
+FINAL = 70
+IMPORT = 78
+STRING_LITERAL = 170
+FOR_UPDATE = 132
+FLOATING_POINT_LITERAL = 168
+CAST_EXPR = 118
+NOT_EQUAL = 35
+VOID_METHOD_DECL = 163
+THIS = 95
+RETURN = 88
+DOUBLE = 65
+ENUM_TOP_LEVEL_SCOPE = 125
+VOID = 101
+SUPER = 92
+COMMENT = 181
+ANNOTATION_INIT_KEY_LIST = 107
+JAVA_ID_START = 178
+FLOAT_TYPE_SUFFIX = 174
+PRE_DEC = 149
+RBRACK = 41
+IMPLEMENTS_CLAUSE = 140
+SWITCH_BLOCK_LABEL_LIST = 154
+LINE_COMMENT = 182
+PRIVATE = 85
+STATIC = 90
+BLOCK_SCOPE = 117
+ANNOTATION_INIT_DEFAULT_KEY = 106
+SWITCH = 93
+NULL = 83
+VAR_DECLARATOR = 161
+MINUS_ASSIGN = 31
+ELSE = 66
+STRICTFP = 91
+CHARACTER_LITERAL = 169
+PRE_INC = 150
+ANNOTATION_LIST = 108
+ELLIPSIS = 17
+NATIVE = 81
+OCTAL_ESCAPE = 177
+UNARY_MINUS = 158
+THROWS = 97
+LCURLY = 23
+INT = 79
+FORMAL_PARAM_VARARG_DECL = 135
+METHOD_CALL = 144
+ASSERT = 54
+TRY = 100
+INTERFACE_TOP_LEVEL_SCOPE = 139
+SHIFT_LEFT = 45
+WS = 180
+SHIFT_RIGHT = 47
+FORMAL_PARAM_STD_DECL = 134
+LOCAL_MODIFIER_LIST = 142
+OR = 36
+LESS_THAN = 25
+SHIFT_RIGHT_ASSIGN = 48
+EXTENDS_BOUND_LIST = 127
+JAVA_SOURCE = 143
+CATCH = 59
+FALSE = 69
+INTEGER_TYPE_SUFFIX = 172
+DECIMAL_LITERAL = 167
+THROW = 96
+FOR_INIT = 131
+DEC = 12
+PROTECTED = 86
+CLASS = 61
+LBRACK = 22
+BIT_SHIFT_RIGHT = 8
+THROWS_CLAUSE = 156
+GREATER_OR_EQUAL = 19
+FOR = 73
+THIS_CONSTRUCTOR_CALL = 155
+LOGICAL_NOT = 27
+JAVADOC_COMMENT = 183
+FLOAT = 72
+ABSTRACT = 53
+AND = 4
+POST_DEC = 147
+AND_ASSIGN = 5
+STATIC_ARRAY_CREATOR = 152
+MODIFIER_LIST = 145
+ANNOTATION_SCOPE = 110
+LPAREN = 29
+IF = 74
+AT = 7
+ESCAPE_SEQUENCE = 175
+CONSTRUCTOR_DECL = 124
+LABELED_STATEMENT = 141
+UNICODE_ESCAPE = 176
+EXPR = 126
+SYNCHRONIZED = 94
+BOOLEAN = 55
+CLASS_TOP_LEVEL_SCOPE = 123
+IMPLEMENTS = 75
+CONTINUE = 62
+COMMA = 11
+TRANSIENT = 98
+EQUAL = 18
+XOR_ASSIGN = 52
+LOGICAL_OR = 28
+IDENT = 164
+QUALIFIED_TYPE_IDENT = 151
+ARGUMENT_LIST = 112
+PLUS = 38
+HEX_LITERAL = 165
+ANNOTATION_INIT_BLOCK = 105
+DOT = 15
+SHIFT_LEFT_ASSIGN = 46
+FORMAL_PARAM_LIST = 133
+GENERIC_TYPE_ARG_LIST = 137
+ANNOTATION_TOP_LEVEL_SCOPE = 111
+DOTSTAR = 16
+BYTE = 57
+XOR = 51
+JAVA_ID_PART = 179
+GREATER_THAN = 20
+VOLATILE = 102
+PARENTESIZED_EXPR = 146
+CLASS_STATIC_INITIALIZER = 122
+ARRAY_DECLARATOR_LIST = 114
+LESS_OR_EQUAL = 24
+DEFAULT = 63
+OCTAL_LITERAL = 166
+HEX_DIGIT = 171
+SHORT = 89
+INSTANCEOF = 76
+MINUS = 30
+EXTENDS_CLAUSE = 128
+TRUE = 99
+SEMI = 44
+STAR_ASSIGN = 50
+VAR_DECLARATOR_LIST = 162
+ARRAY_DECLARATOR = 113
+COLON = 10
+OR_ASSIGN = 37
+ENUM = 67
+QUESTION = 40
+FINALLY = 71
+RCURLY = 42
+PLUS_ASSIGN = 39
+ASSIGN = 6
+ANNOTATION_INIT_ARRAY_ELEMENT = 104
+FUNCTION_METHOD_DECL = 136
+INTERFACE = 77
+POST_INC = 148
+DIV = 13
+CLASS_CONSTRUCTOR_CALL = 120
+LONG = 80
+FOR_EACH = 130
+EXTENDS = 68
+PUBLIC = 87
+ARRAY_INITIALIZER = 116
+CATCH_CLAUSE_LIST = 119
+SUPER_CONSTRUCTOR_CALL = 153
 
 # token names
 tokenNames = [
@@ -235,8 +233,6 @@ tokenNames = [
 ]
 
 
-
-
 class JavaParser(Parser):
     grammarFileName = "Java.g"
     antlr_version = version_str_to_tuple("3.1.3 Mar 18, 2009 10:09:25")
@@ -252,136 +248,128 @@ class JavaParser(Parser):
         self._state.ruleMemo = {}
         self.dfa36 = self.DFA36(
             self, 36,
-            eot = self.DFA36_eot,
-            eof = self.DFA36_eof,
-            min = self.DFA36_min,
-            max = self.DFA36_max,
-            accept = self.DFA36_accept,
-            special = self.DFA36_special,
-            transition = self.DFA36_transition
+            eot=self.DFA36_eot,
+            eof=self.DFA36_eof,
+            min=self.DFA36_min,
+            max=self.DFA36_max,
+            accept=self.DFA36_accept,
+            special=self.DFA36_special,
+            transition=self.DFA36_transition
             )
 
         self.dfa43 = self.DFA43(
             self, 43,
-            eot = self.DFA43_eot,
-            eof = self.DFA43_eof,
-            min = self.DFA43_min,
-            max = self.DFA43_max,
-            accept = self.DFA43_accept,
-            special = self.DFA43_special,
-            transition = self.DFA43_transition
+            eot=self.DFA43_eot,
+            eof=self.DFA43_eof,
+            min=self.DFA43_min,
+            max=self.DFA43_max,
+            accept=self.DFA43_accept,
+            special=self.DFA43_special,
+            transition=self.DFA43_transition
             )
 
         self.dfa86 = self.DFA86(
             self, 86,
-            eot = self.DFA86_eot,
-            eof = self.DFA86_eof,
-            min = self.DFA86_min,
-            max = self.DFA86_max,
-            accept = self.DFA86_accept,
-            special = self.DFA86_special,
-            transition = self.DFA86_transition
+            eot=self.DFA86_eot,
+            eof=self.DFA86_eof,
+            min=self.DFA86_min,
+            max=self.DFA86_max,
+            accept=self.DFA86_accept,
+            special=self.DFA86_special,
+            transition=self.DFA86_transition
             )
 
         self.dfa88 = self.DFA88(
             self, 88,
-            eot = self.DFA88_eot,
-            eof = self.DFA88_eof,
-            min = self.DFA88_min,
-            max = self.DFA88_max,
-            accept = self.DFA88_accept,
-            special = self.DFA88_special,
-            transition = self.DFA88_transition
+            eot=self.DFA88_eot,
+            eof=self.DFA88_eof,
+            min=self.DFA88_min,
+            max=self.DFA88_max,
+            accept=self.DFA88_accept,
+            special=self.DFA88_special,
+            transition=self.DFA88_transition
             )
 
         self.dfa98 = self.DFA98(
             self, 98,
-            eot = self.DFA98_eot,
-            eof = self.DFA98_eof,
-            min = self.DFA98_min,
-            max = self.DFA98_max,
-            accept = self.DFA98_accept,
-            special = self.DFA98_special,
-            transition = self.DFA98_transition
+            eot=self.DFA98_eot,
+            eof=self.DFA98_eof,
+            min=self.DFA98_min,
+            max=self.DFA98_max,
+            accept=self.DFA98_accept,
+            special=self.DFA98_special,
+            transition=self.DFA98_transition
             )
 
         self.dfa91 = self.DFA91(
             self, 91,
-            eot = self.DFA91_eot,
-            eof = self.DFA91_eof,
-            min = self.DFA91_min,
-            max = self.DFA91_max,
-            accept = self.DFA91_accept,
-            special = self.DFA91_special,
-            transition = self.DFA91_transition
+            eot=self.DFA91_eot,
+            eof=self.DFA91_eof,
+            min=self.DFA91_min,
+            max=self.DFA91_max,
+            accept=self.DFA91_accept,
+            special=self.DFA91_special,
+            transition=self.DFA91_transition
             )
 
         self.dfa106 = self.DFA106(
             self, 106,
-            eot = self.DFA106_eot,
-            eof = self.DFA106_eof,
-            min = self.DFA106_min,
-            max = self.DFA106_max,
-            accept = self.DFA106_accept,
-            special = self.DFA106_special,
-            transition = self.DFA106_transition
+            eot=self.DFA106_eot,
+            eof=self.DFA106_eof,
+            min=self.DFA106_min,
+            max=self.DFA106_max,
+            accept=self.DFA106_accept,
+            special=self.DFA106_special,
+            transition=self.DFA106_transition
             )
 
         self.dfa130 = self.DFA130(
             self, 130,
-            eot = self.DFA130_eot,
-            eof = self.DFA130_eof,
-            min = self.DFA130_min,
-            max = self.DFA130_max,
-            accept = self.DFA130_accept,
-            special = self.DFA130_special,
-            transition = self.DFA130_transition
+            eot=self.DFA130_eot,
+            eof=self.DFA130_eof,
+            min=self.DFA130_min,
+            max=self.DFA130_max,
+            accept=self.DFA130_accept,
+            special=self.DFA130_special,
+            transition=self.DFA130_transition
             )
 
         self.dfa142 = self.DFA142(
             self, 142,
-            eot = self.DFA142_eot,
-            eof = self.DFA142_eof,
-            min = self.DFA142_min,
-            max = self.DFA142_max,
-            accept = self.DFA142_accept,
-            special = self.DFA142_special,
-            transition = self.DFA142_transition
+            eot=self.DFA142_eot,
+            eof=self.DFA142_eof,
+            min=self.DFA142_min,
+            max=self.DFA142_max,
+            accept=self.DFA142_accept,
+            special=self.DFA142_special,
+            transition=self.DFA142_transition
             )
 
         self.dfa146 = self.DFA146(
             self, 146,
-            eot = self.DFA146_eot,
-            eof = self.DFA146_eof,
-            min = self.DFA146_min,
-            max = self.DFA146_max,
-            accept = self.DFA146_accept,
-            special = self.DFA146_special,
-            transition = self.DFA146_transition
+            eot=self.DFA146_eot,
+            eof=self.DFA146_eof,
+            min=self.DFA146_min,
+            max=self.DFA146_max,
+            accept=self.DFA146_accept,
+            special=self.DFA146_special,
+            transition=self.DFA146_transition
             )
 
         self.dfa153 = self.DFA153(
             self, 153,
-            eot = self.DFA153_eot,
-            eof = self.DFA153_eof,
-            min = self.DFA153_min,
-            max = self.DFA153_max,
-            accept = self.DFA153_accept,
-            special = self.DFA153_special,
-            transition = self.DFA153_transition
+            eot=self.DFA153_eot,
+            eof=self.DFA153_eof,
+            min=self.DFA153_min,
+            max=self.DFA153_max,
+            accept=self.DFA153_accept,
+            special=self.DFA153_special,
+            transition=self.DFA153_transition
             )
-
-
-
-
-
 
         self._adaptor = None
         self.adaptor = CommonTreeAdaptor()
-                
 
-
-        
     def getTreeAdaptor(self):
         return self._adaptor
 
@@ -390,14 +378,11 @@ class JavaParser(Parser):
 
     adaptor = property(getTreeAdaptor, setTreeAdaptor)
 
-
     class javaSource_return(ParserRuleReturnScope):
         def __init__(self):
             super(JavaParser.javaSource_return, self).__init__()
 
             self.tree = None
-
-
 
 
     # $ANTLR start "javaSource"
@@ -423,7 +408,7 @@ class JavaParser(Parser):
 
                 # Java.g:223:5: ( compilationUnit -> ^( JAVA_SOURCE compilationUnit ) )
                 # Java.g:223:9: compilationUnit
-                pass 
+                pass
                 self._state.following.append(self.FOLLOW_compilationUnit_in_javaSource4461)
                 compilationUnit1 = self.compilationUnit()
 
@@ -459,9 +444,7 @@ class JavaParser(Parser):
                     self._adaptor.addChild(root_0, root_1)
 
 
-
                     retval.tree = root_0
-
 
 
                 retval.stop = self.input.LT(-1)
@@ -493,8 +476,6 @@ class JavaParser(Parser):
             self.tree = None
 
 
-
-
     # $ANTLR start "compilationUnit"
     # Java.g:227:1: compilationUnit : annotationList ( packageDeclaration )? ( importDeclaration )* ( typeDecls )* ;
     def compilationUnit(self, ):
@@ -513,7 +494,6 @@ class JavaParser(Parser):
         typeDecls5 = None
 
 
-
         success = False
         try:
             try:
@@ -524,7 +504,7 @@ class JavaParser(Parser):
 
                 # Java.g:228:5: ( annotationList ( packageDeclaration )? ( importDeclaration )* ( typeDecls )* )
                 # Java.g:228:9: annotationList ( packageDeclaration )? ( importDeclaration )* ( typeDecls )*
-                pass 
+                pass
                 root_0 = self._adaptor.nil()
 
                 self._state.following.append(self.FOLLOW_annotationList_in_compilationUnit4497)
@@ -537,11 +517,11 @@ class JavaParser(Parser):
                 alt1 = 2
                 LA1_0 = self.input.LA(1)
 
-                if (LA1_0 == PACKAGE) :
+                if (LA1_0 == PACKAGE):
                     alt1 = 1
                 if alt1 == 1:
                     # Java.g:0:0: packageDeclaration
-                    pass 
+                    pass
                     self._state.following.append(self.FOLLOW_packageDeclaration_in_compilationUnit4507)
                     packageDeclaration3 = self.packageDeclaration()
 
@@ -550,19 +530,18 @@ class JavaParser(Parser):
                         self._adaptor.addChild(root_0, packageDeclaration3.tree)
 
 
-
                 # Java.g:230:9: ( importDeclaration )*
-                while True: #loop2
+                while True:  #loop2
                     alt2 = 2
                     LA2_0 = self.input.LA(1)
 
-                    if (LA2_0 == IMPORT) :
+                    if (LA2_0 == IMPORT):
                         alt2 = 1
 
 
                     if alt2 == 1:
                         # Java.g:0:0: importDeclaration
-                        pass 
+                        pass
                         self._state.following.append(self.FOLLOW_importDeclaration_in_compilationUnit4518)
                         importDeclaration4 = self.importDeclaration()
 
@@ -572,19 +551,19 @@ class JavaParser(Parser):
 
 
                     else:
-                        break #loop2
+                        break  #loop2
                 # Java.g:231:9: ( typeDecls )*
-                while True: #loop3
+                while True:  #loop3
                     alt3 = 2
                     LA3_0 = self.input.LA(1)
 
-                    if (LA3_0 == AT or LA3_0 == LESS_THAN or LA3_0 == SEMI or LA3_0 == ABSTRACT or LA3_0 == BOOLEAN or LA3_0 == BYTE or (CHAR <= LA3_0 <= CLASS) or LA3_0 == DOUBLE or LA3_0 == ENUM or LA3_0 == FINAL or LA3_0 == FLOAT or LA3_0 == INTERFACE or (INT <= LA3_0 <= NATIVE) or (PRIVATE <= LA3_0 <= PUBLIC) or (SHORT <= LA3_0 <= STRICTFP) or LA3_0 == SYNCHRONIZED or LA3_0 == TRANSIENT or (VOID <= LA3_0 <= VOLATILE) or LA3_0 == IDENT) :
+                    if (LA3_0 == AT or LA3_0 == LESS_THAN or LA3_0 == SEMI or LA3_0 == ABSTRACT or LA3_0 == BOOLEAN or LA3_0 == BYTE or (CHAR <= LA3_0 <= CLASS) or LA3_0 == DOUBLE or LA3_0 == ENUM or LA3_0 == FINAL or LA3_0 == FLOAT or LA3_0 == INTERFACE or (INT <= LA3_0 <= NATIVE) or (PRIVATE <= LA3_0 <= PUBLIC) or (SHORT <= LA3_0 <= STRICTFP) or LA3_0 == SYNCHRONIZED or LA3_0 == TRANSIENT or (VOID <= LA3_0 <= VOLATILE) or LA3_0 == IDENT):
                         alt3 = 1
 
 
                     if alt3 == 1:
                         # Java.g:0:0: typeDecls
-                        pass 
+                        pass
                         self._state.following.append(self.FOLLOW_typeDecls_in_compilationUnit4529)
                         typeDecls5 = self.typeDecls()
 
@@ -594,8 +573,7 @@ class JavaParser(Parser):
 
 
                     else:
-                        break #loop3
-
+                        break  #loop3
 
 
                 retval.stop = self.input.LT(-1)
@@ -627,8 +605,6 @@ class JavaParser(Parser):
             self.tree = None
 
 
-
-
     # $ANTLR start "typeDecls"
     # Java.g:234:1: typeDecls : ( typeDeclaration | SEMI );
     def typeDecls(self, ):
@@ -656,9 +632,9 @@ class JavaParser(Parser):
                 alt4 = 2
                 LA4_0 = self.input.LA(1)
 
-                if (LA4_0 == AT or LA4_0 == LESS_THAN or LA4_0 == ABSTRACT or LA4_0 == BOOLEAN or LA4_0 == BYTE or (CHAR <= LA4_0 <= CLASS) or LA4_0 == DOUBLE or LA4_0 == ENUM or LA4_0 == FINAL or LA4_0 == FLOAT or LA4_0 == INTERFACE or (INT <= LA4_0 <= NATIVE) or (PRIVATE <= LA4_0 <= PUBLIC) or (SHORT <= LA4_0 <= STRICTFP) or LA4_0 == SYNCHRONIZED or LA4_0 == TRANSIENT or (VOID <= LA4_0 <= VOLATILE) or LA4_0 == IDENT) :
+                if (LA4_0 == AT or LA4_0 == LESS_THAN or LA4_0 == ABSTRACT or LA4_0 == BOOLEAN or LA4_0 == BYTE or (CHAR <= LA4_0 <= CLASS) or LA4_0 == DOUBLE or LA4_0 == ENUM or LA4_0 == FINAL or LA4_0 == FLOAT or LA4_0 == INTERFACE or (INT <= LA4_0 <= NATIVE) or (PRIVATE <= LA4_0 <= PUBLIC) or (SHORT <= LA4_0 <= STRICTFP) or LA4_0 == SYNCHRONIZED or LA4_0 == TRANSIENT or (VOID <= LA4_0 <= VOLATILE) or LA4_0 == IDENT):
                     alt4 = 1
-                elif (LA4_0 == SEMI) :
+                elif (LA4_0 == SEMI):
                     alt4 = 2
                 else:
                     if self._state.backtracking > 0:
@@ -670,7 +646,7 @@ class JavaParser(Parser):
 
                 if alt4 == 1:
                     # Java.g:235:9: typeDeclaration
-                    pass 
+                    pass
                     root_0 = self._adaptor.nil()
 
                     self._state.following.append(self.FOLLOW_typeDeclaration_in_typeDecls4549)
@@ -683,10 +659,10 @@ class JavaParser(Parser):
 
                 elif alt4 == 2:
                     # Java.g:236:9: SEMI
-                    pass 
+                    pass
                     root_0 = self._adaptor.nil()
 
-                    SEMI7=self.match(self.input, SEMI, self.FOLLOW_SEMI_in_typeDecls4559)
+                    SEMI7 = self.match(self.input, SEMI, self.FOLLOW_SEMI_in_typeDecls4559)
 
 
                 retval.stop = self.input.LT(-1)
@@ -718,8 +694,6 @@ class JavaParser(Parser):
             self.tree = None
 
 
-
-
     # $ANTLR start "packageDeclaration"
     # Java.g:239:1: packageDeclaration : PACKAGE qualifiedIdentifier SEMI ;
     def packageDeclaration(self, ):
@@ -747,10 +721,10 @@ class JavaParser(Parser):
 
                 # Java.g:240:5: ( PACKAGE qualifiedIdentifier SEMI )
                 # Java.g:240:9: PACKAGE qualifiedIdentifier SEMI
-                pass 
+                pass
                 root_0 = self._adaptor.nil()
 
-                PACKAGE8=self.match(self.input, PACKAGE, self.FOLLOW_PACKAGE_in_packageDeclaration4579)
+                PACKAGE8 = self.match(self.input, PACKAGE, self.FOLLOW_PACKAGE_in_packageDeclaration4579)
                 if self._state.backtracking == 0:
 
                     PACKAGE8_tree = self._adaptor.createWithPayload(PACKAGE8)
@@ -762,8 +736,7 @@ class JavaParser(Parser):
                 self._state.following.pop()
                 if self._state.backtracking == 0:
                     self._adaptor.addChild(root_0, qualifiedIdentifier9.tree)
-                SEMI10=self.match(self.input, SEMI, self.FOLLOW_SEMI_in_packageDeclaration4584)
-
+                SEMI10 = self.match(self.input, SEMI, self.FOLLOW_SEMI_in_packageDeclaration4584)
 
 
                 retval.stop = self.input.LT(-1)
@@ -793,9 +766,6 @@ class JavaParser(Parser):
             super(JavaParser.importDeclaration_return, self).__init__()
 
             self.tree = None
-
-
-
 
     # $ANTLR start "importDeclaration"
     # Java.g:243:1: importDeclaration : IMPORT ( STATIC )? qualifiedIdentifier ( DOTSTAR )? SEMI ;
@@ -828,10 +798,10 @@ class JavaParser(Parser):
 
                 # Java.g:244:5: ( IMPORT ( STATIC )? qualifiedIdentifier ( DOTSTAR )? SEMI )
                 # Java.g:244:9: IMPORT ( STATIC )? qualifiedIdentifier ( DOTSTAR )? SEMI
-                pass 
+                pass
                 root_0 = self._adaptor.nil()
 
-                IMPORT11=self.match(self.input, IMPORT, self.FOLLOW_IMPORT_in_importDeclaration4604)
+                IMPORT11 = self.match(self.input, IMPORT, self.FOLLOW_IMPORT_in_importDeclaration4604)
                 if self._state.backtracking == 0:
 
                     IMPORT11_tree = self._adaptor.createWithPayload(IMPORT11)
@@ -841,18 +811,16 @@ class JavaParser(Parser):
                 alt5 = 2
                 LA5_0 = self.input.LA(1)
 
-                if (LA5_0 == STATIC) :
+                if (LA5_0 == STATIC):
                     alt5 = 1
                 if alt5 == 1:
                     # Java.g:0:0: STATIC
-                    pass 
-                    STATIC12=self.match(self.input, STATIC, self.FOLLOW_STATIC_in_importDeclaration4607)
+                    pass
+                    STATIC12 = self.match(self.input, STATIC, self.FOLLOW_STATIC_in_importDeclaration4607)
                     if self._state.backtracking == 0:
 
                         STATIC12_tree = self._adaptor.createWithPayload(STATIC12)
                         self._adaptor.addChild(root_0, STATIC12_tree)
-
-
 
 
                 self._state.following.append(self.FOLLOW_qualifiedIdentifier_in_importDeclaration4610)
@@ -865,22 +833,19 @@ class JavaParser(Parser):
                 alt6 = 2
                 LA6_0 = self.input.LA(1)
 
-                if (LA6_0 == DOTSTAR) :
+                if (LA6_0 == DOTSTAR):
                     alt6 = 1
                 if alt6 == 1:
                     # Java.g:0:0: DOTSTAR
-                    pass 
-                    DOTSTAR14=self.match(self.input, DOTSTAR, self.FOLLOW_DOTSTAR_in_importDeclaration4612)
+                    pass
+                    DOTSTAR14 = self.match(self.input, DOTSTAR, self.FOLLOW_DOTSTAR_in_importDeclaration4612)
                     if self._state.backtracking == 0:
 
                         DOTSTAR14_tree = self._adaptor.createWithPayload(DOTSTAR14)
                         self._adaptor.addChild(root_0, DOTSTAR14_tree)
 
 
-
-
-                SEMI15=self.match(self.input, SEMI, self.FOLLOW_SEMI_in_importDeclaration4615)
-
+                SEMI15 = self.match(self.input, SEMI, self.FOLLOW_SEMI_in_importDeclaration4615)
 
 
                 retval.stop = self.input.LT(-1)
@@ -912,8 +877,6 @@ class JavaParser(Parser):
             self.tree = None
 
 
-
-
     # $ANTLR start "typeDeclaration"
     # Java.g:247:1: typeDeclaration : modifierList ( classTypeDeclaration[$modifierList.tree] | interfaceTypeDeclaration[$modifierList.tree] | enumTypeDeclaration[$modifierList.tree] | annotationTypeDeclaration[$modifierList.tree] ) ;
     def typeDeclaration(self, ):
@@ -934,7 +897,6 @@ class JavaParser(Parser):
         annotationTypeDeclaration20 = None
 
 
-
         success = False
         try:
             try:
@@ -945,7 +907,7 @@ class JavaParser(Parser):
 
                 # Java.g:248:5: ( modifierList ( classTypeDeclaration[$modifierList.tree] | interfaceTypeDeclaration[$modifierList.tree] | enumTypeDeclaration[$modifierList.tree] | annotationTypeDeclaration[$modifierList.tree] ) )
                 # Java.g:248:9: modifierList ( classTypeDeclaration[$modifierList.tree] | interfaceTypeDeclaration[$modifierList.tree] | enumTypeDeclaration[$modifierList.tree] | annotationTypeDeclaration[$modifierList.tree] )
-                pass 
+                pass
                 root_0 = self._adaptor.nil()
 
                 self._state.following.append(self.FOLLOW_modifierList_in_typeDeclaration4635)
@@ -973,7 +935,7 @@ class JavaParser(Parser):
 
                 if alt7 == 1:
                     # Java.g:249:13: classTypeDeclaration[$modifierList.tree]
-                    pass 
+                    pass
                     self._state.following.append(self.FOLLOW_classTypeDeclaration_in_typeDeclaration4650)
                     classTypeDeclaration17 = self.classTypeDeclaration(modifierList16.tree)
 
@@ -984,7 +946,7 @@ class JavaParser(Parser):
 
                 elif alt7 == 2:
                     # Java.g:250:13: interfaceTypeDeclaration[$modifierList.tree]
-                    pass 
+                    pass
                     self._state.following.append(self.FOLLOW_interfaceTypeDeclaration_in_typeDeclaration4665)
                     interfaceTypeDeclaration18 = self.interfaceTypeDeclaration(modifierList16.tree)
 
@@ -995,7 +957,7 @@ class JavaParser(Parser):
 
                 elif alt7 == 3:
                     # Java.g:251:13: enumTypeDeclaration[$modifierList.tree]
-                    pass 
+                    pass
                     self._state.following.append(self.FOLLOW_enumTypeDeclaration_in_typeDeclaration4680)
                     enumTypeDeclaration19 = self.enumTypeDeclaration(modifierList16.tree)
 
@@ -1006,7 +968,7 @@ class JavaParser(Parser):
 
                 elif alt7 == 4:
                     # Java.g:252:13: annotationTypeDeclaration[$modifierList.tree]
-                    pass 
+                    pass
                     self._state.following.append(self.FOLLOW_annotationTypeDeclaration_in_typeDeclaration4695)
                     annotationTypeDeclaration20 = self.annotationTypeDeclaration(modifierList16.tree)
 
@@ -1014,18 +976,12 @@ class JavaParser(Parser):
                     if self._state.backtracking == 0:
                         self._adaptor.addChild(root_0, annotationTypeDeclaration20.tree)
 
-
-
-
-
-
                 retval.stop = self.input.LT(-1)
 
                 if self._state.backtracking == 0:
 
                     retval.tree = self._adaptor.rulePostProcessing(root_0)
                     self._adaptor.setTokenBoundaries(retval.tree, retval.start, retval.stop)
-
 
                 success = True
             except RecognitionException as re:
@@ -1046,8 +1002,6 @@ class JavaParser(Parser):
             super(JavaParser.classTypeDeclaration_return, self).__init__()
 
             self.tree = None
-
-
 
 
     # $ANTLR start "classTypeDeclaration"
@@ -1088,22 +1042,22 @@ class JavaParser(Parser):
 
                 # Java.g:257:5: ( CLASS IDENT ( genericTypeParameterList )? ( classExtendsClause )? ( implementsClause )? classBody -> ^( CLASS IDENT ( genericTypeParameterList )? ( classExtendsClause )? ( implementsClause )? classBody ) )
                 # Java.g:257:9: CLASS IDENT ( genericTypeParameterList )? ( classExtendsClause )? ( implementsClause )? classBody
-                pass 
-                CLASS21=self.match(self.input, CLASS, self.FOLLOW_CLASS_in_classTypeDeclaration4726) 
+                pass
+                CLASS21 = self.match(self.input, CLASS, self.FOLLOW_CLASS_in_classTypeDeclaration4726) 
                 if self._state.backtracking == 0:
                     stream_CLASS.add(CLASS21)
-                IDENT22=self.match(self.input, IDENT, self.FOLLOW_IDENT_in_classTypeDeclaration4728) 
+                IDENT22 = self.match(self.input, IDENT, self.FOLLOW_IDENT_in_classTypeDeclaration4728) 
                 if self._state.backtracking == 0:
                     stream_IDENT.add(IDENT22)
                 # Java.g:257:21: ( genericTypeParameterList )?
                 alt8 = 2
                 LA8_0 = self.input.LA(1)
 
-                if (LA8_0 == LESS_THAN) :
+                if (LA8_0 == LESS_THAN):
                     alt8 = 1
                 if alt8 == 1:
                     # Java.g:0:0: genericTypeParameterList
-                    pass 
+                    pass
                     self._state.following.append(self.FOLLOW_genericTypeParameterList_in_classTypeDeclaration4730)
                     genericTypeParameterList23 = self.genericTypeParameterList()
 
@@ -1112,16 +1066,15 @@ class JavaParser(Parser):
                         stream_genericTypeParameterList.add(genericTypeParameterList23.tree)
 
 
-
                 # Java.g:257:47: ( classExtendsClause )?
                 alt9 = 2
                 LA9_0 = self.input.LA(1)
 
-                if (LA9_0 == EXTENDS) :
+                if (LA9_0 == EXTENDS):
                     alt9 = 1
                 if alt9 == 1:
                     # Java.g:0:0: classExtendsClause
-                    pass 
+                    pass
                     self._state.following.append(self.FOLLOW_classExtendsClause_in_classTypeDeclaration4733)
                     classExtendsClause24 = self.classExtendsClause()
 
@@ -1130,23 +1083,21 @@ class JavaParser(Parser):
                         stream_classExtendsClause.add(classExtendsClause24.tree)
 
 
-
                 # Java.g:257:67: ( implementsClause )?
                 alt10 = 2
                 LA10_0 = self.input.LA(1)
 
-                if (LA10_0 == IMPLEMENTS) :
+                if (LA10_0 == IMPLEMENTS):
                     alt10 = 1
                 if alt10 == 1:
                     # Java.g:0:0: implementsClause
-                    pass 
+                    pass
                     self._state.following.append(self.FOLLOW_implementsClause_in_classTypeDeclaration4736)
                     implementsClause25 = self.implementsClause()
 
                     self._state.following.pop()
                     if self._state.backtracking == 0:
                         stream_implementsClause.add(implementsClause25.tree)
-
 
 
                 self._state.following.append(self.FOLLOW_classBody_in_classTypeDeclaration4739)
@@ -1204,9 +1155,7 @@ class JavaParser(Parser):
                     self._adaptor.addChild(root_0, root_1)
 
 
-
                     retval.tree = root_0
-
 
 
                 retval.stop = self.input.LT(-1)
@@ -1238,8 +1187,6 @@ class JavaParser(Parser):
             self.tree = None
 
 
-
-
     # $ANTLR start "classExtendsClause"
     # Java.g:262:1: classExtendsClause : EXTENDS type -> ^( EXTENDS_CLAUSE[$EXTENDS, \"EXTENDS_CLAUSE\"] type ) ;
     def classExtendsClause(self, ):
@@ -1266,8 +1213,8 @@ class JavaParser(Parser):
 
                 # Java.g:263:5: ( EXTENDS type -> ^( EXTENDS_CLAUSE[$EXTENDS, \"EXTENDS_CLAUSE\"] type ) )
                 # Java.g:263:9: EXTENDS type
-                pass 
-                EXTENDS27=self.match(self.input, EXTENDS, self.FOLLOW_EXTENDS_in_classExtendsClause4802) 
+                pass
+                EXTENDS27 = self.match(self.input, EXTENDS, self.FOLLOW_EXTENDS_in_classExtendsClause4802) 
                 if self._state.backtracking == 0:
                     stream_EXTENDS.add(EXTENDS27)
                 self._state.following.append(self.FOLLOW_type_in_classExtendsClause4804)
@@ -1305,9 +1252,7 @@ class JavaParser(Parser):
                     self._adaptor.addChild(root_0, root_1)
 
 
-
                     retval.tree = root_0
-
 
 
                 retval.stop = self.input.LT(-1)
@@ -1339,8 +1284,6 @@ class JavaParser(Parser):
             self.tree = None
 
 
-
-
     # $ANTLR start "interfaceExtendsClause"
     # Java.g:267:1: interfaceExtendsClause : EXTENDS typeList -> ^( EXTENDS_CLAUSE[$EXTENDS, \"EXTENDS_CLAUSE\"] typeList ) ;
     def interfaceExtendsClause(self, ):
@@ -1367,8 +1310,8 @@ class JavaParser(Parser):
 
                 # Java.g:268:5: ( EXTENDS typeList -> ^( EXTENDS_CLAUSE[$EXTENDS, \"EXTENDS_CLAUSE\"] typeList ) )
                 # Java.g:268:9: EXTENDS typeList
-                pass 
-                EXTENDS29=self.match(self.input, EXTENDS, self.FOLLOW_EXTENDS_in_interfaceExtendsClause4841) 
+                pass
+                EXTENDS29 = self.match(self.input, EXTENDS, self.FOLLOW_EXTENDS_in_interfaceExtendsClause4841) 
                 if self._state.backtracking == 0:
                     stream_EXTENDS.add(EXTENDS29)
                 self._state.following.append(self.FOLLOW_typeList_in_interfaceExtendsClause4843)
@@ -1406,9 +1349,7 @@ class JavaParser(Parser):
                     self._adaptor.addChild(root_0, root_1)
 
 
-
                     retval.tree = root_0
-
 
 
                 retval.stop = self.input.LT(-1)
@@ -1440,8 +1381,6 @@ class JavaParser(Parser):
             self.tree = None
 
 
-
-
     # $ANTLR start "implementsClause"
     # Java.g:272:1: implementsClause : IMPLEMENTS typeList -> ^( IMPLEMENTS_CLAUSE[$IMPLEMENTS, \"IMPLEMENTS_CLAUSE\"] typeList ) ;
     def implementsClause(self, ):
@@ -1468,8 +1407,8 @@ class JavaParser(Parser):
 
                 # Java.g:273:5: ( IMPLEMENTS typeList -> ^( IMPLEMENTS_CLAUSE[$IMPLEMENTS, \"IMPLEMENTS_CLAUSE\"] typeList ) )
                 # Java.g:273:9: IMPLEMENTS typeList
-                pass 
-                IMPLEMENTS31=self.match(self.input, IMPLEMENTS, self.FOLLOW_IMPLEMENTS_in_implementsClause4880) 
+                pass
+                IMPLEMENTS31 = self.match(self.input, IMPLEMENTS, self.FOLLOW_IMPLEMENTS_in_implementsClause4880) 
                 if self._state.backtracking == 0:
                     stream_IMPLEMENTS.add(IMPLEMENTS31)
                 self._state.following.append(self.FOLLOW_typeList_in_implementsClause4882)
@@ -1507,9 +1446,7 @@ class JavaParser(Parser):
                     self._adaptor.addChild(root_0, root_1)
 
 
-
                     retval.tree = root_0
-
 
 
                 retval.stop = self.input.LT(-1)
@@ -1539,8 +1476,6 @@ class JavaParser(Parser):
             super(JavaParser.genericTypeParameterList_return, self).__init__()
 
             self.tree = None
-
-
 
 
     # $ANTLR start "genericTypeParameterList"
@@ -1577,8 +1512,8 @@ class JavaParser(Parser):
 
                 # Java.g:278:5: ( LESS_THAN genericTypeParameter ( COMMA genericTypeParameter )* genericTypeListClosing -> ^( GENERIC_TYPE_PARAM_LIST[$LESS_THAN, \"GENERIC_TYPE_PARAM_LIST\"] ( genericTypeParameter )+ ) )
                 # Java.g:278:9: LESS_THAN genericTypeParameter ( COMMA genericTypeParameter )* genericTypeListClosing
-                pass 
-                LESS_THAN33=self.match(self.input, LESS_THAN, self.FOLLOW_LESS_THAN_in_genericTypeParameterList4919) 
+                pass
+                LESS_THAN33 = self.match(self.input, LESS_THAN, self.FOLLOW_LESS_THAN_in_genericTypeParameterList4919) 
                 if self._state.backtracking == 0:
                     stream_LESS_THAN.add(LESS_THAN33)
                 self._state.following.append(self.FOLLOW_genericTypeParameter_in_genericTypeParameterList4921)
@@ -1598,7 +1533,7 @@ class JavaParser(Parser):
 
                     if alt11 == 1:
                         # Java.g:278:41: COMMA genericTypeParameter
-                        pass 
+                        pass
                         COMMA35=self.match(self.input, COMMA, self.FOLLOW_COMMA_in_genericTypeParameterList4924) 
                         if self._state.backtracking == 0:
                             stream_COMMA.add(COMMA35)
@@ -1655,9 +1590,7 @@ class JavaParser(Parser):
                     self._adaptor.addChild(root_0, root_1)
 
 
-
                     retval.tree = root_0
-
 
 
                 retval.stop = self.input.LT(-1)
@@ -1687,8 +1620,6 @@ class JavaParser(Parser):
             super(JavaParser.genericTypeListClosing_return, self).__init__()
 
             self.tree = None
-
-
 
 
     # $ANTLR start "genericTypeListClosing"
@@ -1776,7 +1707,7 @@ class JavaParser(Parser):
 
                 if alt12 == 1:
                     # Java.g:286:9: GREATER_THAN
-                    pass 
+                    pass
                     root_0 = self._adaptor.nil()
 
                     GREATER_THAN38=self.match(self.input, GREATER_THAN, self.FOLLOW_GREATER_THAN_in_genericTypeListClosing5045)
@@ -1786,10 +1717,9 @@ class JavaParser(Parser):
                         self._adaptor.addChild(root_0, GREATER_THAN38_tree)
 
 
-
                 elif alt12 == 2:
                     # Java.g:287:9: SHIFT_RIGHT
-                    pass 
+                    pass
                     root_0 = self._adaptor.nil()
 
                     SHIFT_RIGHT39=self.match(self.input, SHIFT_RIGHT, self.FOLLOW_SHIFT_RIGHT_in_genericTypeListClosing5055)
@@ -1799,10 +1729,9 @@ class JavaParser(Parser):
                         self._adaptor.addChild(root_0, SHIFT_RIGHT39_tree)
 
 
-
                 elif alt12 == 3:
                     # Java.g:288:9: BIT_SHIFT_RIGHT
-                    pass 
+                    pass
                     root_0 = self._adaptor.nil()
 
                     BIT_SHIFT_RIGHT40=self.match(self.input, BIT_SHIFT_RIGHT, self.FOLLOW_BIT_SHIFT_RIGHT_in_genericTypeListClosing5065)
@@ -1812,10 +1741,9 @@ class JavaParser(Parser):
                         self._adaptor.addChild(root_0, BIT_SHIFT_RIGHT40_tree)
 
 
-
                 elif alt12 == 4:
                     # Java.g:290:5: 
-                    pass 
+                    pass
                     root_0 = self._adaptor.nil()
 
 
@@ -1848,8 +1776,6 @@ class JavaParser(Parser):
             self.tree = None
 
 
-
-
     # $ANTLR start "genericTypeParameter"
     # Java.g:292:1: genericTypeParameter : IDENT ( bound )? -> ^( IDENT ( bound )? ) ;
     def genericTypeParameter(self, ):
@@ -1876,7 +1802,7 @@ class JavaParser(Parser):
 
                 # Java.g:293:5: ( IDENT ( bound )? -> ^( IDENT ( bound )? ) )
                 # Java.g:293:9: IDENT ( bound )?
-                pass 
+                pass
                 IDENT41=self.match(self.input, IDENT, self.FOLLOW_IDENT_in_genericTypeParameter5093) 
                 if self._state.backtracking == 0:
                     stream_IDENT.add(IDENT41)
@@ -1899,15 +1825,13 @@ class JavaParser(Parser):
                             alt13 = 1
                 if alt13 == 1:
                     # Java.g:0:0: bound
-                    pass 
+                    pass
                     self._state.following.append(self.FOLLOW_bound_in_genericTypeParameter5095)
                     bound42 = self.bound()
 
                     self._state.following.pop()
                     if self._state.backtracking == 0:
                         stream_bound.add(bound42.tree)
-
-
 
 
                 # AST Rewrite
@@ -1943,9 +1867,7 @@ class JavaParser(Parser):
                     self._adaptor.addChild(root_0, root_1)
 
 
-
                     retval.tree = root_0
-
 
 
                 retval.stop = self.input.LT(-1)
@@ -1975,8 +1897,6 @@ class JavaParser(Parser):
             super(JavaParser.bound_return, self).__init__()
 
             self.tree = None
-
-
 
 
     # $ANTLR start "bound"
@@ -2010,7 +1930,7 @@ class JavaParser(Parser):
 
                 # Java.g:298:5: ( EXTENDS type ( AND type )* -> ^( EXTENDS_BOUND_LIST[$EXTENDS, \"EXTENDS_BOUND_LIST\"] ( type )+ ) )
                 # Java.g:298:9: EXTENDS type ( AND type )*
-                pass 
+                pass
                 EXTENDS43=self.match(self.input, EXTENDS, self.FOLLOW_EXTENDS_in_bound5133) 
                 if self._state.backtracking == 0:
                     stream_EXTENDS.add(EXTENDS43)
@@ -2031,7 +1951,7 @@ class JavaParser(Parser):
 
                     if alt14 == 1:
                         # Java.g:298:23: AND type
-                        pass 
+                        pass
                         AND45=self.match(self.input, AND, self.FOLLOW_AND_in_bound5138) 
                         if self._state.backtracking == 0:
                             stream_AND.add(AND45)
@@ -2082,9 +2002,7 @@ class JavaParser(Parser):
                     self._adaptor.addChild(root_0, root_1)
 
 
-
                     retval.tree = root_0
-
 
 
                 retval.stop = self.input.LT(-1)
@@ -2114,8 +2032,6 @@ class JavaParser(Parser):
             super(JavaParser.enumTypeDeclaration_return, self).__init__()
 
             self.tree = None
-
-
 
 
     # $ANTLR start "enumTypeDeclaration"
@@ -2150,7 +2066,7 @@ class JavaParser(Parser):
 
                 # Java.g:303:5: ( ENUM IDENT ( implementsClause )? enumBody -> ^( ENUM IDENT ( implementsClause )? enumBody ) )
                 # Java.g:303:9: ENUM IDENT ( implementsClause )? enumBody
-                pass 
+                pass
                 ENUM47=self.match(self.input, ENUM, self.FOLLOW_ENUM_in_enumTypeDeclaration5181) 
                 if self._state.backtracking == 0:
                     stream_ENUM.add(ENUM47)
@@ -2165,14 +2081,13 @@ class JavaParser(Parser):
                     alt15 = 1
                 if alt15 == 1:
                     # Java.g:0:0: implementsClause
-                    pass 
+                    pass
                     self._state.following.append(self.FOLLOW_implementsClause_in_enumTypeDeclaration5185)
                     implementsClause49 = self.implementsClause()
 
                     self._state.following.pop()
                     if self._state.backtracking == 0:
                         stream_implementsClause.add(implementsClause49.tree)
-
 
 
                 self._state.following.append(self.FOLLOW_enumBody_in_enumTypeDeclaration5188)
@@ -2218,9 +2133,7 @@ class JavaParser(Parser):
                     self._adaptor.addChild(root_0, root_1)
 
 
-
                     retval.tree = root_0
-
 
 
                 retval.stop = self.input.LT(-1)
@@ -2252,8 +2165,6 @@ class JavaParser(Parser):
             self.tree = None
 
 
-
-
     # $ANTLR start "enumBody"
     # Java.g:307:1: enumBody : LCURLY enumScopeDeclarations RCURLY -> ^( ENUM_TOP_LEVEL_SCOPE[$LCURLY, \"ENUM_TOP_LEVEL_SCOPE\"] enumScopeDeclarations ) ;
     def enumBody(self, ):
@@ -2283,7 +2194,7 @@ class JavaParser(Parser):
 
                 # Java.g:308:5: ( LCURLY enumScopeDeclarations RCURLY -> ^( ENUM_TOP_LEVEL_SCOPE[$LCURLY, \"ENUM_TOP_LEVEL_SCOPE\"] enumScopeDeclarations ) )
                 # Java.g:308:9: LCURLY enumScopeDeclarations RCURLY
-                pass 
+                pass
                 LCURLY51=self.match(self.input, LCURLY, self.FOLLOW_LCURLY_in_enumBody5231) 
                 if self._state.backtracking == 0:
                     stream_LCURLY.add(LCURLY51)
@@ -2325,9 +2236,7 @@ class JavaParser(Parser):
                     self._adaptor.addChild(root_0, root_1)
 
 
-
                     retval.tree = root_0
-
 
 
                 retval.stop = self.input.LT(-1)
@@ -2359,8 +2268,6 @@ class JavaParser(Parser):
             self.tree = None
 
 
-
-
     # $ANTLR start "enumScopeDeclarations"
     # Java.g:312:1: enumScopeDeclarations : enumConstants ( COMMA )? ( enumClassScopeDeclarations )? ;
     def enumScopeDeclarations(self, ):
@@ -2388,7 +2295,7 @@ class JavaParser(Parser):
 
                 # Java.g:313:5: ( enumConstants ( COMMA )? ( enumClassScopeDeclarations )? )
                 # Java.g:313:9: enumConstants ( COMMA )? ( enumClassScopeDeclarations )?
-                pass 
+                pass
                 root_0 = self._adaptor.nil()
 
                 self._state.following.append(self.FOLLOW_enumConstants_in_enumScopeDeclarations5272)
@@ -2405,9 +2312,8 @@ class JavaParser(Parser):
                     alt16 = 1
                 if alt16 == 1:
                     # Java.g:313:24: COMMA
-                    pass 
+                    pass
                     COMMA55=self.match(self.input, COMMA, self.FOLLOW_COMMA_in_enumScopeDeclarations5275)
-
 
 
                 # Java.g:313:33: ( enumClassScopeDeclarations )?
@@ -2418,15 +2324,13 @@ class JavaParser(Parser):
                     alt17 = 1
                 if alt17 == 1:
                     # Java.g:0:0: enumClassScopeDeclarations
-                    pass 
+                    pass
                     self._state.following.append(self.FOLLOW_enumClassScopeDeclarations_in_enumScopeDeclarations5280)
                     enumClassScopeDeclarations56 = self.enumClassScopeDeclarations()
 
                     self._state.following.pop()
                     if self._state.backtracking == 0:
                         self._adaptor.addChild(root_0, enumClassScopeDeclarations56.tree)
-
-
 
 
 
@@ -2460,8 +2364,6 @@ class JavaParser(Parser):
             self.tree = None
 
 
-
-
     # $ANTLR start "enumClassScopeDeclarations"
     # Java.g:316:1: enumClassScopeDeclarations : SEMI ( classScopeDeclarations )* -> ^( CLASS_TOP_LEVEL_SCOPE[$SEMI, \"CLASS_TOP_LEVEL_SCOPE\"] ( classScopeDeclarations )* ) ;
     def enumClassScopeDeclarations(self, ):
@@ -2488,7 +2390,7 @@ class JavaParser(Parser):
 
                 # Java.g:317:5: ( SEMI ( classScopeDeclarations )* -> ^( CLASS_TOP_LEVEL_SCOPE[$SEMI, \"CLASS_TOP_LEVEL_SCOPE\"] ( classScopeDeclarations )* ) )
                 # Java.g:317:9: SEMI ( classScopeDeclarations )*
-                pass 
+                pass
                 SEMI57=self.match(self.input, SEMI, self.FOLLOW_SEMI_in_enumClassScopeDeclarations5300) 
                 if self._state.backtracking == 0:
                     stream_SEMI.add(SEMI57)
@@ -2503,7 +2405,7 @@ class JavaParser(Parser):
 
                     if alt18 == 1:
                         # Java.g:0:0: classScopeDeclarations
-                        pass 
+                        pass
                         self._state.following.append(self.FOLLOW_classScopeDeclarations_in_enumClassScopeDeclarations5302)
                         classScopeDeclarations58 = self.classScopeDeclarations()
 
@@ -2548,9 +2450,7 @@ class JavaParser(Parser):
                     self._adaptor.addChild(root_0, root_1)
 
 
-
                     retval.tree = root_0
-
 
 
                 retval.stop = self.input.LT(-1)
@@ -2582,8 +2482,6 @@ class JavaParser(Parser):
             self.tree = None
 
 
-
-
     # $ANTLR start "enumConstants"
     # Java.g:321:1: enumConstants : enumConstant ( COMMA enumConstant )* ;
     def enumConstants(self, ):
@@ -2611,7 +2509,7 @@ class JavaParser(Parser):
 
                 # Java.g:322:5: ( enumConstant ( COMMA enumConstant )* )
                 # Java.g:322:9: enumConstant ( COMMA enumConstant )*
-                pass 
+                pass
                 root_0 = self._adaptor.nil()
 
                 self._state.following.append(self.FOLLOW_enumConstant_in_enumConstants5341)
@@ -2632,11 +2530,9 @@ class JavaParser(Parser):
                             alt19 = 1
 
 
-
-
                     if alt19 == 1:
                         # Java.g:322:23: COMMA enumConstant
-                        pass 
+                        pass
                         COMMA60=self.match(self.input, COMMA, self.FOLLOW_COMMA_in_enumConstants5344)
                         self._state.following.append(self.FOLLOW_enumConstant_in_enumConstants5347)
                         enumConstant61 = self.enumConstant()
@@ -2648,7 +2544,6 @@ class JavaParser(Parser):
 
                     else:
                         break #loop19
-
 
 
                 retval.stop = self.input.LT(-1)
@@ -2680,8 +2575,6 @@ class JavaParser(Parser):
             self.tree = None
 
 
-
-
     # $ANTLR start "enumConstant"
     # Java.g:325:1: enumConstant : annotationList IDENT ( arguments )? ( classBody )? ;
     def enumConstant(self, ):
@@ -2711,7 +2604,7 @@ class JavaParser(Parser):
 
                 # Java.g:326:5: ( annotationList IDENT ( arguments )? ( classBody )? )
                 # Java.g:326:9: annotationList IDENT ( arguments )? ( classBody )?
-                pass 
+                pass
                 root_0 = self._adaptor.nil()
 
                 self._state.following.append(self.FOLLOW_annotationList_in_enumConstant5368)
@@ -2734,14 +2627,13 @@ class JavaParser(Parser):
                     alt20 = 1
                 if alt20 == 1:
                     # Java.g:0:0: arguments
-                    pass 
+                    pass
                     self._state.following.append(self.FOLLOW_arguments_in_enumConstant5373)
                     arguments64 = self.arguments()
 
                     self._state.following.pop()
                     if self._state.backtracking == 0:
                         self._adaptor.addChild(root_0, arguments64.tree)
-
 
 
                 # Java.g:326:42: ( classBody )?
@@ -2752,15 +2644,13 @@ class JavaParser(Parser):
                     alt21 = 1
                 if alt21 == 1:
                     # Java.g:0:0: classBody
-                    pass 
+                    pass
                     self._state.following.append(self.FOLLOW_classBody_in_enumConstant5376)
                     classBody65 = self.classBody()
 
                     self._state.following.pop()
                     if self._state.backtracking == 0:
                         self._adaptor.addChild(root_0, classBody65.tree)
-
-
 
 
 
@@ -2792,8 +2682,6 @@ class JavaParser(Parser):
             super(JavaParser.interfaceTypeDeclaration_return, self).__init__()
 
             self.tree = None
-
-
 
 
     # $ANTLR start "interfaceTypeDeclaration"
@@ -2831,7 +2719,7 @@ class JavaParser(Parser):
 
                 # Java.g:330:5: ( INTERFACE IDENT ( genericTypeParameterList )? ( interfaceExtendsClause )? interfaceBody -> ^( INTERFACE IDENT ( genericTypeParameterList )? ( interfaceExtendsClause )? interfaceBody ) )
                 # Java.g:330:9: INTERFACE IDENT ( genericTypeParameterList )? ( interfaceExtendsClause )? interfaceBody
-                pass 
+                pass
                 INTERFACE66=self.match(self.input, INTERFACE, self.FOLLOW_INTERFACE_in_interfaceTypeDeclaration5397) 
                 if self._state.backtracking == 0:
                     stream_INTERFACE.add(INTERFACE66)
@@ -2846,14 +2734,13 @@ class JavaParser(Parser):
                     alt22 = 1
                 if alt22 == 1:
                     # Java.g:0:0: genericTypeParameterList
-                    pass 
+                    pass
                     self._state.following.append(self.FOLLOW_genericTypeParameterList_in_interfaceTypeDeclaration5401)
                     genericTypeParameterList68 = self.genericTypeParameterList()
 
                     self._state.following.pop()
                     if self._state.backtracking == 0:
                         stream_genericTypeParameterList.add(genericTypeParameterList68.tree)
-
 
 
                 # Java.g:330:51: ( interfaceExtendsClause )?
@@ -2864,14 +2751,13 @@ class JavaParser(Parser):
                     alt23 = 1
                 if alt23 == 1:
                     # Java.g:0:0: interfaceExtendsClause
-                    pass 
+                    pass
                     self._state.following.append(self.FOLLOW_interfaceExtendsClause_in_interfaceTypeDeclaration5404)
                     interfaceExtendsClause69 = self.interfaceExtendsClause()
 
                     self._state.following.pop()
                     if self._state.backtracking == 0:
                         stream_interfaceExtendsClause.add(interfaceExtendsClause69.tree)
-
 
 
                 self._state.following.append(self.FOLLOW_interfaceBody_in_interfaceTypeDeclaration5407)
@@ -2923,9 +2809,7 @@ class JavaParser(Parser):
                     self._adaptor.addChild(root_0, root_1)
 
 
-
                     retval.tree = root_0
-
 
 
                 retval.stop = self.input.LT(-1)
@@ -2957,8 +2841,6 @@ class JavaParser(Parser):
             self.tree = None
 
 
-
-
     # $ANTLR start "typeList"
     # Java.g:334:1: typeList : type ( COMMA type )* ;
     def typeList(self, ):
@@ -2986,7 +2868,7 @@ class JavaParser(Parser):
 
                 # Java.g:335:5: ( type ( COMMA type )* )
                 # Java.g:335:9: type ( COMMA type )*
-                pass 
+                pass
                 root_0 = self._adaptor.nil()
 
                 self._state.following.append(self.FOLLOW_type_in_typeList5453)
@@ -3006,7 +2888,7 @@ class JavaParser(Parser):
 
                     if alt24 == 1:
                         # Java.g:335:15: COMMA type
-                        pass 
+                        pass
                         COMMA72=self.match(self.input, COMMA, self.FOLLOW_COMMA_in_typeList5456)
                         self._state.following.append(self.FOLLOW_type_in_typeList5459)
                         type73 = self.type()
@@ -3018,7 +2900,6 @@ class JavaParser(Parser):
 
                     else:
                         break #loop24
-
 
 
                 retval.stop = self.input.LT(-1)
@@ -3050,8 +2931,6 @@ class JavaParser(Parser):
             self.tree = None
 
 
-
-
     # $ANTLR start "classBody"
     # Java.g:338:1: classBody : LCURLY ( classScopeDeclarations )* RCURLY -> ^( CLASS_TOP_LEVEL_SCOPE[$LCURLY, \"CLASS_TOP_LEVEL_SCOPE\"] ( classScopeDeclarations )* ) ;
     def classBody(self, ):
@@ -3081,7 +2960,7 @@ class JavaParser(Parser):
 
                 # Java.g:339:5: ( LCURLY ( classScopeDeclarations )* RCURLY -> ^( CLASS_TOP_LEVEL_SCOPE[$LCURLY, \"CLASS_TOP_LEVEL_SCOPE\"] ( classScopeDeclarations )* ) )
                 # Java.g:339:9: LCURLY ( classScopeDeclarations )* RCURLY
-                pass 
+                pass
                 LCURLY74=self.match(self.input, LCURLY, self.FOLLOW_LCURLY_in_classBody5480) 
                 if self._state.backtracking == 0:
                     stream_LCURLY.add(LCURLY74)
@@ -3096,7 +2975,7 @@ class JavaParser(Parser):
 
                     if alt25 == 1:
                         # Java.g:0:0: classScopeDeclarations
-                        pass 
+                        pass
                         self._state.following.append(self.FOLLOW_classScopeDeclarations_in_classBody5482)
                         classScopeDeclarations75 = self.classScopeDeclarations()
 
@@ -3144,9 +3023,7 @@ class JavaParser(Parser):
                     self._adaptor.addChild(root_0, root_1)
 
 
-
                     retval.tree = root_0
-
 
 
                 retval.stop = self.input.LT(-1)
@@ -3178,8 +3055,6 @@ class JavaParser(Parser):
             self.tree = None
 
 
-
-
     # $ANTLR start "interfaceBody"
     # Java.g:343:1: interfaceBody : LCURLY ( interfaceScopeDeclarations )* RCURLY -> ^( INTERFACE_TOP_LEVEL_SCOPE[$LCURLY, \"CLASS_TOP_LEVEL_SCOPE\"] ( interfaceScopeDeclarations )* ) ;
     def interfaceBody(self, ):
@@ -3209,7 +3084,7 @@ class JavaParser(Parser):
 
                 # Java.g:344:5: ( LCURLY ( interfaceScopeDeclarations )* RCURLY -> ^( INTERFACE_TOP_LEVEL_SCOPE[$LCURLY, \"CLASS_TOP_LEVEL_SCOPE\"] ( interfaceScopeDeclarations )* ) )
                 # Java.g:344:9: LCURLY ( interfaceScopeDeclarations )* RCURLY
-                pass 
+                pass
                 LCURLY77=self.match(self.input, LCURLY, self.FOLLOW_LCURLY_in_interfaceBody5523) 
                 if self._state.backtracking == 0:
                     stream_LCURLY.add(LCURLY77)
@@ -3224,7 +3099,7 @@ class JavaParser(Parser):
 
                     if alt26 == 1:
                         # Java.g:0:0: interfaceScopeDeclarations
-                        pass 
+                        pass
                         self._state.following.append(self.FOLLOW_interfaceScopeDeclarations_in_interfaceBody5525)
                         interfaceScopeDeclarations78 = self.interfaceScopeDeclarations()
 
@@ -3272,9 +3147,7 @@ class JavaParser(Parser):
                     self._adaptor.addChild(root_0, root_1)
 
 
-
                     retval.tree = root_0
-
 
 
                 retval.stop = self.input.LT(-1)
@@ -3304,8 +3177,6 @@ class JavaParser(Parser):
             super(JavaParser.classScopeDeclarations_return, self).__init__()
 
             self.tree = None
-
-
 
 
     # $ANTLR start "classScopeDeclarations"
@@ -3397,7 +3268,7 @@ class JavaParser(Parser):
                 alt36 = self.dfa36.predict(self.input)
                 if alt36 == 1:
                     # Java.g:349:9: block
-                    pass 
+                    pass
                     self._state.following.append(self.FOLLOW_block_in_classScopeDeclarations5566)
                     block80 = self.block()
 
@@ -3433,13 +3304,12 @@ class JavaParser(Parser):
                         self._adaptor.addChild(root_0, root_1)
 
 
-
                         retval.tree = root_0
 
 
                 elif alt36 == 2:
                     # Java.g:350:9: STATIC block
-                    pass 
+                    pass
                     STATIC81=self.match(self.input, STATIC, self.FOLLOW_STATIC_in_classScopeDeclarations5595) 
                     if self._state.backtracking == 0:
                         stream_STATIC.add(STATIC81)
@@ -3478,13 +3348,12 @@ class JavaParser(Parser):
                         self._adaptor.addChild(root_0, root_1)
 
 
-
                         retval.tree = root_0
 
 
                 elif alt36 == 3:
                     # Java.g:351:9: modifierList ( ( genericTypeParameterList )? ( type IDENT formalParameterList ( arrayDeclaratorList )? ( throwsClause )? ( block | SEMI ) -> ^( FUNCTION_METHOD_DECL modifierList ( genericTypeParameterList )? type IDENT formalParameterList ( arrayDeclaratorList )? ( throwsClause )? ( block )? ) | VOID IDENT formalParameterList ( throwsClause )? ( block | SEMI ) -> ^( VOID_METHOD_DECL modifierList ( genericTypeParameterList )? IDENT formalParameterList ( throwsClause )? ( block )? ) | ident= IDENT formalParameterList ( throwsClause )? block -> ^( CONSTRUCTOR_DECL[$ident, \"CONSTRUCTOR_DECL\"] modifierList ( genericTypeParameterList )? formalParameterList ( throwsClause )? block ) ) | type classFieldDeclaratorList SEMI -> ^( VAR_DECLARATION modifierList type classFieldDeclaratorList ) )
-                    pass 
+                    pass
                     self._state.following.append(self.FOLLOW_modifierList_in_classScopeDeclarations5620)
                     modifierList83 = self.modifierList()
 
@@ -3536,7 +3405,7 @@ class JavaParser(Parser):
 
                     if alt35 == 1:
                         # Java.g:352:13: ( genericTypeParameterList )? ( type IDENT formalParameterList ( arrayDeclaratorList )? ( throwsClause )? ( block | SEMI ) -> ^( FUNCTION_METHOD_DECL modifierList ( genericTypeParameterList )? type IDENT formalParameterList ( arrayDeclaratorList )? ( throwsClause )? ( block )? ) | VOID IDENT formalParameterList ( throwsClause )? ( block | SEMI ) -> ^( VOID_METHOD_DECL modifierList ( genericTypeParameterList )? IDENT formalParameterList ( throwsClause )? ( block )? ) | ident= IDENT formalParameterList ( throwsClause )? block -> ^( CONSTRUCTOR_DECL[$ident, \"CONSTRUCTOR_DECL\"] modifierList ( genericTypeParameterList )? formalParameterList ( throwsClause )? block ) )
-                        pass 
+                        pass
                         # Java.g:352:13: ( genericTypeParameterList )?
                         alt27 = 2
                         LA27_0 = self.input.LA(1)
@@ -3545,14 +3414,13 @@ class JavaParser(Parser):
                             alt27 = 1
                         if alt27 == 1:
                             # Java.g:0:0: genericTypeParameterList
-                            pass 
+                            pass
                             self._state.following.append(self.FOLLOW_genericTypeParameterList_in_classScopeDeclarations5634)
                             genericTypeParameterList84 = self.genericTypeParameterList()
 
                             self._state.following.pop()
                             if self._state.backtracking == 0:
                                 stream_genericTypeParameterList.add(genericTypeParameterList84.tree)
-
 
 
                         # Java.g:353:13: ( type IDENT formalParameterList ( arrayDeclaratorList )? ( throwsClause )? ( block | SEMI ) -> ^( FUNCTION_METHOD_DECL modifierList ( genericTypeParameterList )? type IDENT formalParameterList ( arrayDeclaratorList )? ( throwsClause )? ( block )? ) | VOID IDENT formalParameterList ( throwsClause )? ( block | SEMI ) -> ^( VOID_METHOD_DECL modifierList ( genericTypeParameterList )? IDENT formalParameterList ( throwsClause )? ( block )? ) | ident= IDENT formalParameterList ( throwsClause )? block -> ^( CONSTRUCTOR_DECL[$ident, \"CONSTRUCTOR_DECL\"] modifierList ( genericTypeParameterList )? formalParameterList ( throwsClause )? block ) )
@@ -3587,7 +3455,7 @@ class JavaParser(Parser):
 
                         if alt34 == 1:
                             # Java.g:353:17: type IDENT formalParameterList ( arrayDeclaratorList )? ( throwsClause )? ( block | SEMI )
-                            pass 
+                            pass
                             self._state.following.append(self.FOLLOW_type_in_classScopeDeclarations5653)
                             type85 = self.type()
 
@@ -3611,14 +3479,13 @@ class JavaParser(Parser):
                                 alt28 = 1
                             if alt28 == 1:
                                 # Java.g:0:0: arrayDeclaratorList
-                                pass 
+                                pass
                                 self._state.following.append(self.FOLLOW_arrayDeclaratorList_in_classScopeDeclarations5659)
                                 arrayDeclaratorList88 = self.arrayDeclaratorList()
 
                                 self._state.following.pop()
                                 if self._state.backtracking == 0:
                                     stream_arrayDeclaratorList.add(arrayDeclaratorList88.tree)
-
 
 
                             # Java.g:353:69: ( throwsClause )?
@@ -3629,14 +3496,13 @@ class JavaParser(Parser):
                                 alt29 = 1
                             if alt29 == 1:
                                 # Java.g:0:0: throwsClause
-                                pass 
+                                pass
                                 self._state.following.append(self.FOLLOW_throwsClause_in_classScopeDeclarations5662)
                                 throwsClause89 = self.throwsClause()
 
                                 self._state.following.pop()
                                 if self._state.backtracking == 0:
                                     stream_throwsClause.add(throwsClause89.tree)
-
 
 
                             # Java.g:353:83: ( block | SEMI )
@@ -3657,7 +3523,7 @@ class JavaParser(Parser):
 
                             if alt30 == 1:
                                 # Java.g:353:84: block
-                                pass 
+                                pass
                                 self._state.following.append(self.FOLLOW_block_in_classScopeDeclarations5666)
                                 block90 = self.block()
 
@@ -3668,12 +3534,10 @@ class JavaParser(Parser):
 
                             elif alt30 == 2:
                                 # Java.g:353:92: SEMI
-                                pass 
+                                pass
                                 SEMI91=self.match(self.input, SEMI, self.FOLLOW_SEMI_in_classScopeDeclarations5670) 
                                 if self._state.backtracking == 0:
                                     stream_SEMI.add(SEMI91)
-
-
 
 
                             # AST Rewrite
@@ -3731,13 +3595,12 @@ class JavaParser(Parser):
                                 self._adaptor.addChild(root_0, root_1)
 
 
-
                                 retval.tree = root_0
 
 
                         elif alt34 == 2:
                             # Java.g:355:17: VOID IDENT formalParameterList ( throwsClause )? ( block | SEMI )
-                            pass 
+                            pass
                             VOID92=self.match(self.input, VOID, self.FOLLOW_VOID_in_classScopeDeclarations5732) 
                             if self._state.backtracking == 0:
                                 stream_VOID.add(VOID92)
@@ -3758,14 +3621,13 @@ class JavaParser(Parser):
                                 alt31 = 1
                             if alt31 == 1:
                                 # Java.g:0:0: throwsClause
-                                pass 
+                                pass
                                 self._state.following.append(self.FOLLOW_throwsClause_in_classScopeDeclarations5738)
                                 throwsClause95 = self.throwsClause()
 
                                 self._state.following.pop()
                                 if self._state.backtracking == 0:
                                     stream_throwsClause.add(throwsClause95.tree)
-
 
 
                             # Java.g:355:62: ( block | SEMI )
@@ -3786,7 +3648,7 @@ class JavaParser(Parser):
 
                             if alt32 == 1:
                                 # Java.g:355:63: block
-                                pass 
+                                pass
                                 self._state.following.append(self.FOLLOW_block_in_classScopeDeclarations5742)
                                 block96 = self.block()
 
@@ -3797,12 +3659,10 @@ class JavaParser(Parser):
 
                             elif alt32 == 2:
                                 # Java.g:355:71: SEMI
-                                pass 
+                                pass
                                 SEMI97=self.match(self.input, SEMI, self.FOLLOW_SEMI_in_classScopeDeclarations5746) 
                                 if self._state.backtracking == 0:
                                     stream_SEMI.add(SEMI97)
-
-
 
 
                             # AST Rewrite
@@ -3853,13 +3713,12 @@ class JavaParser(Parser):
                                 self._adaptor.addChild(root_0, root_1)
 
 
-
                                 retval.tree = root_0
 
 
                         elif alt34 == 3:
                             # Java.g:357:17: ident= IDENT formalParameterList ( throwsClause )? block
-                            pass 
+                            pass
                             ident=self.match(self.input, IDENT, self.FOLLOW_IDENT_in_classScopeDeclarations5805) 
                             if self._state.backtracking == 0:
                                 stream_IDENT.add(ident)
@@ -3877,14 +3736,13 @@ class JavaParser(Parser):
                                 alt33 = 1
                             if alt33 == 1:
                                 # Java.g:0:0: throwsClause
-                                pass 
+                                pass
                                 self._state.following.append(self.FOLLOW_throwsClause_in_classScopeDeclarations5809)
                                 throwsClause99 = self.throwsClause()
 
                                 self._state.following.pop()
                                 if self._state.backtracking == 0:
                                     stream_throwsClause.add(throwsClause99.tree)
-
 
 
                             self._state.following.append(self.FOLLOW_block_in_classScopeDeclarations5812)
@@ -3936,16 +3794,13 @@ class JavaParser(Parser):
                                 self._adaptor.addChild(root_0, root_1)
 
 
-
                                 retval.tree = root_0
-
-
 
 
 
                     elif alt35 == 2:
                         # Java.g:360:13: type classFieldDeclaratorList SEMI
-                        pass 
+                        pass
                         self._state.following.append(self.FOLLOW_type_in_classScopeDeclarations5876)
                         type101 = self.type()
 
@@ -3992,16 +3847,13 @@ class JavaParser(Parser):
                             self._adaptor.addChild(root_0, root_1)
 
 
-
                             retval.tree = root_0
-
-
 
 
 
                 elif alt36 == 4:
                     # Java.g:363:9: typeDeclaration
-                    pass 
+                    pass
                     root_0 = self._adaptor.nil()
 
                     self._state.following.append(self.FOLLOW_typeDeclaration_in_classScopeDeclarations5925)
@@ -4014,7 +3866,7 @@ class JavaParser(Parser):
 
                 elif alt36 == 5:
                     # Java.g:364:9: SEMI
-                    pass 
+                    pass
                     root_0 = self._adaptor.nil()
 
                     SEMI105=self.match(self.input, SEMI, self.FOLLOW_SEMI_in_classScopeDeclarations5935)
@@ -4047,8 +3899,6 @@ class JavaParser(Parser):
             super(JavaParser.interfaceScopeDeclarations_return, self).__init__()
 
             self.tree = None
-
-
 
 
     # $ANTLR start "interfaceScopeDeclarations"
@@ -4120,7 +3970,7 @@ class JavaParser(Parser):
                 alt43 = self.dfa43.predict(self.input)
                 if alt43 == 1:
                     # Java.g:368:9: modifierList ( ( genericTypeParameterList )? ( type IDENT formalParameterList ( arrayDeclaratorList )? ( throwsClause )? SEMI -> ^( FUNCTION_METHOD_DECL modifierList ( genericTypeParameterList )? type IDENT formalParameterList ( arrayDeclaratorList )? ( throwsClause )? ) | VOID IDENT formalParameterList ( throwsClause )? SEMI -> ^( VOID_METHOD_DECL modifierList ( genericTypeParameterList )? IDENT formalParameterList ( throwsClause )? ) ) | type interfaceFieldDeclaratorList SEMI -> ^( VAR_DECLARATION modifierList type interfaceFieldDeclaratorList ) )
-                    pass 
+                    pass
                     self._state.following.append(self.FOLLOW_modifierList_in_interfaceScopeDeclarations5955)
                     modifierList106 = self.modifierList()
 
@@ -4172,7 +4022,7 @@ class JavaParser(Parser):
 
                     if alt42 == 1:
                         # Java.g:369:13: ( genericTypeParameterList )? ( type IDENT formalParameterList ( arrayDeclaratorList )? ( throwsClause )? SEMI -> ^( FUNCTION_METHOD_DECL modifierList ( genericTypeParameterList )? type IDENT formalParameterList ( arrayDeclaratorList )? ( throwsClause )? ) | VOID IDENT formalParameterList ( throwsClause )? SEMI -> ^( VOID_METHOD_DECL modifierList ( genericTypeParameterList )? IDENT formalParameterList ( throwsClause )? ) )
-                        pass 
+                        pass
                         # Java.g:369:13: ( genericTypeParameterList )?
                         alt37 = 2
                         LA37_0 = self.input.LA(1)
@@ -4181,14 +4031,13 @@ class JavaParser(Parser):
                             alt37 = 1
                         if alt37 == 1:
                             # Java.g:0:0: genericTypeParameterList
-                            pass 
+                            pass
                             self._state.following.append(self.FOLLOW_genericTypeParameterList_in_interfaceScopeDeclarations5969)
                             genericTypeParameterList107 = self.genericTypeParameterList()
 
                             self._state.following.pop()
                             if self._state.backtracking == 0:
                                 stream_genericTypeParameterList.add(genericTypeParameterList107.tree)
-
 
 
                         # Java.g:370:13: ( type IDENT formalParameterList ( arrayDeclaratorList )? ( throwsClause )? SEMI -> ^( FUNCTION_METHOD_DECL modifierList ( genericTypeParameterList )? type IDENT formalParameterList ( arrayDeclaratorList )? ( throwsClause )? ) | VOID IDENT formalParameterList ( throwsClause )? SEMI -> ^( VOID_METHOD_DECL modifierList ( genericTypeParameterList )? IDENT formalParameterList ( throwsClause )? ) )
@@ -4209,7 +4058,7 @@ class JavaParser(Parser):
 
                         if alt41 == 1:
                             # Java.g:370:17: type IDENT formalParameterList ( arrayDeclaratorList )? ( throwsClause )? SEMI
-                            pass 
+                            pass
                             self._state.following.append(self.FOLLOW_type_in_interfaceScopeDeclarations5988)
                             type108 = self.type()
 
@@ -4233,14 +4082,13 @@ class JavaParser(Parser):
                                 alt38 = 1
                             if alt38 == 1:
                                 # Java.g:0:0: arrayDeclaratorList
-                                pass 
+                                pass
                                 self._state.following.append(self.FOLLOW_arrayDeclaratorList_in_interfaceScopeDeclarations5994)
                                 arrayDeclaratorList111 = self.arrayDeclaratorList()
 
                                 self._state.following.pop()
                                 if self._state.backtracking == 0:
                                     stream_arrayDeclaratorList.add(arrayDeclaratorList111.tree)
-
 
 
                             # Java.g:370:69: ( throwsClause )?
@@ -4251,14 +4099,13 @@ class JavaParser(Parser):
                                 alt39 = 1
                             if alt39 == 1:
                                 # Java.g:0:0: throwsClause
-                                pass 
+                                pass
                                 self._state.following.append(self.FOLLOW_throwsClause_in_interfaceScopeDeclarations5997)
                                 throwsClause112 = self.throwsClause()
 
                                 self._state.following.pop()
                                 if self._state.backtracking == 0:
                                     stream_throwsClause.add(throwsClause112.tree)
-
 
 
                             SEMI113=self.match(self.input, SEMI, self.FOLLOW_SEMI_in_interfaceScopeDeclarations6000) 
@@ -4314,13 +4161,12 @@ class JavaParser(Parser):
                                 self._adaptor.addChild(root_0, root_1)
 
 
-
                                 retval.tree = root_0
 
 
                         elif alt41 == 2:
                             # Java.g:372:17: VOID IDENT formalParameterList ( throwsClause )? SEMI
-                            pass 
+                            pass
                             VOID114=self.match(self.input, VOID, self.FOLLOW_VOID_in_interfaceScopeDeclarations6058) 
                             if self._state.backtracking == 0:
                                 stream_VOID.add(VOID114)
@@ -4341,14 +4187,13 @@ class JavaParser(Parser):
                                 alt40 = 1
                             if alt40 == 1:
                                 # Java.g:0:0: throwsClause
-                                pass 
+                                pass
                                 self._state.following.append(self.FOLLOW_throwsClause_in_interfaceScopeDeclarations6064)
                                 throwsClause117 = self.throwsClause()
 
                                 self._state.following.pop()
                                 if self._state.backtracking == 0:
                                     stream_throwsClause.add(throwsClause117.tree)
-
 
 
                             SEMI118=self.match(self.input, SEMI, self.FOLLOW_SEMI_in_interfaceScopeDeclarations6067) 
@@ -4397,16 +4242,13 @@ class JavaParser(Parser):
                                 self._adaptor.addChild(root_0, root_1)
 
 
-
                                 retval.tree = root_0
-
-
 
 
 
                     elif alt42 == 2:
                         # Java.g:375:13: type interfaceFieldDeclaratorList SEMI
-                        pass 
+                        pass
                         self._state.following.append(self.FOLLOW_type_in_interfaceScopeDeclarations6130)
                         type119 = self.type()
 
@@ -4453,16 +4295,13 @@ class JavaParser(Parser):
                             self._adaptor.addChild(root_0, root_1)
 
 
-
                             retval.tree = root_0
-
-
 
 
 
                 elif alt43 == 2:
                     # Java.g:378:9: typeDeclaration
-                    pass 
+                    pass
                     root_0 = self._adaptor.nil()
 
                     self._state.following.append(self.FOLLOW_typeDeclaration_in_interfaceScopeDeclarations6179)
@@ -4475,7 +4314,7 @@ class JavaParser(Parser):
 
                 elif alt43 == 3:
                     # Java.g:379:9: SEMI
-                    pass 
+                    pass
                     root_0 = self._adaptor.nil()
 
                     SEMI123=self.match(self.input, SEMI, self.FOLLOW_SEMI_in_interfaceScopeDeclarations6189)
@@ -4510,8 +4349,6 @@ class JavaParser(Parser):
             self.tree = None
 
 
-
-
     # $ANTLR start "classFieldDeclaratorList"
     # Java.g:382:1: classFieldDeclaratorList : classFieldDeclarator ( COMMA classFieldDeclarator )* -> ^( VAR_DECLARATOR_LIST ( classFieldDeclarator )+ ) ;
     def classFieldDeclaratorList(self, ):
@@ -4540,7 +4377,7 @@ class JavaParser(Parser):
 
                 # Java.g:383:5: ( classFieldDeclarator ( COMMA classFieldDeclarator )* -> ^( VAR_DECLARATOR_LIST ( classFieldDeclarator )+ ) )
                 # Java.g:383:9: classFieldDeclarator ( COMMA classFieldDeclarator )*
-                pass 
+                pass
                 self._state.following.append(self.FOLLOW_classFieldDeclarator_in_classFieldDeclaratorList6209)
                 classFieldDeclarator124 = self.classFieldDeclarator()
 
@@ -4558,7 +4395,7 @@ class JavaParser(Parser):
 
                     if alt44 == 1:
                         # Java.g:383:31: COMMA classFieldDeclarator
-                        pass 
+                        pass
                         COMMA125=self.match(self.input, COMMA, self.FOLLOW_COMMA_in_classFieldDeclaratorList6212) 
                         if self._state.backtracking == 0:
                             stream_COMMA.add(COMMA125)
@@ -4609,9 +4446,7 @@ class JavaParser(Parser):
                     self._adaptor.addChild(root_0, root_1)
 
 
-
                     retval.tree = root_0
-
 
 
                 retval.stop = self.input.LT(-1)
@@ -4643,8 +4478,6 @@ class JavaParser(Parser):
             self.tree = None
 
 
-
-
     # $ANTLR start "classFieldDeclarator"
     # Java.g:387:1: classFieldDeclarator : variableDeclaratorId ( ASSIGN variableInitializer )? -> ^( VAR_DECLARATOR variableDeclaratorId ( variableInitializer )? ) ;
     def classFieldDeclarator(self, ):
@@ -4674,7 +4507,7 @@ class JavaParser(Parser):
 
                 # Java.g:388:5: ( variableDeclaratorId ( ASSIGN variableInitializer )? -> ^( VAR_DECLARATOR variableDeclaratorId ( variableInitializer )? ) )
                 # Java.g:388:9: variableDeclaratorId ( ASSIGN variableInitializer )?
-                pass 
+                pass
                 self._state.following.append(self.FOLLOW_variableDeclaratorId_in_classFieldDeclarator6253)
                 variableDeclaratorId127 = self.variableDeclaratorId()
 
@@ -4689,7 +4522,7 @@ class JavaParser(Parser):
                     alt45 = 1
                 if alt45 == 1:
                     # Java.g:388:31: ASSIGN variableInitializer
-                    pass 
+                    pass
                     ASSIGN128=self.match(self.input, ASSIGN, self.FOLLOW_ASSIGN_in_classFieldDeclarator6256) 
                     if self._state.backtracking == 0:
                         stream_ASSIGN.add(ASSIGN128)
@@ -4699,8 +4532,6 @@ class JavaParser(Parser):
                     self._state.following.pop()
                     if self._state.backtracking == 0:
                         stream_variableInitializer.add(variableInitializer129.tree)
-
-
 
 
                 # AST Rewrite
@@ -4737,9 +4568,7 @@ class JavaParser(Parser):
                     self._adaptor.addChild(root_0, root_1)
 
 
-
                     retval.tree = root_0
-
 
 
                 retval.stop = self.input.LT(-1)
@@ -4771,8 +4600,6 @@ class JavaParser(Parser):
             self.tree = None
 
 
-
-
     # $ANTLR start "interfaceFieldDeclaratorList"
     # Java.g:392:1: interfaceFieldDeclaratorList : interfaceFieldDeclarator ( COMMA interfaceFieldDeclarator )* -> ^( VAR_DECLARATOR_LIST ( interfaceFieldDeclarator )+ ) ;
     def interfaceFieldDeclaratorList(self, ):
@@ -4801,7 +4628,7 @@ class JavaParser(Parser):
 
                 # Java.g:393:5: ( interfaceFieldDeclarator ( COMMA interfaceFieldDeclarator )* -> ^( VAR_DECLARATOR_LIST ( interfaceFieldDeclarator )+ ) )
                 # Java.g:393:9: interfaceFieldDeclarator ( COMMA interfaceFieldDeclarator )*
-                pass 
+                pass
                 self._state.following.append(self.FOLLOW_interfaceFieldDeclarator_in_interfaceFieldDeclaratorList6299)
                 interfaceFieldDeclarator130 = self.interfaceFieldDeclarator()
 
@@ -4819,7 +4646,7 @@ class JavaParser(Parser):
 
                     if alt46 == 1:
                         # Java.g:393:35: COMMA interfaceFieldDeclarator
-                        pass 
+                        pass
                         COMMA131=self.match(self.input, COMMA, self.FOLLOW_COMMA_in_interfaceFieldDeclaratorList6302) 
                         if self._state.backtracking == 0:
                             stream_COMMA.add(COMMA131)
@@ -4870,9 +4697,7 @@ class JavaParser(Parser):
                     self._adaptor.addChild(root_0, root_1)
 
 
-
                     retval.tree = root_0
-
 
 
                 retval.stop = self.input.LT(-1)
@@ -4904,8 +4729,6 @@ class JavaParser(Parser):
             self.tree = None
 
 
-
-
     # $ANTLR start "interfaceFieldDeclarator"
     # Java.g:397:1: interfaceFieldDeclarator : variableDeclaratorId ASSIGN variableInitializer -> ^( VAR_DECLARATOR variableDeclaratorId variableInitializer ) ;
     def interfaceFieldDeclarator(self, ):
@@ -4935,7 +4758,7 @@ class JavaParser(Parser):
 
                 # Java.g:398:5: ( variableDeclaratorId ASSIGN variableInitializer -> ^( VAR_DECLARATOR variableDeclaratorId variableInitializer ) )
                 # Java.g:398:9: variableDeclaratorId ASSIGN variableInitializer
-                pass 
+                pass
                 self._state.following.append(self.FOLLOW_variableDeclaratorId_in_interfaceFieldDeclarator6343)
                 variableDeclaratorId133 = self.variableDeclaratorId()
 
@@ -4981,9 +4804,7 @@ class JavaParser(Parser):
                     self._adaptor.addChild(root_0, root_1)
 
 
-
                     retval.tree = root_0
-
 
 
                 retval.stop = self.input.LT(-1)
@@ -5015,8 +4836,6 @@ class JavaParser(Parser):
             self.tree = None
 
 
-
-
     # $ANTLR start "variableDeclaratorId"
     # Java.g:402:1: variableDeclaratorId : IDENT ( arrayDeclaratorList )? ;
     def variableDeclaratorId(self, ):
@@ -5042,7 +4861,7 @@ class JavaParser(Parser):
 
                 # Java.g:403:5: ( IDENT ( arrayDeclaratorList )? )
                 # Java.g:403:9: IDENT ( arrayDeclaratorList )?
-                pass 
+                pass
                 root_0 = self._adaptor.nil()
 
                 IDENT136=self.match(self.input, IDENT, self.FOLLOW_IDENT_in_variableDeclaratorId6385)
@@ -5059,15 +4878,13 @@ class JavaParser(Parser):
                     alt47 = 1
                 if alt47 == 1:
                     # Java.g:0:0: arrayDeclaratorList
-                    pass 
+                    pass
                     self._state.following.append(self.FOLLOW_arrayDeclaratorList_in_variableDeclaratorId6388)
                     arrayDeclaratorList137 = self.arrayDeclaratorList()
 
                     self._state.following.pop()
                     if self._state.backtracking == 0:
                         self._adaptor.addChild(root_0, arrayDeclaratorList137.tree)
-
-
 
 
 
@@ -5101,8 +4918,6 @@ class JavaParser(Parser):
             self.tree = None
 
 
-
-
     # $ANTLR start "variableInitializer"
     # Java.g:406:1: variableInitializer : ( arrayInitializer | expression );
     def variableInitializer(self, ):
@@ -5115,7 +4930,6 @@ class JavaParser(Parser):
         arrayInitializer138 = None
 
         expression139 = None
-
 
 
         success = False
@@ -5144,7 +4958,7 @@ class JavaParser(Parser):
 
                 if alt48 == 1:
                     # Java.g:407:9: arrayInitializer
-                    pass 
+                    pass
                     root_0 = self._adaptor.nil()
 
                     self._state.following.append(self.FOLLOW_arrayInitializer_in_variableInitializer6408)
@@ -5157,7 +4971,7 @@ class JavaParser(Parser):
 
                 elif alt48 == 2:
                     # Java.g:408:9: expression
-                    pass 
+                    pass
                     root_0 = self._adaptor.nil()
 
                     self._state.following.append(self.FOLLOW_expression_in_variableInitializer6418)
@@ -5197,8 +5011,6 @@ class JavaParser(Parser):
             self.tree = None
 
 
-
-
     # $ANTLR start "arrayDeclarator"
     # Java.g:411:1: arrayDeclarator : LBRACK RBRACK -> ^( ARRAY_DECLARATOR ) ;
     def arrayDeclarator(self, ):
@@ -5226,7 +5038,7 @@ class JavaParser(Parser):
 
                 # Java.g:412:5: ( LBRACK RBRACK -> ^( ARRAY_DECLARATOR ) )
                 # Java.g:412:9: LBRACK RBRACK
-                pass 
+                pass
                 LBRACK140=self.match(self.input, LBRACK, self.FOLLOW_LBRACK_in_arrayDeclarator6437) 
                 if self._state.backtracking == 0:
                     stream_LBRACK.add(LBRACK140)
@@ -5260,9 +5072,7 @@ class JavaParser(Parser):
                     self._adaptor.addChild(root_0, root_1)
 
 
-
                     retval.tree = root_0
-
 
 
                 retval.stop = self.input.LT(-1)
@@ -5294,8 +5104,6 @@ class JavaParser(Parser):
             self.tree = None
 
 
-
-
     # $ANTLR start "arrayDeclaratorList"
     # Java.g:416:1: arrayDeclaratorList : ( arrayDeclarator )+ -> ^( ARRAY_DECLARATOR_LIST ( arrayDeclarator )+ ) ;
     def arrayDeclaratorList(self, ):
@@ -5319,7 +5127,7 @@ class JavaParser(Parser):
 
                 # Java.g:417:5: ( ( arrayDeclarator )+ -> ^( ARRAY_DECLARATOR_LIST ( arrayDeclarator )+ ) )
                 # Java.g:417:9: ( arrayDeclarator )+
-                pass 
+                pass
                 # Java.g:417:9: ( arrayDeclarator )+
                 cnt49 = 0
                 while True: #loop49
@@ -5333,11 +5141,9 @@ class JavaParser(Parser):
                             alt49 = 1
 
 
-
-
                     if alt49 == 1:
                         # Java.g:0:0: arrayDeclarator
-                        pass 
+                        pass
                         self._state.following.append(self.FOLLOW_arrayDeclarator_in_arrayDeclaratorList6473)
                         arrayDeclarator142 = self.arrayDeclarator()
 
@@ -5394,9 +5200,7 @@ class JavaParser(Parser):
                     self._adaptor.addChild(root_0, root_1)
 
 
-
                     retval.tree = root_0
-
 
 
                 retval.stop = self.input.LT(-1)
@@ -5426,8 +5230,6 @@ class JavaParser(Parser):
             super(JavaParser.arrayInitializer_return, self).__init__()
 
             self.tree = None
-
-
 
 
     # $ANTLR start "arrayInitializer"
@@ -5466,7 +5268,7 @@ class JavaParser(Parser):
 
                 # Java.g:422:5: ( LCURLY ( variableInitializer ( COMMA variableInitializer )* ( COMMA )? )? RCURLY -> ^( ARRAY_INITIALIZER[$LCURLY, \"ARRAY_INITIALIZER\"] ( variableInitializer )* ) )
                 # Java.g:422:9: LCURLY ( variableInitializer ( COMMA variableInitializer )* ( COMMA )? )? RCURLY
-                pass 
+                pass
                 LCURLY143=self.match(self.input, LCURLY, self.FOLLOW_LCURLY_in_arrayInitializer6511) 
                 if self._state.backtracking == 0:
                     stream_LCURLY.add(LCURLY143)
@@ -5478,7 +5280,7 @@ class JavaParser(Parser):
                     alt52 = 1
                 if alt52 == 1:
                     # Java.g:422:17: variableInitializer ( COMMA variableInitializer )* ( COMMA )?
-                    pass 
+                    pass
                     self._state.following.append(self.FOLLOW_variableInitializer_in_arrayInitializer6514)
                     variableInitializer144 = self.variableInitializer()
 
@@ -5497,11 +5299,9 @@ class JavaParser(Parser):
                                 alt50 = 1
 
 
-
-
                         if alt50 == 1:
                             # Java.g:422:38: COMMA variableInitializer
-                            pass 
+                            pass
                             COMMA145=self.match(self.input, COMMA, self.FOLLOW_COMMA_in_arrayInitializer6517) 
                             if self._state.backtracking == 0:
                                 stream_COMMA.add(COMMA145)
@@ -5523,12 +5323,10 @@ class JavaParser(Parser):
                         alt51 = 1
                     if alt51 == 1:
                         # Java.g:0:0: COMMA
-                        pass 
+                        pass
                         COMMA147=self.match(self.input, COMMA, self.FOLLOW_COMMA_in_arrayInitializer6523) 
                         if self._state.backtracking == 0:
                             stream_COMMA.add(COMMA147)
-
-
 
 
 
@@ -5570,9 +5368,7 @@ class JavaParser(Parser):
                     self._adaptor.addChild(root_0, root_1)
 
 
-
                     retval.tree = root_0
-
 
 
                 retval.stop = self.input.LT(-1)
@@ -5604,8 +5400,6 @@ class JavaParser(Parser):
             self.tree = None
 
 
-
-
     # $ANTLR start "throwsClause"
     # Java.g:426:1: throwsClause : THROWS qualifiedIdentList -> ^( THROWS_CLAUSE[$THROWS, \"THROWS_CLAUSE\"] qualifiedIdentList ) ;
     def throwsClause(self, ):
@@ -5632,7 +5426,7 @@ class JavaParser(Parser):
 
                 # Java.g:427:5: ( THROWS qualifiedIdentList -> ^( THROWS_CLAUSE[$THROWS, \"THROWS_CLAUSE\"] qualifiedIdentList ) )
                 # Java.g:427:9: THROWS qualifiedIdentList
-                pass 
+                pass
                 THROWS149=self.match(self.input, THROWS, self.FOLLOW_THROWS_in_throwsClause6566) 
                 if self._state.backtracking == 0:
                     stream_THROWS.add(THROWS149)
@@ -5671,9 +5465,7 @@ class JavaParser(Parser):
                     self._adaptor.addChild(root_0, root_1)
 
 
-
                     retval.tree = root_0
-
 
 
                 retval.stop = self.input.LT(-1)
@@ -5705,8 +5497,6 @@ class JavaParser(Parser):
             self.tree = None
 
 
-
-
     # $ANTLR start "modifierList"
     # Java.g:431:1: modifierList : ( modifier )* -> ^( MODIFIER_LIST ( modifier )* ) ;
     def modifierList(self, ):
@@ -5730,7 +5520,7 @@ class JavaParser(Parser):
 
                 # Java.g:432:5: ( ( modifier )* -> ^( MODIFIER_LIST ( modifier )* ) )
                 # Java.g:432:9: ( modifier )*
-                pass 
+                pass
                 # Java.g:432:9: ( modifier )*
                 while True: #loop53
                     alt53 = 2
@@ -5749,7 +5539,7 @@ class JavaParser(Parser):
 
                     if alt53 == 1:
                         # Java.g:0:0: modifier
-                        pass 
+                        pass
                         self._state.following.append(self.FOLLOW_modifier_in_modifierList6605)
                         modifier151 = self.modifier()
 
@@ -5794,9 +5584,7 @@ class JavaParser(Parser):
                     self._adaptor.addChild(root_0, root_1)
 
 
-
                     retval.tree = root_0
-
 
 
                 retval.stop = self.input.LT(-1)
@@ -5826,8 +5614,6 @@ class JavaParser(Parser):
             super(JavaParser.modifier_return, self).__init__()
 
             self.tree = None
-
-
 
 
     # $ANTLR start "modifier"
@@ -5906,7 +5692,7 @@ class JavaParser(Parser):
 
                 if alt54 == 1:
                     # Java.g:437:9: PUBLIC
-                    pass 
+                    pass
                     root_0 = self._adaptor.nil()
 
                     PUBLIC152=self.match(self.input, PUBLIC, self.FOLLOW_PUBLIC_in_modifier6643)
@@ -5916,10 +5702,9 @@ class JavaParser(Parser):
                         self._adaptor.addChild(root_0, PUBLIC152_tree)
 
 
-
                 elif alt54 == 2:
                     # Java.g:438:9: PROTECTED
-                    pass 
+                    pass
                     root_0 = self._adaptor.nil()
 
                     PROTECTED153=self.match(self.input, PROTECTED, self.FOLLOW_PROTECTED_in_modifier6653)
@@ -5929,10 +5714,9 @@ class JavaParser(Parser):
                         self._adaptor.addChild(root_0, PROTECTED153_tree)
 
 
-
                 elif alt54 == 3:
                     # Java.g:439:9: PRIVATE
-                    pass 
+                    pass
                     root_0 = self._adaptor.nil()
 
                     PRIVATE154=self.match(self.input, PRIVATE, self.FOLLOW_PRIVATE_in_modifier6663)
@@ -5942,10 +5726,9 @@ class JavaParser(Parser):
                         self._adaptor.addChild(root_0, PRIVATE154_tree)
 
 
-
                 elif alt54 == 4:
                     # Java.g:440:9: STATIC
-                    pass 
+                    pass
                     root_0 = self._adaptor.nil()
 
                     STATIC155=self.match(self.input, STATIC, self.FOLLOW_STATIC_in_modifier6673)
@@ -5955,10 +5738,9 @@ class JavaParser(Parser):
                         self._adaptor.addChild(root_0, STATIC155_tree)
 
 
-
                 elif alt54 == 5:
                     # Java.g:441:9: ABSTRACT
-                    pass 
+                    pass
                     root_0 = self._adaptor.nil()
 
                     ABSTRACT156=self.match(self.input, ABSTRACT, self.FOLLOW_ABSTRACT_in_modifier6683)
@@ -5968,10 +5750,9 @@ class JavaParser(Parser):
                         self._adaptor.addChild(root_0, ABSTRACT156_tree)
 
 
-
                 elif alt54 == 6:
                     # Java.g:442:9: NATIVE
-                    pass 
+                    pass
                     root_0 = self._adaptor.nil()
 
                     NATIVE157=self.match(self.input, NATIVE, self.FOLLOW_NATIVE_in_modifier6693)
@@ -5981,10 +5762,9 @@ class JavaParser(Parser):
                         self._adaptor.addChild(root_0, NATIVE157_tree)
 
 
-
                 elif alt54 == 7:
                     # Java.g:443:9: SYNCHRONIZED
-                    pass 
+                    pass
                     root_0 = self._adaptor.nil()
 
                     SYNCHRONIZED158=self.match(self.input, SYNCHRONIZED, self.FOLLOW_SYNCHRONIZED_in_modifier6703)
@@ -5994,10 +5774,9 @@ class JavaParser(Parser):
                         self._adaptor.addChild(root_0, SYNCHRONIZED158_tree)
 
 
-
                 elif alt54 == 8:
                     # Java.g:444:9: TRANSIENT
-                    pass 
+                    pass
                     root_0 = self._adaptor.nil()
 
                     TRANSIENT159=self.match(self.input, TRANSIENT, self.FOLLOW_TRANSIENT_in_modifier6713)
@@ -6007,10 +5786,9 @@ class JavaParser(Parser):
                         self._adaptor.addChild(root_0, TRANSIENT159_tree)
 
 
-
                 elif alt54 == 9:
                     # Java.g:445:9: VOLATILE
-                    pass 
+                    pass
                     root_0 = self._adaptor.nil()
 
                     VOLATILE160=self.match(self.input, VOLATILE, self.FOLLOW_VOLATILE_in_modifier6723)
@@ -6020,10 +5798,9 @@ class JavaParser(Parser):
                         self._adaptor.addChild(root_0, VOLATILE160_tree)
 
 
-
                 elif alt54 == 10:
                     # Java.g:446:9: STRICTFP
-                    pass 
+                    pass
                     root_0 = self._adaptor.nil()
 
                     STRICTFP161=self.match(self.input, STRICTFP, self.FOLLOW_STRICTFP_in_modifier6733)
@@ -6033,10 +5810,9 @@ class JavaParser(Parser):
                         self._adaptor.addChild(root_0, STRICTFP161_tree)
 
 
-
                 elif alt54 == 11:
                     # Java.g:447:9: localModifier
-                    pass 
+                    pass
                     root_0 = self._adaptor.nil()
 
                     self._state.following.append(self.FOLLOW_localModifier_in_modifier6743)
@@ -6076,8 +5852,6 @@ class JavaParser(Parser):
             self.tree = None
 
 
-
-
     # $ANTLR start "localModifierList"
     # Java.g:450:1: localModifierList : ( localModifier )* -> ^( LOCAL_MODIFIER_LIST ( localModifier )* ) ;
     def localModifierList(self, ):
@@ -6101,7 +5875,7 @@ class JavaParser(Parser):
 
                 # Java.g:451:5: ( ( localModifier )* -> ^( LOCAL_MODIFIER_LIST ( localModifier )* ) )
                 # Java.g:451:9: ( localModifier )*
-                pass 
+                pass
                 # Java.g:451:9: ( localModifier )*
                 while True: #loop55
                     alt55 = 2
@@ -6113,7 +5887,7 @@ class JavaParser(Parser):
 
                     if alt55 == 1:
                         # Java.g:0:0: localModifier
-                        pass 
+                        pass
                         self._state.following.append(self.FOLLOW_localModifier_in_localModifierList6762)
                         localModifier163 = self.localModifier()
 
@@ -6158,9 +5932,7 @@ class JavaParser(Parser):
                     self._adaptor.addChild(root_0, root_1)
 
 
-
                     retval.tree = root_0
-
 
 
                 retval.stop = self.input.LT(-1)
@@ -6190,8 +5962,6 @@ class JavaParser(Parser):
             super(JavaParser.localModifier_return, self).__init__()
 
             self.tree = None
-
-
 
 
     # $ANTLR start "localModifier"
@@ -6235,7 +6005,7 @@ class JavaParser(Parser):
 
                 if alt56 == 1:
                     # Java.g:456:9: FINAL
-                    pass 
+                    pass
                     root_0 = self._adaptor.nil()
 
                     FINAL164=self.match(self.input, FINAL, self.FOLLOW_FINAL_in_localModifier6799)
@@ -6245,10 +6015,9 @@ class JavaParser(Parser):
                         self._adaptor.addChild(root_0, FINAL164_tree)
 
 
-
                 elif alt56 == 2:
                     # Java.g:457:9: annotation
-                    pass 
+                    pass
                     root_0 = self._adaptor.nil()
 
                     self._state.following.append(self.FOLLOW_annotation_in_localModifier6809)
@@ -6288,8 +6057,6 @@ class JavaParser(Parser):
             self.tree = None
 
 
-
-
     # $ANTLR start "type"
     # Java.g:460:1: type : ( simpleType | objectType );
     def type(self, ):
@@ -6302,7 +6069,6 @@ class JavaParser(Parser):
         simpleType166 = None
 
         objectType167 = None
-
 
 
         success = False
@@ -6331,7 +6097,7 @@ class JavaParser(Parser):
 
                 if alt57 == 1:
                     # Java.g:461:9: simpleType
-                    pass 
+                    pass
                     root_0 = self._adaptor.nil()
 
                     self._state.following.append(self.FOLLOW_simpleType_in_type6828)
@@ -6344,7 +6110,7 @@ class JavaParser(Parser):
 
                 elif alt57 == 2:
                     # Java.g:462:9: objectType
-                    pass 
+                    pass
                     root_0 = self._adaptor.nil()
 
                     self._state.following.append(self.FOLLOW_objectType_in_type6838)
@@ -6384,8 +6150,6 @@ class JavaParser(Parser):
             self.tree = None
 
 
-
-
     # $ANTLR start "simpleType"
     # Java.g:465:1: simpleType : primitiveType ( arrayDeclaratorList )? -> ^( TYPE primitiveType ( arrayDeclaratorList )? ) ;
     def simpleType(self, ):
@@ -6412,7 +6176,7 @@ class JavaParser(Parser):
 
                 # Java.g:466:5: ( primitiveType ( arrayDeclaratorList )? -> ^( TYPE primitiveType ( arrayDeclaratorList )? ) )
                 # Java.g:466:9: primitiveType ( arrayDeclaratorList )?
-                pass 
+                pass
                 self._state.following.append(self.FOLLOW_primitiveType_in_simpleType6858)
                 primitiveType168 = self.primitiveType()
 
@@ -6433,15 +6197,13 @@ class JavaParser(Parser):
                             alt58 = 1
                 if alt58 == 1:
                     # Java.g:0:0: arrayDeclaratorList
-                    pass 
+                    pass
                     self._state.following.append(self.FOLLOW_arrayDeclaratorList_in_simpleType6860)
                     arrayDeclaratorList169 = self.arrayDeclaratorList()
 
                     self._state.following.pop()
                     if self._state.backtracking == 0:
                         stream_arrayDeclaratorList.add(arrayDeclaratorList169.tree)
-
-
 
 
                 # AST Rewrite
@@ -6478,9 +6240,7 @@ class JavaParser(Parser):
                     self._adaptor.addChild(root_0, root_1)
 
 
-
                     retval.tree = root_0
-
 
 
                 retval.stop = self.input.LT(-1)
@@ -6512,8 +6272,6 @@ class JavaParser(Parser):
             self.tree = None
 
 
-
-
     # $ANTLR start "objectType"
     # Java.g:470:1: objectType : qualifiedTypeIdent ( arrayDeclaratorList )? -> ^( TYPE qualifiedTypeIdent ( arrayDeclaratorList )? ) ;
     def objectType(self, ):
@@ -6540,7 +6298,7 @@ class JavaParser(Parser):
 
                 # Java.g:471:5: ( qualifiedTypeIdent ( arrayDeclaratorList )? -> ^( TYPE qualifiedTypeIdent ( arrayDeclaratorList )? ) )
                 # Java.g:471:9: qualifiedTypeIdent ( arrayDeclaratorList )?
-                pass 
+                pass
                 self._state.following.append(self.FOLLOW_qualifiedTypeIdent_in_objectType6901)
                 qualifiedTypeIdent170 = self.qualifiedTypeIdent()
 
@@ -6558,15 +6316,13 @@ class JavaParser(Parser):
                         alt59 = 1
                 if alt59 == 1:
                     # Java.g:0:0: arrayDeclaratorList
-                    pass 
+                    pass
                     self._state.following.append(self.FOLLOW_arrayDeclaratorList_in_objectType6903)
                     arrayDeclaratorList171 = self.arrayDeclaratorList()
 
                     self._state.following.pop()
                     if self._state.backtracking == 0:
                         stream_arrayDeclaratorList.add(arrayDeclaratorList171.tree)
-
-
 
 
                 # AST Rewrite
@@ -6603,9 +6359,7 @@ class JavaParser(Parser):
                     self._adaptor.addChild(root_0, root_1)
 
 
-
                     retval.tree = root_0
-
 
 
                 retval.stop = self.input.LT(-1)
@@ -6637,8 +6391,6 @@ class JavaParser(Parser):
             self.tree = None
 
 
-
-
     # $ANTLR start "objectTypeSimplified"
     # Java.g:475:1: objectTypeSimplified : qualifiedTypeIdentSimplified ( arrayDeclaratorList )? -> ^( TYPE qualifiedTypeIdentSimplified ( arrayDeclaratorList )? ) ;
     def objectTypeSimplified(self, ):
@@ -6665,7 +6417,7 @@ class JavaParser(Parser):
 
                 # Java.g:476:5: ( qualifiedTypeIdentSimplified ( arrayDeclaratorList )? -> ^( TYPE qualifiedTypeIdentSimplified ( arrayDeclaratorList )? ) )
                 # Java.g:476:9: qualifiedTypeIdentSimplified ( arrayDeclaratorList )?
-                pass 
+                pass
                 self._state.following.append(self.FOLLOW_qualifiedTypeIdentSimplified_in_objectTypeSimplified6943)
                 qualifiedTypeIdentSimplified172 = self.qualifiedTypeIdentSimplified()
 
@@ -6680,15 +6432,13 @@ class JavaParser(Parser):
                     alt60 = 1
                 if alt60 == 1:
                     # Java.g:0:0: arrayDeclaratorList
-                    pass 
+                    pass
                     self._state.following.append(self.FOLLOW_arrayDeclaratorList_in_objectTypeSimplified6945)
                     arrayDeclaratorList173 = self.arrayDeclaratorList()
 
                     self._state.following.pop()
                     if self._state.backtracking == 0:
                         stream_arrayDeclaratorList.add(arrayDeclaratorList173.tree)
-
-
 
 
                 # AST Rewrite
@@ -6725,9 +6475,7 @@ class JavaParser(Parser):
                     self._adaptor.addChild(root_0, root_1)
 
 
-
                     retval.tree = root_0
-
 
 
                 retval.stop = self.input.LT(-1)
@@ -6759,8 +6507,6 @@ class JavaParser(Parser):
             self.tree = None
 
 
-
-
     # $ANTLR start "qualifiedTypeIdent"
     # Java.g:480:1: qualifiedTypeIdent : typeIdent ( DOT typeIdent )* -> ^( QUALIFIED_TYPE_IDENT ( typeIdent )+ ) ;
     def qualifiedTypeIdent(self, ):
@@ -6789,7 +6535,7 @@ class JavaParser(Parser):
 
                 # Java.g:481:5: ( typeIdent ( DOT typeIdent )* -> ^( QUALIFIED_TYPE_IDENT ( typeIdent )+ ) )
                 # Java.g:481:9: typeIdent ( DOT typeIdent )*
-                pass 
+                pass
                 self._state.following.append(self.FOLLOW_typeIdent_in_qualifiedTypeIdent6985)
                 typeIdent174 = self.typeIdent()
 
@@ -6808,11 +6554,9 @@ class JavaParser(Parser):
                             alt61 = 1
 
 
-
-
                     if alt61 == 1:
                         # Java.g:481:20: DOT typeIdent
-                        pass 
+                        pass
                         DOT175=self.match(self.input, DOT, self.FOLLOW_DOT_in_qualifiedTypeIdent6988) 
                         if self._state.backtracking == 0:
                             stream_DOT.add(DOT175)
@@ -6863,9 +6607,7 @@ class JavaParser(Parser):
                     self._adaptor.addChild(root_0, root_1)
 
 
-
                     retval.tree = root_0
-
 
 
                 retval.stop = self.input.LT(-1)
@@ -6897,8 +6639,6 @@ class JavaParser(Parser):
             self.tree = None
 
 
-
-
     # $ANTLR start "qualifiedTypeIdentSimplified"
     # Java.g:485:1: qualifiedTypeIdentSimplified : typeIdentSimplified ( DOT typeIdentSimplified )* -> ^( QUALIFIED_TYPE_IDENT ( typeIdentSimplified )+ ) ;
     def qualifiedTypeIdentSimplified(self, ):
@@ -6927,7 +6667,7 @@ class JavaParser(Parser):
 
                 # Java.g:486:5: ( typeIdentSimplified ( DOT typeIdentSimplified )* -> ^( QUALIFIED_TYPE_IDENT ( typeIdentSimplified )+ ) )
                 # Java.g:486:9: typeIdentSimplified ( DOT typeIdentSimplified )*
-                pass 
+                pass
                 self._state.following.append(self.FOLLOW_typeIdentSimplified_in_qualifiedTypeIdentSimplified7029)
                 typeIdentSimplified177 = self.typeIdentSimplified()
 
@@ -6945,7 +6685,7 @@ class JavaParser(Parser):
 
                     if alt62 == 1:
                         # Java.g:486:30: DOT typeIdentSimplified
-                        pass 
+                        pass
                         DOT178=self.match(self.input, DOT, self.FOLLOW_DOT_in_qualifiedTypeIdentSimplified7032) 
                         if self._state.backtracking == 0:
                             stream_DOT.add(DOT178)
@@ -6996,9 +6736,7 @@ class JavaParser(Parser):
                     self._adaptor.addChild(root_0, root_1)
 
 
-
                     retval.tree = root_0
-
 
 
                 retval.stop = self.input.LT(-1)
@@ -7030,8 +6768,6 @@ class JavaParser(Parser):
             self.tree = None
 
 
-
-
     # $ANTLR start "typeIdent"
     # Java.g:490:1: typeIdent : IDENT ( genericTypeArgumentList )? ;
     def typeIdent(self, ):
@@ -7057,7 +6793,7 @@ class JavaParser(Parser):
 
                 # Java.g:491:5: ( IDENT ( genericTypeArgumentList )? )
                 # Java.g:491:9: IDENT ( genericTypeArgumentList )?
-                pass 
+                pass
                 root_0 = self._adaptor.nil()
 
                 IDENT180=self.match(self.input, IDENT, self.FOLLOW_IDENT_in_typeIdent7073)
@@ -7074,15 +6810,13 @@ class JavaParser(Parser):
                     alt63 = 1
                 if alt63 == 1:
                     # Java.g:0:0: genericTypeArgumentList
-                    pass 
+                    pass
                     self._state.following.append(self.FOLLOW_genericTypeArgumentList_in_typeIdent7076)
                     genericTypeArgumentList181 = self.genericTypeArgumentList()
 
                     self._state.following.pop()
                     if self._state.backtracking == 0:
                         self._adaptor.addChild(root_0, genericTypeArgumentList181.tree)
-
-
 
 
 
@@ -7116,8 +6850,6 @@ class JavaParser(Parser):
             self.tree = None
 
 
-
-
     # $ANTLR start "typeIdentSimplified"
     # Java.g:494:1: typeIdentSimplified : IDENT ( genericTypeArgumentListSimplified )? ;
     def typeIdentSimplified(self, ):
@@ -7143,7 +6875,7 @@ class JavaParser(Parser):
 
                 # Java.g:495:5: ( IDENT ( genericTypeArgumentListSimplified )? )
                 # Java.g:495:9: IDENT ( genericTypeArgumentListSimplified )?
-                pass 
+                pass
                 root_0 = self._adaptor.nil()
 
                 IDENT182=self.match(self.input, IDENT, self.FOLLOW_IDENT_in_typeIdentSimplified7096)
@@ -7160,15 +6892,13 @@ class JavaParser(Parser):
                     alt64 = 1
                 if alt64 == 1:
                     # Java.g:0:0: genericTypeArgumentListSimplified
-                    pass 
+                    pass
                     self._state.following.append(self.FOLLOW_genericTypeArgumentListSimplified_in_typeIdentSimplified7099)
                     genericTypeArgumentListSimplified183 = self.genericTypeArgumentListSimplified()
 
                     self._state.following.pop()
                     if self._state.backtracking == 0:
                         self._adaptor.addChild(root_0, genericTypeArgumentListSimplified183.tree)
-
-
 
 
 
@@ -7202,8 +6932,6 @@ class JavaParser(Parser):
             self.tree = None
 
 
-
-
     # $ANTLR start "primitiveType"
     # Java.g:498:1: primitiveType : ( BOOLEAN | CHAR | BYTE | SHORT | INT | LONG | FLOAT | DOUBLE );
     def primitiveType(self, ):
@@ -7227,7 +6955,7 @@ class JavaParser(Parser):
 
                 # Java.g:499:5: ( BOOLEAN | CHAR | BYTE | SHORT | INT | LONG | FLOAT | DOUBLE )
                 # Java.g:
-                pass 
+                pass
                 root_0 = self._adaptor.nil()
 
                 set184 = self.input.LT(1)
@@ -7243,8 +6971,6 @@ class JavaParser(Parser):
 
                     mse = MismatchedSetException(None, self.input)
                     raise mse
-
-
 
 
 
@@ -7275,8 +7001,6 @@ class JavaParser(Parser):
             super(JavaParser.genericTypeArgumentList_return, self).__init__()
 
             self.tree = None
-
-
 
 
     # $ANTLR start "genericTypeArgumentList"
@@ -7313,7 +7037,7 @@ class JavaParser(Parser):
 
                 # Java.g:510:5: ( LESS_THAN genericTypeArgument ( COMMA genericTypeArgument )* genericTypeListClosing -> ^( GENERIC_TYPE_ARG_LIST[$LESS_THAN, \"GENERIC_TYPE_ARG_LIST\"] ( genericTypeArgument )+ ) )
                 # Java.g:510:9: LESS_THAN genericTypeArgument ( COMMA genericTypeArgument )* genericTypeListClosing
-                pass 
+                pass
                 LESS_THAN185=self.match(self.input, LESS_THAN, self.FOLLOW_LESS_THAN_in_genericTypeArgumentList7208) 
                 if self._state.backtracking == 0:
                     stream_LESS_THAN.add(LESS_THAN185)
@@ -7335,11 +7059,9 @@ class JavaParser(Parser):
                             alt65 = 1
 
 
-
-
                     if alt65 == 1:
                         # Java.g:510:40: COMMA genericTypeArgument
-                        pass 
+                        pass
                         COMMA187=self.match(self.input, COMMA, self.FOLLOW_COMMA_in_genericTypeArgumentList7213) 
                         if self._state.backtracking == 0:
                             stream_COMMA.add(COMMA187)
@@ -7396,9 +7118,7 @@ class JavaParser(Parser):
                     self._adaptor.addChild(root_0, root_1)
 
 
-
                     retval.tree = root_0
-
 
 
                 retval.stop = self.input.LT(-1)
@@ -7428,8 +7148,6 @@ class JavaParser(Parser):
             super(JavaParser.genericTypeArgument_return, self).__init__()
 
             self.tree = None
-
-
 
 
     # $ANTLR start "genericTypeArgument"
@@ -7476,7 +7194,7 @@ class JavaParser(Parser):
 
                 if alt67 == 1:
                     # Java.g:515:9: type
-                    pass 
+                    pass
                     root_0 = self._adaptor.nil()
 
                     self._state.following.append(self.FOLLOW_type_in_genericTypeArgument7257)
@@ -7489,7 +7207,7 @@ class JavaParser(Parser):
 
                 elif alt67 == 2:
                     # Java.g:516:9: QUESTION ( genericWildcardBoundType )?
-                    pass 
+                    pass
                     QUESTION191=self.match(self.input, QUESTION, self.FOLLOW_QUESTION_in_genericTypeArgument7267) 
                     if self._state.backtracking == 0:
                         stream_QUESTION.add(QUESTION191)
@@ -7517,15 +7235,13 @@ class JavaParser(Parser):
                             alt66 = 1
                     if alt66 == 1:
                         # Java.g:0:0: genericWildcardBoundType
-                        pass 
+                        pass
                         self._state.following.append(self.FOLLOW_genericWildcardBoundType_in_genericTypeArgument7269)
                         genericWildcardBoundType192 = self.genericWildcardBoundType()
 
                         self._state.following.pop()
                         if self._state.backtracking == 0:
                             stream_genericWildcardBoundType.add(genericWildcardBoundType192.tree)
-
-
 
 
                     # AST Rewrite
@@ -7561,7 +7277,6 @@ class JavaParser(Parser):
                         self._adaptor.addChild(root_0, root_1)
 
 
-
                         retval.tree = root_0
 
 
@@ -7594,8 +7309,6 @@ class JavaParser(Parser):
             self.tree = None
 
 
-
-
     # $ANTLR start "genericWildcardBoundType"
     # Java.g:520:1: genericWildcardBoundType : ( EXTENDS | SUPER ) type ;
     def genericWildcardBoundType(self, ):
@@ -7621,7 +7334,7 @@ class JavaParser(Parser):
 
                 # Java.g:521:5: ( ( EXTENDS | SUPER ) type )
                 # Java.g:521:9: ( EXTENDS | SUPER ) type
-                pass 
+                pass
                 root_0 = self._adaptor.nil()
 
                 set193 = self.input.LT(1)
@@ -7646,7 +7359,6 @@ class JavaParser(Parser):
                 self._state.following.pop()
                 if self._state.backtracking == 0:
                     self._adaptor.addChild(root_0, type194.tree)
-
 
 
                 retval.stop = self.input.LT(-1)
@@ -7676,8 +7388,6 @@ class JavaParser(Parser):
             super(JavaParser.genericTypeArgumentListSimplified_return, self).__init__()
 
             self.tree = None
-
-
 
 
     # $ANTLR start "genericTypeArgumentListSimplified"
@@ -7714,7 +7424,7 @@ class JavaParser(Parser):
 
                 # Java.g:525:5: ( LESS_THAN genericTypeArgumentSimplified ( COMMA genericTypeArgumentSimplified )* genericTypeListClosing -> ^( GENERIC_TYPE_ARG_LIST[$LESS_THAN, \"GENERIC_TYPE_ARG_LIST\"] ( genericTypeArgumentSimplified )+ ) )
                 # Java.g:525:9: LESS_THAN genericTypeArgumentSimplified ( COMMA genericTypeArgumentSimplified )* genericTypeListClosing
-                pass 
+                pass
                 LESS_THAN195=self.match(self.input, LESS_THAN, self.FOLLOW_LESS_THAN_in_genericTypeArgumentListSimplified7335) 
                 if self._state.backtracking == 0:
                     stream_LESS_THAN.add(LESS_THAN195)
@@ -7735,7 +7445,7 @@ class JavaParser(Parser):
 
                     if alt68 == 1:
                         # Java.g:525:50: COMMA genericTypeArgumentSimplified
-                        pass 
+                        pass
                         COMMA197=self.match(self.input, COMMA, self.FOLLOW_COMMA_in_genericTypeArgumentListSimplified7340) 
                         if self._state.backtracking == 0:
                             stream_COMMA.add(COMMA197)
@@ -7792,9 +7502,7 @@ class JavaParser(Parser):
                     self._adaptor.addChild(root_0, root_1)
 
 
-
                     retval.tree = root_0
-
 
 
                 retval.stop = self.input.LT(-1)
@@ -7824,8 +7532,6 @@ class JavaParser(Parser):
             super(JavaParser.genericTypeArgumentSimplified_return, self).__init__()
 
             self.tree = None
-
-
 
 
     # $ANTLR start "genericTypeArgumentSimplified"
@@ -7869,7 +7575,7 @@ class JavaParser(Parser):
 
                 if alt69 == 1:
                     # Java.g:530:9: type
-                    pass 
+                    pass
                     root_0 = self._adaptor.nil()
 
                     self._state.following.append(self.FOLLOW_type_in_genericTypeArgumentSimplified7384)
@@ -7882,7 +7588,7 @@ class JavaParser(Parser):
 
                 elif alt69 == 2:
                     # Java.g:531:9: QUESTION
-                    pass 
+                    pass
                     root_0 = self._adaptor.nil()
 
                     QUESTION201=self.match(self.input, QUESTION, self.FOLLOW_QUESTION_in_genericTypeArgumentSimplified7394)
@@ -7890,7 +7596,6 @@ class JavaParser(Parser):
 
                         QUESTION201_tree = self._adaptor.createWithPayload(QUESTION201)
                         self._adaptor.addChild(root_0, QUESTION201_tree)
-
 
 
                 retval.stop = self.input.LT(-1)
@@ -7922,8 +7627,6 @@ class JavaParser(Parser):
             self.tree = None
 
 
-
-
     # $ANTLR start "qualifiedIdentList"
     # Java.g:534:1: qualifiedIdentList : qualifiedIdentifier ( COMMA qualifiedIdentifier )* ;
     def qualifiedIdentList(self, ):
@@ -7951,7 +7654,7 @@ class JavaParser(Parser):
 
                 # Java.g:535:5: ( qualifiedIdentifier ( COMMA qualifiedIdentifier )* )
                 # Java.g:535:9: qualifiedIdentifier ( COMMA qualifiedIdentifier )*
-                pass 
+                pass
                 root_0 = self._adaptor.nil()
 
                 self._state.following.append(self.FOLLOW_qualifiedIdentifier_in_qualifiedIdentList7413)
@@ -7971,7 +7674,7 @@ class JavaParser(Parser):
 
                     if alt70 == 1:
                         # Java.g:535:30: COMMA qualifiedIdentifier
-                        pass 
+                        pass
                         COMMA203=self.match(self.input, COMMA, self.FOLLOW_COMMA_in_qualifiedIdentList7416)
                         self._state.following.append(self.FOLLOW_qualifiedIdentifier_in_qualifiedIdentList7419)
                         qualifiedIdentifier204 = self.qualifiedIdentifier()
@@ -7983,7 +7686,6 @@ class JavaParser(Parser):
 
                     else:
                         break #loop70
-
 
 
                 retval.stop = self.input.LT(-1)
@@ -8013,8 +7715,6 @@ class JavaParser(Parser):
             super(JavaParser.formalParameterList_return, self).__init__()
 
             self.tree = None
-
-
 
 
     # $ANTLR start "formalParameterList"
@@ -8058,7 +7758,7 @@ class JavaParser(Parser):
 
                 # Java.g:539:5: ( LPAREN ( formalParameterStandardDecl ( COMMA formalParameterStandardDecl )* ( COMMA formalParameterVarArgDecl )? -> ^( FORMAL_PARAM_LIST[$LPAREN, \"FORMAL_PARAM_LIST\"] ( formalParameterStandardDecl )+ ( formalParameterVarArgDecl )? ) | formalParameterVarArgDecl -> ^( FORMAL_PARAM_LIST[$LPAREN, \"FORMAL_PARAM_LIST\"] formalParameterVarArgDecl ) | -> ^( FORMAL_PARAM_LIST[$LPAREN, \"FORMAL_PARAM_LIST\"] ) ) RPAREN )
                 # Java.g:539:9: LPAREN ( formalParameterStandardDecl ( COMMA formalParameterStandardDecl )* ( COMMA formalParameterVarArgDecl )? -> ^( FORMAL_PARAM_LIST[$LPAREN, \"FORMAL_PARAM_LIST\"] ( formalParameterStandardDecl )+ ( formalParameterVarArgDecl )? ) | formalParameterVarArgDecl -> ^( FORMAL_PARAM_LIST[$LPAREN, \"FORMAL_PARAM_LIST\"] formalParameterVarArgDecl ) | -> ^( FORMAL_PARAM_LIST[$LPAREN, \"FORMAL_PARAM_LIST\"] ) ) RPAREN
-                pass 
+                pass
                 LPAREN205=self.match(self.input, LPAREN, self.FOLLOW_LPAREN_in_formalParameterList7440) 
                 if self._state.backtracking == 0:
                     stream_LPAREN.add(LPAREN205)
@@ -8137,7 +7837,7 @@ class JavaParser(Parser):
 
                 if alt73 == 1:
                     # Java.g:541:13: formalParameterStandardDecl ( COMMA formalParameterStandardDecl )* ( COMMA formalParameterVarArgDecl )?
-                    pass 
+                    pass
                     self._state.following.append(self.FOLLOW_formalParameterStandardDecl_in_formalParameterList7467)
                     formalParameterStandardDecl206 = self.formalParameterStandardDecl()
 
@@ -8156,11 +7856,9 @@ class JavaParser(Parser):
                                 alt71 = 1
 
 
-
-
                         if alt71 == 1:
                             # Java.g:541:42: COMMA formalParameterStandardDecl
-                            pass 
+                            pass
                             COMMA207=self.match(self.input, COMMA, self.FOLLOW_COMMA_in_formalParameterList7470) 
                             if self._state.backtracking == 0:
                                 stream_COMMA.add(COMMA207)
@@ -8182,7 +7880,7 @@ class JavaParser(Parser):
                         alt72 = 1
                     if alt72 == 1:
                         # Java.g:541:79: COMMA formalParameterVarArgDecl
-                        pass 
+                        pass
                         COMMA209=self.match(self.input, COMMA, self.FOLLOW_COMMA_in_formalParameterList7477) 
                         if self._state.backtracking == 0:
                             stream_COMMA.add(COMMA209)
@@ -8192,8 +7890,6 @@ class JavaParser(Parser):
                         self._state.following.pop()
                         if self._state.backtracking == 0:
                             stream_formalParameterVarArgDecl.add(formalParameterVarArgDecl210.tree)
-
-
 
 
                     # AST Rewrite
@@ -8238,13 +7934,12 @@ class JavaParser(Parser):
                         self._adaptor.addChild(root_0, root_1)
 
 
-
                         retval.tree = root_0
 
 
                 elif alt73 == 2:
                     # Java.g:544:13: formalParameterVarArgDecl
-                    pass 
+                    pass
                     self._state.following.append(self.FOLLOW_formalParameterVarArgDecl_in_formalParameterList7534)
                     formalParameterVarArgDecl211 = self.formalParameterVarArgDecl()
 
@@ -8280,13 +7975,12 @@ class JavaParser(Parser):
                         self._adaptor.addChild(root_0, root_1)
 
 
-
                         retval.tree = root_0
 
 
                 elif alt73 == 3:
                     # Java.g:547:13: 
-                    pass 
+                    pass
                     # AST Rewrite
                     # elements: 
                     # token labels: 
@@ -8313,15 +8007,12 @@ class JavaParser(Parser):
                         self._adaptor.addChild(root_0, root_1)
 
 
-
                         retval.tree = root_0
-
 
 
                 RPAREN212=self.match(self.input, RPAREN, self.FOLLOW_RPAREN_in_formalParameterList7609) 
                 if self._state.backtracking == 0:
                     stream_RPAREN.add(RPAREN212)
-
 
 
                 retval.stop = self.input.LT(-1)
@@ -8353,8 +8044,6 @@ class JavaParser(Parser):
             self.tree = None
 
 
-
-
     # $ANTLR start "formalParameterStandardDecl"
     # Java.g:552:1: formalParameterStandardDecl : localModifierList type variableDeclaratorId -> ^( FORMAL_PARAM_STD_DECL localModifierList type variableDeclaratorId ) ;
     def formalParameterStandardDecl(self, ):
@@ -8384,7 +8073,7 @@ class JavaParser(Parser):
 
                 # Java.g:553:5: ( localModifierList type variableDeclaratorId -> ^( FORMAL_PARAM_STD_DECL localModifierList type variableDeclaratorId ) )
                 # Java.g:553:9: localModifierList type variableDeclaratorId
-                pass 
+                pass
                 self._state.following.append(self.FOLLOW_localModifierList_in_formalParameterStandardDecl7628)
                 localModifierList213 = self.localModifierList()
 
@@ -8434,9 +8123,7 @@ class JavaParser(Parser):
                     self._adaptor.addChild(root_0, root_1)
 
 
-
                     retval.tree = root_0
-
 
 
                 retval.stop = self.input.LT(-1)
@@ -8466,8 +8153,6 @@ class JavaParser(Parser):
             super(JavaParser.formalParameterVarArgDecl_return, self).__init__()
 
             self.tree = None
-
-
 
 
     # $ANTLR start "formalParameterVarArgDecl"
@@ -8502,7 +8187,7 @@ class JavaParser(Parser):
 
                 # Java.g:558:5: ( localModifierList type ELLIPSIS variableDeclaratorId -> ^( FORMAL_PARAM_VARARG_DECL localModifierList type variableDeclaratorId ) )
                 # Java.g:558:9: localModifierList type ELLIPSIS variableDeclaratorId
-                pass 
+                pass
                 self._state.following.append(self.FOLLOW_localModifierList_in_formalParameterVarArgDecl7672)
                 localModifierList216 = self.localModifierList()
 
@@ -8555,9 +8240,7 @@ class JavaParser(Parser):
                     self._adaptor.addChild(root_0, root_1)
 
 
-
                     retval.tree = root_0
-
 
 
                 retval.stop = self.input.LT(-1)
@@ -8589,8 +8272,6 @@ class JavaParser(Parser):
             self.tree = None
 
 
-
-
     # $ANTLR start "qualifiedIdentifier"
     # Java.g:562:1: qualifiedIdentifier : ( IDENT -> IDENT ) ( DOT ident= IDENT -> ^( DOT $qualifiedIdentifier $ident) )* ;
     def qualifiedIdentifier(self, ):
@@ -8620,10 +8301,10 @@ class JavaParser(Parser):
 
                 # Java.g:563:5: ( ( IDENT -> IDENT ) ( DOT ident= IDENT -> ^( DOT $qualifiedIdentifier $ident) )* )
                 # Java.g:563:9: ( IDENT -> IDENT ) ( DOT ident= IDENT -> ^( DOT $qualifiedIdentifier $ident) )*
-                pass 
+                pass
                 # Java.g:563:9: ( IDENT -> IDENT )
                 # Java.g:563:13: IDENT
-                pass 
+                pass
                 IDENT220=self.match(self.input, IDENT, self.FOLLOW_IDENT_in_qualifiedIdentifier7722) 
                 if self._state.backtracking == 0:
                     stream_IDENT.add(IDENT220)
@@ -8650,9 +8331,7 @@ class JavaParser(Parser):
                     self._adaptor.addChild(root_0, stream_IDENT.nextNode())
 
 
-
                     retval.tree = root_0
-
 
 
                 # Java.g:565:9: ( DOT ident= IDENT -> ^( DOT $qualifiedIdentifier $ident) )*
@@ -8672,11 +8351,9 @@ class JavaParser(Parser):
 
 
 
-
-
                     if alt74 == 1:
                         # Java.g:565:13: DOT ident= IDENT
-                        pass 
+                        pass
                         DOT221=self.match(self.input, DOT, self.FOLLOW_DOT_in_qualifiedIdentifier7765) 
                         if self._state.backtracking == 0:
                             stream_DOT.add(DOT221)
@@ -8714,13 +8391,11 @@ class JavaParser(Parser):
                             self._adaptor.addChild(root_0, root_1)
 
 
-
                             retval.tree = root_0
 
 
                     else:
                         break #loop74
-
 
 
                 retval.stop = self.input.LT(-1)
@@ -8752,8 +8427,6 @@ class JavaParser(Parser):
             self.tree = None
 
 
-
-
     # $ANTLR start "annotationList"
     # Java.g:571:1: annotationList : ( annotation )* -> ^( ANNOTATION_LIST ( annotation )* ) ;
     def annotationList(self, ):
@@ -8777,7 +8450,7 @@ class JavaParser(Parser):
 
                 # Java.g:572:5: ( ( annotation )* -> ^( ANNOTATION_LIST ( annotation )* ) )
                 # Java.g:572:9: ( annotation )*
-                pass 
+                pass
                 # Java.g:572:9: ( annotation )*
                 while True: #loop75
                     alt75 = 2
@@ -8795,11 +8468,9 @@ class JavaParser(Parser):
 
 
 
-
-
                     if alt75 == 1:
                         # Java.g:0:0: annotation
-                        pass 
+                        pass
                         self._state.following.append(self.FOLLOW_annotation_in_annotationList7818)
                         annotation222 = self.annotation()
 
@@ -8844,9 +8515,7 @@ class JavaParser(Parser):
                     self._adaptor.addChild(root_0, root_1)
 
 
-
                     retval.tree = root_0
-
 
 
                 retval.stop = self.input.LT(-1)
@@ -8878,8 +8547,6 @@ class JavaParser(Parser):
             self.tree = None
 
 
-
-
     # $ANTLR start "annotation"
     # Java.g:576:1: annotation : AT qualifiedIdentifier ( annotationInit )? ;
     def annotation(self, ):
@@ -8907,7 +8574,7 @@ class JavaParser(Parser):
 
                 # Java.g:577:5: ( AT qualifiedIdentifier ( annotationInit )? )
                 # Java.g:577:9: AT qualifiedIdentifier ( annotationInit )?
-                pass 
+                pass
                 root_0 = self._adaptor.nil()
 
                 AT223=self.match(self.input, AT, self.FOLLOW_AT_in_annotation7856)
@@ -8930,15 +8597,13 @@ class JavaParser(Parser):
                     alt76 = 1
                 if alt76 == 1:
                     # Java.g:0:0: annotationInit
-                    pass 
+                    pass
                     self._state.following.append(self.FOLLOW_annotationInit_in_annotation7861)
                     annotationInit225 = self.annotationInit()
 
                     self._state.following.pop()
                     if self._state.backtracking == 0:
                         self._adaptor.addChild(root_0, annotationInit225.tree)
-
-
 
 
 
@@ -8972,8 +8637,6 @@ class JavaParser(Parser):
             self.tree = None
 
 
-
-
     # $ANTLR start "annotationInit"
     # Java.g:580:1: annotationInit : LPAREN annotationInitializers RPAREN -> ^( ANNOTATION_INIT_BLOCK[$LPAREN, \"ANNOTATION_INIT_BLOCK\"] annotationInitializers ) ;
     def annotationInit(self, ):
@@ -9003,7 +8666,7 @@ class JavaParser(Parser):
 
                 # Java.g:581:5: ( LPAREN annotationInitializers RPAREN -> ^( ANNOTATION_INIT_BLOCK[$LPAREN, \"ANNOTATION_INIT_BLOCK\"] annotationInitializers ) )
                 # Java.g:581:9: LPAREN annotationInitializers RPAREN
-                pass 
+                pass
                 LPAREN226=self.match(self.input, LPAREN, self.FOLLOW_LPAREN_in_annotationInit7881) 
                 if self._state.backtracking == 0:
                     stream_LPAREN.add(LPAREN226)
@@ -9045,9 +8708,7 @@ class JavaParser(Parser):
                     self._adaptor.addChild(root_0, root_1)
 
 
-
                     retval.tree = root_0
-
 
 
                 retval.stop = self.input.LT(-1)
@@ -9077,8 +8738,6 @@ class JavaParser(Parser):
             super(JavaParser.annotationInitializers_return, self).__init__()
 
             self.tree = None
-
-
 
 
     # $ANTLR start "annotationInitializers"
@@ -9141,7 +8800,7 @@ class JavaParser(Parser):
 
                 if alt78 == 1:
                     # Java.g:586:9: annotationInitializer ( COMMA annotationInitializer )*
-                    pass 
+                    pass
                     self._state.following.append(self.FOLLOW_annotationInitializer_in_annotationInitializers7922)
                     annotationInitializer229 = self.annotationInitializer()
 
@@ -9159,7 +8818,7 @@ class JavaParser(Parser):
 
                         if alt77 == 1:
                             # Java.g:586:32: COMMA annotationInitializer
-                            pass 
+                            pass
                             COMMA230=self.match(self.input, COMMA, self.FOLLOW_COMMA_in_annotationInitializers7925) 
                             if self._state.backtracking == 0:
                                 stream_COMMA.add(COMMA230)
@@ -9210,13 +8869,12 @@ class JavaParser(Parser):
                         self._adaptor.addChild(root_0, root_1)
 
 
-
                         retval.tree = root_0
 
 
                 elif alt78 == 2:
                     # Java.g:588:9: annotationElementValue
-                    pass 
+                    pass
                     self._state.following.append(self.FOLLOW_annotationElementValue_in_annotationInitializers7957)
                     annotationElementValue232 = self.annotationElementValue()
 
@@ -9252,7 +8910,6 @@ class JavaParser(Parser):
                         self._adaptor.addChild(root_0, root_1)
 
 
-
                         retval.tree = root_0
 
 
@@ -9285,8 +8942,6 @@ class JavaParser(Parser):
             self.tree = None
 
 
-
-
     # $ANTLR start "annotationInitializer"
     # Java.g:592:1: annotationInitializer : IDENT ASSIGN annotationElementValue ;
     def annotationInitializer(self, ):
@@ -9314,7 +8969,7 @@ class JavaParser(Parser):
 
                 # Java.g:593:5: ( IDENT ASSIGN annotationElementValue )
                 # Java.g:593:9: IDENT ASSIGN annotationElementValue
-                pass 
+                pass
                 root_0 = self._adaptor.nil()
 
                 IDENT233=self.match(self.input, IDENT, self.FOLLOW_IDENT_in_annotationInitializer7994)
@@ -9330,7 +8985,6 @@ class JavaParser(Parser):
                 self._state.following.pop()
                 if self._state.backtracking == 0:
                     self._adaptor.addChild(root_0, annotationElementValue235.tree)
-
 
 
                 retval.stop = self.input.LT(-1)
@@ -9362,8 +9016,6 @@ class JavaParser(Parser):
             self.tree = None
 
 
-
-
     # $ANTLR start "annotationElementValue"
     # Java.g:596:1: annotationElementValue : ( annotationElementValueExpression | annotation | annotationElementValueArrayInitializer );
     def annotationElementValue(self, ):
@@ -9378,7 +9030,6 @@ class JavaParser(Parser):
         annotation237 = None
 
         annotationElementValueArrayInitializer238 = None
-
 
 
         success = False
@@ -9408,7 +9059,7 @@ class JavaParser(Parser):
 
                 if alt79 == 1:
                     # Java.g:597:9: annotationElementValueExpression
-                    pass 
+                    pass
                     root_0 = self._adaptor.nil()
 
                     self._state.following.append(self.FOLLOW_annotationElementValueExpression_in_annotationElementValue8019)
@@ -9421,7 +9072,7 @@ class JavaParser(Parser):
 
                 elif alt79 == 2:
                     # Java.g:598:9: annotation
-                    pass 
+                    pass
                     root_0 = self._adaptor.nil()
 
                     self._state.following.append(self.FOLLOW_annotation_in_annotationElementValue8029)
@@ -9434,7 +9085,7 @@ class JavaParser(Parser):
 
                 elif alt79 == 3:
                     # Java.g:599:9: annotationElementValueArrayInitializer
-                    pass 
+                    pass
                     root_0 = self._adaptor.nil()
 
                     self._state.following.append(self.FOLLOW_annotationElementValueArrayInitializer_in_annotationElementValue8039)
@@ -9474,8 +9125,6 @@ class JavaParser(Parser):
             self.tree = None
 
 
-
-
     # $ANTLR start "annotationElementValueExpression"
     # Java.g:602:1: annotationElementValueExpression : conditionalExpression -> ^( EXPR conditionalExpression ) ;
     def annotationElementValueExpression(self, ):
@@ -9499,7 +9148,7 @@ class JavaParser(Parser):
 
                 # Java.g:603:5: ( conditionalExpression -> ^( EXPR conditionalExpression ) )
                 # Java.g:603:9: conditionalExpression
-                pass 
+                pass
                 self._state.following.append(self.FOLLOW_conditionalExpression_in_annotationElementValueExpression8058)
                 conditionalExpression239 = self.conditionalExpression()
 
@@ -9535,9 +9184,7 @@ class JavaParser(Parser):
                     self._adaptor.addChild(root_0, root_1)
 
 
-
                     retval.tree = root_0
-
 
 
                 retval.stop = self.input.LT(-1)
@@ -9567,8 +9214,6 @@ class JavaParser(Parser):
             super(JavaParser.annotationElementValueArrayInitializer_return, self).__init__()
 
             self.tree = None
-
-
 
 
     # $ANTLR start "annotationElementValueArrayInitializer"
@@ -9607,7 +9252,7 @@ class JavaParser(Parser):
 
                 # Java.g:608:5: ( LCURLY ( annotationElementValue ( COMMA annotationElementValue )* )? ( COMMA )? RCURLY -> ^( ANNOTATION_INIT_ARRAY_ELEMENT[$LCURLY, \"ANNOTATION_ELEM_VALUE_ARRAY_INIT\"] ( annotationElementValue )* ) )
                 # Java.g:608:9: LCURLY ( annotationElementValue ( COMMA annotationElementValue )* )? ( COMMA )? RCURLY
-                pass 
+                pass
                 LCURLY240=self.match(self.input, LCURLY, self.FOLLOW_LCURLY_in_annotationElementValueArrayInitializer8094) 
                 if self._state.backtracking == 0:
                     stream_LCURLY.add(LCURLY240)
@@ -9619,7 +9264,7 @@ class JavaParser(Parser):
                     alt81 = 1
                 if alt81 == 1:
                     # Java.g:608:17: annotationElementValue ( COMMA annotationElementValue )*
-                    pass 
+                    pass
                     self._state.following.append(self.FOLLOW_annotationElementValue_in_annotationElementValueArrayInitializer8097)
                     annotationElementValue241 = self.annotationElementValue()
 
@@ -9638,11 +9283,9 @@ class JavaParser(Parser):
                                 alt80 = 1
 
 
-
-
                         if alt80 == 1:
                             # Java.g:608:41: COMMA annotationElementValue
-                            pass 
+                            pass
                             COMMA242=self.match(self.input, COMMA, self.FOLLOW_COMMA_in_annotationElementValueArrayInitializer8100) 
                             if self._state.backtracking == 0:
                                 stream_COMMA.add(COMMA242)
@@ -9658,7 +9301,6 @@ class JavaParser(Parser):
                             break #loop80
 
 
-
                 # Java.g:608:74: ( COMMA )?
                 alt82 = 2
                 LA82_0 = self.input.LA(1)
@@ -9667,11 +9309,10 @@ class JavaParser(Parser):
                     alt82 = 1
                 if alt82 == 1:
                     # Java.g:608:75: COMMA
-                    pass 
+                    pass
                     COMMA244=self.match(self.input, COMMA, self.FOLLOW_COMMA_in_annotationElementValueArrayInitializer8109) 
                     if self._state.backtracking == 0:
                         stream_COMMA.add(COMMA244)
-
 
 
                 RCURLY245=self.match(self.input, RCURLY, self.FOLLOW_RCURLY_in_annotationElementValueArrayInitializer8113) 
@@ -9711,9 +9352,7 @@ class JavaParser(Parser):
                     self._adaptor.addChild(root_0, root_1)
 
 
-
                     retval.tree = root_0
-
 
 
                 retval.stop = self.input.LT(-1)
@@ -9743,8 +9382,6 @@ class JavaParser(Parser):
             super(JavaParser.annotationTypeDeclaration_return, self).__init__()
 
             self.tree = None
-
-
 
 
     # $ANTLR start "annotationTypeDeclaration"
@@ -9779,7 +9416,7 @@ class JavaParser(Parser):
 
                 # Java.g:613:5: ( AT INTERFACE IDENT annotationBody -> ^( AT IDENT annotationBody ) )
                 # Java.g:613:9: AT INTERFACE IDENT annotationBody
-                pass 
+                pass
                 AT246=self.match(self.input, AT, self.FOLLOW_AT_in_annotationTypeDeclaration8152) 
                 if self._state.backtracking == 0:
                     stream_AT.add(AT246)
@@ -9826,9 +9463,7 @@ class JavaParser(Parser):
                     self._adaptor.addChild(root_0, root_1)
 
 
-
                     retval.tree = root_0
-
 
 
                 retval.stop = self.input.LT(-1)
@@ -9860,8 +9495,6 @@ class JavaParser(Parser):
             self.tree = None
 
 
-
-
     # $ANTLR start "annotationBody"
     # Java.g:617:1: annotationBody : LCURLY ( annotationScopeDeclarations )* RCURLY -> ^( ANNOTATION_TOP_LEVEL_SCOPE[$LCURLY, \"CLASS_TOP_LEVEL_SCOPE\"] ( annotationScopeDeclarations )* ) ;
     def annotationBody(self, ):
@@ -9891,7 +9524,7 @@ class JavaParser(Parser):
 
                 # Java.g:618:5: ( LCURLY ( annotationScopeDeclarations )* RCURLY -> ^( ANNOTATION_TOP_LEVEL_SCOPE[$LCURLY, \"CLASS_TOP_LEVEL_SCOPE\"] ( annotationScopeDeclarations )* ) )
                 # Java.g:618:9: LCURLY ( annotationScopeDeclarations )* RCURLY
-                pass 
+                pass
                 LCURLY250=self.match(self.input, LCURLY, self.FOLLOW_LCURLY_in_annotationBody8197) 
                 if self._state.backtracking == 0:
                     stream_LCURLY.add(LCURLY250)
@@ -9906,7 +9539,7 @@ class JavaParser(Parser):
 
                     if alt83 == 1:
                         # Java.g:0:0: annotationScopeDeclarations
-                        pass 
+                        pass
                         self._state.following.append(self.FOLLOW_annotationScopeDeclarations_in_annotationBody8199)
                         annotationScopeDeclarations251 = self.annotationScopeDeclarations()
 
@@ -9954,9 +9587,7 @@ class JavaParser(Parser):
                     self._adaptor.addChild(root_0, root_1)
 
 
-
                     retval.tree = root_0
-
 
 
                 retval.stop = self.input.LT(-1)
@@ -9986,8 +9617,6 @@ class JavaParser(Parser):
             super(JavaParser.annotationScopeDeclarations_return, self).__init__()
 
             self.tree = None
-
-
 
 
     # $ANTLR start "annotationScopeDeclarations"
@@ -10041,7 +9670,7 @@ class JavaParser(Parser):
                 alt86 = self.dfa86.predict(self.input)
                 if alt86 == 1:
                     # Java.g:623:9: modifierList type ( IDENT LPAREN RPAREN ( annotationDefaultValue )? SEMI -> ^( ANNOTATION_METHOD_DECL modifierList type IDENT ( annotationDefaultValue )? ) | classFieldDeclaratorList SEMI -> ^( VAR_DECLARATION modifierList type classFieldDeclaratorList ) )
-                    pass 
+                    pass
                     self._state.following.append(self.FOLLOW_modifierList_in_annotationScopeDeclarations8240)
                     modifierList253 = self.modifierList()
 
@@ -10083,7 +9712,7 @@ class JavaParser(Parser):
 
                     if alt85 == 1:
                         # Java.g:624:13: IDENT LPAREN RPAREN ( annotationDefaultValue )? SEMI
-                        pass 
+                        pass
                         IDENT255=self.match(self.input, IDENT, self.FOLLOW_IDENT_in_annotationScopeDeclarations8256) 
                         if self._state.backtracking == 0:
                             stream_IDENT.add(IDENT255)
@@ -10101,14 +9730,13 @@ class JavaParser(Parser):
                             alt84 = 1
                         if alt84 == 1:
                             # Java.g:0:0: annotationDefaultValue
-                            pass 
+                            pass
                             self._state.following.append(self.FOLLOW_annotationDefaultValue_in_annotationScopeDeclarations8262)
                             annotationDefaultValue258 = self.annotationDefaultValue()
 
                             self._state.following.pop()
                             if self._state.backtracking == 0:
                                 stream_annotationDefaultValue.add(annotationDefaultValue258.tree)
-
 
 
                         SEMI259=self.match(self.input, SEMI, self.FOLLOW_SEMI_in_annotationScopeDeclarations8265) 
@@ -10151,13 +9779,12 @@ class JavaParser(Parser):
                             self._adaptor.addChild(root_0, root_1)
 
 
-
                             retval.tree = root_0
 
 
                     elif alt85 == 2:
                         # Java.g:626:13: classFieldDeclaratorList SEMI
-                        pass 
+                        pass
                         self._state.following.append(self.FOLLOW_classFieldDeclaratorList_in_annotationScopeDeclarations8307)
                         classFieldDeclaratorList260 = self.classFieldDeclaratorList()
 
@@ -10198,16 +9825,13 @@ class JavaParser(Parser):
                             self._adaptor.addChild(root_0, root_1)
 
 
-
                             retval.tree = root_0
-
-
 
 
 
                 elif alt86 == 2:
                     # Java.g:629:9: typeDeclaration
-                    pass 
+                    pass
                     root_0 = self._adaptor.nil()
 
                     self._state.following.append(self.FOLLOW_typeDeclaration_in_annotationScopeDeclarations8354)
@@ -10247,8 +9871,6 @@ class JavaParser(Parser):
             self.tree = None
 
 
-
-
     # $ANTLR start "annotationDefaultValue"
     # Java.g:632:1: annotationDefaultValue : DEFAULT annotationElementValue ;
     def annotationDefaultValue(self, ):
@@ -10274,7 +9896,7 @@ class JavaParser(Parser):
 
                 # Java.g:633:5: ( DEFAULT annotationElementValue )
                 # Java.g:633:9: DEFAULT annotationElementValue
-                pass 
+                pass
                 root_0 = self._adaptor.nil()
 
                 DEFAULT263=self.match(self.input, DEFAULT, self.FOLLOW_DEFAULT_in_annotationDefaultValue8373)
@@ -10289,7 +9911,6 @@ class JavaParser(Parser):
                 self._state.following.pop()
                 if self._state.backtracking == 0:
                     self._adaptor.addChild(root_0, annotationElementValue264.tree)
-
 
 
                 retval.stop = self.input.LT(-1)
@@ -10321,8 +9942,6 @@ class JavaParser(Parser):
             self.tree = None
 
 
-
-
     # $ANTLR start "block"
     # Java.g:638:1: block : LCURLY ( blockStatement )* RCURLY -> ^( BLOCK_SCOPE[$LCURLY, \"BLOCK_SCOPE\"] ( blockStatement )* ) ;
     def block(self, ):
@@ -10352,7 +9971,7 @@ class JavaParser(Parser):
 
                 # Java.g:639:5: ( LCURLY ( blockStatement )* RCURLY -> ^( BLOCK_SCOPE[$LCURLY, \"BLOCK_SCOPE\"] ( blockStatement )* ) )
                 # Java.g:639:9: LCURLY ( blockStatement )* RCURLY
-                pass 
+                pass
                 LCURLY265=self.match(self.input, LCURLY, self.FOLLOW_LCURLY_in_block8397) 
                 if self._state.backtracking == 0:
                     stream_LCURLY.add(LCURLY265)
@@ -10367,7 +9986,7 @@ class JavaParser(Parser):
 
                     if alt87 == 1:
                         # Java.g:0:0: blockStatement
-                        pass 
+                        pass
                         self._state.following.append(self.FOLLOW_blockStatement_in_block8399)
                         blockStatement266 = self.blockStatement()
 
@@ -10415,9 +10034,7 @@ class JavaParser(Parser):
                     self._adaptor.addChild(root_0, root_1)
 
 
-
                     retval.tree = root_0
-
 
 
                 retval.stop = self.input.LT(-1)
@@ -10447,8 +10064,6 @@ class JavaParser(Parser):
             super(JavaParser.blockStatement_return, self).__init__()
 
             self.tree = None
-
-
 
 
     # $ANTLR start "blockStatement"
@@ -10483,7 +10098,7 @@ class JavaParser(Parser):
                 alt88 = self.dfa88.predict(self.input)
                 if alt88 == 1:
                     # Java.g:644:9: localVariableDeclaration SEMI
-                    pass 
+                    pass
                     root_0 = self._adaptor.nil()
 
                     self._state.following.append(self.FOLLOW_localVariableDeclaration_in_blockStatement8440)
@@ -10497,7 +10112,7 @@ class JavaParser(Parser):
 
                 elif alt88 == 2:
                     # Java.g:645:9: typeDeclaration
-                    pass 
+                    pass
                     root_0 = self._adaptor.nil()
 
                     self._state.following.append(self.FOLLOW_typeDeclaration_in_blockStatement8453)
@@ -10510,7 +10125,7 @@ class JavaParser(Parser):
 
                 elif alt88 == 3:
                     # Java.g:646:9: statement
-                    pass 
+                    pass
                     root_0 = self._adaptor.nil()
 
                     self._state.following.append(self.FOLLOW_statement_in_blockStatement8463)
@@ -10550,8 +10165,6 @@ class JavaParser(Parser):
             self.tree = None
 
 
-
-
     # $ANTLR start "localVariableDeclaration"
     # Java.g:649:1: localVariableDeclaration : localModifierList type classFieldDeclaratorList -> ^( VAR_DECLARATION localModifierList type classFieldDeclaratorList ) ;
     def localVariableDeclaration(self, ):
@@ -10581,7 +10194,7 @@ class JavaParser(Parser):
 
                 # Java.g:650:5: ( localModifierList type classFieldDeclaratorList -> ^( VAR_DECLARATION localModifierList type classFieldDeclaratorList ) )
                 # Java.g:650:9: localModifierList type classFieldDeclaratorList
-                pass 
+                pass
                 self._state.following.append(self.FOLLOW_localModifierList_in_localVariableDeclaration8482)
                 localModifierList272 = self.localModifierList()
 
@@ -10631,9 +10244,7 @@ class JavaParser(Parser):
                     self._adaptor.addChild(root_0, root_1)
 
 
-
                     retval.tree = root_0
-
 
 
                 retval.stop = self.input.LT(-1)
@@ -10663,8 +10274,6 @@ class JavaParser(Parser):
             super(JavaParser.statement_return, self).__init__()
 
             self.tree = None
-
-
 
 
     # $ANTLR start "statement"
@@ -10856,7 +10465,7 @@ class JavaParser(Parser):
                 alt98 = self.dfa98.predict(self.input)
                 if alt98 == 1:
                     # Java.g:656:9: block
-                    pass 
+                    pass
                     root_0 = self._adaptor.nil()
 
                     self._state.following.append(self.FOLLOW_block_in_statement8527)
@@ -10869,7 +10478,7 @@ class JavaParser(Parser):
 
                 elif alt98 == 2:
                     # Java.g:657:9: ASSERT expr1= expression ( COLON expr2= expression SEMI -> ^( ASSERT $expr1 $expr2) | SEMI -> ^( ASSERT $expr1) )
-                    pass 
+                    pass
                     ASSERT276=self.match(self.input, ASSERT, self.FOLLOW_ASSERT_in_statement8537) 
                     if self._state.backtracking == 0:
                         stream_ASSERT.add(ASSERT276)
@@ -10897,7 +10506,7 @@ class JavaParser(Parser):
 
                     if alt89 == 1:
                         # Java.g:658:13: COLON expr2= expression SEMI
-                        pass 
+                        pass
                         COLON277=self.match(self.input, COLON, self.FOLLOW_COLON_in_statement8555) 
                         if self._state.backtracking == 0:
                             stream_COLON.add(COLON277)
@@ -10952,13 +10561,12 @@ class JavaParser(Parser):
                             self._adaptor.addChild(root_0, root_1)
 
 
-
                             retval.tree = root_0
 
 
                     elif alt89 == 2:
                         # Java.g:659:13: SEMI
-                        pass 
+                        pass
                         SEMI279=self.match(self.input, SEMI, self.FOLLOW_SEMI_in_statement8624) 
                         if self._state.backtracking == 0:
                             stream_SEMI.add(SEMI279)
@@ -10997,16 +10605,13 @@ class JavaParser(Parser):
                             self._adaptor.addChild(root_0, root_1)
 
 
-
                             retval.tree = root_0
-
-
 
 
 
                 elif alt98 == 3:
                     # Java.g:661:9: IF parenthesizedExpression ifStat= statement ( ELSE elseStat= statement -> ^( IF parenthesizedExpression $ifStat $elseStat) | -> ^( IF parenthesizedExpression $ifStat) )
-                    pass 
+                    pass
                     IF280=self.match(self.input, IF, self.FOLLOW_IF_in_statement8713) 
                     if self._state.backtracking == 0:
                         stream_IF.add(IF280)
@@ -11053,7 +10658,7 @@ class JavaParser(Parser):
 
                     if alt90 == 1:
                         # Java.g:662:13: ELSE elseStat= statement
-                        pass 
+                        pass
                         ELSE282=self.match(self.input, ELSE, self.FOLLOW_ELSE_in_statement8733) 
                         if self._state.backtracking == 0:
                             stream_ELSE.add(ELSE282)
@@ -11106,13 +10711,12 @@ class JavaParser(Parser):
                             self._adaptor.addChild(root_0, root_1)
 
 
-
                             retval.tree = root_0
 
 
                     elif alt90 == 2:
                         # Java.g:663:77: 
-                        pass 
+                        pass
                         # AST Rewrite
                         # elements: parenthesizedExpression, ifStat, IF
                         # token labels: 
@@ -11148,16 +10752,13 @@ class JavaParser(Parser):
                             self._adaptor.addChild(root_0, root_1)
 
 
-
                             retval.tree = root_0
-
-
 
 
 
                 elif alt98 == 4:
                     # Java.g:665:9: FOR LPAREN ( forInit SEMI forCondition SEMI forUpdater RPAREN statement -> ^( FOR forInit forCondition forUpdater statement ) | localModifierList type IDENT COLON expression RPAREN statement -> ^( FOR_EACH[$FOR, \"FOR_EACH\"] localModifierList type IDENT expression statement ) )
-                    pass 
+                    pass
                     FOR283=self.match(self.input, FOR, self.FOLLOW_FOR_in_statement8900) 
                     if self._state.backtracking == 0:
                         stream_FOR.add(FOR283)
@@ -11169,7 +10770,7 @@ class JavaParser(Parser):
                     alt91 = self.dfa91.predict(self.input)
                     if alt91 == 1:
                         # Java.g:666:13: forInit SEMI forCondition SEMI forUpdater RPAREN statement
-                        pass 
+                        pass
                         self._state.following.append(self.FOLLOW_forInit_in_statement8916)
                         forInit285 = self.forInit()
 
@@ -11235,13 +10836,12 @@ class JavaParser(Parser):
                             self._adaptor.addChild(root_0, root_1)
 
 
-
                             retval.tree = root_0
 
 
                     elif alt91 == 2:
                         # Java.g:667:13: localModifierList type IDENT COLON expression RPAREN statement
-                        pass 
+                        pass
                         self._state.following.append(self.FOLLOW_localModifierList_in_statement8962)
                         localModifierList292 = self.localModifierList()
 
@@ -11308,16 +10908,13 @@ class JavaParser(Parser):
                             self._adaptor.addChild(root_0, root_1)
 
 
-
                             retval.tree = root_0
-
-
 
 
 
                 elif alt98 == 5:
                     # Java.g:670:9: WHILE parenthesizedExpression statement
-                    pass 
+                    pass
                     WHILE299=self.match(self.input, WHILE, self.FOLLOW_WHILE_in_statement9088) 
                     if self._state.backtracking == 0:
                         stream_WHILE.add(WHILE299)
@@ -11363,13 +10960,12 @@ class JavaParser(Parser):
                         self._adaptor.addChild(root_0, root_1)
 
 
-
                         retval.tree = root_0
 
 
                 elif alt98 == 6:
                     # Java.g:671:9: DO statement WHILE parenthesizedExpression SEMI
-                    pass 
+                    pass
                     DO302=self.match(self.input, DO, self.FOLLOW_DO_in_statement9141) 
                     if self._state.backtracking == 0:
                         stream_DO.add(DO302)
@@ -11421,13 +11017,12 @@ class JavaParser(Parser):
                         self._adaptor.addChild(root_0, root_1)
 
 
-
                         retval.tree = root_0
 
 
                 elif alt98 == 7:
                     # Java.g:672:9: TRY block ( catches ( finallyClause )? | finallyClause )
-                    pass 
+                    pass
                     TRY307=self.match(self.input, TRY, self.FOLLOW_TRY_in_statement9190) 
                     if self._state.backtracking == 0:
                         stream_TRY.add(TRY307)
@@ -11455,7 +11050,7 @@ class JavaParser(Parser):
 
                     if alt93 == 1:
                         # Java.g:672:20: catches ( finallyClause )?
-                        pass 
+                        pass
                         self._state.following.append(self.FOLLOW_catches_in_statement9195)
                         catches309 = self.catches()
 
@@ -11470,7 +11065,7 @@ class JavaParser(Parser):
                             alt92 = 1
                         if alt92 == 1:
                             # Java.g:0:0: finallyClause
-                            pass 
+                            pass
                             self._state.following.append(self.FOLLOW_finallyClause_in_statement9197)
                             finallyClause310 = self.finallyClause()
 
@@ -11480,19 +11075,15 @@ class JavaParser(Parser):
 
 
 
-
-
                     elif alt93 == 2:
                         # Java.g:672:45: finallyClause
-                        pass 
+                        pass
                         self._state.following.append(self.FOLLOW_finallyClause_in_statement9202)
                         finallyClause311 = self.finallyClause()
 
                         self._state.following.pop()
                         if self._state.backtracking == 0:
                             stream_finallyClause.add(finallyClause311.tree)
-
-
 
 
                     # AST Rewrite
@@ -11535,13 +11126,12 @@ class JavaParser(Parser):
                         self._adaptor.addChild(root_0, root_1)
 
 
-
                         retval.tree = root_0
 
 
                 elif alt98 == 8:
                     # Java.g:673:9: SWITCH parenthesizedExpression LCURLY ( switchBlockLabels )? RCURLY
-                    pass 
+                    pass
                     SWITCH312=self.match(self.input, SWITCH, self.FOLLOW_SWITCH_in_statement9245) 
                     if self._state.backtracking == 0:
                         stream_SWITCH.add(SWITCH312)
@@ -11567,14 +11157,13 @@ class JavaParser(Parser):
                             alt94 = 1
                     if alt94 == 1:
                         # Java.g:0:0: switchBlockLabels
-                        pass 
+                        pass
                         self._state.following.append(self.FOLLOW_switchBlockLabels_in_statement9251)
                         switchBlockLabels315 = self.switchBlockLabels()
 
                         self._state.following.pop()
                         if self._state.backtracking == 0:
                             stream_switchBlockLabels.add(switchBlockLabels315.tree)
-
 
 
                     RCURLY316=self.match(self.input, RCURLY, self.FOLLOW_RCURLY_in_statement9254) 
@@ -11615,13 +11204,12 @@ class JavaParser(Parser):
                         self._adaptor.addChild(root_0, root_1)
 
 
-
                         retval.tree = root_0
 
 
                 elif alt98 == 9:
                     # Java.g:674:9: SYNCHRONIZED parenthesizedExpression block
-                    pass 
+                    pass
                     SYNCHRONIZED317=self.match(self.input, SYNCHRONIZED, self.FOLLOW_SYNCHRONIZED_in_statement9281) 
                     if self._state.backtracking == 0:
                         stream_SYNCHRONIZED.add(SYNCHRONIZED317)
@@ -11667,13 +11255,12 @@ class JavaParser(Parser):
                         self._adaptor.addChild(root_0, root_1)
 
 
-
                         retval.tree = root_0
 
 
                 elif alt98 == 10:
                     # Java.g:675:9: RETURN ( expression )? SEMI
-                    pass 
+                    pass
                     RETURN320=self.match(self.input, RETURN, self.FOLLOW_RETURN_in_statement9331) 
                     if self._state.backtracking == 0:
                         stream_RETURN.add(RETURN320)
@@ -11685,14 +11272,13 @@ class JavaParser(Parser):
                         alt95 = 1
                     if alt95 == 1:
                         # Java.g:0:0: expression
-                        pass 
+                        pass
                         self._state.following.append(self.FOLLOW_expression_in_statement9333)
                         expression321 = self.expression()
 
                         self._state.following.pop()
                         if self._state.backtracking == 0:
                             stream_expression.add(expression321.tree)
-
 
 
                     SEMI322=self.match(self.input, SEMI, self.FOLLOW_SEMI_in_statement9336) 
@@ -11732,13 +11318,12 @@ class JavaParser(Parser):
                         self._adaptor.addChild(root_0, root_1)
 
 
-
                         retval.tree = root_0
 
 
                 elif alt98 == 11:
                     # Java.g:676:9: THROW expression SEMI
-                    pass 
+                    pass
                     THROW323=self.match(self.input, THROW, self.FOLLOW_THROW_in_statement9400) 
                     if self._state.backtracking == 0:
                         stream_THROW.add(THROW323)
@@ -11780,13 +11365,12 @@ class JavaParser(Parser):
                         self._adaptor.addChild(root_0, root_1)
 
 
-
                         retval.tree = root_0
 
 
                 elif alt98 == 12:
                     # Java.g:677:9: BREAK ( IDENT )? SEMI
-                    pass 
+                    pass
                     BREAK326=self.match(self.input, BREAK, self.FOLLOW_BREAK_in_statement9469) 
                     if self._state.backtracking == 0:
                         stream_BREAK.add(BREAK326)
@@ -11798,11 +11382,10 @@ class JavaParser(Parser):
                         alt96 = 1
                     if alt96 == 1:
                         # Java.g:0:0: IDENT
-                        pass 
+                        pass
                         IDENT327=self.match(self.input, IDENT, self.FOLLOW_IDENT_in_statement9471) 
                         if self._state.backtracking == 0:
                             stream_IDENT.add(IDENT327)
-
 
 
                     SEMI328=self.match(self.input, SEMI, self.FOLLOW_SEMI_in_statement9474) 
@@ -11842,13 +11425,12 @@ class JavaParser(Parser):
                         self._adaptor.addChild(root_0, root_1)
 
 
-
                         retval.tree = root_0
 
 
                 elif alt98 == 13:
                     # Java.g:678:9: CONTINUE ( IDENT )? SEMI
-                    pass 
+                    pass
                     CONTINUE329=self.match(self.input, CONTINUE, self.FOLLOW_CONTINUE_in_statement9544) 
                     if self._state.backtracking == 0:
                         stream_CONTINUE.add(CONTINUE329)
@@ -11860,11 +11442,10 @@ class JavaParser(Parser):
                         alt97 = 1
                     if alt97 == 1:
                         # Java.g:0:0: IDENT
-                        pass 
+                        pass
                         IDENT330=self.match(self.input, IDENT, self.FOLLOW_IDENT_in_statement9546) 
                         if self._state.backtracking == 0:
                             stream_IDENT.add(IDENT330)
-
 
 
                     SEMI331=self.match(self.input, SEMI, self.FOLLOW_SEMI_in_statement9549) 
@@ -11904,13 +11485,12 @@ class JavaParser(Parser):
                         self._adaptor.addChild(root_0, root_1)
 
 
-
                         retval.tree = root_0
 
 
                 elif alt98 == 14:
                     # Java.g:679:9: IDENT COLON statement
-                    pass 
+                    pass
                     IDENT332=self.match(self.input, IDENT, self.FOLLOW_IDENT_in_statement9616) 
                     if self._state.backtracking == 0:
                         stream_IDENT.add(IDENT332)
@@ -11953,13 +11533,12 @@ class JavaParser(Parser):
                         self._adaptor.addChild(root_0, root_1)
 
 
-
                         retval.tree = root_0
 
 
                 elif alt98 == 15:
                     # Java.g:680:9: expression SEMI
-                    pass 
+                    pass
                     root_0 = self._adaptor.nil()
 
                     self._state.following.append(self.FOLLOW_expression_in_statement9687)
@@ -11973,7 +11552,7 @@ class JavaParser(Parser):
 
                 elif alt98 == 16:
                     # Java.g:681:9: SEMI
-                    pass 
+                    pass
                     root_0 = self._adaptor.nil()
 
                     SEMI337=self.match(self.input, SEMI, self.FOLLOW_SEMI_in_statement9700)
@@ -11981,7 +11560,6 @@ class JavaParser(Parser):
 
                         SEMI337_tree = self._adaptor.createWithPayload(SEMI337)
                         self._adaptor.addChild(root_0, SEMI337_tree)
-
 
 
                 retval.stop = self.input.LT(-1)
@@ -12013,8 +11591,6 @@ class JavaParser(Parser):
             self.tree = None
 
 
-
-
     # $ANTLR start "catches"
     # Java.g:684:1: catches : ( catchClause )+ -> ^( CATCH_CLAUSE_LIST ( catchClause )+ ) ;
     def catches(self, ):
@@ -12038,7 +11614,7 @@ class JavaParser(Parser):
 
                 # Java.g:685:5: ( ( catchClause )+ -> ^( CATCH_CLAUSE_LIST ( catchClause )+ ) )
                 # Java.g:685:9: ( catchClause )+
-                pass 
+                pass
                 # Java.g:685:9: ( catchClause )+
                 cnt99 = 0
                 while True: #loop99
@@ -12051,7 +11627,7 @@ class JavaParser(Parser):
 
                     if alt99 == 1:
                         # Java.g:0:0: catchClause
-                        pass 
+                        pass
                         self._state.following.append(self.FOLLOW_catchClause_in_catches9720)
                         catchClause338 = self.catchClause()
 
@@ -12108,9 +11684,7 @@ class JavaParser(Parser):
                     self._adaptor.addChild(root_0, root_1)
 
 
-
                     retval.tree = root_0
-
 
 
                 retval.stop = self.input.LT(-1)
@@ -12140,8 +11714,6 @@ class JavaParser(Parser):
             super(JavaParser.catchClause_return, self).__init__()
 
             self.tree = None
-
-
 
 
     # $ANTLR start "catchClause"
@@ -12175,7 +11747,7 @@ class JavaParser(Parser):
 
                 # Java.g:690:5: ( CATCH LPAREN formalParameterStandardDecl RPAREN block )
                 # Java.g:690:9: CATCH LPAREN formalParameterStandardDecl RPAREN block
-                pass 
+                pass
                 root_0 = self._adaptor.nil()
 
                 CATCH339=self.match(self.input, CATCH, self.FOLLOW_CATCH_in_catchClause9758)
@@ -12198,7 +11770,6 @@ class JavaParser(Parser):
                 self._state.following.pop()
                 if self._state.backtracking == 0:
                     self._adaptor.addChild(root_0, block343.tree)
-
 
 
                 retval.stop = self.input.LT(-1)
@@ -12230,8 +11801,6 @@ class JavaParser(Parser):
             self.tree = None
 
 
-
-
     # $ANTLR start "finallyClause"
     # Java.g:693:1: finallyClause : FINALLY block -> block ;
     def finallyClause(self, ):
@@ -12258,7 +11827,7 @@ class JavaParser(Parser):
 
                 # Java.g:694:5: ( FINALLY block -> block )
                 # Java.g:694:9: FINALLY block
-                pass 
+                pass
                 FINALLY344=self.match(self.input, FINALLY, self.FOLLOW_FINALLY_in_finallyClause9788) 
                 if self._state.backtracking == 0:
                     stream_FINALLY.add(FINALLY344)
@@ -12291,9 +11860,7 @@ class JavaParser(Parser):
                     self._adaptor.addChild(root_0, stream_block.nextTree())
 
 
-
                     retval.tree = root_0
-
 
 
                 retval.stop = self.input.LT(-1)
@@ -12325,8 +11892,6 @@ class JavaParser(Parser):
             self.tree = None
 
 
-
-
     # $ANTLR start "switchBlockLabels"
     # Java.g:698:1: switchBlockLabels : (c0= switchCaseLabels )? ( switchDefaultLabel )? (c1= switchCaseLabels )? -> ^( SWITCH_BLOCK_LABEL_LIST ( $c0)? ( switchDefaultLabel )? ( $c1)? ) ;
     def switchBlockLabels(self, ):
@@ -12355,7 +11920,7 @@ class JavaParser(Parser):
 
                 # Java.g:702:5: ( (c0= switchCaseLabels )? ( switchDefaultLabel )? (c1= switchCaseLabels )? -> ^( SWITCH_BLOCK_LABEL_LIST ( $c0)? ( switchDefaultLabel )? ( $c1)? ) )
                 # Java.g:702:9: (c0= switchCaseLabels )? ( switchDefaultLabel )? (c1= switchCaseLabels )?
-                pass 
+                pass
                 # Java.g:702:11: (c0= switchCaseLabels )?
                 alt100 = 2
                 LA100 = self.input.LA(1)
@@ -12381,14 +11946,13 @@ class JavaParser(Parser):
                         alt100 = 1
                 if alt100 == 1:
                     # Java.g:0:0: c0= switchCaseLabels
-                    pass 
+                    pass
                     self._state.following.append(self.FOLLOW_switchCaseLabels_in_switchBlockLabels9839)
                     c0 = self.switchCaseLabels()
 
                     self._state.following.pop()
                     if self._state.backtracking == 0:
                         stream_switchCaseLabels.add(c0.tree)
-
 
 
                 # Java.g:702:30: ( switchDefaultLabel )?
@@ -12399,14 +11963,13 @@ class JavaParser(Parser):
                     alt101 = 1
                 if alt101 == 1:
                     # Java.g:0:0: switchDefaultLabel
-                    pass 
+                    pass
                     self._state.following.append(self.FOLLOW_switchDefaultLabel_in_switchBlockLabels9842)
                     switchDefaultLabel346 = self.switchDefaultLabel()
 
                     self._state.following.pop()
                     if self._state.backtracking == 0:
                         stream_switchDefaultLabel.add(switchDefaultLabel346.tree)
-
 
 
                 # Java.g:702:52: (c1= switchCaseLabels )?
@@ -12426,15 +11989,13 @@ class JavaParser(Parser):
                         alt102 = 1
                 if alt102 == 1:
                     # Java.g:0:0: c1= switchCaseLabels
-                    pass 
+                    pass
                     self._state.following.append(self.FOLLOW_switchCaseLabels_in_switchBlockLabels9847)
                     c1 = self.switchCaseLabels()
 
                     self._state.following.pop()
                     if self._state.backtracking == 0:
                         stream_switchCaseLabels.add(c1.tree)
-
-
 
 
                 # AST Rewrite
@@ -12494,9 +12055,7 @@ class JavaParser(Parser):
                     self._adaptor.addChild(root_0, root_1)
 
 
-
                     retval.tree = root_0
-
 
 
                 retval.stop = self.input.LT(-1)
@@ -12528,8 +12087,6 @@ class JavaParser(Parser):
             self.tree = None
 
 
-
-
     # $ANTLR start "switchCaseLabels"
     # Java.g:706:1: switchCaseLabels : ( switchCaseLabel )* ;
     def switchCaseLabels(self, ):
@@ -12542,7 +12099,6 @@ class JavaParser(Parser):
         switchCaseLabel347 = None
 
 
-
         success = False
         try:
             try:
@@ -12553,7 +12109,7 @@ class JavaParser(Parser):
 
                 # Java.g:707:5: ( ( switchCaseLabel )* )
                 # Java.g:707:9: ( switchCaseLabel )*
-                pass 
+                pass
                 root_0 = self._adaptor.nil()
 
                 # Java.g:707:9: ( switchCaseLabel )*
@@ -12568,11 +12124,9 @@ class JavaParser(Parser):
                             alt103 = 1
 
 
-
-
                     if alt103 == 1:
                         # Java.g:0:0: switchCaseLabel
-                        pass 
+                        pass
                         self._state.following.append(self.FOLLOW_switchCaseLabel_in_switchCaseLabels9893)
                         switchCaseLabel347 = self.switchCaseLabel()
 
@@ -12583,7 +12137,6 @@ class JavaParser(Parser):
 
                     else:
                         break #loop103
-
 
 
                 retval.stop = self.input.LT(-1)
@@ -12615,8 +12168,6 @@ class JavaParser(Parser):
             self.tree = None
 
 
-
-
     # $ANTLR start "switchCaseLabel"
     # Java.g:710:1: switchCaseLabel : CASE expression COLON ( blockStatement )* ;
     def switchCaseLabel(self, ):
@@ -12646,7 +12197,7 @@ class JavaParser(Parser):
 
                 # Java.g:711:5: ( CASE expression COLON ( blockStatement )* )
                 # Java.g:711:9: CASE expression COLON ( blockStatement )*
-                pass 
+                pass
                 root_0 = self._adaptor.nil()
 
                 CASE348=self.match(self.input, CASE, self.FOLLOW_CASE_in_switchCaseLabel9913)
@@ -12673,7 +12224,7 @@ class JavaParser(Parser):
 
                     if alt104 == 1:
                         # Java.g:0:0: blockStatement
-                        pass 
+                        pass
                         self._state.following.append(self.FOLLOW_blockStatement_in_switchCaseLabel9921)
                         blockStatement351 = self.blockStatement()
 
@@ -12684,7 +12235,6 @@ class JavaParser(Parser):
 
                     else:
                         break #loop104
-
 
 
                 retval.stop = self.input.LT(-1)
@@ -12716,8 +12266,6 @@ class JavaParser(Parser):
             self.tree = None
 
 
-
-
     # $ANTLR start "switchDefaultLabel"
     # Java.g:714:1: switchDefaultLabel : DEFAULT COLON ( blockStatement )* ;
     def switchDefaultLabel(self, ):
@@ -12745,7 +12293,7 @@ class JavaParser(Parser):
 
                 # Java.g:715:5: ( DEFAULT COLON ( blockStatement )* )
                 # Java.g:715:9: DEFAULT COLON ( blockStatement )*
-                pass 
+                pass
                 root_0 = self._adaptor.nil()
 
                 DEFAULT352=self.match(self.input, DEFAULT, self.FOLLOW_DEFAULT_in_switchDefaultLabel9941)
@@ -12766,7 +12314,7 @@ class JavaParser(Parser):
 
                     if alt105 == 1:
                         # Java.g:0:0: blockStatement
-                        pass 
+                        pass
                         self._state.following.append(self.FOLLOW_blockStatement_in_switchDefaultLabel9947)
                         blockStatement354 = self.blockStatement()
 
@@ -12777,7 +12325,6 @@ class JavaParser(Parser):
 
                     else:
                         break #loop105
-
 
 
                 retval.stop = self.input.LT(-1)
@@ -12809,8 +12356,6 @@ class JavaParser(Parser):
             self.tree = None
 
 
-
-
     # $ANTLR start "forInit"
     # Java.g:718:1: forInit : ( localVariableDeclaration -> ^( FOR_INIT localVariableDeclaration ) | expressionList -> ^( FOR_INIT expressionList ) | -> ^( FOR_INIT ) );
     def forInit(self, ):
@@ -12840,7 +12385,7 @@ class JavaParser(Parser):
                 alt106 = self.dfa106.predict(self.input)
                 if alt106 == 1:
                     # Java.g:719:9: localVariableDeclaration
-                    pass 
+                    pass
                     self._state.following.append(self.FOLLOW_localVariableDeclaration_in_forInit9967)
                     localVariableDeclaration355 = self.localVariableDeclaration()
 
@@ -12876,13 +12421,12 @@ class JavaParser(Parser):
                         self._adaptor.addChild(root_0, root_1)
 
 
-
                         retval.tree = root_0
 
 
                 elif alt106 == 2:
                     # Java.g:720:9: expressionList
-                    pass 
+                    pass
                     self._state.following.append(self.FOLLOW_expressionList_in_forInit9989)
                     expressionList356 = self.expressionList()
 
@@ -12918,13 +12462,12 @@ class JavaParser(Parser):
                         self._adaptor.addChild(root_0, root_1)
 
 
-
                         retval.tree = root_0
 
 
                 elif alt106 == 3:
                     # Java.g:721:37: 
-                    pass 
+                    pass
                     # AST Rewrite
                     # elements: 
                     # token labels: 
@@ -12949,7 +12492,6 @@ class JavaParser(Parser):
                         root_1 = self._adaptor.becomeRoot(self._adaptor.createFromType(FOR_INIT, "FOR_INIT"), root_1)
 
                         self._adaptor.addChild(root_0, root_1)
-
 
 
                         retval.tree = root_0
@@ -12984,8 +12526,6 @@ class JavaParser(Parser):
             self.tree = None
 
 
-
-
     # $ANTLR start "forCondition"
     # Java.g:724:1: forCondition : ( expression )? -> ^( FOR_CONDITION ( expression )? ) ;
     def forCondition(self, ):
@@ -13009,7 +12549,7 @@ class JavaParser(Parser):
 
                 # Java.g:725:5: ( ( expression )? -> ^( FOR_CONDITION ( expression )? ) )
                 # Java.g:725:9: ( expression )?
-                pass 
+                pass
                 # Java.g:725:9: ( expression )?
                 alt107 = 2
                 LA107_0 = self.input.LA(1)
@@ -13018,15 +12558,13 @@ class JavaParser(Parser):
                     alt107 = 1
                 if alt107 == 1:
                     # Java.g:0:0: expression
-                    pass 
+                    pass
                     self._state.following.append(self.FOLLOW_expression_in_forCondition10073)
                     expression357 = self.expression()
 
                     self._state.following.pop()
                     if self._state.backtracking == 0:
                         stream_expression.add(expression357.tree)
-
-
 
 
                 # AST Rewrite
@@ -13062,9 +12600,7 @@ class JavaParser(Parser):
                     self._adaptor.addChild(root_0, root_1)
 
 
-
                     retval.tree = root_0
-
 
 
                 retval.stop = self.input.LT(-1)
@@ -13096,8 +12632,6 @@ class JavaParser(Parser):
             self.tree = None
 
 
-
-
     # $ANTLR start "forUpdater"
     # Java.g:729:1: forUpdater : ( expressionList )? -> ^( FOR_UPDATE ( expressionList )? ) ;
     def forUpdater(self, ):
@@ -13121,7 +12655,7 @@ class JavaParser(Parser):
 
                 # Java.g:730:5: ( ( expressionList )? -> ^( FOR_UPDATE ( expressionList )? ) )
                 # Java.g:730:9: ( expressionList )?
-                pass 
+                pass
                 # Java.g:730:9: ( expressionList )?
                 alt108 = 2
                 LA108_0 = self.input.LA(1)
@@ -13130,15 +12664,13 @@ class JavaParser(Parser):
                     alt108 = 1
                 if alt108 == 1:
                     # Java.g:0:0: expressionList
-                    pass 
+                    pass
                     self._state.following.append(self.FOLLOW_expressionList_in_forUpdater10111)
                     expressionList358 = self.expressionList()
 
                     self._state.following.pop()
                     if self._state.backtracking == 0:
                         stream_expressionList.add(expressionList358.tree)
-
-
 
 
                 # AST Rewrite
@@ -13174,9 +12706,7 @@ class JavaParser(Parser):
                     self._adaptor.addChild(root_0, root_1)
 
 
-
                     retval.tree = root_0
-
 
 
                 retval.stop = self.input.LT(-1)
@@ -13208,8 +12738,6 @@ class JavaParser(Parser):
             self.tree = None
 
 
-
-
     # $ANTLR start "parenthesizedExpression"
     # Java.g:736:1: parenthesizedExpression : LPAREN expression RPAREN -> ^( PARENTESIZED_EXPR[$LPAREN, \"PARENTESIZED_EXPR\"] expression ) ;
     def parenthesizedExpression(self, ):
@@ -13239,7 +12767,7 @@ class JavaParser(Parser):
 
                 # Java.g:737:5: ( LPAREN expression RPAREN -> ^( PARENTESIZED_EXPR[$LPAREN, \"PARENTESIZED_EXPR\"] expression ) )
                 # Java.g:737:9: LPAREN expression RPAREN
-                pass 
+                pass
                 LPAREN359=self.match(self.input, LPAREN, self.FOLLOW_LPAREN_in_parenthesizedExpression10151) 
                 if self._state.backtracking == 0:
                     stream_LPAREN.add(LPAREN359)
@@ -13281,9 +12809,7 @@ class JavaParser(Parser):
                     self._adaptor.addChild(root_0, root_1)
 
 
-
                     retval.tree = root_0
-
 
 
                 retval.stop = self.input.LT(-1)
@@ -13315,8 +12841,6 @@ class JavaParser(Parser):
             self.tree = None
 
 
-
-
     # $ANTLR start "expressionList"
     # Java.g:741:1: expressionList : expression ( COMMA expression )* ;
     def expressionList(self, ):
@@ -13344,7 +12868,7 @@ class JavaParser(Parser):
 
                 # Java.g:742:5: ( expression ( COMMA expression )* )
                 # Java.g:742:9: expression ( COMMA expression )*
-                pass 
+                pass
                 root_0 = self._adaptor.nil()
 
                 self._state.following.append(self.FOLLOW_expression_in_expressionList10192)
@@ -13364,7 +12888,7 @@ class JavaParser(Parser):
 
                     if alt109 == 1:
                         # Java.g:742:21: COMMA expression
-                        pass 
+                        pass
                         COMMA363=self.match(self.input, COMMA, self.FOLLOW_COMMA_in_expressionList10195)
                         self._state.following.append(self.FOLLOW_expression_in_expressionList10198)
                         expression364 = self.expression()
@@ -13376,7 +12900,6 @@ class JavaParser(Parser):
 
                     else:
                         break #loop109
-
 
 
                 retval.stop = self.input.LT(-1)
@@ -13408,8 +12931,6 @@ class JavaParser(Parser):
             self.tree = None
 
 
-
-
     # $ANTLR start "expression"
     # Java.g:745:1: expression : assignmentExpression -> ^( EXPR assignmentExpression ) ;
     def expression(self, ):
@@ -13433,7 +12954,7 @@ class JavaParser(Parser):
 
                 # Java.g:746:5: ( assignmentExpression -> ^( EXPR assignmentExpression ) )
                 # Java.g:746:9: assignmentExpression
-                pass 
+                pass
                 self._state.following.append(self.FOLLOW_assignmentExpression_in_expression10219)
                 assignmentExpression365 = self.assignmentExpression()
 
@@ -13469,9 +12990,7 @@ class JavaParser(Parser):
                     self._adaptor.addChild(root_0, root_1)
 
 
-
                     retval.tree = root_0
-
 
 
                 retval.stop = self.input.LT(-1)
@@ -13501,8 +13020,6 @@ class JavaParser(Parser):
             super(JavaParser.assignmentExpression_return, self).__init__()
 
             self.tree = None
-
-
 
 
     # $ANTLR start "assignmentExpression"
@@ -13554,7 +13071,7 @@ class JavaParser(Parser):
 
                 # Java.g:751:5: ( conditionalExpression ( ( ASSIGN | PLUS_ASSIGN | MINUS_ASSIGN | STAR_ASSIGN | DIV_ASSIGN | AND_ASSIGN | OR_ASSIGN | XOR_ASSIGN | MOD_ASSIGN | SHIFT_LEFT_ASSIGN | SHIFT_RIGHT_ASSIGN | BIT_SHIFT_RIGHT_ASSIGN ) assignmentExpression )? )
                 # Java.g:751:9: conditionalExpression ( ( ASSIGN | PLUS_ASSIGN | MINUS_ASSIGN | STAR_ASSIGN | DIV_ASSIGN | AND_ASSIGN | OR_ASSIGN | XOR_ASSIGN | MOD_ASSIGN | SHIFT_LEFT_ASSIGN | SHIFT_RIGHT_ASSIGN | BIT_SHIFT_RIGHT_ASSIGN ) assignmentExpression )?
-                pass 
+                pass
                 root_0 = self._adaptor.nil()
 
                 self._state.following.append(self.FOLLOW_conditionalExpression_in_assignmentExpression10255)
@@ -13571,7 +13088,7 @@ class JavaParser(Parser):
                     alt111 = 1
                 if alt111 == 1:
                     # Java.g:752:13: ( ASSIGN | PLUS_ASSIGN | MINUS_ASSIGN | STAR_ASSIGN | DIV_ASSIGN | AND_ASSIGN | OR_ASSIGN | XOR_ASSIGN | MOD_ASSIGN | SHIFT_LEFT_ASSIGN | SHIFT_RIGHT_ASSIGN | BIT_SHIFT_RIGHT_ASSIGN ) assignmentExpression
-                    pass 
+                    pass
                     # Java.g:752:13: ( ASSIGN | PLUS_ASSIGN | MINUS_ASSIGN | STAR_ASSIGN | DIV_ASSIGN | AND_ASSIGN | OR_ASSIGN | XOR_ASSIGN | MOD_ASSIGN | SHIFT_LEFT_ASSIGN | SHIFT_RIGHT_ASSIGN | BIT_SHIFT_RIGHT_ASSIGN )
                     alt110 = 12
                     LA110 = self.input.LA(1)
@@ -13609,7 +13126,7 @@ class JavaParser(Parser):
 
                     if alt110 == 1:
                         # Java.g:752:17: ASSIGN
-                        pass 
+                        pass
                         ASSIGN367=self.match(self.input, ASSIGN, self.FOLLOW_ASSIGN_in_assignmentExpression10273)
                         if self._state.backtracking == 0:
 
@@ -13617,10 +13134,9 @@ class JavaParser(Parser):
                             root_0 = self._adaptor.becomeRoot(ASSIGN367_tree, root_0)
 
 
-
                     elif alt110 == 2:
                         # Java.g:753:17: PLUS_ASSIGN
-                        pass 
+                        pass
                         PLUS_ASSIGN368=self.match(self.input, PLUS_ASSIGN, self.FOLLOW_PLUS_ASSIGN_in_assignmentExpression10292)
                         if self._state.backtracking == 0:
 
@@ -13628,10 +13144,9 @@ class JavaParser(Parser):
                             root_0 = self._adaptor.becomeRoot(PLUS_ASSIGN368_tree, root_0)
 
 
-
                     elif alt110 == 3:
                         # Java.g:754:17: MINUS_ASSIGN
-                        pass 
+                        pass
                         MINUS_ASSIGN369=self.match(self.input, MINUS_ASSIGN, self.FOLLOW_MINUS_ASSIGN_in_assignmentExpression10311)
                         if self._state.backtracking == 0:
 
@@ -13639,10 +13154,9 @@ class JavaParser(Parser):
                             root_0 = self._adaptor.becomeRoot(MINUS_ASSIGN369_tree, root_0)
 
 
-
                     elif alt110 == 4:
                         # Java.g:755:17: STAR_ASSIGN
-                        pass 
+                        pass
                         STAR_ASSIGN370=self.match(self.input, STAR_ASSIGN, self.FOLLOW_STAR_ASSIGN_in_assignmentExpression10330)
                         if self._state.backtracking == 0:
 
@@ -13650,10 +13164,9 @@ class JavaParser(Parser):
                             root_0 = self._adaptor.becomeRoot(STAR_ASSIGN370_tree, root_0)
 
 
-
                     elif alt110 == 5:
                         # Java.g:756:17: DIV_ASSIGN
-                        pass 
+                        pass
                         DIV_ASSIGN371=self.match(self.input, DIV_ASSIGN, self.FOLLOW_DIV_ASSIGN_in_assignmentExpression10349)
                         if self._state.backtracking == 0:
 
@@ -13661,10 +13174,9 @@ class JavaParser(Parser):
                             root_0 = self._adaptor.becomeRoot(DIV_ASSIGN371_tree, root_0)
 
 
-
                     elif alt110 == 6:
                         # Java.g:757:17: AND_ASSIGN
-                        pass 
+                        pass
                         AND_ASSIGN372=self.match(self.input, AND_ASSIGN, self.FOLLOW_AND_ASSIGN_in_assignmentExpression10368)
                         if self._state.backtracking == 0:
 
@@ -13672,10 +13184,9 @@ class JavaParser(Parser):
                             root_0 = self._adaptor.becomeRoot(AND_ASSIGN372_tree, root_0)
 
 
-
                     elif alt110 == 7:
                         # Java.g:758:17: OR_ASSIGN
-                        pass 
+                        pass
                         OR_ASSIGN373=self.match(self.input, OR_ASSIGN, self.FOLLOW_OR_ASSIGN_in_assignmentExpression10387)
                         if self._state.backtracking == 0:
 
@@ -13683,10 +13194,9 @@ class JavaParser(Parser):
                             root_0 = self._adaptor.becomeRoot(OR_ASSIGN373_tree, root_0)
 
 
-
                     elif alt110 == 8:
                         # Java.g:759:17: XOR_ASSIGN
-                        pass 
+                        pass
                         XOR_ASSIGN374=self.match(self.input, XOR_ASSIGN, self.FOLLOW_XOR_ASSIGN_in_assignmentExpression10406)
                         if self._state.backtracking == 0:
 
@@ -13694,10 +13204,9 @@ class JavaParser(Parser):
                             root_0 = self._adaptor.becomeRoot(XOR_ASSIGN374_tree, root_0)
 
 
-
                     elif alt110 == 9:
                         # Java.g:760:17: MOD_ASSIGN
-                        pass 
+                        pass
                         MOD_ASSIGN375=self.match(self.input, MOD_ASSIGN, self.FOLLOW_MOD_ASSIGN_in_assignmentExpression10425)
                         if self._state.backtracking == 0:
 
@@ -13705,10 +13214,9 @@ class JavaParser(Parser):
                             root_0 = self._adaptor.becomeRoot(MOD_ASSIGN375_tree, root_0)
 
 
-
                     elif alt110 == 10:
                         # Java.g:761:17: SHIFT_LEFT_ASSIGN
-                        pass 
+                        pass
                         SHIFT_LEFT_ASSIGN376=self.match(self.input, SHIFT_LEFT_ASSIGN, self.FOLLOW_SHIFT_LEFT_ASSIGN_in_assignmentExpression10444)
                         if self._state.backtracking == 0:
 
@@ -13716,10 +13224,9 @@ class JavaParser(Parser):
                             root_0 = self._adaptor.becomeRoot(SHIFT_LEFT_ASSIGN376_tree, root_0)
 
 
-
                     elif alt110 == 11:
                         # Java.g:762:17: SHIFT_RIGHT_ASSIGN
-                        pass 
+                        pass
                         SHIFT_RIGHT_ASSIGN377=self.match(self.input, SHIFT_RIGHT_ASSIGN, self.FOLLOW_SHIFT_RIGHT_ASSIGN_in_assignmentExpression10463)
                         if self._state.backtracking == 0:
 
@@ -13727,17 +13234,14 @@ class JavaParser(Parser):
                             root_0 = self._adaptor.becomeRoot(SHIFT_RIGHT_ASSIGN377_tree, root_0)
 
 
-
                     elif alt110 == 12:
                         # Java.g:763:17: BIT_SHIFT_RIGHT_ASSIGN
-                        pass 
+                        pass
                         BIT_SHIFT_RIGHT_ASSIGN378=self.match(self.input, BIT_SHIFT_RIGHT_ASSIGN, self.FOLLOW_BIT_SHIFT_RIGHT_ASSIGN_in_assignmentExpression10482)
                         if self._state.backtracking == 0:
 
                             BIT_SHIFT_RIGHT_ASSIGN378_tree = self._adaptor.createWithPayload(BIT_SHIFT_RIGHT_ASSIGN378)
                             root_0 = self._adaptor.becomeRoot(BIT_SHIFT_RIGHT_ASSIGN378_tree, root_0)
-
-
 
 
                     self._state.following.append(self.FOLLOW_assignmentExpression_in_assignmentExpression10503)
@@ -13746,8 +13250,6 @@ class JavaParser(Parser):
                     self._state.following.pop()
                     if self._state.backtracking == 0:
                         self._adaptor.addChild(root_0, assignmentExpression379.tree)
-
-
 
 
 
@@ -13781,8 +13283,6 @@ class JavaParser(Parser):
             self.tree = None
 
 
-
-
     # $ANTLR start "conditionalExpression"
     # Java.g:768:1: conditionalExpression : logicalOrExpression ( QUESTION assignmentExpression COLON conditionalExpression )? ;
     def conditionalExpression(self, ):
@@ -13814,7 +13314,7 @@ class JavaParser(Parser):
 
                 # Java.g:769:5: ( logicalOrExpression ( QUESTION assignmentExpression COLON conditionalExpression )? )
                 # Java.g:769:9: logicalOrExpression ( QUESTION assignmentExpression COLON conditionalExpression )?
-                pass 
+                pass
                 root_0 = self._adaptor.nil()
 
                 self._state.following.append(self.FOLLOW_logicalOrExpression_in_conditionalExpression10524)
@@ -13831,7 +13331,7 @@ class JavaParser(Parser):
                     alt112 = 1
                 if alt112 == 1:
                     # Java.g:769:30: QUESTION assignmentExpression COLON conditionalExpression
-                    pass 
+                    pass
                     QUESTION381=self.match(self.input, QUESTION, self.FOLLOW_QUESTION_in_conditionalExpression10527)
                     if self._state.backtracking == 0:
 
@@ -13851,8 +13351,6 @@ class JavaParser(Parser):
                     self._state.following.pop()
                     if self._state.backtracking == 0:
                         self._adaptor.addChild(root_0, conditionalExpression384.tree)
-
-
 
 
 
@@ -13886,8 +13384,6 @@ class JavaParser(Parser):
             self.tree = None
 
 
-
-
     # $ANTLR start "logicalOrExpression"
     # Java.g:772:1: logicalOrExpression : logicalAndExpression ( LOGICAL_OR logicalAndExpression )* ;
     def logicalOrExpression(self, ):
@@ -13915,7 +13411,7 @@ class JavaParser(Parser):
 
                 # Java.g:773:5: ( logicalAndExpression ( LOGICAL_OR logicalAndExpression )* )
                 # Java.g:773:9: logicalAndExpression ( LOGICAL_OR logicalAndExpression )*
-                pass 
+                pass
                 root_0 = self._adaptor.nil()
 
                 self._state.following.append(self.FOLLOW_logicalAndExpression_in_logicalOrExpression10556)
@@ -13935,7 +13431,7 @@ class JavaParser(Parser):
 
                     if alt113 == 1:
                         # Java.g:773:31: LOGICAL_OR logicalAndExpression
-                        pass 
+                        pass
                         LOGICAL_OR386=self.match(self.input, LOGICAL_OR, self.FOLLOW_LOGICAL_OR_in_logicalOrExpression10559)
                         if self._state.backtracking == 0:
 
@@ -13952,7 +13448,6 @@ class JavaParser(Parser):
 
                     else:
                         break #loop113
-
 
 
                 retval.stop = self.input.LT(-1)
@@ -13984,8 +13479,6 @@ class JavaParser(Parser):
             self.tree = None
 
 
-
-
     # $ANTLR start "logicalAndExpression"
     # Java.g:776:1: logicalAndExpression : inclusiveOrExpression ( LOGICAL_AND inclusiveOrExpression )* ;
     def logicalAndExpression(self, ):
@@ -14013,7 +13506,7 @@ class JavaParser(Parser):
 
                 # Java.g:777:5: ( inclusiveOrExpression ( LOGICAL_AND inclusiveOrExpression )* )
                 # Java.g:777:9: inclusiveOrExpression ( LOGICAL_AND inclusiveOrExpression )*
-                pass 
+                pass
                 root_0 = self._adaptor.nil()
 
                 self._state.following.append(self.FOLLOW_inclusiveOrExpression_in_logicalAndExpression10583)
@@ -14033,7 +13526,7 @@ class JavaParser(Parser):
 
                     if alt114 == 1:
                         # Java.g:777:32: LOGICAL_AND inclusiveOrExpression
-                        pass 
+                        pass
                         LOGICAL_AND389=self.match(self.input, LOGICAL_AND, self.FOLLOW_LOGICAL_AND_in_logicalAndExpression10586)
                         if self._state.backtracking == 0:
 
@@ -14050,7 +13543,6 @@ class JavaParser(Parser):
 
                     else:
                         break #loop114
-
 
 
                 retval.stop = self.input.LT(-1)
@@ -14082,8 +13574,6 @@ class JavaParser(Parser):
             self.tree = None
 
 
-
-
     # $ANTLR start "inclusiveOrExpression"
     # Java.g:780:1: inclusiveOrExpression : exclusiveOrExpression ( OR exclusiveOrExpression )* ;
     def inclusiveOrExpression(self, ):
@@ -14111,7 +13601,7 @@ class JavaParser(Parser):
 
                 # Java.g:781:5: ( exclusiveOrExpression ( OR exclusiveOrExpression )* )
                 # Java.g:781:9: exclusiveOrExpression ( OR exclusiveOrExpression )*
-                pass 
+                pass
                 root_0 = self._adaptor.nil()
 
                 self._state.following.append(self.FOLLOW_exclusiveOrExpression_in_inclusiveOrExpression10610)
@@ -14131,7 +13621,7 @@ class JavaParser(Parser):
 
                     if alt115 == 1:
                         # Java.g:781:32: OR exclusiveOrExpression
-                        pass 
+                        pass
                         OR392=self.match(self.input, OR, self.FOLLOW_OR_in_inclusiveOrExpression10613)
                         if self._state.backtracking == 0:
 
@@ -14148,7 +13638,6 @@ class JavaParser(Parser):
 
                     else:
                         break #loop115
-
 
 
                 retval.stop = self.input.LT(-1)
@@ -14180,8 +13669,6 @@ class JavaParser(Parser):
             self.tree = None
 
 
-
-
     # $ANTLR start "exclusiveOrExpression"
     # Java.g:784:1: exclusiveOrExpression : andExpression ( XOR andExpression )* ;
     def exclusiveOrExpression(self, ):
@@ -14209,7 +13696,7 @@ class JavaParser(Parser):
 
                 # Java.g:785:5: ( andExpression ( XOR andExpression )* )
                 # Java.g:785:9: andExpression ( XOR andExpression )*
-                pass 
+                pass
                 root_0 = self._adaptor.nil()
 
                 self._state.following.append(self.FOLLOW_andExpression_in_exclusiveOrExpression10637)
@@ -14229,7 +13716,7 @@ class JavaParser(Parser):
 
                     if alt116 == 1:
                         # Java.g:785:24: XOR andExpression
-                        pass 
+                        pass
                         XOR395=self.match(self.input, XOR, self.FOLLOW_XOR_in_exclusiveOrExpression10640)
                         if self._state.backtracking == 0:
 
@@ -14246,7 +13733,6 @@ class JavaParser(Parser):
 
                     else:
                         break #loop116
-
 
 
                 retval.stop = self.input.LT(-1)
@@ -14278,8 +13764,6 @@ class JavaParser(Parser):
             self.tree = None
 
 
-
-
     # $ANTLR start "andExpression"
     # Java.g:788:1: andExpression : equalityExpression ( AND equalityExpression )* ;
     def andExpression(self, ):
@@ -14307,7 +13791,7 @@ class JavaParser(Parser):
 
                 # Java.g:789:5: ( equalityExpression ( AND equalityExpression )* )
                 # Java.g:789:9: equalityExpression ( AND equalityExpression )*
-                pass 
+                pass
                 root_0 = self._adaptor.nil()
 
                 self._state.following.append(self.FOLLOW_equalityExpression_in_andExpression10664)
@@ -14327,7 +13811,7 @@ class JavaParser(Parser):
 
                     if alt117 == 1:
                         # Java.g:789:29: AND equalityExpression
-                        pass 
+                        pass
                         AND398=self.match(self.input, AND, self.FOLLOW_AND_in_andExpression10667)
                         if self._state.backtracking == 0:
 
@@ -14344,7 +13828,6 @@ class JavaParser(Parser):
 
                     else:
                         break #loop117
-
 
 
                 retval.stop = self.input.LT(-1)
@@ -14376,8 +13859,6 @@ class JavaParser(Parser):
             self.tree = None
 
 
-
-
     # $ANTLR start "equalityExpression"
     # Java.g:792:1: equalityExpression : instanceOfExpression ( ( EQUAL | NOT_EQUAL ) instanceOfExpression )* ;
     def equalityExpression(self, ):
@@ -14407,7 +13888,7 @@ class JavaParser(Parser):
 
                 # Java.g:793:5: ( instanceOfExpression ( ( EQUAL | NOT_EQUAL ) instanceOfExpression )* )
                 # Java.g:793:9: instanceOfExpression ( ( EQUAL | NOT_EQUAL ) instanceOfExpression )*
-                pass 
+                pass
                 root_0 = self._adaptor.nil()
 
                 self._state.following.append(self.FOLLOW_instanceOfExpression_in_equalityExpression10691)
@@ -14427,7 +13908,7 @@ class JavaParser(Parser):
 
                     if alt119 == 1:
                         # Java.g:794:13: ( EQUAL | NOT_EQUAL ) instanceOfExpression
-                        pass 
+                        pass
                         # Java.g:794:13: ( EQUAL | NOT_EQUAL )
                         alt118 = 2
                         LA118_0 = self.input.LA(1)
@@ -14446,7 +13927,7 @@ class JavaParser(Parser):
 
                         if alt118 == 1:
                             # Java.g:794:17: EQUAL
-                            pass 
+                            pass
                             EQUAL401=self.match(self.input, EQUAL, self.FOLLOW_EQUAL_in_equalityExpression10709)
                             if self._state.backtracking == 0:
 
@@ -14454,17 +13935,14 @@ class JavaParser(Parser):
                                 root_0 = self._adaptor.becomeRoot(EQUAL401_tree, root_0)
 
 
-
                         elif alt118 == 2:
                             # Java.g:795:17: NOT_EQUAL
-                            pass 
+                            pass
                             NOT_EQUAL402=self.match(self.input, NOT_EQUAL, self.FOLLOW_NOT_EQUAL_in_equalityExpression10728)
                             if self._state.backtracking == 0:
 
                                 NOT_EQUAL402_tree = self._adaptor.createWithPayload(NOT_EQUAL402)
                                 root_0 = self._adaptor.becomeRoot(NOT_EQUAL402_tree, root_0)
-
-
 
 
                         self._state.following.append(self.FOLLOW_instanceOfExpression_in_equalityExpression10757)
@@ -14477,7 +13955,6 @@ class JavaParser(Parser):
 
                     else:
                         break #loop119
-
 
 
                 retval.stop = self.input.LT(-1)
@@ -14509,8 +13986,6 @@ class JavaParser(Parser):
             self.tree = None
 
 
-
-
     # $ANTLR start "instanceOfExpression"
     # Java.g:801:1: instanceOfExpression : relationalExpression ( INSTANCEOF type )? ;
     def instanceOfExpression(self, ):
@@ -14538,7 +14013,7 @@ class JavaParser(Parser):
 
                 # Java.g:802:5: ( relationalExpression ( INSTANCEOF type )? )
                 # Java.g:802:9: relationalExpression ( INSTANCEOF type )?
-                pass 
+                pass
                 root_0 = self._adaptor.nil()
 
                 self._state.following.append(self.FOLLOW_relationalExpression_in_instanceOfExpression10787)
@@ -14555,7 +14030,7 @@ class JavaParser(Parser):
                     alt120 = 1
                 if alt120 == 1:
                     # Java.g:802:31: INSTANCEOF type
-                    pass 
+                    pass
                     INSTANCEOF405=self.match(self.input, INSTANCEOF, self.FOLLOW_INSTANCEOF_in_instanceOfExpression10790)
                     if self._state.backtracking == 0:
 
@@ -14568,8 +14043,6 @@ class JavaParser(Parser):
                     self._state.following.pop()
                     if self._state.backtracking == 0:
                         self._adaptor.addChild(root_0, type406.tree)
-
-
 
 
 
@@ -14601,8 +14074,6 @@ class JavaParser(Parser):
             super(JavaParser.relationalExpression_return, self).__init__()
 
             self.tree = None
-
-
 
 
     # $ANTLR start "relationalExpression"
@@ -14638,7 +14109,7 @@ class JavaParser(Parser):
 
                 # Java.g:806:5: ( shiftExpression ( ( LESS_OR_EQUAL | GREATER_OR_EQUAL | LESS_THAN | GREATER_THAN ) shiftExpression )* )
                 # Java.g:806:9: shiftExpression ( ( LESS_OR_EQUAL | GREATER_OR_EQUAL | LESS_THAN | GREATER_THAN ) shiftExpression )*
-                pass 
+                pass
                 root_0 = self._adaptor.nil()
 
                 self._state.following.append(self.FOLLOW_shiftExpression_in_relationalExpression10814)
@@ -14658,7 +14129,7 @@ class JavaParser(Parser):
 
                     if alt122 == 1:
                         # Java.g:807:13: ( LESS_OR_EQUAL | GREATER_OR_EQUAL | LESS_THAN | GREATER_THAN ) shiftExpression
-                        pass 
+                        pass
                         # Java.g:807:13: ( LESS_OR_EQUAL | GREATER_OR_EQUAL | LESS_THAN | GREATER_THAN )
                         alt121 = 4
                         LA121 = self.input.LA(1)
@@ -14680,7 +14151,7 @@ class JavaParser(Parser):
 
                         if alt121 == 1:
                             # Java.g:807:17: LESS_OR_EQUAL
-                            pass 
+                            pass
                             LESS_OR_EQUAL408=self.match(self.input, LESS_OR_EQUAL, self.FOLLOW_LESS_OR_EQUAL_in_relationalExpression10832)
                             if self._state.backtracking == 0:
 
@@ -14688,10 +14159,9 @@ class JavaParser(Parser):
                                 root_0 = self._adaptor.becomeRoot(LESS_OR_EQUAL408_tree, root_0)
 
 
-
                         elif alt121 == 2:
                             # Java.g:808:17: GREATER_OR_EQUAL
-                            pass 
+                            pass
                             GREATER_OR_EQUAL409=self.match(self.input, GREATER_OR_EQUAL, self.FOLLOW_GREATER_OR_EQUAL_in_relationalExpression10851)
                             if self._state.backtracking == 0:
 
@@ -14699,10 +14169,9 @@ class JavaParser(Parser):
                                 root_0 = self._adaptor.becomeRoot(GREATER_OR_EQUAL409_tree, root_0)
 
 
-
                         elif alt121 == 3:
                             # Java.g:809:17: LESS_THAN
-                            pass 
+                            pass
                             LESS_THAN410=self.match(self.input, LESS_THAN, self.FOLLOW_LESS_THAN_in_relationalExpression10870)
                             if self._state.backtracking == 0:
 
@@ -14710,17 +14179,14 @@ class JavaParser(Parser):
                                 root_0 = self._adaptor.becomeRoot(LESS_THAN410_tree, root_0)
 
 
-
                         elif alt121 == 4:
                             # Java.g:810:17: GREATER_THAN
-                            pass 
+                            pass
                             GREATER_THAN411=self.match(self.input, GREATER_THAN, self.FOLLOW_GREATER_THAN_in_relationalExpression10889)
                             if self._state.backtracking == 0:
 
                                 GREATER_THAN411_tree = self._adaptor.createWithPayload(GREATER_THAN411)
                                 root_0 = self._adaptor.becomeRoot(GREATER_THAN411_tree, root_0)
-
-
 
 
                         self._state.following.append(self.FOLLOW_shiftExpression_in_relationalExpression10918)
@@ -14733,7 +14199,6 @@ class JavaParser(Parser):
 
                     else:
                         break #loop122
-
 
 
                 retval.stop = self.input.LT(-1)
@@ -14763,8 +14228,6 @@ class JavaParser(Parser):
             super(JavaParser.shiftExpression_return, self).__init__()
 
             self.tree = None
-
-
 
 
     # $ANTLR start "shiftExpression"
@@ -14798,7 +14261,7 @@ class JavaParser(Parser):
 
                 # Java.g:817:5: ( additiveExpression ( ( BIT_SHIFT_RIGHT | SHIFT_RIGHT | SHIFT_LEFT ) additiveExpression )* )
                 # Java.g:817:9: additiveExpression ( ( BIT_SHIFT_RIGHT | SHIFT_RIGHT | SHIFT_LEFT ) additiveExpression )*
-                pass 
+                pass
                 root_0 = self._adaptor.nil()
 
                 self._state.following.append(self.FOLLOW_additiveExpression_in_shiftExpression10948)
@@ -14818,7 +14281,7 @@ class JavaParser(Parser):
 
                     if alt124 == 1:
                         # Java.g:818:13: ( BIT_SHIFT_RIGHT | SHIFT_RIGHT | SHIFT_LEFT ) additiveExpression
-                        pass 
+                        pass
                         # Java.g:818:13: ( BIT_SHIFT_RIGHT | SHIFT_RIGHT | SHIFT_LEFT )
                         alt123 = 3
                         LA123 = self.input.LA(1)
@@ -14838,7 +14301,7 @@ class JavaParser(Parser):
 
                         if alt123 == 1:
                             # Java.g:818:17: BIT_SHIFT_RIGHT
-                            pass 
+                            pass
                             BIT_SHIFT_RIGHT414=self.match(self.input, BIT_SHIFT_RIGHT, self.FOLLOW_BIT_SHIFT_RIGHT_in_shiftExpression10966)
                             if self._state.backtracking == 0:
 
@@ -14846,10 +14309,9 @@ class JavaParser(Parser):
                                 root_0 = self._adaptor.becomeRoot(BIT_SHIFT_RIGHT414_tree, root_0)
 
 
-
                         elif alt123 == 2:
                             # Java.g:819:17: SHIFT_RIGHT
-                            pass 
+                            pass
                             SHIFT_RIGHT415=self.match(self.input, SHIFT_RIGHT, self.FOLLOW_SHIFT_RIGHT_in_shiftExpression10985)
                             if self._state.backtracking == 0:
 
@@ -14857,17 +14319,14 @@ class JavaParser(Parser):
                                 root_0 = self._adaptor.becomeRoot(SHIFT_RIGHT415_tree, root_0)
 
 
-
                         elif alt123 == 3:
                             # Java.g:820:17: SHIFT_LEFT
-                            pass 
+                            pass
                             SHIFT_LEFT416=self.match(self.input, SHIFT_LEFT, self.FOLLOW_SHIFT_LEFT_in_shiftExpression11004)
                             if self._state.backtracking == 0:
 
                                 SHIFT_LEFT416_tree = self._adaptor.createWithPayload(SHIFT_LEFT416)
                                 root_0 = self._adaptor.becomeRoot(SHIFT_LEFT416_tree, root_0)
-
-
 
 
                         self._state.following.append(self.FOLLOW_additiveExpression_in_shiftExpression11033)
@@ -14880,7 +14339,6 @@ class JavaParser(Parser):
 
                     else:
                         break #loop124
-
 
 
                 retval.stop = self.input.LT(-1)
@@ -14912,8 +14370,6 @@ class JavaParser(Parser):
             self.tree = None
 
 
-
-
     # $ANTLR start "additiveExpression"
     # Java.g:826:1: additiveExpression : multiplicativeExpression ( ( PLUS | MINUS ) multiplicativeExpression )* ;
     def additiveExpression(self, ):
@@ -14943,7 +14399,7 @@ class JavaParser(Parser):
 
                 # Java.g:827:5: ( multiplicativeExpression ( ( PLUS | MINUS ) multiplicativeExpression )* )
                 # Java.g:827:9: multiplicativeExpression ( ( PLUS | MINUS ) multiplicativeExpression )*
-                pass 
+                pass
                 root_0 = self._adaptor.nil()
 
                 self._state.following.append(self.FOLLOW_multiplicativeExpression_in_additiveExpression11063)
@@ -14963,7 +14419,7 @@ class JavaParser(Parser):
 
                     if alt126 == 1:
                         # Java.g:828:13: ( PLUS | MINUS ) multiplicativeExpression
-                        pass 
+                        pass
                         # Java.g:828:13: ( PLUS | MINUS )
                         alt125 = 2
                         LA125_0 = self.input.LA(1)
@@ -14982,7 +14438,7 @@ class JavaParser(Parser):
 
                         if alt125 == 1:
                             # Java.g:828:17: PLUS
-                            pass 
+                            pass
                             PLUS419=self.match(self.input, PLUS, self.FOLLOW_PLUS_in_additiveExpression11081)
                             if self._state.backtracking == 0:
 
@@ -14990,17 +14446,14 @@ class JavaParser(Parser):
                                 root_0 = self._adaptor.becomeRoot(PLUS419_tree, root_0)
 
 
-
                         elif alt125 == 2:
                             # Java.g:829:17: MINUS
-                            pass 
+                            pass
                             MINUS420=self.match(self.input, MINUS, self.FOLLOW_MINUS_in_additiveExpression11100)
                             if self._state.backtracking == 0:
 
                                 MINUS420_tree = self._adaptor.createWithPayload(MINUS420)
                                 root_0 = self._adaptor.becomeRoot(MINUS420_tree, root_0)
-
-
 
 
                         self._state.following.append(self.FOLLOW_multiplicativeExpression_in_additiveExpression11129)
@@ -15013,7 +14466,6 @@ class JavaParser(Parser):
 
                     else:
                         break #loop126
-
 
 
                 retval.stop = self.input.LT(-1)
@@ -15043,8 +14495,6 @@ class JavaParser(Parser):
             super(JavaParser.multiplicativeExpression_return, self).__init__()
 
             self.tree = None
-
-
 
 
     # $ANTLR start "multiplicativeExpression"
@@ -15078,7 +14528,7 @@ class JavaParser(Parser):
 
                 # Java.g:836:5: ( unaryExpression ( ( STAR | DIV | MOD ) unaryExpression )* )
                 # Java.g:836:9: unaryExpression ( ( STAR | DIV | MOD ) unaryExpression )*
-                pass 
+                pass
                 root_0 = self._adaptor.nil()
 
                 self._state.following.append(self.FOLLOW_unaryExpression_in_multiplicativeExpression11159)
@@ -15098,7 +14548,7 @@ class JavaParser(Parser):
 
                     if alt128 == 1:
                         # Java.g:837:13: ( STAR | DIV | MOD ) unaryExpression
-                        pass 
+                        pass
                         # Java.g:837:13: ( STAR | DIV | MOD )
                         alt127 = 3
                         LA127 = self.input.LA(1)
@@ -15118,7 +14568,7 @@ class JavaParser(Parser):
 
                         if alt127 == 1:
                             # Java.g:837:17: STAR
-                            pass 
+                            pass
                             STAR423=self.match(self.input, STAR, self.FOLLOW_STAR_in_multiplicativeExpression11177)
                             if self._state.backtracking == 0:
 
@@ -15126,10 +14576,9 @@ class JavaParser(Parser):
                                 root_0 = self._adaptor.becomeRoot(STAR423_tree, root_0)
 
 
-
                         elif alt127 == 2:
                             # Java.g:838:17: DIV
-                            pass 
+                            pass
                             DIV424=self.match(self.input, DIV, self.FOLLOW_DIV_in_multiplicativeExpression11196)
                             if self._state.backtracking == 0:
 
@@ -15137,17 +14586,14 @@ class JavaParser(Parser):
                                 root_0 = self._adaptor.becomeRoot(DIV424_tree, root_0)
 
 
-
                         elif alt127 == 3:
                             # Java.g:839:17: MOD
-                            pass 
+                            pass
                             MOD425=self.match(self.input, MOD, self.FOLLOW_MOD_in_multiplicativeExpression11215)
                             if self._state.backtracking == 0:
 
                                 MOD425_tree = self._adaptor.createWithPayload(MOD425)
                                 root_0 = self._adaptor.becomeRoot(MOD425_tree, root_0)
-
-
 
 
                         self._state.following.append(self.FOLLOW_unaryExpression_in_multiplicativeExpression11244)
@@ -15160,7 +14606,6 @@ class JavaParser(Parser):
 
                     else:
                         break #loop128
-
 
 
                 retval.stop = self.input.LT(-1)
@@ -15190,8 +14635,6 @@ class JavaParser(Parser):
             super(JavaParser.unaryExpression_return, self).__init__()
 
             self.tree = None
-
-
 
 
     # $ANTLR start "unaryExpression"
@@ -15259,7 +14702,7 @@ class JavaParser(Parser):
 
                 if alt129 == 1:
                     # Java.g:846:9: PLUS unaryExpression
-                    pass 
+                    pass
                     PLUS427=self.match(self.input, PLUS, self.FOLLOW_PLUS_in_unaryExpression11274) 
                     if self._state.backtracking == 0:
                         stream_PLUS.add(PLUS427)
@@ -15298,13 +14741,12 @@ class JavaParser(Parser):
                         self._adaptor.addChild(root_0, root_1)
 
 
-
                         retval.tree = root_0
 
 
                 elif alt129 == 2:
                     # Java.g:847:9: MINUS unaryExpression
-                    pass 
+                    pass
                     MINUS429=self.match(self.input, MINUS, self.FOLLOW_MINUS_in_unaryExpression11303) 
                     if self._state.backtracking == 0:
                         stream_MINUS.add(MINUS429)
@@ -15343,13 +14785,12 @@ class JavaParser(Parser):
                         self._adaptor.addChild(root_0, root_1)
 
 
-
                         retval.tree = root_0
 
 
                 elif alt129 == 3:
                     # Java.g:848:9: INC postfixedExpression
-                    pass 
+                    pass
                     INC431=self.match(self.input, INC, self.FOLLOW_INC_in_unaryExpression11331) 
                     if self._state.backtracking == 0:
                         stream_INC.add(INC431)
@@ -15388,13 +14829,12 @@ class JavaParser(Parser):
                         self._adaptor.addChild(root_0, root_1)
 
 
-
                         retval.tree = root_0
 
 
                 elif alt129 == 4:
                     # Java.g:849:9: DEC postfixedExpression
-                    pass 
+                    pass
                     DEC433=self.match(self.input, DEC, self.FOLLOW_DEC_in_unaryExpression11357) 
                     if self._state.backtracking == 0:
                         stream_DEC.add(DEC433)
@@ -15433,13 +14873,12 @@ class JavaParser(Parser):
                         self._adaptor.addChild(root_0, root_1)
 
 
-
                         retval.tree = root_0
 
 
                 elif alt129 == 5:
                     # Java.g:850:9: unaryExpressionNotPlusMinus
-                    pass 
+                    pass
                     root_0 = self._adaptor.nil()
 
                     self._state.following.append(self.FOLLOW_unaryExpressionNotPlusMinus_in_unaryExpression11383)
@@ -15477,8 +14916,6 @@ class JavaParser(Parser):
             super(JavaParser.unaryExpressionNotPlusMinus_return, self).__init__()
 
             self.tree = None
-
-
 
 
     # $ANTLR start "unaryExpressionNotPlusMinus"
@@ -15528,7 +14965,7 @@ class JavaParser(Parser):
                 alt130 = self.dfa130.predict(self.input)
                 if alt130 == 1:
                     # Java.g:854:9: NOT unaryExpression
-                    pass 
+                    pass
                     NOT436=self.match(self.input, NOT, self.FOLLOW_NOT_in_unaryExpressionNotPlusMinus11402) 
                     if self._state.backtracking == 0:
                         stream_NOT.add(NOT436)
@@ -15567,13 +15004,12 @@ class JavaParser(Parser):
                         self._adaptor.addChild(root_0, root_1)
 
 
-
                         retval.tree = root_0
 
 
                 elif alt130 == 2:
                     # Java.g:855:9: LOGICAL_NOT unaryExpression
-                    pass 
+                    pass
                     LOGICAL_NOT438=self.match(self.input, LOGICAL_NOT, self.FOLLOW_LOGICAL_NOT_in_unaryExpressionNotPlusMinus11451) 
                     if self._state.backtracking == 0:
                         stream_LOGICAL_NOT.add(LOGICAL_NOT438)
@@ -15612,13 +15048,12 @@ class JavaParser(Parser):
                         self._adaptor.addChild(root_0, root_1)
 
 
-
                         retval.tree = root_0
 
 
                 elif alt130 == 3:
                     # Java.g:856:9: LPAREN type RPAREN unaryExpression
-                    pass 
+                    pass
                     LPAREN440=self.match(self.input, LPAREN, self.FOLLOW_LPAREN_in_unaryExpressionNotPlusMinus11492) 
                     if self._state.backtracking == 0:
                         stream_LPAREN.add(LPAREN440)
@@ -15667,13 +15102,12 @@ class JavaParser(Parser):
                         self._adaptor.addChild(root_0, root_1)
 
 
-
                         retval.tree = root_0
 
 
                 elif alt130 == 4:
                     # Java.g:857:9: postfixedExpression
-                    pass 
+                    pass
                     root_0 = self._adaptor.nil()
 
                     self._state.following.append(self.FOLLOW_postfixedExpression_in_unaryExpressionNotPlusMinus11533)
@@ -15711,8 +15145,6 @@ class JavaParser(Parser):
             super(JavaParser.postfixedExpression_return, self).__init__()
 
             self.tree = None
-
-
 
 
     # $ANTLR start "postfixedExpression"
@@ -15784,10 +15216,10 @@ class JavaParser(Parser):
 
                 # Java.g:862:5: ( ( primaryExpression -> primaryExpression ) (outerDot= DOT ( ( ( genericTypeArgumentListSimplified )? IDENT -> ^( DOT $postfixedExpression IDENT ) ) ( arguments -> ^( METHOD_CALL $postfixedExpression ( genericTypeArgumentListSimplified )? arguments ) )? | THIS -> ^( DOT $postfixedExpression THIS ) | Super= SUPER arguments -> ^( SUPER_CONSTRUCTOR_CALL[$Super, \"SUPER_CONSTRUCTOR_CALL\"] $postfixedExpression arguments ) | ( SUPER innerDot= DOT IDENT -> ^( $innerDot ^( $outerDot $postfixedExpression SUPER ) IDENT ) ) ( arguments -> ^( METHOD_CALL $postfixedExpression arguments ) )? | innerNewExpression -> ^( DOT $postfixedExpression innerNewExpression ) ) | LBRACK expression RBRACK -> ^( ARRAY_ELEMENT_ACCESS $postfixedExpression expression ) )* ( INC -> ^( POST_INC[$INC, \"POST_INC\"] $postfixedExpression) | DEC -> ^( POST_DEC[$DEC, \"POST_DEC\"] $postfixedExpression) )? )
                 # Java.g:862:9: ( primaryExpression -> primaryExpression ) (outerDot= DOT ( ( ( genericTypeArgumentListSimplified )? IDENT -> ^( DOT $postfixedExpression IDENT ) ) ( arguments -> ^( METHOD_CALL $postfixedExpression ( genericTypeArgumentListSimplified )? arguments ) )? | THIS -> ^( DOT $postfixedExpression THIS ) | Super= SUPER arguments -> ^( SUPER_CONSTRUCTOR_CALL[$Super, \"SUPER_CONSTRUCTOR_CALL\"] $postfixedExpression arguments ) | ( SUPER innerDot= DOT IDENT -> ^( $innerDot ^( $outerDot $postfixedExpression SUPER ) IDENT ) ) ( arguments -> ^( METHOD_CALL $postfixedExpression arguments ) )? | innerNewExpression -> ^( DOT $postfixedExpression innerNewExpression ) ) | LBRACK expression RBRACK -> ^( ARRAY_ELEMENT_ACCESS $postfixedExpression expression ) )* ( INC -> ^( POST_INC[$INC, \"POST_INC\"] $postfixedExpression) | DEC -> ^( POST_DEC[$DEC, \"POST_DEC\"] $postfixedExpression) )?
-                pass 
+                pass
                 # Java.g:862:9: ( primaryExpression -> primaryExpression )
                 # Java.g:862:13: primaryExpression
-                pass 
+                pass
                 self._state.following.append(self.FOLLOW_primaryExpression_in_postfixedExpression11565)
                 primaryExpression445 = self.primaryExpression()
 
@@ -15817,9 +15249,7 @@ class JavaParser(Parser):
                     self._adaptor.addChild(root_0, stream_primaryExpression.nextTree())
 
 
-
                     retval.tree = root_0
-
 
 
                 # Java.g:865:9: (outerDot= DOT ( ( ( genericTypeArgumentListSimplified )? IDENT -> ^( DOT $postfixedExpression IDENT ) ) ( arguments -> ^( METHOD_CALL $postfixedExpression ( genericTypeArgumentListSimplified )? arguments ) )? | THIS -> ^( DOT $postfixedExpression THIS ) | Super= SUPER arguments -> ^( SUPER_CONSTRUCTOR_CALL[$Super, \"SUPER_CONSTRUCTOR_CALL\"] $postfixedExpression arguments ) | ( SUPER innerDot= DOT IDENT -> ^( $innerDot ^( $outerDot $postfixedExpression SUPER ) IDENT ) ) ( arguments -> ^( METHOD_CALL $postfixedExpression arguments ) )? | innerNewExpression -> ^( DOT $postfixedExpression innerNewExpression ) ) | LBRACK expression RBRACK -> ^( ARRAY_ELEMENT_ACCESS $postfixedExpression expression ) )*
@@ -15835,7 +15265,7 @@ class JavaParser(Parser):
 
                     if alt135 == 1:
                         # Java.g:865:13: outerDot= DOT ( ( ( genericTypeArgumentListSimplified )? IDENT -> ^( DOT $postfixedExpression IDENT ) ) ( arguments -> ^( METHOD_CALL $postfixedExpression ( genericTypeArgumentListSimplified )? arguments ) )? | THIS -> ^( DOT $postfixedExpression THIS ) | Super= SUPER arguments -> ^( SUPER_CONSTRUCTOR_CALL[$Super, \"SUPER_CONSTRUCTOR_CALL\"] $postfixedExpression arguments ) | ( SUPER innerDot= DOT IDENT -> ^( $innerDot ^( $outerDot $postfixedExpression SUPER ) IDENT ) ) ( arguments -> ^( METHOD_CALL $postfixedExpression arguments ) )? | innerNewExpression -> ^( DOT $postfixedExpression innerNewExpression ) )
-                        pass 
+                        pass
                         outerDot=self.match(self.input, DOT, self.FOLLOW_DOT_in_postfixedExpression11627) 
                         if self._state.backtracking == 0:
                             stream_DOT.add(outerDot)
@@ -15873,10 +15303,10 @@ class JavaParser(Parser):
 
                         if alt134 == 1:
                             # Java.g:866:17: ( ( genericTypeArgumentListSimplified )? IDENT -> ^( DOT $postfixedExpression IDENT ) ) ( arguments -> ^( METHOD_CALL $postfixedExpression ( genericTypeArgumentListSimplified )? arguments ) )?
-                            pass 
+                            pass
                             # Java.g:866:17: ( ( genericTypeArgumentListSimplified )? IDENT -> ^( DOT $postfixedExpression IDENT ) )
                             # Java.g:866:21: ( genericTypeArgumentListSimplified )? IDENT
-                            pass 
+                            pass
                             # Java.g:866:21: ( genericTypeArgumentListSimplified )?
                             alt131 = 2
                             LA131_0 = self.input.LA(1)
@@ -15885,14 +15315,13 @@ class JavaParser(Parser):
                                 alt131 = 1
                             if alt131 == 1:
                                 # Java.g:0:0: genericTypeArgumentListSimplified
-                                pass 
+                                pass
                                 self._state.following.append(self.FOLLOW_genericTypeArgumentListSimplified_in_postfixedExpression11649)
                                 genericTypeArgumentListSimplified446 = self.genericTypeArgumentListSimplified()
 
                                 self._state.following.pop()
                                 if self._state.backtracking == 0:
                                     stream_genericTypeArgumentListSimplified.add(genericTypeArgumentListSimplified446.tree)
-
 
 
                             IDENT447=self.match(self.input, IDENT, self.FOLLOW_IDENT_in_postfixedExpression11731) 
@@ -15928,9 +15357,7 @@ class JavaParser(Parser):
                                 self._adaptor.addChild(root_0, root_1)
 
 
-
                                 retval.tree = root_0
-
 
 
                             # Java.g:870:17: ( arguments -> ^( METHOD_CALL $postfixedExpression ( genericTypeArgumentListSimplified )? arguments ) )?
@@ -15941,7 +15368,7 @@ class JavaParser(Parser):
                                 alt132 = 1
                             if alt132 == 1:
                                 # Java.g:870:21: arguments
-                                pass 
+                                pass
                                 self._state.following.append(self.FOLLOW_arguments_in_postfixedExpression11809)
                                 arguments448 = self.arguments()
 
@@ -15984,16 +15411,13 @@ class JavaParser(Parser):
                                     self._adaptor.addChild(root_0, root_1)
 
 
-
                                     retval.tree = root_0
-
-
 
 
 
                         elif alt134 == 2:
                             # Java.g:872:17: THIS
-                            pass 
+                            pass
                             THIS449=self.match(self.input, THIS, self.FOLLOW_THIS_in_postfixedExpression11883) 
                             if self._state.backtracking == 0:
                                 stream_THIS.add(THIS449)
@@ -16027,13 +15451,12 @@ class JavaParser(Parser):
                                 self._adaptor.addChild(root_0, root_1)
 
 
-
                                 retval.tree = root_0
 
 
                         elif alt134 == 3:
                             # Java.g:873:17: Super= SUPER arguments
-                            pass 
+                            pass
                             Super=self.match(self.input, SUPER, self.FOLLOW_SUPER_in_postfixedExpression11946) 
                             if self._state.backtracking == 0:
                                 stream_SUPER.add(Super)
@@ -16073,16 +15496,15 @@ class JavaParser(Parser):
                                 self._adaptor.addChild(root_0, root_1)
 
 
-
                                 retval.tree = root_0
 
 
                         elif alt134 == 4:
                             # Java.g:874:17: ( SUPER innerDot= DOT IDENT -> ^( $innerDot ^( $outerDot $postfixedExpression SUPER ) IDENT ) ) ( arguments -> ^( METHOD_CALL $postfixedExpression arguments ) )?
-                            pass 
+                            pass
                             # Java.g:874:17: ( SUPER innerDot= DOT IDENT -> ^( $innerDot ^( $outerDot $postfixedExpression SUPER ) IDENT ) )
                             # Java.g:874:21: SUPER innerDot= DOT IDENT
-                            pass 
+                            pass
                             SUPER451=self.match(self.input, SUPER, self.FOLLOW_SUPER_in_postfixedExpression12001) 
                             if self._state.backtracking == 0:
                                 stream_SUPER.add(SUPER451)
@@ -16131,9 +15553,7 @@ class JavaParser(Parser):
                                 self._adaptor.addChild(root_0, root_1)
 
 
-
                                 retval.tree = root_0
-
 
 
                             # Java.g:876:17: ( arguments -> ^( METHOD_CALL $postfixedExpression arguments ) )?
@@ -16144,7 +15564,7 @@ class JavaParser(Parser):
                                 alt133 = 1
                             if alt133 == 1:
                                 # Java.g:876:21: arguments
-                                pass 
+                                pass
                                 self._state.following.append(self.FOLLOW_arguments_in_postfixedExpression12074)
                                 arguments453 = self.arguments()
 
@@ -16181,16 +15601,13 @@ class JavaParser(Parser):
                                     self._adaptor.addChild(root_0, root_1)
 
 
-
                                     retval.tree = root_0
-
-
 
 
 
                         elif alt134 == 5:
                             # Java.g:878:17: innerNewExpression
-                            pass 
+                            pass
                             self._state.following.append(self.FOLLOW_innerNewExpression_in_postfixedExpression12145)
                             innerNewExpression454 = self.innerNewExpression()
 
@@ -16227,16 +15644,13 @@ class JavaParser(Parser):
                                 self._adaptor.addChild(root_0, root_1)
 
 
-
                                 retval.tree = root_0
-
-
 
 
 
                     elif alt135 == 2:
                         # Java.g:880:13: LBRACK expression RBRACK
-                        pass 
+                        pass
                         LBRACK455=self.match(self.input, LBRACK, self.FOLLOW_LBRACK_in_postfixedExpression12202) 
                         if self._state.backtracking == 0:
                             stream_LBRACK.add(LBRACK455)
@@ -16279,7 +15693,6 @@ class JavaParser(Parser):
                             self._adaptor.addChild(root_0, root_1)
 
 
-
                             retval.tree = root_0
 
 
@@ -16295,7 +15708,7 @@ class JavaParser(Parser):
                     alt136 = 2
                 if alt136 == 1:
                     # Java.g:883:13: INC
-                    pass 
+                    pass
                     INC458=self.match(self.input, INC, self.FOLLOW_INC_in_postfixedExpression12267) 
                     if self._state.backtracking == 0:
                         stream_INC.add(INC458)
@@ -16328,13 +15741,12 @@ class JavaParser(Parser):
                         self._adaptor.addChild(root_0, root_1)
 
 
-
                         retval.tree = root_0
 
 
                 elif alt136 == 2:
                     # Java.g:884:13: DEC
-                    pass 
+                    pass
                     DEC459=self.match(self.input, DEC, self.FOLLOW_DEC_in_postfixedExpression12291) 
                     if self._state.backtracking == 0:
                         stream_DEC.add(DEC459)
@@ -16367,10 +15779,7 @@ class JavaParser(Parser):
                         self._adaptor.addChild(root_0, root_1)
 
 
-
                         retval.tree = root_0
-
-
 
 
 
@@ -16402,8 +15811,6 @@ class JavaParser(Parser):
             super(JavaParser.primaryExpression_return, self).__init__()
 
             self.tree = None
-
-
 
 
     # $ANTLR start "primaryExpression"
@@ -16497,7 +15904,7 @@ class JavaParser(Parser):
                 alt142 = self.dfa142.predict(self.input)
                 if alt142 == 1:
                     # Java.g:889:9: parenthesizedExpression
-                    pass 
+                    pass
                     root_0 = self._adaptor.nil()
 
                     self._state.following.append(self.FOLLOW_parenthesizedExpression_in_primaryExpression12331)
@@ -16510,7 +15917,7 @@ class JavaParser(Parser):
 
                 elif alt142 == 2:
                     # Java.g:890:9: literal
-                    pass 
+                    pass
                     root_0 = self._adaptor.nil()
 
                     self._state.following.append(self.FOLLOW_literal_in_primaryExpression12341)
@@ -16523,7 +15930,7 @@ class JavaParser(Parser):
 
                 elif alt142 == 3:
                     # Java.g:891:9: newExpression
-                    pass 
+                    pass
                     root_0 = self._adaptor.nil()
 
                     self._state.following.append(self.FOLLOW_newExpression_in_primaryExpression12351)
@@ -16536,7 +15943,7 @@ class JavaParser(Parser):
 
                 elif alt142 == 4:
                     # Java.g:892:9: qualifiedIdentExpression
-                    pass 
+                    pass
                     root_0 = self._adaptor.nil()
 
                     self._state.following.append(self.FOLLOW_qualifiedIdentExpression_in_primaryExpression12361)
@@ -16549,7 +15956,7 @@ class JavaParser(Parser):
 
                 elif alt142 == 5:
                     # Java.g:893:9: genericTypeArgumentListSimplified ( SUPER ( arguments -> ^( SUPER_CONSTRUCTOR_CALL[$SUPER, \"SUPER_CONSTRUCTOR_CALL\"] genericTypeArgumentListSimplified arguments ) | DOT IDENT arguments -> ^( METHOD_CALL ^( DOT SUPER IDENT ) genericTypeArgumentListSimplified arguments ) ) | IDENT arguments -> ^( METHOD_CALL IDENT genericTypeArgumentListSimplified arguments ) | THIS arguments -> ^( THIS_CONSTRUCTOR_CALL[$THIS, \"THIS_CONSTRUCTOR_CALL\"] genericTypeArgumentListSimplified arguments ) )
-                    pass 
+                    pass
                     self._state.following.append(self.FOLLOW_genericTypeArgumentListSimplified_in_primaryExpression12371)
                     genericTypeArgumentListSimplified464 = self.genericTypeArgumentListSimplified()
 
@@ -16575,7 +15982,7 @@ class JavaParser(Parser):
 
                     if alt138 == 1:
                         # Java.g:894:13: SUPER ( arguments -> ^( SUPER_CONSTRUCTOR_CALL[$SUPER, \"SUPER_CONSTRUCTOR_CALL\"] genericTypeArgumentListSimplified arguments ) | DOT IDENT arguments -> ^( METHOD_CALL ^( DOT SUPER IDENT ) genericTypeArgumentListSimplified arguments ) )
-                        pass 
+                        pass
                         SUPER465=self.match(self.input, SUPER, self.FOLLOW_SUPER_in_primaryExpression12385) 
                         if self._state.backtracking == 0:
                             stream_SUPER.add(SUPER465)
@@ -16597,7 +16004,7 @@ class JavaParser(Parser):
 
                         if alt137 == 1:
                             # Java.g:895:17: arguments
-                            pass 
+                            pass
                             self._state.following.append(self.FOLLOW_arguments_in_primaryExpression12403)
                             arguments466 = self.arguments()
 
@@ -16634,13 +16041,12 @@ class JavaParser(Parser):
                                 self._adaptor.addChild(root_0, root_1)
 
 
-
                                 retval.tree = root_0
 
 
                         elif alt137 == 2:
                             # Java.g:896:17: DOT IDENT arguments
-                            pass 
+                            pass
                             DOT467=self.match(self.input, DOT, self.FOLLOW_DOT_in_primaryExpression12463) 
                             if self._state.backtracking == 0:
                                 stream_DOT.add(DOT467)
@@ -16691,16 +16097,13 @@ class JavaParser(Parser):
                                 self._adaptor.addChild(root_0, root_1)
 
 
-
                                 retval.tree = root_0
-
-
 
 
 
                     elif alt138 == 2:
                         # Java.g:898:13: IDENT arguments
-                        pass 
+                        pass
                         IDENT470=self.match(self.input, IDENT, self.FOLLOW_IDENT_in_primaryExpression12534) 
                         if self._state.backtracking == 0:
                             stream_IDENT.add(IDENT470)
@@ -16741,13 +16144,12 @@ class JavaParser(Parser):
                             self._adaptor.addChild(root_0, root_1)
 
 
-
                             retval.tree = root_0
 
 
                     elif alt138 == 3:
                         # Java.g:899:13: THIS arguments
-                        pass 
+                        pass
                         THIS472=self.match(self.input, THIS, self.FOLLOW_THIS_in_primaryExpression12591) 
                         if self._state.backtracking == 0:
                             stream_THIS.add(THIS472)
@@ -16787,19 +16189,16 @@ class JavaParser(Parser):
                             self._adaptor.addChild(root_0, root_1)
 
 
-
                             retval.tree = root_0
-
-
 
 
 
                 elif alt142 == 6:
                     # Java.g:901:9: ( THIS -> THIS ) ( arguments -> ^( THIS_CONSTRUCTOR_CALL[$THIS, \"THIS_CONSTRUCTOR_CALL\"] arguments ) )?
-                    pass 
+                    pass
                     # Java.g:901:9: ( THIS -> THIS )
                     # Java.g:901:13: THIS
-                    pass 
+                    pass
                     THIS474=self.match(self.input, THIS, self.FOLLOW_THIS_in_primaryExpression12658) 
                     if self._state.backtracking == 0:
                         stream_THIS.add(THIS474)
@@ -16826,9 +16225,7 @@ class JavaParser(Parser):
                         self._adaptor.addChild(root_0, stream_THIS.nextNode())
 
 
-
                         retval.tree = root_0
-
 
 
                     # Java.g:903:9: ( arguments -> ^( THIS_CONSTRUCTOR_CALL[$THIS, \"THIS_CONSTRUCTOR_CALL\"] arguments ) )?
@@ -16839,7 +16236,7 @@ class JavaParser(Parser):
                         alt139 = 1
                     if alt139 == 1:
                         # Java.g:903:13: arguments
-                        pass 
+                        pass
                         self._state.following.append(self.FOLLOW_arguments_in_primaryExpression12726)
                         arguments475 = self.arguments()
 
@@ -16875,16 +16272,13 @@ class JavaParser(Parser):
                             self._adaptor.addChild(root_0, root_1)
 
 
-
                             retval.tree = root_0
-
-
 
 
 
                 elif alt142 == 7:
                     # Java.g:905:9: SUPER arguments
-                    pass 
+                    pass
                     SUPER476=self.match(self.input, SUPER, self.FOLLOW_SUPER_in_primaryExpression12791) 
                     if self._state.backtracking == 0:
                         stream_SUPER.add(SUPER476)
@@ -16923,16 +16317,15 @@ class JavaParser(Parser):
                         self._adaptor.addChild(root_0, root_1)
 
 
-
                         retval.tree = root_0
 
 
                 elif alt142 == 8:
                     # Java.g:906:9: ( SUPER DOT IDENT ) ( arguments -> ^( METHOD_CALL ^( DOT SUPER IDENT ) arguments ) | -> ^( DOT SUPER IDENT ) )
-                    pass 
+                    pass
                     # Java.g:906:9: ( SUPER DOT IDENT )
                     # Java.g:906:13: SUPER DOT IDENT
-                    pass 
+                    pass
                     SUPER478=self.match(self.input, SUPER, self.FOLLOW_SUPER_in_primaryExpression12849) 
                     if self._state.backtracking == 0:
                         stream_SUPER.add(SUPER478)
@@ -16942,7 +16335,6 @@ class JavaParser(Parser):
                     IDENT480=self.match(self.input, IDENT, self.FOLLOW_IDENT_in_primaryExpression12853) 
                     if self._state.backtracking == 0:
                         stream_IDENT.add(IDENT480)
-
 
 
                     # Java.g:908:9: ( arguments -> ^( METHOD_CALL ^( DOT SUPER IDENT ) arguments ) | -> ^( DOT SUPER IDENT ) )
@@ -16963,7 +16355,7 @@ class JavaParser(Parser):
 
                     if alt140 == 1:
                         # Java.g:908:13: arguments
-                        pass 
+                        pass
                         self._state.following.append(self.FOLLOW_arguments_in_primaryExpression12877)
                         arguments481 = self.arguments()
 
@@ -17007,13 +16399,12 @@ class JavaParser(Parser):
                             self._adaptor.addChild(root_0, root_1)
 
 
-
                             retval.tree = root_0
 
 
                     elif alt140 == 2:
                         # Java.g:909:57: 
-                        pass 
+                        pass
                         # AST Rewrite
                         # elements: SUPER, IDENT, DOT
                         # token labels: 
@@ -17043,19 +16434,16 @@ class JavaParser(Parser):
                             self._adaptor.addChild(root_0, root_1)
 
 
-
                             retval.tree = root_0
-
-
 
 
 
                 elif alt142 == 9:
                     # Java.g:911:9: ( primitiveType -> primitiveType ) ( arrayDeclarator -> ^( arrayDeclarator $primaryExpression) )* DOT CLASS
-                    pass 
+                    pass
                     # Java.g:911:9: ( primitiveType -> primitiveType )
                     # Java.g:911:13: primitiveType
-                    pass 
+                    pass
                     self._state.following.append(self.FOLLOW_primitiveType_in_primaryExpression13019)
                     primitiveType482 = self.primitiveType()
 
@@ -17085,9 +16473,7 @@ class JavaParser(Parser):
                         self._adaptor.addChild(root_0, stream_primitiveType.nextTree())
 
 
-
                         retval.tree = root_0
-
 
 
                     # Java.g:913:9: ( arrayDeclarator -> ^( arrayDeclarator $primaryExpression) )*
@@ -17101,7 +16487,7 @@ class JavaParser(Parser):
 
                         if alt141 == 1:
                             # Java.g:913:13: arrayDeclarator
-                            pass 
+                            pass
                             self._state.following.append(self.FOLLOW_arrayDeclarator_in_primaryExpression13078)
                             arrayDeclarator483 = self.arrayDeclarator()
 
@@ -17135,7 +16521,6 @@ class JavaParser(Parser):
                                 self._adaptor.addChild(root_1, stream_retval.nextTree())
 
                                 self._adaptor.addChild(root_0, root_1)
-
 
 
                                 retval.tree = root_0
@@ -17179,13 +16564,12 @@ class JavaParser(Parser):
                         self._adaptor.addChild(root_0, root_1)
 
 
-
                         retval.tree = root_0
 
 
                 elif alt142 == 10:
                     # Java.g:916:9: VOID DOT CLASS
-                    pass 
+                    pass
                     VOID486=self.match(self.input, VOID, self.FOLLOW_VOID_in_primaryExpression13199) 
                     if self._state.backtracking == 0:
                         stream_VOID.add(VOID486)
@@ -17225,7 +16609,6 @@ class JavaParser(Parser):
                         self._adaptor.addChild(root_0, root_1)
 
 
-
                         retval.tree = root_0
 
 
@@ -17256,8 +16639,6 @@ class JavaParser(Parser):
             super(JavaParser.qualifiedIdentExpression_return, self).__init__()
 
             self.tree = None
-
-
 
 
     # $ANTLR start "qualifiedIdentExpression"
@@ -17328,10 +16709,10 @@ class JavaParser(Parser):
 
                 # Java.g:921:5: ( ( qualifiedIdentifier -> qualifiedIdentifier ) ( ( arrayDeclarator -> ^( arrayDeclarator $qualifiedIdentExpression) )+ ( DOT CLASS -> ^( DOT $qualifiedIdentExpression CLASS ) ) | arguments -> ^( METHOD_CALL qualifiedIdentifier arguments ) | outerDot= DOT ( CLASS -> ^( DOT qualifiedIdentifier CLASS ) | genericTypeArgumentListSimplified (Super= SUPER arguments -> ^( SUPER_CONSTRUCTOR_CALL[$Super, \"SUPER_CONSTRUCTOR_CALL\"] qualifiedIdentifier genericTypeArgumentListSimplified arguments ) | SUPER innerDot= DOT IDENT arguments -> ^( METHOD_CALL ^( $innerDot ^( $outerDot qualifiedIdentifier SUPER ) IDENT ) genericTypeArgumentListSimplified arguments ) | IDENT arguments -> ^( METHOD_CALL ^( DOT qualifiedIdentifier IDENT ) genericTypeArgumentListSimplified arguments ) ) | THIS -> ^( DOT qualifiedIdentifier THIS ) | Super= SUPER arguments -> ^( SUPER_CONSTRUCTOR_CALL[$Super, \"SUPER_CONSTRUCTOR_CALL\"] qualifiedIdentifier arguments ) | innerNewExpression -> ^( DOT qualifiedIdentifier innerNewExpression ) ) )? )
                 # Java.g:921:9: ( qualifiedIdentifier -> qualifiedIdentifier ) ( ( arrayDeclarator -> ^( arrayDeclarator $qualifiedIdentExpression) )+ ( DOT CLASS -> ^( DOT $qualifiedIdentExpression CLASS ) ) | arguments -> ^( METHOD_CALL qualifiedIdentifier arguments ) | outerDot= DOT ( CLASS -> ^( DOT qualifiedIdentifier CLASS ) | genericTypeArgumentListSimplified (Super= SUPER arguments -> ^( SUPER_CONSTRUCTOR_CALL[$Super, \"SUPER_CONSTRUCTOR_CALL\"] qualifiedIdentifier genericTypeArgumentListSimplified arguments ) | SUPER innerDot= DOT IDENT arguments -> ^( METHOD_CALL ^( $innerDot ^( $outerDot qualifiedIdentifier SUPER ) IDENT ) genericTypeArgumentListSimplified arguments ) | IDENT arguments -> ^( METHOD_CALL ^( DOT qualifiedIdentifier IDENT ) genericTypeArgumentListSimplified arguments ) ) | THIS -> ^( DOT qualifiedIdentifier THIS ) | Super= SUPER arguments -> ^( SUPER_CONSTRUCTOR_CALL[$Super, \"SUPER_CONSTRUCTOR_CALL\"] qualifiedIdentifier arguments ) | innerNewExpression -> ^( DOT qualifiedIdentifier innerNewExpression ) ) )?
-                pass 
+                pass
                 # Java.g:921:9: ( qualifiedIdentifier -> qualifiedIdentifier )
                 # Java.g:921:13: qualifiedIdentifier
-                pass 
+                pass
                 self._state.following.append(self.FOLLOW_qualifiedIdentifier_in_qualifiedIdentExpression13279)
                 qualifiedIdentifier489 = self.qualifiedIdentifier()
 
@@ -17361,9 +16742,7 @@ class JavaParser(Parser):
                     self._adaptor.addChild(root_0, stream_qualifiedIdentifier.nextTree())
 
 
-
                     retval.tree = root_0
-
 
 
                 # Java.g:924:9: ( ( arrayDeclarator -> ^( arrayDeclarator $qualifiedIdentExpression) )+ ( DOT CLASS -> ^( DOT $qualifiedIdentExpression CLASS ) ) | arguments -> ^( METHOD_CALL qualifiedIdentifier arguments ) | outerDot= DOT ( CLASS -> ^( DOT qualifiedIdentifier CLASS ) | genericTypeArgumentListSimplified (Super= SUPER arguments -> ^( SUPER_CONSTRUCTOR_CALL[$Super, \"SUPER_CONSTRUCTOR_CALL\"] qualifiedIdentifier genericTypeArgumentListSimplified arguments ) | SUPER innerDot= DOT IDENT arguments -> ^( METHOD_CALL ^( $innerDot ^( $outerDot qualifiedIdentifier SUPER ) IDENT ) genericTypeArgumentListSimplified arguments ) | IDENT arguments -> ^( METHOD_CALL ^( DOT qualifiedIdentifier IDENT ) genericTypeArgumentListSimplified arguments ) ) | THIS -> ^( DOT qualifiedIdentifier THIS ) | Super= SUPER arguments -> ^( SUPER_CONSTRUCTOR_CALL[$Super, \"SUPER_CONSTRUCTOR_CALL\"] qualifiedIdentifier arguments ) | innerNewExpression -> ^( DOT qualifiedIdentifier innerNewExpression ) ) )?
@@ -17371,7 +16750,7 @@ class JavaParser(Parser):
                 alt146 = self.dfa146.predict(self.input)
                 if alt146 == 1:
                     # Java.g:924:13: ( arrayDeclarator -> ^( arrayDeclarator $qualifiedIdentExpression) )+ ( DOT CLASS -> ^( DOT $qualifiedIdentExpression CLASS ) )
-                    pass 
+                    pass
                     # Java.g:924:13: ( arrayDeclarator -> ^( arrayDeclarator $qualifiedIdentExpression) )+
                     cnt143 = 0
                     while True: #loop143
@@ -17384,7 +16763,7 @@ class JavaParser(Parser):
 
                         if alt143 == 1:
                             # Java.g:924:17: arrayDeclarator
-                            pass 
+                            pass
                             self._state.following.append(self.FOLLOW_arrayDeclarator_in_qualifiedIdentExpression13349)
                             arrayDeclarator490 = self.arrayDeclarator()
 
@@ -17420,7 +16799,6 @@ class JavaParser(Parser):
                                 self._adaptor.addChild(root_0, root_1)
 
 
-
                                 retval.tree = root_0
 
 
@@ -17437,7 +16815,7 @@ class JavaParser(Parser):
                         cnt143 += 1
                     # Java.g:926:13: ( DOT CLASS -> ^( DOT $qualifiedIdentExpression CLASS ) )
                     # Java.g:926:17: DOT CLASS
-                    pass 
+                    pass
                     DOT491=self.match(self.input, DOT, self.FOLLOW_DOT_in_qualifiedIdentExpression13416) 
                     if self._state.backtracking == 0:
                         stream_DOT.add(DOT491)
@@ -17474,16 +16852,13 @@ class JavaParser(Parser):
                         self._adaptor.addChild(root_0, root_1)
 
 
-
                         retval.tree = root_0
-
-
 
 
 
                 elif alt146 == 2:
                     # Java.g:928:13: arguments
-                    pass 
+                    pass
                     self._state.following.append(self.FOLLOW_arguments_in_qualifiedIdentExpression13488)
                     arguments493 = self.arguments()
 
@@ -17520,13 +16895,12 @@ class JavaParser(Parser):
                         self._adaptor.addChild(root_0, root_1)
 
 
-
                         retval.tree = root_0
 
 
                 elif alt146 == 3:
                     # Java.g:929:13: outerDot= DOT ( CLASS -> ^( DOT qualifiedIdentifier CLASS ) | genericTypeArgumentListSimplified (Super= SUPER arguments -> ^( SUPER_CONSTRUCTOR_CALL[$Super, \"SUPER_CONSTRUCTOR_CALL\"] qualifiedIdentifier genericTypeArgumentListSimplified arguments ) | SUPER innerDot= DOT IDENT arguments -> ^( METHOD_CALL ^( $innerDot ^( $outerDot qualifiedIdentifier SUPER ) IDENT ) genericTypeArgumentListSimplified arguments ) | IDENT arguments -> ^( METHOD_CALL ^( DOT qualifiedIdentifier IDENT ) genericTypeArgumentListSimplified arguments ) ) | THIS -> ^( DOT qualifiedIdentifier THIS ) | Super= SUPER arguments -> ^( SUPER_CONSTRUCTOR_CALL[$Super, \"SUPER_CONSTRUCTOR_CALL\"] qualifiedIdentifier arguments ) | innerNewExpression -> ^( DOT qualifiedIdentifier innerNewExpression ) )
-                    pass 
+                    pass
                     outerDot=self.match(self.input, DOT, self.FOLLOW_DOT_in_qualifiedIdentExpression13549) 
                     if self._state.backtracking == 0:
                         stream_DOT.add(outerDot)
@@ -17553,7 +16927,7 @@ class JavaParser(Parser):
 
                     if alt145 == 1:
                         # Java.g:930:17: CLASS
-                        pass 
+                        pass
                         CLASS494=self.match(self.input, CLASS, self.FOLLOW_CLASS_in_qualifiedIdentExpression13567) 
                         if self._state.backtracking == 0:
                             stream_CLASS.add(CLASS494)
@@ -17587,13 +16961,12 @@ class JavaParser(Parser):
                             self._adaptor.addChild(root_0, root_1)
 
 
-
                             retval.tree = root_0
 
 
                     elif alt145 == 2:
                         # Java.g:931:17: genericTypeArgumentListSimplified (Super= SUPER arguments -> ^( SUPER_CONSTRUCTOR_CALL[$Super, \"SUPER_CONSTRUCTOR_CALL\"] qualifiedIdentifier genericTypeArgumentListSimplified arguments ) | SUPER innerDot= DOT IDENT arguments -> ^( METHOD_CALL ^( $innerDot ^( $outerDot qualifiedIdentifier SUPER ) IDENT ) genericTypeArgumentListSimplified arguments ) | IDENT arguments -> ^( METHOD_CALL ^( DOT qualifiedIdentifier IDENT ) genericTypeArgumentListSimplified arguments ) )
-                        pass 
+                        pass
                         self._state.following.append(self.FOLLOW_genericTypeArgumentListSimplified_in_qualifiedIdentExpression13630)
                         genericTypeArgumentListSimplified495 = self.genericTypeArgumentListSimplified()
 
@@ -17631,7 +17004,7 @@ class JavaParser(Parser):
 
                         if alt144 == 1:
                             # Java.g:932:21: Super= SUPER arguments
-                            pass 
+                            pass
                             Super=self.match(self.input, SUPER, self.FOLLOW_SUPER_in_qualifiedIdentExpression13654) 
                             if self._state.backtracking == 0:
                                 stream_SUPER.add(Super)
@@ -17672,13 +17045,12 @@ class JavaParser(Parser):
                                 self._adaptor.addChild(root_0, root_1)
 
 
-
                                 retval.tree = root_0
 
 
                         elif alt144 == 2:
                             # Java.g:933:21: SUPER innerDot= DOT IDENT arguments
-                            pass 
+                            pass
                             SUPER497=self.match(self.input, SUPER, self.FOLLOW_SUPER_in_qualifiedIdentExpression13706) 
                             if self._state.backtracking == 0:
                                 stream_SUPER.add(SUPER497)
@@ -17741,13 +17113,12 @@ class JavaParser(Parser):
                                 self._adaptor.addChild(root_0, root_1)
 
 
-
                                 retval.tree = root_0
 
 
                         elif alt144 == 3:
                             # Java.g:934:21: IDENT arguments
-                            pass 
+                            pass
                             IDENT500=self.match(self.input, IDENT, self.FOLLOW_IDENT_in_qualifiedIdentExpression13764) 
                             if self._state.backtracking == 0:
                                 stream_IDENT.add(IDENT500)
@@ -17795,16 +17166,13 @@ class JavaParser(Parser):
                                 self._adaptor.addChild(root_0, root_1)
 
 
-
                                 retval.tree = root_0
-
-
 
 
 
                     elif alt145 == 3:
                         # Java.g:936:17: THIS
-                        pass 
+                        pass
                         THIS502=self.match(self.input, THIS, self.FOLLOW_THIS_in_qualifiedIdentExpression13841) 
                         if self._state.backtracking == 0:
                             stream_THIS.add(THIS502)
@@ -17838,13 +17206,12 @@ class JavaParser(Parser):
                             self._adaptor.addChild(root_0, root_1)
 
 
-
                             retval.tree = root_0
 
 
                     elif alt145 == 4:
                         # Java.g:937:17: Super= SUPER arguments
-                        pass 
+                        pass
                         Super=self.match(self.input, SUPER, self.FOLLOW_SUPER_in_qualifiedIdentExpression13907) 
                         if self._state.backtracking == 0:
                             stream_SUPER.add(Super)
@@ -17884,13 +17251,12 @@ class JavaParser(Parser):
                             self._adaptor.addChild(root_0, root_1)
 
 
-
                             retval.tree = root_0
 
 
                     elif alt145 == 5:
                         # Java.g:938:17: innerNewExpression
-                        pass 
+                        pass
                         self._state.following.append(self.FOLLOW_innerNewExpression_in_qualifiedIdentExpression13957)
                         innerNewExpression504 = self.innerNewExpression()
 
@@ -17927,12 +17293,7 @@ class JavaParser(Parser):
                             self._adaptor.addChild(root_0, root_1)
 
 
-
                             retval.tree = root_0
-
-
-
-
 
 
 
@@ -17965,8 +17326,6 @@ class JavaParser(Parser):
             super(JavaParser.newExpression_return, self).__init__()
 
             self.tree = None
-
-
 
 
     # $ANTLR start "newExpression"
@@ -18012,7 +17371,7 @@ class JavaParser(Parser):
 
                 # Java.g:944:5: ( NEW ( primitiveType newArrayConstruction -> ^( STATIC_ARRAY_CREATOR[$NEW, \"STATIC_ARRAY_CREATOR\"] primitiveType newArrayConstruction ) | ( genericTypeArgumentListSimplified )? qualifiedTypeIdentSimplified ( newArrayConstruction -> ^( STATIC_ARRAY_CREATOR[$NEW, \"STATIC_ARRAY_CREATOR\"] ( genericTypeArgumentListSimplified )? qualifiedTypeIdentSimplified newArrayConstruction ) | arguments ( classBody )? -> ^( CLASS_CONSTRUCTOR_CALL[$NEW, \"STATIC_ARRAY_CREATOR\"] ( genericTypeArgumentListSimplified )? qualifiedTypeIdentSimplified arguments ( classBody )? ) ) ) )
                 # Java.g:944:9: NEW ( primitiveType newArrayConstruction -> ^( STATIC_ARRAY_CREATOR[$NEW, \"STATIC_ARRAY_CREATOR\"] primitiveType newArrayConstruction ) | ( genericTypeArgumentListSimplified )? qualifiedTypeIdentSimplified ( newArrayConstruction -> ^( STATIC_ARRAY_CREATOR[$NEW, \"STATIC_ARRAY_CREATOR\"] ( genericTypeArgumentListSimplified )? qualifiedTypeIdentSimplified newArrayConstruction ) | arguments ( classBody )? -> ^( CLASS_CONSTRUCTOR_CALL[$NEW, \"STATIC_ARRAY_CREATOR\"] ( genericTypeArgumentListSimplified )? qualifiedTypeIdentSimplified arguments ( classBody )? ) ) )
-                pass 
+                pass
                 NEW505=self.match(self.input, NEW, self.FOLLOW_NEW_in_newExpression14033) 
                 if self._state.backtracking == 0:
                     stream_NEW.add(NEW505)
@@ -18034,7 +17393,7 @@ class JavaParser(Parser):
 
                 if alt150 == 1:
                     # Java.g:945:13: primitiveType newArrayConstruction
-                    pass 
+                    pass
                     self._state.following.append(self.FOLLOW_primitiveType_in_newExpression14047)
                     primitiveType506 = self.primitiveType()
 
@@ -18077,13 +17436,12 @@ class JavaParser(Parser):
                         self._adaptor.addChild(root_0, root_1)
 
 
-
                         retval.tree = root_0
 
 
                 elif alt150 == 2:
                     # Java.g:947:13: ( genericTypeArgumentListSimplified )? qualifiedTypeIdentSimplified ( newArrayConstruction -> ^( STATIC_ARRAY_CREATOR[$NEW, \"STATIC_ARRAY_CREATOR\"] ( genericTypeArgumentListSimplified )? qualifiedTypeIdentSimplified newArrayConstruction ) | arguments ( classBody )? -> ^( CLASS_CONSTRUCTOR_CALL[$NEW, \"STATIC_ARRAY_CREATOR\"] ( genericTypeArgumentListSimplified )? qualifiedTypeIdentSimplified arguments ( classBody )? ) )
-                    pass 
+                    pass
                     # Java.g:947:13: ( genericTypeArgumentListSimplified )?
                     alt147 = 2
                     LA147_0 = self.input.LA(1)
@@ -18092,14 +17450,13 @@ class JavaParser(Parser):
                         alt147 = 1
                     if alt147 == 1:
                         # Java.g:0:0: genericTypeArgumentListSimplified
-                        pass 
+                        pass
                         self._state.following.append(self.FOLLOW_genericTypeArgumentListSimplified_in_newExpression14093)
                         genericTypeArgumentListSimplified508 = self.genericTypeArgumentListSimplified()
 
                         self._state.following.pop()
                         if self._state.backtracking == 0:
                             stream_genericTypeArgumentListSimplified.add(genericTypeArgumentListSimplified508.tree)
-
 
 
                     self._state.following.append(self.FOLLOW_qualifiedTypeIdentSimplified_in_newExpression14096)
@@ -18126,7 +17483,7 @@ class JavaParser(Parser):
 
                     if alt149 == 1:
                         # Java.g:948:17: newArrayConstruction
-                        pass 
+                        pass
                         self._state.following.append(self.FOLLOW_newArrayConstruction_in_newExpression14114)
                         newArrayConstruction510 = self.newArrayConstruction()
 
@@ -18169,13 +17526,12 @@ class JavaParser(Parser):
                             self._adaptor.addChild(root_0, root_1)
 
 
-
                             retval.tree = root_0
 
 
                     elif alt149 == 2:
                         # Java.g:950:17: arguments ( classBody )?
-                        pass 
+                        pass
                         self._state.following.append(self.FOLLOW_arguments_in_newExpression14179)
                         arguments511 = self.arguments()
 
@@ -18190,15 +17546,13 @@ class JavaParser(Parser):
                             alt148 = 1
                         if alt148 == 1:
                             # Java.g:0:0: classBody
-                            pass 
+                            pass
                             self._state.following.append(self.FOLLOW_classBody_in_newExpression14181)
                             classBody512 = self.classBody()
 
                             self._state.following.pop()
                             if self._state.backtracking == 0:
                                 stream_classBody.add(classBody512.tree)
-
-
 
 
                         # AST Rewrite
@@ -18242,12 +17596,7 @@ class JavaParser(Parser):
                             self._adaptor.addChild(root_0, root_1)
 
 
-
                             retval.tree = root_0
-
-
-
-
 
 
 
@@ -18280,8 +17629,6 @@ class JavaParser(Parser):
             super(JavaParser.innerNewExpression_return, self).__init__()
 
             self.tree = None
-
-
 
 
     # $ANTLR start "innerNewExpression"
@@ -18319,7 +17666,7 @@ class JavaParser(Parser):
 
                 # Java.g:957:5: ( NEW ( genericTypeArgumentListSimplified )? IDENT arguments ( classBody )? -> ^( CLASS_CONSTRUCTOR_CALL[$NEW, \"STATIC_ARRAY_CREATOR\"] ( genericTypeArgumentListSimplified )? IDENT arguments ( classBody )? ) )
                 # Java.g:957:9: NEW ( genericTypeArgumentListSimplified )? IDENT arguments ( classBody )?
-                pass 
+                pass
                 NEW513=self.match(self.input, NEW, self.FOLLOW_NEW_in_innerNewExpression14276) 
                 if self._state.backtracking == 0:
                     stream_NEW.add(NEW513)
@@ -18331,14 +17678,13 @@ class JavaParser(Parser):
                     alt151 = 1
                 if alt151 == 1:
                     # Java.g:0:0: genericTypeArgumentListSimplified
-                    pass 
+                    pass
                     self._state.following.append(self.FOLLOW_genericTypeArgumentListSimplified_in_innerNewExpression14278)
                     genericTypeArgumentListSimplified514 = self.genericTypeArgumentListSimplified()
 
                     self._state.following.pop()
                     if self._state.backtracking == 0:
                         stream_genericTypeArgumentListSimplified.add(genericTypeArgumentListSimplified514.tree)
-
 
 
                 IDENT515=self.match(self.input, IDENT, self.FOLLOW_IDENT_in_innerNewExpression14281) 
@@ -18358,15 +17704,13 @@ class JavaParser(Parser):
                     alt152 = 1
                 if alt152 == 1:
                     # Java.g:0:0: classBody
-                    pass 
+                    pass
                     self._state.following.append(self.FOLLOW_classBody_in_innerNewExpression14285)
                     classBody517 = self.classBody()
 
                     self._state.following.pop()
                     if self._state.backtracking == 0:
                         stream_classBody.add(classBody517.tree)
-
-
 
 
                 # AST Rewrite
@@ -18410,9 +17754,7 @@ class JavaParser(Parser):
                     self._adaptor.addChild(root_0, root_1)
 
 
-
                     retval.tree = root_0
-
 
 
                 retval.stop = self.input.LT(-1)
@@ -18442,8 +17784,6 @@ class JavaParser(Parser):
             super(JavaParser.newArrayConstruction_return, self).__init__()
 
             self.tree = None
-
-
 
 
     # $ANTLR start "newArrayConstruction"
@@ -18512,7 +17852,7 @@ class JavaParser(Parser):
 
                 if alt155 == 1:
                     # Java.g:962:9: arrayDeclaratorList arrayInitializer
-                    pass 
+                    pass
                     root_0 = self._adaptor.nil()
 
                     self._state.following.append(self.FOLLOW_arrayDeclaratorList_in_newArrayConstruction14331)
@@ -18531,7 +17871,7 @@ class JavaParser(Parser):
 
                 elif alt155 == 2:
                     # Java.g:963:9: LBRACK expression RBRACK ( LBRACK expression RBRACK )* ( arrayDeclaratorList )?
-                    pass 
+                    pass
                     root_0 = self._adaptor.nil()
 
                     LBRACK520=self.match(self.input, LBRACK, self.FOLLOW_LBRACK_in_newArrayConstruction14343)
@@ -18548,7 +17888,7 @@ class JavaParser(Parser):
                         alt153 = self.dfa153.predict(self.input)
                         if alt153 == 1:
                             # Java.g:963:37: LBRACK expression RBRACK
-                            pass 
+                            pass
                             LBRACK523=self.match(self.input, LBRACK, self.FOLLOW_LBRACK_in_newArrayConstruction14352)
                             self._state.following.append(self.FOLLOW_expression_in_newArrayConstruction14355)
                             expression524 = self.expression()
@@ -18572,15 +17912,13 @@ class JavaParser(Parser):
                             alt154 = 1
                     if alt154 == 1:
                         # Java.g:0:0: arrayDeclaratorList
-                        pass 
+                        pass
                         self._state.following.append(self.FOLLOW_arrayDeclaratorList_in_newArrayConstruction14362)
                         arrayDeclaratorList526 = self.arrayDeclaratorList()
 
                         self._state.following.pop()
                         if self._state.backtracking == 0:
                             self._adaptor.addChild(root_0, arrayDeclaratorList526.tree)
-
-
 
 
 
@@ -18613,8 +17951,6 @@ class JavaParser(Parser):
             self.tree = None
 
 
-
-
     # $ANTLR start "arguments"
     # Java.g:966:1: arguments : LPAREN ( expressionList )? RPAREN -> ^( ARGUMENT_LIST[$LPAREN, \"ARGUMENT_LIST\"] ( expressionList )? ) ;
     def arguments(self, ):
@@ -18644,7 +17980,7 @@ class JavaParser(Parser):
 
                 # Java.g:967:5: ( LPAREN ( expressionList )? RPAREN -> ^( ARGUMENT_LIST[$LPAREN, \"ARGUMENT_LIST\"] ( expressionList )? ) )
                 # Java.g:967:9: LPAREN ( expressionList )? RPAREN
-                pass 
+                pass
                 LPAREN527=self.match(self.input, LPAREN, self.FOLLOW_LPAREN_in_arguments14382) 
                 if self._state.backtracking == 0:
                     stream_LPAREN.add(LPAREN527)
@@ -18656,14 +17992,13 @@ class JavaParser(Parser):
                     alt156 = 1
                 if alt156 == 1:
                     # Java.g:0:0: expressionList
-                    pass 
+                    pass
                     self._state.following.append(self.FOLLOW_expressionList_in_arguments14384)
                     expressionList528 = self.expressionList()
 
                     self._state.following.pop()
                     if self._state.backtracking == 0:
                         stream_expressionList.add(expressionList528.tree)
-
 
 
                 RPAREN529=self.match(self.input, RPAREN, self.FOLLOW_RPAREN_in_arguments14387) 
@@ -18703,9 +18038,7 @@ class JavaParser(Parser):
                     self._adaptor.addChild(root_0, root_1)
 
 
-
                     retval.tree = root_0
-
 
 
                 retval.stop = self.input.LT(-1)
@@ -18737,8 +18070,6 @@ class JavaParser(Parser):
             self.tree = None
 
 
-
-
     # $ANTLR start "literal"
     # Java.g:971:1: literal : ( HEX_LITERAL | OCTAL_LITERAL | DECIMAL_LITERAL | FLOATING_POINT_LITERAL | CHARACTER_LITERAL | STRING_LITERAL | TRUE | FALSE | NULL );
     def literal(self, ):
@@ -18762,7 +18093,7 @@ class JavaParser(Parser):
 
                 # Java.g:972:5: ( HEX_LITERAL | OCTAL_LITERAL | DECIMAL_LITERAL | FLOATING_POINT_LITERAL | CHARACTER_LITERAL | STRING_LITERAL | TRUE | FALSE | NULL )
                 # Java.g:
-                pass 
+                pass
                 root_0 = self._adaptor.nil()
 
                 set530 = self.input.LT(1)
@@ -18778,8 +18109,6 @@ class JavaParser(Parser):
 
                     mse = MismatchedSetException(None, self.input)
                     raise mse
-
-
 
 
 
@@ -18809,43 +18138,40 @@ class JavaParser(Parser):
     def synpred14_Java_fragment(self, ):
         # Java.g:286:9: ( GREATER_THAN )
         # Java.g:286:9: GREATER_THAN
-        pass 
+        pass
         self.match(self.input, GREATER_THAN, self.FOLLOW_GREATER_THAN_in_synpred14_Java5045)
 
 
     # $ANTLR end "synpred14_Java"
 
 
-
     # $ANTLR start "synpred15_Java"
     def synpred15_Java_fragment(self, ):
         # Java.g:287:9: ( SHIFT_RIGHT )
         # Java.g:287:9: SHIFT_RIGHT
-        pass 
+        pass
         self.match(self.input, SHIFT_RIGHT, self.FOLLOW_SHIFT_RIGHT_in_synpred15_Java5055)
 
 
     # $ANTLR end "synpred15_Java"
 
 
-
     # $ANTLR start "synpred16_Java"
     def synpred16_Java_fragment(self, ):
         # Java.g:288:9: ( BIT_SHIFT_RIGHT )
         # Java.g:288:9: BIT_SHIFT_RIGHT
-        pass 
+        pass
         self.match(self.input, BIT_SHIFT_RIGHT, self.FOLLOW_BIT_SHIFT_RIGHT_in_synpred16_Java5065)
 
 
     # $ANTLR end "synpred16_Java"
 
 
-
     # $ANTLR start "synpred17_Java"
     def synpred17_Java_fragment(self, ):
         # Java.g:293:15: ( bound )
         # Java.g:293:15: bound
-        pass 
+        pass
         self._state.following.append(self.FOLLOW_bound_in_synpred17_Java5095)
         self.bound()
 
@@ -18855,12 +18181,11 @@ class JavaParser(Parser):
     # $ANTLR end "synpred17_Java"
 
 
-
     # $ANTLR start "synpred32_Java"
     def synpred32_Java_fragment(self, ):
         # Java.g:350:9: ( STATIC block )
         # Java.g:350:9: STATIC block
-        pass 
+        pass
         self.match(self.input, STATIC, self.FOLLOW_STATIC_in_synpred32_Java5595)
         self._state.following.append(self.FOLLOW_block_in_synpred32_Java5597)
         self.block()
@@ -18871,12 +18196,11 @@ class JavaParser(Parser):
     # $ANTLR end "synpred32_Java"
 
 
-
     # $ANTLR start "synpred42_Java"
     def synpred42_Java_fragment(self, ):
         # Java.g:352:13: ( ( genericTypeParameterList )? ( type IDENT formalParameterList ( arrayDeclaratorList )? ( throwsClause )? ( block | SEMI ) | VOID IDENT formalParameterList ( throwsClause )? ( block | SEMI ) | ident= IDENT formalParameterList ( throwsClause )? block ) )
         # Java.g:352:13: ( genericTypeParameterList )? ( type IDENT formalParameterList ( arrayDeclaratorList )? ( throwsClause )? ( block | SEMI ) | VOID IDENT formalParameterList ( throwsClause )? ( block | SEMI ) | ident= IDENT formalParameterList ( throwsClause )? block )
-        pass 
+        pass
         # Java.g:352:13: ( genericTypeParameterList )?
         alt162 = 2
         LA162_0 = self.input.LA(1)
@@ -18885,12 +18209,11 @@ class JavaParser(Parser):
             alt162 = 1
         if alt162 == 1:
             # Java.g:0:0: genericTypeParameterList
-            pass 
+            pass
             self._state.following.append(self.FOLLOW_genericTypeParameterList_in_synpred42_Java5634)
             self.genericTypeParameterList()
 
             self._state.following.pop()
-
 
 
         # Java.g:353:13: ( type IDENT formalParameterList ( arrayDeclaratorList )? ( throwsClause )? ( block | SEMI ) | VOID IDENT formalParameterList ( throwsClause )? ( block | SEMI ) | ident= IDENT formalParameterList ( throwsClause )? block )
@@ -18925,7 +18248,7 @@ class JavaParser(Parser):
 
         if alt169 == 1:
             # Java.g:353:17: type IDENT formalParameterList ( arrayDeclaratorList )? ( throwsClause )? ( block | SEMI )
-            pass 
+            pass
             self._state.following.append(self.FOLLOW_type_in_synpred42_Java5653)
             self.type()
 
@@ -18943,12 +18266,11 @@ class JavaParser(Parser):
                 alt163 = 1
             if alt163 == 1:
                 # Java.g:0:0: arrayDeclaratorList
-                pass 
+                pass
                 self._state.following.append(self.FOLLOW_arrayDeclaratorList_in_synpred42_Java5659)
                 self.arrayDeclaratorList()
 
                 self._state.following.pop()
-
 
 
             # Java.g:353:69: ( throwsClause )?
@@ -18959,12 +18281,11 @@ class JavaParser(Parser):
                 alt164 = 1
             if alt164 == 1:
                 # Java.g:0:0: throwsClause
-                pass 
+                pass
                 self._state.following.append(self.FOLLOW_throwsClause_in_synpred42_Java5662)
                 self.throwsClause()
 
                 self._state.following.pop()
-
 
 
             # Java.g:353:83: ( block | SEMI )
@@ -18985,7 +18306,7 @@ class JavaParser(Parser):
 
             if alt165 == 1:
                 # Java.g:353:84: block
-                pass 
+                pass
                 self._state.following.append(self.FOLLOW_block_in_synpred42_Java5666)
                 self.block()
 
@@ -18994,16 +18315,14 @@ class JavaParser(Parser):
 
             elif alt165 == 2:
                 # Java.g:353:92: SEMI
-                pass 
+                pass
                 self.match(self.input, SEMI, self.FOLLOW_SEMI_in_synpred42_Java5670)
-
-
 
 
 
         elif alt169 == 2:
             # Java.g:355:17: VOID IDENT formalParameterList ( throwsClause )? ( block | SEMI )
-            pass 
+            pass
             self.match(self.input, VOID, self.FOLLOW_VOID_in_synpred42_Java5732)
             self.match(self.input, IDENT, self.FOLLOW_IDENT_in_synpred42_Java5734)
             self._state.following.append(self.FOLLOW_formalParameterList_in_synpred42_Java5736)
@@ -19018,12 +18337,11 @@ class JavaParser(Parser):
                 alt166 = 1
             if alt166 == 1:
                 # Java.g:0:0: throwsClause
-                pass 
+                pass
                 self._state.following.append(self.FOLLOW_throwsClause_in_synpred42_Java5738)
                 self.throwsClause()
 
                 self._state.following.pop()
-
 
 
             # Java.g:355:62: ( block | SEMI )
@@ -19044,7 +18362,7 @@ class JavaParser(Parser):
 
             if alt167 == 1:
                 # Java.g:355:63: block
-                pass 
+                pass
                 self._state.following.append(self.FOLLOW_block_in_synpred42_Java5742)
                 self.block()
 
@@ -19053,16 +18371,14 @@ class JavaParser(Parser):
 
             elif alt167 == 2:
                 # Java.g:355:71: SEMI
-                pass 
+                pass
                 self.match(self.input, SEMI, self.FOLLOW_SEMI_in_synpred42_Java5746)
-
-
 
 
 
         elif alt169 == 3:
             # Java.g:357:17: ident= IDENT formalParameterList ( throwsClause )? block
-            pass 
+            pass
             ident=self.match(self.input, IDENT, self.FOLLOW_IDENT_in_synpred42_Java5805)
             self._state.following.append(self.FOLLOW_formalParameterList_in_synpred42_Java5807)
             self.formalParameterList()
@@ -19076,12 +18392,11 @@ class JavaParser(Parser):
                 alt168 = 1
             if alt168 == 1:
                 # Java.g:0:0: throwsClause
-                pass 
+                pass
                 self._state.following.append(self.FOLLOW_throwsClause_in_synpred42_Java5809)
                 self.throwsClause()
 
                 self._state.following.pop()
-
 
 
             self._state.following.append(self.FOLLOW_block_in_synpred42_Java5812)
@@ -19091,17 +18406,14 @@ class JavaParser(Parser):
 
 
 
-
-
     # $ANTLR end "synpred42_Java"
-
 
 
     # $ANTLR start "synpred43_Java"
     def synpred43_Java_fragment(self, ):
         # Java.g:351:9: ( modifierList ( ( genericTypeParameterList )? ( type IDENT formalParameterList ( arrayDeclaratorList )? ( throwsClause )? ( block | SEMI ) | VOID IDENT formalParameterList ( throwsClause )? ( block | SEMI ) | ident= IDENT formalParameterList ( throwsClause )? block ) | type classFieldDeclaratorList SEMI ) )
         # Java.g:351:9: modifierList ( ( genericTypeParameterList )? ( type IDENT formalParameterList ( arrayDeclaratorList )? ( throwsClause )? ( block | SEMI ) | VOID IDENT formalParameterList ( throwsClause )? ( block | SEMI ) | ident= IDENT formalParameterList ( throwsClause )? block ) | type classFieldDeclaratorList SEMI )
-        pass 
+        pass
         self._state.following.append(self.FOLLOW_modifierList_in_synpred43_Java5620)
         self.modifierList()
 
@@ -19151,7 +18463,7 @@ class JavaParser(Parser):
 
         if alt178 == 1:
             # Java.g:352:13: ( genericTypeParameterList )? ( type IDENT formalParameterList ( arrayDeclaratorList )? ( throwsClause )? ( block | SEMI ) | VOID IDENT formalParameterList ( throwsClause )? ( block | SEMI ) | ident= IDENT formalParameterList ( throwsClause )? block )
-            pass 
+            pass
             # Java.g:352:13: ( genericTypeParameterList )?
             alt170 = 2
             LA170_0 = self.input.LA(1)
@@ -19160,12 +18472,11 @@ class JavaParser(Parser):
                 alt170 = 1
             if alt170 == 1:
                 # Java.g:0:0: genericTypeParameterList
-                pass 
+                pass
                 self._state.following.append(self.FOLLOW_genericTypeParameterList_in_synpred43_Java5634)
                 self.genericTypeParameterList()
 
                 self._state.following.pop()
-
 
 
             # Java.g:353:13: ( type IDENT formalParameterList ( arrayDeclaratorList )? ( throwsClause )? ( block | SEMI ) | VOID IDENT formalParameterList ( throwsClause )? ( block | SEMI ) | ident= IDENT formalParameterList ( throwsClause )? block )
@@ -19200,7 +18511,7 @@ class JavaParser(Parser):
 
             if alt177 == 1:
                 # Java.g:353:17: type IDENT formalParameterList ( arrayDeclaratorList )? ( throwsClause )? ( block | SEMI )
-                pass 
+                pass
                 self._state.following.append(self.FOLLOW_type_in_synpred43_Java5653)
                 self.type()
 
@@ -19218,12 +18529,11 @@ class JavaParser(Parser):
                     alt171 = 1
                 if alt171 == 1:
                     # Java.g:0:0: arrayDeclaratorList
-                    pass 
+                    pass
                     self._state.following.append(self.FOLLOW_arrayDeclaratorList_in_synpred43_Java5659)
                     self.arrayDeclaratorList()
 
                     self._state.following.pop()
-
 
 
                 # Java.g:353:69: ( throwsClause )?
@@ -19234,12 +18544,11 @@ class JavaParser(Parser):
                     alt172 = 1
                 if alt172 == 1:
                     # Java.g:0:0: throwsClause
-                    pass 
+                    pass
                     self._state.following.append(self.FOLLOW_throwsClause_in_synpred43_Java5662)
                     self.throwsClause()
 
                     self._state.following.pop()
-
 
 
                 # Java.g:353:83: ( block | SEMI )
@@ -19260,7 +18569,7 @@ class JavaParser(Parser):
 
                 if alt173 == 1:
                     # Java.g:353:84: block
-                    pass 
+                    pass
                     self._state.following.append(self.FOLLOW_block_in_synpred43_Java5666)
                     self.block()
 
@@ -19269,16 +18578,14 @@ class JavaParser(Parser):
 
                 elif alt173 == 2:
                     # Java.g:353:92: SEMI
-                    pass 
+                    pass
                     self.match(self.input, SEMI, self.FOLLOW_SEMI_in_synpred43_Java5670)
-
-
 
 
 
             elif alt177 == 2:
                 # Java.g:355:17: VOID IDENT formalParameterList ( throwsClause )? ( block | SEMI )
-                pass 
+                pass
                 self.match(self.input, VOID, self.FOLLOW_VOID_in_synpred43_Java5732)
                 self.match(self.input, IDENT, self.FOLLOW_IDENT_in_synpred43_Java5734)
                 self._state.following.append(self.FOLLOW_formalParameterList_in_synpred43_Java5736)
@@ -19293,12 +18600,11 @@ class JavaParser(Parser):
                     alt174 = 1
                 if alt174 == 1:
                     # Java.g:0:0: throwsClause
-                    pass 
+                    pass
                     self._state.following.append(self.FOLLOW_throwsClause_in_synpred43_Java5738)
                     self.throwsClause()
 
                     self._state.following.pop()
-
 
 
                 # Java.g:355:62: ( block | SEMI )
@@ -19319,7 +18625,7 @@ class JavaParser(Parser):
 
                 if alt175 == 1:
                     # Java.g:355:63: block
-                    pass 
+                    pass
                     self._state.following.append(self.FOLLOW_block_in_synpred43_Java5742)
                     self.block()
 
@@ -19328,16 +18634,14 @@ class JavaParser(Parser):
 
                 elif alt175 == 2:
                     # Java.g:355:71: SEMI
-                    pass 
+                    pass
                     self.match(self.input, SEMI, self.FOLLOW_SEMI_in_synpred43_Java5746)
-
-
 
 
 
             elif alt177 == 3:
                 # Java.g:357:17: ident= IDENT formalParameterList ( throwsClause )? block
-                pass 
+                pass
                 ident=self.match(self.input, IDENT, self.FOLLOW_IDENT_in_synpred43_Java5805)
                 self._state.following.append(self.FOLLOW_formalParameterList_in_synpred43_Java5807)
                 self.formalParameterList()
@@ -19351,12 +18655,11 @@ class JavaParser(Parser):
                     alt176 = 1
                 if alt176 == 1:
                     # Java.g:0:0: throwsClause
-                    pass 
+                    pass
                     self._state.following.append(self.FOLLOW_throwsClause_in_synpred43_Java5809)
                     self.throwsClause()
 
                     self._state.following.pop()
-
 
 
                 self._state.following.append(self.FOLLOW_block_in_synpred43_Java5812)
@@ -19366,11 +18669,9 @@ class JavaParser(Parser):
 
 
 
-
-
         elif alt178 == 2:
             # Java.g:360:13: type classFieldDeclaratorList SEMI
-            pass 
+            pass
             self._state.following.append(self.FOLLOW_type_in_synpred43_Java5876)
             self.type()
 
@@ -19383,17 +18684,14 @@ class JavaParser(Parser):
 
 
 
-
-
     # $ANTLR end "synpred43_Java"
-
 
 
     # $ANTLR start "synpred44_Java"
     def synpred44_Java_fragment(self, ):
         # Java.g:363:9: ( typeDeclaration )
         # Java.g:363:9: typeDeclaration
-        pass 
+        pass
         self._state.following.append(self.FOLLOW_typeDeclaration_in_synpred44_Java5925)
         self.typeDeclaration()
 
@@ -19403,12 +18701,11 @@ class JavaParser(Parser):
     # $ANTLR end "synpred44_Java"
 
 
-
     # $ANTLR start "synpred50_Java"
     def synpred50_Java_fragment(self, ):
         # Java.g:369:13: ( ( genericTypeParameterList )? ( type IDENT formalParameterList ( arrayDeclaratorList )? ( throwsClause )? SEMI | VOID IDENT formalParameterList ( throwsClause )? SEMI ) )
         # Java.g:369:13: ( genericTypeParameterList )? ( type IDENT formalParameterList ( arrayDeclaratorList )? ( throwsClause )? SEMI | VOID IDENT formalParameterList ( throwsClause )? SEMI )
-        pass 
+        pass
         # Java.g:369:13: ( genericTypeParameterList )?
         alt181 = 2
         LA181_0 = self.input.LA(1)
@@ -19417,12 +18714,11 @@ class JavaParser(Parser):
             alt181 = 1
         if alt181 == 1:
             # Java.g:0:0: genericTypeParameterList
-            pass 
+            pass
             self._state.following.append(self.FOLLOW_genericTypeParameterList_in_synpred50_Java5969)
             self.genericTypeParameterList()
 
             self._state.following.pop()
-
 
 
         # Java.g:370:13: ( type IDENT formalParameterList ( arrayDeclaratorList )? ( throwsClause )? SEMI | VOID IDENT formalParameterList ( throwsClause )? SEMI )
@@ -19443,7 +18739,7 @@ class JavaParser(Parser):
 
         if alt185 == 1:
             # Java.g:370:17: type IDENT formalParameterList ( arrayDeclaratorList )? ( throwsClause )? SEMI
-            pass 
+            pass
             self._state.following.append(self.FOLLOW_type_in_synpred50_Java5988)
             self.type()
 
@@ -19461,12 +18757,11 @@ class JavaParser(Parser):
                 alt182 = 1
             if alt182 == 1:
                 # Java.g:0:0: arrayDeclaratorList
-                pass 
+                pass
                 self._state.following.append(self.FOLLOW_arrayDeclaratorList_in_synpred50_Java5994)
                 self.arrayDeclaratorList()
 
                 self._state.following.pop()
-
 
 
             # Java.g:370:69: ( throwsClause )?
@@ -19477,12 +18772,11 @@ class JavaParser(Parser):
                 alt183 = 1
             if alt183 == 1:
                 # Java.g:0:0: throwsClause
-                pass 
+                pass
                 self._state.following.append(self.FOLLOW_throwsClause_in_synpred50_Java5997)
                 self.throwsClause()
 
                 self._state.following.pop()
-
 
 
             self.match(self.input, SEMI, self.FOLLOW_SEMI_in_synpred50_Java6000)
@@ -19490,7 +18784,7 @@ class JavaParser(Parser):
 
         elif alt185 == 2:
             # Java.g:372:17: VOID IDENT formalParameterList ( throwsClause )? SEMI
-            pass 
+            pass
             self.match(self.input, VOID, self.FOLLOW_VOID_in_synpred50_Java6058)
             self.match(self.input, IDENT, self.FOLLOW_IDENT_in_synpred50_Java6060)
             self._state.following.append(self.FOLLOW_formalParameterList_in_synpred50_Java6062)
@@ -19505,29 +18799,25 @@ class JavaParser(Parser):
                 alt184 = 1
             if alt184 == 1:
                 # Java.g:0:0: throwsClause
-                pass 
+                pass
                 self._state.following.append(self.FOLLOW_throwsClause_in_synpred50_Java6064)
                 self.throwsClause()
 
                 self._state.following.pop()
 
 
-
             self.match(self.input, SEMI, self.FOLLOW_SEMI_in_synpred50_Java6067)
-
-
 
 
 
     # $ANTLR end "synpred50_Java"
 
 
-
     # $ANTLR start "synpred51_Java"
     def synpred51_Java_fragment(self, ):
         # Java.g:368:9: ( modifierList ( ( genericTypeParameterList )? ( type IDENT formalParameterList ( arrayDeclaratorList )? ( throwsClause )? SEMI | VOID IDENT formalParameterList ( throwsClause )? SEMI ) | type interfaceFieldDeclaratorList SEMI ) )
         # Java.g:368:9: modifierList ( ( genericTypeParameterList )? ( type IDENT formalParameterList ( arrayDeclaratorList )? ( throwsClause )? SEMI | VOID IDENT formalParameterList ( throwsClause )? SEMI ) | type interfaceFieldDeclaratorList SEMI )
-        pass 
+        pass
         self._state.following.append(self.FOLLOW_modifierList_in_synpred51_Java5955)
         self.modifierList()
 
@@ -19577,7 +18867,7 @@ class JavaParser(Parser):
 
         if alt191 == 1:
             # Java.g:369:13: ( genericTypeParameterList )? ( type IDENT formalParameterList ( arrayDeclaratorList )? ( throwsClause )? SEMI | VOID IDENT formalParameterList ( throwsClause )? SEMI )
-            pass 
+            pass
             # Java.g:369:13: ( genericTypeParameterList )?
             alt186 = 2
             LA186_0 = self.input.LA(1)
@@ -19586,12 +18876,11 @@ class JavaParser(Parser):
                 alt186 = 1
             if alt186 == 1:
                 # Java.g:0:0: genericTypeParameterList
-                pass 
+                pass
                 self._state.following.append(self.FOLLOW_genericTypeParameterList_in_synpred51_Java5969)
                 self.genericTypeParameterList()
 
                 self._state.following.pop()
-
 
 
             # Java.g:370:13: ( type IDENT formalParameterList ( arrayDeclaratorList )? ( throwsClause )? SEMI | VOID IDENT formalParameterList ( throwsClause )? SEMI )
@@ -19612,7 +18901,7 @@ class JavaParser(Parser):
 
             if alt190 == 1:
                 # Java.g:370:17: type IDENT formalParameterList ( arrayDeclaratorList )? ( throwsClause )? SEMI
-                pass 
+                pass
                 self._state.following.append(self.FOLLOW_type_in_synpred51_Java5988)
                 self.type()
 
@@ -19630,12 +18919,11 @@ class JavaParser(Parser):
                     alt187 = 1
                 if alt187 == 1:
                     # Java.g:0:0: arrayDeclaratorList
-                    pass 
+                    pass
                     self._state.following.append(self.FOLLOW_arrayDeclaratorList_in_synpred51_Java5994)
                     self.arrayDeclaratorList()
 
                     self._state.following.pop()
-
 
 
                 # Java.g:370:69: ( throwsClause )?
@@ -19646,12 +18934,11 @@ class JavaParser(Parser):
                     alt188 = 1
                 if alt188 == 1:
                     # Java.g:0:0: throwsClause
-                    pass 
+                    pass
                     self._state.following.append(self.FOLLOW_throwsClause_in_synpred51_Java5997)
                     self.throwsClause()
 
                     self._state.following.pop()
-
 
 
                 self.match(self.input, SEMI, self.FOLLOW_SEMI_in_synpred51_Java6000)
@@ -19659,7 +18946,7 @@ class JavaParser(Parser):
 
             elif alt190 == 2:
                 # Java.g:372:17: VOID IDENT formalParameterList ( throwsClause )? SEMI
-                pass 
+                pass
                 self.match(self.input, VOID, self.FOLLOW_VOID_in_synpred51_Java6058)
                 self.match(self.input, IDENT, self.FOLLOW_IDENT_in_synpred51_Java6060)
                 self._state.following.append(self.FOLLOW_formalParameterList_in_synpred51_Java6062)
@@ -19674,23 +18961,20 @@ class JavaParser(Parser):
                     alt189 = 1
                 if alt189 == 1:
                     # Java.g:0:0: throwsClause
-                    pass 
+                    pass
                     self._state.following.append(self.FOLLOW_throwsClause_in_synpred51_Java6064)
                     self.throwsClause()
 
                     self._state.following.pop()
 
 
-
                 self.match(self.input, SEMI, self.FOLLOW_SEMI_in_synpred51_Java6067)
-
-
 
 
 
         elif alt191 == 2:
             # Java.g:375:13: type interfaceFieldDeclaratorList SEMI
-            pass 
+            pass
             self._state.following.append(self.FOLLOW_type_in_synpred51_Java6130)
             self.type()
 
@@ -19703,17 +18987,14 @@ class JavaParser(Parser):
 
 
 
-
-
     # $ANTLR end "synpred51_Java"
-
 
 
     # $ANTLR start "synpred52_Java"
     def synpred52_Java_fragment(self, ):
         # Java.g:378:9: ( typeDeclaration )
         # Java.g:378:9: typeDeclaration
-        pass 
+        pass
         self._state.following.append(self.FOLLOW_typeDeclaration_in_synpred52_Java6179)
         self.typeDeclaration()
 
@@ -19723,12 +19004,11 @@ class JavaParser(Parser):
     # $ANTLR end "synpred52_Java"
 
 
-
     # $ANTLR start "synpred58_Java"
     def synpred58_Java_fragment(self, ):
         # Java.g:417:9: ( arrayDeclarator )
         # Java.g:417:9: arrayDeclarator
-        pass 
+        pass
         self._state.following.append(self.FOLLOW_arrayDeclarator_in_synpred58_Java6473)
         self.arrayDeclarator()
 
@@ -19738,12 +19018,11 @@ class JavaParser(Parser):
     # $ANTLR end "synpred58_Java"
 
 
-
     # $ANTLR start "synpred76_Java"
     def synpred76_Java_fragment(self, ):
         # Java.g:466:23: ( arrayDeclaratorList )
         # Java.g:466:23: arrayDeclaratorList
-        pass 
+        pass
         self._state.following.append(self.FOLLOW_arrayDeclaratorList_in_synpred76_Java6860)
         self.arrayDeclaratorList()
 
@@ -19753,12 +19032,11 @@ class JavaParser(Parser):
     # $ANTLR end "synpred76_Java"
 
 
-
     # $ANTLR start "synpred77_Java"
     def synpred77_Java_fragment(self, ):
         # Java.g:471:28: ( arrayDeclaratorList )
         # Java.g:471:28: arrayDeclaratorList
-        pass 
+        pass
         self._state.following.append(self.FOLLOW_arrayDeclaratorList_in_synpred77_Java6903)
         self.arrayDeclaratorList()
 
@@ -19768,12 +19046,11 @@ class JavaParser(Parser):
     # $ANTLR end "synpred77_Java"
 
 
-
     # $ANTLR start "synpred79_Java"
     def synpred79_Java_fragment(self, ):
         # Java.g:481:20: ( DOT typeIdent )
         # Java.g:481:20: DOT typeIdent
-        pass 
+        pass
         self.match(self.input, DOT, self.FOLLOW_DOT_in_synpred79_Java6988)
         self._state.following.append(self.FOLLOW_typeIdent_in_synpred79_Java6990)
         self.typeIdent()
@@ -19784,12 +19061,11 @@ class JavaParser(Parser):
     # $ANTLR end "synpred79_Java"
 
 
-
     # $ANTLR start "synpred90_Java"
     def synpred90_Java_fragment(self, ):
         # Java.g:510:40: ( COMMA genericTypeArgument )
         # Java.g:510:40: COMMA genericTypeArgument
-        pass 
+        pass
         self.match(self.input, COMMA, self.FOLLOW_COMMA_in_synpred90_Java7213)
         self._state.following.append(self.FOLLOW_genericTypeArgument_in_synpred90_Java7215)
         self.genericTypeArgument()
@@ -19800,12 +19076,11 @@ class JavaParser(Parser):
     # $ANTLR end "synpred90_Java"
 
 
-
     # $ANTLR start "synpred92_Java"
     def synpred92_Java_fragment(self, ):
         # Java.g:516:18: ( genericWildcardBoundType )
         # Java.g:516:18: genericWildcardBoundType
-        pass 
+        pass
         self._state.following.append(self.FOLLOW_genericWildcardBoundType_in_synpred92_Java7269)
         self.genericWildcardBoundType()
 
@@ -19815,12 +19090,11 @@ class JavaParser(Parser):
     # $ANTLR end "synpred92_Java"
 
 
-
     # $ANTLR start "synpred97_Java"
     def synpred97_Java_fragment(self, ):
         # Java.g:541:42: ( COMMA formalParameterStandardDecl )
         # Java.g:541:42: COMMA formalParameterStandardDecl
-        pass 
+        pass
         self.match(self.input, COMMA, self.FOLLOW_COMMA_in_synpred97_Java7470)
         self._state.following.append(self.FOLLOW_formalParameterStandardDecl_in_synpred97_Java7472)
         self.formalParameterStandardDecl()
@@ -19831,12 +19105,11 @@ class JavaParser(Parser):
     # $ANTLR end "synpred97_Java"
 
 
-
     # $ANTLR start "synpred99_Java"
     def synpred99_Java_fragment(self, ):
         # Java.g:541:13: ( formalParameterStandardDecl ( COMMA formalParameterStandardDecl )* ( COMMA formalParameterVarArgDecl )? )
         # Java.g:541:13: formalParameterStandardDecl ( COMMA formalParameterStandardDecl )* ( COMMA formalParameterVarArgDecl )?
-        pass 
+        pass
         self._state.following.append(self.FOLLOW_formalParameterStandardDecl_in_synpred99_Java7467)
         self.formalParameterStandardDecl()
 
@@ -19853,11 +19126,9 @@ class JavaParser(Parser):
                     alt194 = 1
 
 
-
-
             if alt194 == 1:
                 # Java.g:541:42: COMMA formalParameterStandardDecl
-                pass 
+                pass
                 self.match(self.input, COMMA, self.FOLLOW_COMMA_in_synpred99_Java7470)
                 self._state.following.append(self.FOLLOW_formalParameterStandardDecl_in_synpred99_Java7472)
                 self.formalParameterStandardDecl()
@@ -19875,7 +19146,7 @@ class JavaParser(Parser):
             alt195 = 1
         if alt195 == 1:
             # Java.g:541:79: COMMA formalParameterVarArgDecl
-            pass 
+            pass
             self.match(self.input, COMMA, self.FOLLOW_COMMA_in_synpred99_Java7477)
             self._state.following.append(self.FOLLOW_formalParameterVarArgDecl_in_synpred99_Java7479)
             self.formalParameterVarArgDecl()
@@ -19884,17 +19155,14 @@ class JavaParser(Parser):
 
 
 
-
-
     # $ANTLR end "synpred99_Java"
-
 
 
     # $ANTLR start "synpred100_Java"
     def synpred100_Java_fragment(self, ):
         # Java.g:544:13: ( formalParameterVarArgDecl )
         # Java.g:544:13: formalParameterVarArgDecl
-        pass 
+        pass
         self._state.following.append(self.FOLLOW_formalParameterVarArgDecl_in_synpred100_Java7534)
         self.formalParameterVarArgDecl()
 
@@ -19904,12 +19172,11 @@ class JavaParser(Parser):
     # $ANTLR end "synpred100_Java"
 
 
-
     # $ANTLR start "synpred101_Java"
     def synpred101_Java_fragment(self, ):
         # Java.g:565:13: ( DOT ident= IDENT )
         # Java.g:565:13: DOT ident= IDENT
-        pass 
+        pass
         self.match(self.input, DOT, self.FOLLOW_DOT_in_synpred101_Java7765)
         ident=self.match(self.input, IDENT, self.FOLLOW_IDENT_in_synpred101_Java7769)
 
@@ -19917,12 +19184,11 @@ class JavaParser(Parser):
     # $ANTLR end "synpred101_Java"
 
 
-
     # $ANTLR start "synpred102_Java"
     def synpred102_Java_fragment(self, ):
         # Java.g:572:9: ( annotation )
         # Java.g:572:9: annotation
-        pass 
+        pass
         self._state.following.append(self.FOLLOW_annotation_in_synpred102_Java7818)
         self.annotation()
 
@@ -19932,12 +19198,11 @@ class JavaParser(Parser):
     # $ANTLR end "synpred102_Java"
 
 
-
     # $ANTLR start "synpred114_Java"
     def synpred114_Java_fragment(self, ):
         # Java.g:623:9: ( modifierList type ( IDENT LPAREN RPAREN ( annotationDefaultValue )? SEMI | classFieldDeclaratorList SEMI ) )
         # Java.g:623:9: modifierList type ( IDENT LPAREN RPAREN ( annotationDefaultValue )? SEMI | classFieldDeclaratorList SEMI )
-        pass 
+        pass
         self._state.following.append(self.FOLLOW_modifierList_in_synpred114_Java8240)
         self.modifierList()
 
@@ -19975,7 +19240,7 @@ class JavaParser(Parser):
 
         if alt200 == 1:
             # Java.g:624:13: IDENT LPAREN RPAREN ( annotationDefaultValue )? SEMI
-            pass 
+            pass
             self.match(self.input, IDENT, self.FOLLOW_IDENT_in_synpred114_Java8256)
             self.match(self.input, LPAREN, self.FOLLOW_LPAREN_in_synpred114_Java8258)
             self.match(self.input, RPAREN, self.FOLLOW_RPAREN_in_synpred114_Java8260)
@@ -19987,12 +19252,11 @@ class JavaParser(Parser):
                 alt199 = 1
             if alt199 == 1:
                 # Java.g:0:0: annotationDefaultValue
-                pass 
+                pass
                 self._state.following.append(self.FOLLOW_annotationDefaultValue_in_synpred114_Java8262)
                 self.annotationDefaultValue()
 
                 self._state.following.pop()
-
 
 
             self.match(self.input, SEMI, self.FOLLOW_SEMI_in_synpred114_Java8265)
@@ -20000,7 +19264,7 @@ class JavaParser(Parser):
 
         elif alt200 == 2:
             # Java.g:626:13: classFieldDeclaratorList SEMI
-            pass 
+            pass
             self._state.following.append(self.FOLLOW_classFieldDeclaratorList_in_synpred114_Java8307)
             self.classFieldDeclaratorList()
 
@@ -20009,17 +19273,14 @@ class JavaParser(Parser):
 
 
 
-
-
     # $ANTLR end "synpred114_Java"
-
 
 
     # $ANTLR start "synpred116_Java"
     def synpred116_Java_fragment(self, ):
         # Java.g:644:9: ( localVariableDeclaration SEMI )
         # Java.g:644:9: localVariableDeclaration SEMI
-        pass 
+        pass
         self._state.following.append(self.FOLLOW_localVariableDeclaration_in_synpred116_Java8440)
         self.localVariableDeclaration()
 
@@ -20030,12 +19291,11 @@ class JavaParser(Parser):
     # $ANTLR end "synpred116_Java"
 
 
-
     # $ANTLR start "synpred117_Java"
     def synpred117_Java_fragment(self, ):
         # Java.g:645:9: ( typeDeclaration )
         # Java.g:645:9: typeDeclaration
-        pass 
+        pass
         self._state.following.append(self.FOLLOW_typeDeclaration_in_synpred117_Java8453)
         self.typeDeclaration()
 
@@ -20045,12 +19305,11 @@ class JavaParser(Parser):
     # $ANTLR end "synpred117_Java"
 
 
-
     # $ANTLR start "synpred121_Java"
     def synpred121_Java_fragment(self, ):
         # Java.g:662:13: ( ELSE elseStat= statement )
         # Java.g:662:13: ELSE elseStat= statement
-        pass 
+        pass
         self.match(self.input, ELSE, self.FOLLOW_ELSE_in_synpred121_Java8733)
         self._state.following.append(self.FOLLOW_statement_in_synpred121_Java8737)
         elseStat = self.statement()
@@ -20061,12 +19320,11 @@ class JavaParser(Parser):
     # $ANTLR end "synpred121_Java"
 
 
-
     # $ANTLR start "synpred123_Java"
     def synpred123_Java_fragment(self, ):
         # Java.g:666:13: ( forInit SEMI forCondition SEMI forUpdater RPAREN statement )
         # Java.g:666:13: forInit SEMI forCondition SEMI forUpdater RPAREN statement
-        pass 
+        pass
         self._state.following.append(self.FOLLOW_forInit_in_synpred123_Java8916)
         self.forInit()
 
@@ -20091,12 +19349,11 @@ class JavaParser(Parser):
     # $ANTLR end "synpred123_Java"
 
 
-
     # $ANTLR start "synpred130_Java"
     def synpred130_Java_fragment(self, ):
         # Java.g:673:47: ( switchBlockLabels )
         # Java.g:673:47: switchBlockLabels
-        pass 
+        pass
         self._state.following.append(self.FOLLOW_switchBlockLabels_in_synpred130_Java9251)
         self.switchBlockLabels()
 
@@ -20106,12 +19363,11 @@ class JavaParser(Parser):
     # $ANTLR end "synpred130_Java"
 
 
-
     # $ANTLR start "synpred143_Java"
     def synpred143_Java_fragment(self, ):
         # Java.g:702:11: (c0= switchCaseLabels )
         # Java.g:702:11: c0= switchCaseLabels
-        pass 
+        pass
         self._state.following.append(self.FOLLOW_switchCaseLabels_in_synpred143_Java9839)
         c0 = self.switchCaseLabels()
 
@@ -20121,12 +19377,11 @@ class JavaParser(Parser):
     # $ANTLR end "synpred143_Java"
 
 
-
     # $ANTLR start "synpred145_Java"
     def synpred145_Java_fragment(self, ):
         # Java.g:702:52: (c1= switchCaseLabels )
         # Java.g:702:52: c1= switchCaseLabels
-        pass 
+        pass
         self._state.following.append(self.FOLLOW_switchCaseLabels_in_synpred145_Java9847)
         c1 = self.switchCaseLabels()
 
@@ -20136,12 +19391,11 @@ class JavaParser(Parser):
     # $ANTLR end "synpred145_Java"
 
 
-
     # $ANTLR start "synpred146_Java"
     def synpred146_Java_fragment(self, ):
         # Java.g:707:9: ( switchCaseLabel )
         # Java.g:707:9: switchCaseLabel
-        pass 
+        pass
         self._state.following.append(self.FOLLOW_switchCaseLabel_in_synpred146_Java9893)
         self.switchCaseLabel()
 
@@ -20151,12 +19405,11 @@ class JavaParser(Parser):
     # $ANTLR end "synpred146_Java"
 
 
-
     # $ANTLR start "synpred149_Java"
     def synpred149_Java_fragment(self, ):
         # Java.g:719:9: ( localVariableDeclaration )
         # Java.g:719:9: localVariableDeclaration
-        pass 
+        pass
         self._state.following.append(self.FOLLOW_localVariableDeclaration_in_synpred149_Java9967)
         self.localVariableDeclaration()
 
@@ -20166,12 +19419,11 @@ class JavaParser(Parser):
     # $ANTLR end "synpred149_Java"
 
 
-
     # $ANTLR start "synpred150_Java"
     def synpred150_Java_fragment(self, ):
         # Java.g:720:9: ( expressionList )
         # Java.g:720:9: expressionList
-        pass 
+        pass
         self._state.following.append(self.FOLLOW_expressionList_in_synpred150_Java9989)
         self.expressionList()
 
@@ -20181,12 +19433,11 @@ class JavaParser(Parser):
     # $ANTLR end "synpred150_Java"
 
 
-
     # $ANTLR start "synpred193_Java"
     def synpred193_Java_fragment(self, ):
         # Java.g:856:9: ( LPAREN type RPAREN unaryExpression )
         # Java.g:856:9: LPAREN type RPAREN unaryExpression
-        pass 
+        pass
         self.match(self.input, LPAREN, self.FOLLOW_LPAREN_in_synpred193_Java11492)
         self._state.following.append(self.FOLLOW_type_in_synpred193_Java11494)
         self.type()
@@ -20202,12 +19453,11 @@ class JavaParser(Parser):
     # $ANTLR end "synpred193_Java"
 
 
-
     # $ANTLR start "synpred221_Java"
     def synpred221_Java_fragment(self, ):
         # Java.g:924:13: ( ( arrayDeclarator )+ ( DOT CLASS ) )
         # Java.g:924:13: ( arrayDeclarator )+ ( DOT CLASS )
-        pass 
+        pass
         # Java.g:924:13: ( arrayDeclarator )+
         cnt224 = 0
         while True: #loop224
@@ -20220,7 +19470,7 @@ class JavaParser(Parser):
 
             if alt224 == 1:
                 # Java.g:924:17: arrayDeclarator
-                pass 
+                pass
                 self._state.following.append(self.FOLLOW_arrayDeclarator_in_synpred221_Java13349)
                 self.arrayDeclarator()
 
@@ -20240,23 +19490,20 @@ class JavaParser(Parser):
             cnt224 += 1
         # Java.g:926:13: ( DOT CLASS )
         # Java.g:926:17: DOT CLASS
-        pass 
+        pass
         self.match(self.input, DOT, self.FOLLOW_DOT_in_synpred221_Java13416)
         self.match(self.input, CLASS, self.FOLLOW_CLASS_in_synpred221_Java13418)
-
-
 
 
 
     # $ANTLR end "synpred221_Java"
 
 
-
     # $ANTLR start "synpred229_Java"
     def synpred229_Java_fragment(self, ):
         # Java.g:929:13: (outerDot= DOT ( CLASS | genericTypeArgumentListSimplified (Super= SUPER arguments | SUPER innerDot= DOT IDENT arguments | IDENT arguments ) | THIS | Super= SUPER arguments | innerNewExpression ) )
         # Java.g:929:13: outerDot= DOT ( CLASS | genericTypeArgumentListSimplified (Super= SUPER arguments | SUPER innerDot= DOT IDENT arguments | IDENT arguments ) | THIS | Super= SUPER arguments | innerNewExpression )
-        pass 
+        pass
         outerDot=self.match(self.input, DOT, self.FOLLOW_DOT_in_synpred229_Java13549)
         # Java.g:930:13: ( CLASS | genericTypeArgumentListSimplified (Super= SUPER arguments | SUPER innerDot= DOT IDENT arguments | IDENT arguments ) | THIS | Super= SUPER arguments | innerNewExpression )
         alt227 = 5
@@ -20281,13 +19528,13 @@ class JavaParser(Parser):
 
         if alt227 == 1:
             # Java.g:930:17: CLASS
-            pass 
+            pass
             self.match(self.input, CLASS, self.FOLLOW_CLASS_in_synpred229_Java13567)
 
 
         elif alt227 == 2:
             # Java.g:931:17: genericTypeArgumentListSimplified (Super= SUPER arguments | SUPER innerDot= DOT IDENT arguments | IDENT arguments )
-            pass 
+            pass
             self._state.following.append(self.FOLLOW_genericTypeArgumentListSimplified_in_synpred229_Java13630)
             self.genericTypeArgumentListSimplified()
 
@@ -20323,7 +19570,7 @@ class JavaParser(Parser):
 
             if alt226 == 1:
                 # Java.g:932:21: Super= SUPER arguments
-                pass 
+                pass
                 Super=self.match(self.input, SUPER, self.FOLLOW_SUPER_in_synpred229_Java13654)
                 self._state.following.append(self.FOLLOW_arguments_in_synpred229_Java13656)
                 self.arguments()
@@ -20333,7 +19580,7 @@ class JavaParser(Parser):
 
             elif alt226 == 2:
                 # Java.g:933:21: SUPER innerDot= DOT IDENT arguments
-                pass 
+                pass
                 self.match(self.input, SUPER, self.FOLLOW_SUPER_in_synpred229_Java13706)
                 innerDot=self.match(self.input, DOT, self.FOLLOW_DOT_in_synpred229_Java13710)
                 self.match(self.input, IDENT, self.FOLLOW_IDENT_in_synpred229_Java13712)
@@ -20345,7 +19592,7 @@ class JavaParser(Parser):
 
             elif alt226 == 3:
                 # Java.g:934:21: IDENT arguments
-                pass 
+                pass
                 self.match(self.input, IDENT, self.FOLLOW_IDENT_in_synpred229_Java13764)
                 self._state.following.append(self.FOLLOW_arguments_in_synpred229_Java13766)
                 self.arguments()
@@ -20354,17 +19601,15 @@ class JavaParser(Parser):
 
 
 
-
-
         elif alt227 == 3:
             # Java.g:936:17: THIS
-            pass 
+            pass
             self.match(self.input, THIS, self.FOLLOW_THIS_in_synpred229_Java13841)
 
 
         elif alt227 == 4:
             # Java.g:937:17: Super= SUPER arguments
-            pass 
+            pass
             Super=self.match(self.input, SUPER, self.FOLLOW_SUPER_in_synpred229_Java13907)
             self._state.following.append(self.FOLLOW_arguments_in_synpred229_Java13909)
             self.arguments()
@@ -20374,7 +19619,7 @@ class JavaParser(Parser):
 
         elif alt227 == 5:
             # Java.g:938:17: innerNewExpression
-            pass 
+            pass
             self._state.following.append(self.FOLLOW_innerNewExpression_in_synpred229_Java13957)
             self.innerNewExpression()
 
@@ -20382,17 +19627,14 @@ class JavaParser(Parser):
 
 
 
-
-
     # $ANTLR end "synpred229_Java"
-
 
 
     # $ANTLR start "synpred237_Java"
     def synpred237_Java_fragment(self, ):
         # Java.g:963:37: ( LBRACK expression RBRACK )
         # Java.g:963:37: LBRACK expression RBRACK
-        pass 
+        pass
         self.match(self.input, LBRACK, self.FOLLOW_LBRACK_in_synpred237_Java14352)
         self._state.following.append(self.FOLLOW_expression_in_synpred237_Java14355)
         self.expression()
@@ -20402,8 +19644,6 @@ class JavaParser(Parser):
 
 
     # $ANTLR end "synpred237_Java"
-
-
 
 
     # Delegated rules
@@ -20888,7 +20128,6 @@ class JavaParser(Parser):
         self.input.rewind(start)
         self._state.backtracking -= 1
         return success
-
 
 
     # lookup tables for DFA #36
@@ -23321,7 +22560,6 @@ class JavaParser(Parser):
     FOLLOW_LBRACK_in_synpred237_Java14352 = frozenset([12, 21, 23, 25, 27, 29, 30, 34, 38, 55, 57, 60, 65, 69, 72, 79, 80, 82, 83, 89, 92, 95, 99, 101, 164, 165, 166, 167, 168, 169, 170])
     FOLLOW_expression_in_synpred237_Java14355 = frozenset([41])
     FOLLOW_RBRACK_in_synpred237_Java14357 = frozenset([1])
-
 
 
 def main(argv, stdin=sys.stdin, stdout=sys.stdout, stderr=sys.stderr):

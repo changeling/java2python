@@ -6,7 +6,8 @@ from functools import partial
 
 
 class FS(object):
-    """ Format string abbreviations. """
+    """Format string abbreviations."""
+
     l = '{left}'
     r = '{right}'
     c = ':'
@@ -17,7 +18,7 @@ class FS(object):
 
     @classmethod
     def op(cls, op):
-        """ Returns a format string for the given operation. """
+        """Return a format string for the given operation."""
         l, r = cls.l, cls.r
         if op == '>>>':
             return '(' + l + ' & (2**32+' + l + ')) >> ' + r
@@ -27,15 +28,15 @@ class FS(object):
 
 
 escapes = {
-    'BLACK'   : '\033[90m',
-    'BLUE'    : '\033[94m',
-    'CYAN'    : '\033[96m',
-    'GREEN'   : '\033[92m',
-    'MAGENTA' : '\033[95m',
-    'NORMAL'  : '\033[0m',
-    'RED'     : '\033[91m',
-    'WHITE'   : '\033[97m',
-    'YELLOW'  : '\033[93m',
+    'BLACK':   '\033[90m',
+    'BLUE':    '\033[94m',
+    'CYAN':    '\033[96m',
+    'GREEN':   '\033[92m',
+    'MAGENTA': '\033[95m',
+    'NORMAL':  '\033[0m',
+    'RED':     '\033[91m',
+    'WHITE':   '\033[97m',
+    'YELLOW':  '\033[93m',
     }
 
 

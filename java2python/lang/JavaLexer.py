@@ -4,192 +4,191 @@ import sys
 from antlr3 import *
 from antlr3.compat import set, frozenset
 
-
 # for convenience in actions
 HIDDEN = BaseRecognizer.HIDDEN
 
 # token types
-PACKAGE=84
-EXPONENT=173
-STAR=49
-WHILE=103
-MOD=32
-MOD_ASSIGN=33
-CASE=58
-CHAR=60
-NEW=82
-DO=64
-GENERIC_TYPE_PARAM_LIST=138
-CLASS_INSTANCE_INITIALIZER=121
-ARRAY_ELEMENT_ACCESS=115
-FOR_CONDITION=129
-NOT=34
-VAR_DECLARATION=160
-ANNOTATION_METHOD_DECL=109
-EOF=-1
-DIV_ASSIGN=14
-BREAK=56
-LOGICAL_AND=26
-BIT_SHIFT_RIGHT_ASSIGN=9
-UNARY_PLUS=159
-TYPE=157
-FINAL=70
-INC=21
-RPAREN=43
-IMPORT=78
-STRING_LITERAL=170
-FOR_UPDATE=132
-FLOATING_POINT_LITERAL=168
-CAST_EXPR=118
-NOT_EQUAL=35
-VOID_METHOD_DECL=163
-RETURN=88
-THIS=95
-DOUBLE=65
-VOID=101
-ENUM_TOP_LEVEL_SCOPE=125
-SUPER=92
-COMMENT=181
-ANNOTATION_INIT_KEY_LIST=107
-JAVA_ID_START=178
-FLOAT_TYPE_SUFFIX=174
-PRE_DEC=149
-RBRACK=41
-IMPLEMENTS_CLAUSE=140
-SWITCH_BLOCK_LABEL_LIST=154
-LINE_COMMENT=182
-PRIVATE=85
-STATIC=90
-BLOCK_SCOPE=117
-ANNOTATION_INIT_DEFAULT_KEY=106
-SWITCH=93
-NULL=83
-VAR_DECLARATOR=161
-MINUS_ASSIGN=31
-ELSE=66
-STRICTFP=91
-CHARACTER_LITERAL=169
-PRE_INC=150
-ANNOTATION_LIST=108
-ELLIPSIS=17
-NATIVE=81
-OCTAL_ESCAPE=177
-UNARY_MINUS=158
-THROWS=97
-LCURLY=23
-INT=79
-FORMAL_PARAM_VARARG_DECL=135
-METHOD_CALL=144
-ASSERT=54
-TRY=100
-INTERFACE_TOP_LEVEL_SCOPE=139
-SHIFT_LEFT=45
-WS=180
-SHIFT_RIGHT=47
-FORMAL_PARAM_STD_DECL=134
-LOCAL_MODIFIER_LIST=142
-OR=36
-LESS_THAN=25
-SHIFT_RIGHT_ASSIGN=48
-EXTENDS_BOUND_LIST=127
-JAVA_SOURCE=143
-CATCH=59
-FALSE=69
-INTEGER_TYPE_SUFFIX=172
-DECIMAL_LITERAL=167
-THROW=96
-FOR_INIT=131
-PROTECTED=86
-DEC=12
-CLASS=61
-LBRACK=22
-BIT_SHIFT_RIGHT=8
-THROWS_CLAUSE=156
-GREATER_OR_EQUAL=19
-FOR=73
-LOGICAL_NOT=27
-THIS_CONSTRUCTOR_CALL=155
-FLOAT=72
-JAVADOC_COMMENT=183
-ABSTRACT=53
-AND=4
-POST_DEC=147
-AND_ASSIGN=5
-ANNOTATION_SCOPE=110
-MODIFIER_LIST=145
-STATIC_ARRAY_CREATOR=152
-LPAREN=29
-IF=74
-AT=7
-CONSTRUCTOR_DECL=124
-ESCAPE_SEQUENCE=175
-LABELED_STATEMENT=141
-UNICODE_ESCAPE=176
-BOOLEAN=55
-SYNCHRONIZED=94
-EXPR=126
-CLASS_TOP_LEVEL_SCOPE=123
-IMPLEMENTS=75
-CONTINUE=62
-COMMA=11
-TRANSIENT=98
-XOR_ASSIGN=52
-EQUAL=18
-LOGICAL_OR=28
-ARGUMENT_LIST=112
-QUALIFIED_TYPE_IDENT=151
-IDENT=164
-PLUS=38
-ANNOTATION_INIT_BLOCK=105
-HEX_LITERAL=165
-DOT=15
-SHIFT_LEFT_ASSIGN=46
-FORMAL_PARAM_LIST=133
-GENERIC_TYPE_ARG_LIST=137
-DOTSTAR=16
-ANNOTATION_TOP_LEVEL_SCOPE=111
-BYTE=57
-XOR=51
-JAVA_ID_PART=179
-GREATER_THAN=20
-VOLATILE=102
-PARENTESIZED_EXPR=146
-LESS_OR_EQUAL=24
-ARRAY_DECLARATOR_LIST=114
-CLASS_STATIC_INITIALIZER=122
-DEFAULT=63
-OCTAL_LITERAL=166
-HEX_DIGIT=171
-SHORT=89
-INSTANCEOF=76
-MINUS=30
-SEMI=44
-TRUE=99
-EXTENDS_CLAUSE=128
-STAR_ASSIGN=50
-VAR_DECLARATOR_LIST=162
-COLON=10
-ARRAY_DECLARATOR=113
-OR_ASSIGN=37
-ENUM=67
-QUESTION=40
-FINALLY=71
-RCURLY=42
-ASSIGN=6
-PLUS_ASSIGN=39
-ANNOTATION_INIT_ARRAY_ELEMENT=104
-FUNCTION_METHOD_DECL=136
-INTERFACE=77
-DIV=13
-POST_INC=148
-LONG=80
-CLASS_CONSTRUCTOR_CALL=120
-PUBLIC=87
-EXTENDS=68
-FOR_EACH=130
-ARRAY_INITIALIZER=116
-CATCH_CLAUSE_LIST=119
-SUPER_CONSTRUCTOR_CALL=153
+PACKAGE = 84
+EXPONENT = 173
+STAR = 49
+WHILE = 103
+MOD = 32
+MOD_ASSIGN = 33
+CASE = 58
+CHAR = 60
+NEW = 82
+DO = 64
+GENERIC_TYPE_PARAM_LIST = 138
+CLASS_INSTANCE_INITIALIZER = 121
+ARRAY_ELEMENT_ACCESS = 115
+FOR_CONDITION = 129
+NOT = 34
+VAR_DECLARATION = 160
+ANNOTATION_METHOD_DECL = 109
+EOF = -1
+DIV_ASSIGN = 14
+BREAK = 56
+LOGICAL_AND = 26
+BIT_SHIFT_RIGHT_ASSIGN = 9
+UNARY_PLUS = 159
+TYPE = 157
+FINAL = 70
+INC = 21
+RPAREN = 43
+IMPORT = 78
+STRING_LITERAL = 170
+FOR_UPDATE = 132
+FLOATING_POINT_LITERAL = 168
+CAST_EXPR = 118
+NOT_EQUAL = 35
+VOID_METHOD_DECL = 163
+RETURN = 88
+THIS = 95
+DOUBLE = 65
+VOID = 101
+ENUM_TOP_LEVEL_SCOPE = 125
+SUPER = 92
+COMMENT = 181
+ANNOTATION_INIT_KEY_LIST = 107
+JAVA_ID_START = 178
+FLOAT_TYPE_SUFFIX = 174
+PRE_DEC = 149
+RBRACK = 41
+IMPLEMENTS_CLAUSE = 140
+SWITCH_BLOCK_LABEL_LIST = 154
+LINE_COMMENT = 182
+PRIVATE = 85
+STATIC = 90
+BLOCK_SCOPE = 117
+ANNOTATION_INIT_DEFAULT_KEY = 106
+SWITCH = 93
+NULL = 83
+VAR_DECLARATOR = 161
+MINUS_ASSIGN = 31
+ELSE = 66
+STRICTFP = 91
+CHARACTER_LITERAL = 169
+PRE_INC = 150
+ANNOTATION_LIST = 108
+ELLIPSIS = 17
+NATIVE = 81
+OCTAL_ESCAPE = 177
+UNARY_MINUS = 158
+THROWS = 97
+LCURLY = 23
+INT = 79
+FORMAL_PARAM_VARARG_DECL = 135
+METHOD_CALL = 144
+ASSERT = 54
+TRY = 100
+INTERFACE_TOP_LEVEL_SCOPE = 139
+SHIFT_LEFT = 45
+WS = 180
+SHIFT_RIGHT = 47
+FORMAL_PARAM_STD_DECL = 134
+LOCAL_MODIFIER_LIST = 142
+OR = 36
+LESS_THAN = 25
+SHIFT_RIGHT_ASSIGN = 48
+EXTENDS_BOUND_LIST = 127
+JAVA_SOURCE = 143
+CATCH = 59
+FALSE = 69
+INTEGER_TYPE_SUFFIX = 172
+DECIMAL_LITERAL = 167
+THROW = 96
+FOR_INIT = 131
+PROTECTED = 86
+DEC = 12
+CLASS = 61
+LBRACK = 22
+BIT_SHIFT_RIGHT = 8
+THROWS_CLAUSE = 156
+GREATER_OR_EQUAL = 19
+FOR = 73
+LOGICAL_NOT = 27
+THIS_CONSTRUCTOR_CALL = 155
+FLOAT = 72
+JAVADOC_COMMENT = 183
+ABSTRACT = 53
+AND = 4
+POST_DEC = 147
+AND_ASSIGN = 5
+ANNOTATION_SCOPE = 110
+MODIFIER_LIST = 145
+STATIC_ARRAY_CREATOR = 152
+LPAREN = 29
+IF = 74
+AT = 7
+CONSTRUCTOR_DECL = 124
+ESCAPE_SEQUENCE = 175
+LABELED_STATEMENT = 141
+UNICODE_ESCAPE = 176
+BOOLEAN = 55
+SYNCHRONIZED = 94
+EXPR = 126
+CLASS_TOP_LEVEL_SCOPE = 123
+IMPLEMENTS = 75
+CONTINUE = 62
+COMMA = 11
+TRANSIENT = 98
+XOR_ASSIGN = 52
+EQUAL = 18
+LOGICAL_OR = 28
+ARGUMENT_LIST = 112
+QUALIFIED_TYPE_IDENT = 151
+IDENT = 164
+PLUS = 38
+ANNOTATION_INIT_BLOCK = 105
+HEX_LITERAL = 165
+DOT = 15
+SHIFT_LEFT_ASSIGN = 46
+FORMAL_PARAM_LIST = 133
+GENERIC_TYPE_ARG_LIST = 137
+DOTSTAR = 16
+ANNOTATION_TOP_LEVEL_SCOPE = 111
+BYTE = 57
+XOR = 51
+JAVA_ID_PART = 179
+GREATER_THAN = 20
+VOLATILE = 102
+PARENTESIZED_EXPR = 146
+LESS_OR_EQUAL = 24
+ARRAY_DECLARATOR_LIST = 114
+CLASS_STATIC_INITIALIZER = 122
+DEFAULT = 63
+OCTAL_LITERAL = 166
+HEX_DIGIT = 171
+SHORT = 89
+INSTANCEOF = 76
+MINUS = 30
+SEMI = 44
+TRUE = 99
+EXTENDS_CLAUSE = 128
+STAR_ASSIGN = 50
+VAR_DECLARATOR_LIST = 162
+COLON = 10
+ARRAY_DECLARATOR = 113
+OR_ASSIGN = 37
+ENUM = 67
+QUESTION = 40
+FINALLY = 71
+RCURLY = 42
+ASSIGN = 6
+PLUS_ASSIGN = 39
+ANNOTATION_INIT_ARRAY_ELEMENT = 104
+FUNCTION_METHOD_DECL = 136
+INTERFACE = 77
+DIV = 13
+POST_INC = 148
+LONG = 80
+CLASS_CONSTRUCTOR_CALL = 120
+PUBLIC = 87
+EXTENDS = 68
+FOR_EACH = 130
+ARRAY_INITIALIZER = 116
+CATCH_CLAUSE_LIST = 119
+SUPER_CONSTRUCTOR_CALL = 153
 
 
 class JavaLexer(Lexer):
@@ -203,22 +202,16 @@ class JavaLexer(Lexer):
             state = RecognizerSharedState()
         super(JavaLexer, self).__init__(input, state)
 
-
         self.dfa29 = self.DFA29(
             self, 29,
-            eot = self.DFA29_eot,
-            eof = self.DFA29_eof,
-            min = self.DFA29_min,
-            max = self.DFA29_max,
-            accept = self.DFA29_accept,
-            special = self.DFA29_special,
-            transition = self.DFA29_transition
+            eot=self.DFA29_eot,
+            eof=self.DFA29_eof,
+            min=self.DFA29_min,
+            max=self.DFA29_max,
+            accept=self.DFA29_accept,
+            special=self.DFA29_special,
+            transition=self.DFA29_transition
             )
-
-
-
-
-
 
     # $ANTLR start "AND"
     def mAND(self, ):
@@ -229,11 +222,8 @@ class JavaLexer(Lexer):
 
             # Java.g:7:5: ( '&' )
             # Java.g:7:7: '&'
-            pass 
+            pass
             self.match(38)
-
-
-
             self._state.type = _type
             self._state.channel = _channel
 
@@ -242,8 +232,6 @@ class JavaLexer(Lexer):
             pass
 
     # $ANTLR end "AND"
-
-
 
     # $ANTLR start "AND_ASSIGN"
     def mAND_ASSIGN(self, ):
@@ -254,10 +242,8 @@ class JavaLexer(Lexer):
 
             # Java.g:8:12: ( '&=' )
             # Java.g:8:14: '&='
-            pass 
+            pass
             self.match("&=")
-
-
 
             self._state.type = _type
             self._state.channel = _channel
@@ -268,8 +254,6 @@ class JavaLexer(Lexer):
 
     # $ANTLR end "AND_ASSIGN"
 
-
-
     # $ANTLR start "ASSIGN"
     def mASSIGN(self, ):
 
@@ -279,10 +263,8 @@ class JavaLexer(Lexer):
 
             # Java.g:9:8: ( '=' )
             # Java.g:9:10: '='
-            pass 
+            pass
             self.match(61)
-
-
 
             self._state.type = _type
             self._state.channel = _channel
@@ -293,8 +275,6 @@ class JavaLexer(Lexer):
 
     # $ANTLR end "ASSIGN"
 
-
-
     # $ANTLR start "AT"
     def mAT(self, ):
 
@@ -304,10 +284,8 @@ class JavaLexer(Lexer):
 
             # Java.g:10:4: ( '@' )
             # Java.g:10:6: '@'
-            pass 
+            pass
             self.match(64)
-
-
 
             self._state.type = _type
             self._state.channel = _channel
@@ -318,8 +296,6 @@ class JavaLexer(Lexer):
 
     # $ANTLR end "AT"
 
-
-
     # $ANTLR start "BIT_SHIFT_RIGHT"
     def mBIT_SHIFT_RIGHT(self, ):
 
@@ -329,10 +305,8 @@ class JavaLexer(Lexer):
 
             # Java.g:11:17: ( '>>>' )
             # Java.g:11:19: '>>>'
-            pass 
+            pass
             self.match(">>>")
-
-
 
             self._state.type = _type
             self._state.channel = _channel
@@ -343,8 +317,6 @@ class JavaLexer(Lexer):
 
     # $ANTLR end "BIT_SHIFT_RIGHT"
 
-
-
     # $ANTLR start "BIT_SHIFT_RIGHT_ASSIGN"
     def mBIT_SHIFT_RIGHT_ASSIGN(self, ):
 
@@ -354,9 +326,8 @@ class JavaLexer(Lexer):
 
             # Java.g:12:24: ( '>>>=' )
             # Java.g:12:26: '>>>='
-            pass 
+            pass
             self.match(">>>=")
-
 
 
             self._state.type = _type
@@ -369,7 +340,6 @@ class JavaLexer(Lexer):
     # $ANTLR end "BIT_SHIFT_RIGHT_ASSIGN"
 
 
-
     # $ANTLR start "COLON"
     def mCOLON(self, ):
 
@@ -379,9 +349,8 @@ class JavaLexer(Lexer):
 
             # Java.g:13:7: ( ':' )
             # Java.g:13:9: ':'
-            pass 
+            pass
             self.match(58)
-
 
 
             self._state.type = _type
@@ -394,7 +363,6 @@ class JavaLexer(Lexer):
     # $ANTLR end "COLON"
 
 
-
     # $ANTLR start "COMMA"
     def mCOMMA(self, ):
 
@@ -404,9 +372,8 @@ class JavaLexer(Lexer):
 
             # Java.g:14:7: ( ',' )
             # Java.g:14:9: ','
-            pass 
+            pass
             self.match(44)
-
 
 
             self._state.type = _type
@@ -419,7 +386,6 @@ class JavaLexer(Lexer):
     # $ANTLR end "COMMA"
 
 
-
     # $ANTLR start "DEC"
     def mDEC(self, ):
 
@@ -429,9 +395,8 @@ class JavaLexer(Lexer):
 
             # Java.g:15:5: ( '--' )
             # Java.g:15:7: '--'
-            pass 
+            pass
             self.match("--")
-
 
 
             self._state.type = _type
@@ -444,7 +409,6 @@ class JavaLexer(Lexer):
     # $ANTLR end "DEC"
 
 
-
     # $ANTLR start "DIV"
     def mDIV(self, ):
 
@@ -454,9 +418,8 @@ class JavaLexer(Lexer):
 
             # Java.g:16:5: ( '/' )
             # Java.g:16:7: '/'
-            pass 
+            pass
             self.match(47)
-
 
 
             self._state.type = _type
@@ -469,7 +432,6 @@ class JavaLexer(Lexer):
     # $ANTLR end "DIV"
 
 
-
     # $ANTLR start "DIV_ASSIGN"
     def mDIV_ASSIGN(self, ):
 
@@ -479,9 +441,8 @@ class JavaLexer(Lexer):
 
             # Java.g:17:12: ( '/=' )
             # Java.g:17:14: '/='
-            pass 
+            pass
             self.match("/=")
-
 
 
             self._state.type = _type
@@ -494,7 +455,6 @@ class JavaLexer(Lexer):
     # $ANTLR end "DIV_ASSIGN"
 
 
-
     # $ANTLR start "DOT"
     def mDOT(self, ):
 
@@ -504,9 +464,8 @@ class JavaLexer(Lexer):
 
             # Java.g:18:5: ( '.' )
             # Java.g:18:7: '.'
-            pass 
+            pass
             self.match(46)
-
 
 
             self._state.type = _type
@@ -519,7 +478,6 @@ class JavaLexer(Lexer):
     # $ANTLR end "DOT"
 
 
-
     # $ANTLR start "DOTSTAR"
     def mDOTSTAR(self, ):
 
@@ -529,9 +487,8 @@ class JavaLexer(Lexer):
 
             # Java.g:19:9: ( '.*' )
             # Java.g:19:11: '.*'
-            pass 
+            pass
             self.match(".*")
-
 
 
             self._state.type = _type
@@ -544,7 +501,6 @@ class JavaLexer(Lexer):
     # $ANTLR end "DOTSTAR"
 
 
-
     # $ANTLR start "ELLIPSIS"
     def mELLIPSIS(self, ):
 
@@ -554,9 +510,8 @@ class JavaLexer(Lexer):
 
             # Java.g:20:10: ( '...' )
             # Java.g:20:12: '...'
-            pass 
+            pass
             self.match("...")
-
 
 
             self._state.type = _type
@@ -569,7 +524,6 @@ class JavaLexer(Lexer):
     # $ANTLR end "ELLIPSIS"
 
 
-
     # $ANTLR start "EQUAL"
     def mEQUAL(self, ):
 
@@ -579,9 +533,8 @@ class JavaLexer(Lexer):
 
             # Java.g:21:7: ( '==' )
             # Java.g:21:9: '=='
-            pass 
+            pass
             self.match("==")
-
 
 
             self._state.type = _type
@@ -594,7 +547,6 @@ class JavaLexer(Lexer):
     # $ANTLR end "EQUAL"
 
 
-
     # $ANTLR start "GREATER_OR_EQUAL"
     def mGREATER_OR_EQUAL(self, ):
 
@@ -604,9 +556,8 @@ class JavaLexer(Lexer):
 
             # Java.g:22:18: ( '>=' )
             # Java.g:22:20: '>='
-            pass 
+            pass
             self.match(">=")
-
 
 
             self._state.type = _type
@@ -619,7 +570,6 @@ class JavaLexer(Lexer):
     # $ANTLR end "GREATER_OR_EQUAL"
 
 
-
     # $ANTLR start "GREATER_THAN"
     def mGREATER_THAN(self, ):
 
@@ -629,9 +579,8 @@ class JavaLexer(Lexer):
 
             # Java.g:23:14: ( '>' )
             # Java.g:23:16: '>'
-            pass 
+            pass
             self.match(62)
-
 
 
             self._state.type = _type
@@ -644,7 +593,6 @@ class JavaLexer(Lexer):
     # $ANTLR end "GREATER_THAN"
 
 
-
     # $ANTLR start "INC"
     def mINC(self, ):
 
@@ -654,9 +602,8 @@ class JavaLexer(Lexer):
 
             # Java.g:24:5: ( '++' )
             # Java.g:24:7: '++'
-            pass 
+            pass
             self.match("++")
-
 
 
             self._state.type = _type
@@ -669,7 +616,6 @@ class JavaLexer(Lexer):
     # $ANTLR end "INC"
 
 
-
     # $ANTLR start "LBRACK"
     def mLBRACK(self, ):
 
@@ -679,9 +625,8 @@ class JavaLexer(Lexer):
 
             # Java.g:25:8: ( '[' )
             # Java.g:25:10: '['
-            pass 
+            pass
             self.match(91)
-
 
 
             self._state.type = _type
@@ -694,7 +639,6 @@ class JavaLexer(Lexer):
     # $ANTLR end "LBRACK"
 
 
-
     # $ANTLR start "LCURLY"
     def mLCURLY(self, ):
 
@@ -704,9 +648,8 @@ class JavaLexer(Lexer):
 
             # Java.g:26:8: ( '{' )
             # Java.g:26:10: '{'
-            pass 
+            pass
             self.match(123)
-
 
 
             self._state.type = _type
@@ -719,7 +662,6 @@ class JavaLexer(Lexer):
     # $ANTLR end "LCURLY"
 
 
-
     # $ANTLR start "LESS_OR_EQUAL"
     def mLESS_OR_EQUAL(self, ):
 
@@ -729,9 +671,8 @@ class JavaLexer(Lexer):
 
             # Java.g:27:15: ( '<=' )
             # Java.g:27:17: '<='
-            pass 
+            pass
             self.match("<=")
-
 
 
             self._state.type = _type
@@ -744,7 +685,6 @@ class JavaLexer(Lexer):
     # $ANTLR end "LESS_OR_EQUAL"
 
 
-
     # $ANTLR start "LESS_THAN"
     def mLESS_THAN(self, ):
 
@@ -754,9 +694,8 @@ class JavaLexer(Lexer):
 
             # Java.g:28:11: ( '<' )
             # Java.g:28:13: '<'
-            pass 
+            pass
             self.match(60)
-
 
 
             self._state.type = _type
@@ -769,7 +708,6 @@ class JavaLexer(Lexer):
     # $ANTLR end "LESS_THAN"
 
 
-
     # $ANTLR start "LOGICAL_AND"
     def mLOGICAL_AND(self, ):
 
@@ -779,9 +717,8 @@ class JavaLexer(Lexer):
 
             # Java.g:29:13: ( '&&' )
             # Java.g:29:15: '&&'
-            pass 
+            pass
             self.match("&&")
-
 
 
             self._state.type = _type
@@ -794,7 +731,6 @@ class JavaLexer(Lexer):
     # $ANTLR end "LOGICAL_AND"
 
 
-
     # $ANTLR start "LOGICAL_NOT"
     def mLOGICAL_NOT(self, ):
 
@@ -804,9 +740,8 @@ class JavaLexer(Lexer):
 
             # Java.g:30:13: ( '!' )
             # Java.g:30:15: '!'
-            pass 
+            pass
             self.match(33)
-
 
 
             self._state.type = _type
@@ -819,7 +754,6 @@ class JavaLexer(Lexer):
     # $ANTLR end "LOGICAL_NOT"
 
 
-
     # $ANTLR start "LOGICAL_OR"
     def mLOGICAL_OR(self, ):
 
@@ -829,9 +763,8 @@ class JavaLexer(Lexer):
 
             # Java.g:31:12: ( '||' )
             # Java.g:31:14: '||'
-            pass 
+            pass
             self.match("||")
-
 
 
             self._state.type = _type
@@ -844,7 +777,6 @@ class JavaLexer(Lexer):
     # $ANTLR end "LOGICAL_OR"
 
 
-
     # $ANTLR start "LPAREN"
     def mLPAREN(self, ):
 
@@ -854,9 +786,8 @@ class JavaLexer(Lexer):
 
             # Java.g:32:8: ( '(' )
             # Java.g:32:10: '('
-            pass 
+            pass
             self.match(40)
-
 
 
             self._state.type = _type
@@ -869,7 +800,6 @@ class JavaLexer(Lexer):
     # $ANTLR end "LPAREN"
 
 
-
     # $ANTLR start "MINUS"
     def mMINUS(self, ):
 
@@ -879,9 +809,8 @@ class JavaLexer(Lexer):
 
             # Java.g:33:7: ( '-' )
             # Java.g:33:9: '-'
-            pass 
+            pass
             self.match(45)
-
 
 
             self._state.type = _type
@@ -894,7 +823,6 @@ class JavaLexer(Lexer):
     # $ANTLR end "MINUS"
 
 
-
     # $ANTLR start "MINUS_ASSIGN"
     def mMINUS_ASSIGN(self, ):
 
@@ -904,9 +832,8 @@ class JavaLexer(Lexer):
 
             # Java.g:34:14: ( '-=' )
             # Java.g:34:16: '-='
-            pass 
+            pass
             self.match("-=")
-
 
 
             self._state.type = _type
@@ -919,7 +846,6 @@ class JavaLexer(Lexer):
     # $ANTLR end "MINUS_ASSIGN"
 
 
-
     # $ANTLR start "MOD"
     def mMOD(self, ):
 
@@ -929,9 +855,8 @@ class JavaLexer(Lexer):
 
             # Java.g:35:5: ( '%' )
             # Java.g:35:7: '%'
-            pass 
+            pass
             self.match(37)
-
 
 
             self._state.type = _type
@@ -944,7 +869,6 @@ class JavaLexer(Lexer):
     # $ANTLR end "MOD"
 
 
-
     # $ANTLR start "MOD_ASSIGN"
     def mMOD_ASSIGN(self, ):
 
@@ -954,9 +878,8 @@ class JavaLexer(Lexer):
 
             # Java.g:36:12: ( '%=' )
             # Java.g:36:14: '%='
-            pass 
+            pass
             self.match("%=")
-
 
 
             self._state.type = _type
@@ -969,7 +892,6 @@ class JavaLexer(Lexer):
     # $ANTLR end "MOD_ASSIGN"
 
 
-
     # $ANTLR start "NOT"
     def mNOT(self, ):
 
@@ -979,9 +901,8 @@ class JavaLexer(Lexer):
 
             # Java.g:37:5: ( '~' )
             # Java.g:37:7: '~'
-            pass 
+            pass
             self.match(126)
-
 
 
             self._state.type = _type
@@ -994,7 +915,6 @@ class JavaLexer(Lexer):
     # $ANTLR end "NOT"
 
 
-
     # $ANTLR start "NOT_EQUAL"
     def mNOT_EQUAL(self, ):
 
@@ -1004,9 +924,8 @@ class JavaLexer(Lexer):
 
             # Java.g:38:11: ( '!=' )
             # Java.g:38:13: '!='
-            pass 
+            pass
             self.match("!=")
-
 
 
             self._state.type = _type
@@ -1019,7 +938,6 @@ class JavaLexer(Lexer):
     # $ANTLR end "NOT_EQUAL"
 
 
-
     # $ANTLR start "OR"
     def mOR(self, ):
 
@@ -1029,9 +947,8 @@ class JavaLexer(Lexer):
 
             # Java.g:39:4: ( '|' )
             # Java.g:39:6: '|'
-            pass 
+            pass
             self.match(124)
-
 
 
             self._state.type = _type
@@ -1044,7 +961,6 @@ class JavaLexer(Lexer):
     # $ANTLR end "OR"
 
 
-
     # $ANTLR start "OR_ASSIGN"
     def mOR_ASSIGN(self, ):
 
@@ -1054,9 +970,8 @@ class JavaLexer(Lexer):
 
             # Java.g:40:11: ( '|=' )
             # Java.g:40:13: '|='
-            pass 
+            pass
             self.match("|=")
-
 
 
             self._state.type = _type
@@ -1069,7 +984,6 @@ class JavaLexer(Lexer):
     # $ANTLR end "OR_ASSIGN"
 
 
-
     # $ANTLR start "PLUS"
     def mPLUS(self, ):
 
@@ -1079,9 +993,8 @@ class JavaLexer(Lexer):
 
             # Java.g:41:6: ( '+' )
             # Java.g:41:8: '+'
-            pass 
+            pass
             self.match(43)
-
 
 
             self._state.type = _type
@@ -1094,7 +1007,6 @@ class JavaLexer(Lexer):
     # $ANTLR end "PLUS"
 
 
-
     # $ANTLR start "PLUS_ASSIGN"
     def mPLUS_ASSIGN(self, ):
 
@@ -1104,9 +1016,8 @@ class JavaLexer(Lexer):
 
             # Java.g:42:13: ( '+=' )
             # Java.g:42:15: '+='
-            pass 
+            pass
             self.match("+=")
-
 
 
             self._state.type = _type
@@ -1119,7 +1030,6 @@ class JavaLexer(Lexer):
     # $ANTLR end "PLUS_ASSIGN"
 
 
-
     # $ANTLR start "QUESTION"
     def mQUESTION(self, ):
 
@@ -1129,9 +1039,8 @@ class JavaLexer(Lexer):
 
             # Java.g:43:10: ( '?' )
             # Java.g:43:12: '?'
-            pass 
+            pass
             self.match(63)
-
 
 
             self._state.type = _type
@@ -1144,7 +1053,6 @@ class JavaLexer(Lexer):
     # $ANTLR end "QUESTION"
 
 
-
     # $ANTLR start "RBRACK"
     def mRBRACK(self, ):
 
@@ -1154,9 +1062,8 @@ class JavaLexer(Lexer):
 
             # Java.g:44:8: ( ']' )
             # Java.g:44:10: ']'
-            pass 
+            pass
             self.match(93)
-
 
 
             self._state.type = _type
@@ -1169,7 +1076,6 @@ class JavaLexer(Lexer):
     # $ANTLR end "RBRACK"
 
 
-
     # $ANTLR start "RCURLY"
     def mRCURLY(self, ):
 
@@ -1179,9 +1085,8 @@ class JavaLexer(Lexer):
 
             # Java.g:45:8: ( '}' )
             # Java.g:45:10: '}'
-            pass 
+            pass
             self.match(125)
-
 
 
             self._state.type = _type
@@ -1194,7 +1099,6 @@ class JavaLexer(Lexer):
     # $ANTLR end "RCURLY"
 
 
-
     # $ANTLR start "RPAREN"
     def mRPAREN(self, ):
 
@@ -1204,9 +1108,8 @@ class JavaLexer(Lexer):
 
             # Java.g:46:8: ( ')' )
             # Java.g:46:10: ')'
-            pass 
+            pass
             self.match(41)
-
 
 
             self._state.type = _type
@@ -1219,7 +1122,6 @@ class JavaLexer(Lexer):
     # $ANTLR end "RPAREN"
 
 
-
     # $ANTLR start "SEMI"
     def mSEMI(self, ):
 
@@ -1229,9 +1131,8 @@ class JavaLexer(Lexer):
 
             # Java.g:47:6: ( ';' )
             # Java.g:47:8: ';'
-            pass 
+            pass
             self.match(59)
-
 
 
             self._state.type = _type
@@ -1244,7 +1145,6 @@ class JavaLexer(Lexer):
     # $ANTLR end "SEMI"
 
 
-
     # $ANTLR start "SHIFT_LEFT"
     def mSHIFT_LEFT(self, ):
 
@@ -1254,9 +1154,8 @@ class JavaLexer(Lexer):
 
             # Java.g:48:12: ( '<<' )
             # Java.g:48:14: '<<'
-            pass 
+            pass
             self.match("<<")
-
 
 
             self._state.type = _type
@@ -1269,7 +1168,6 @@ class JavaLexer(Lexer):
     # $ANTLR end "SHIFT_LEFT"
 
 
-
     # $ANTLR start "SHIFT_LEFT_ASSIGN"
     def mSHIFT_LEFT_ASSIGN(self, ):
 
@@ -1279,9 +1177,8 @@ class JavaLexer(Lexer):
 
             # Java.g:49:19: ( '<<=' )
             # Java.g:49:21: '<<='
-            pass 
+            pass
             self.match("<<=")
-
 
 
             self._state.type = _type
@@ -1294,7 +1191,6 @@ class JavaLexer(Lexer):
     # $ANTLR end "SHIFT_LEFT_ASSIGN"
 
 
-
     # $ANTLR start "SHIFT_RIGHT"
     def mSHIFT_RIGHT(self, ):
 
@@ -1304,9 +1200,8 @@ class JavaLexer(Lexer):
 
             # Java.g:50:13: ( '>>' )
             # Java.g:50:15: '>>'
-            pass 
+            pass
             self.match(">>")
-
 
 
             self._state.type = _type
@@ -1319,7 +1214,6 @@ class JavaLexer(Lexer):
     # $ANTLR end "SHIFT_RIGHT"
 
 
-
     # $ANTLR start "SHIFT_RIGHT_ASSIGN"
     def mSHIFT_RIGHT_ASSIGN(self, ):
 
@@ -1329,9 +1223,8 @@ class JavaLexer(Lexer):
 
             # Java.g:51:20: ( '>>=' )
             # Java.g:51:22: '>>='
-            pass 
+            pass
             self.match(">>=")
-
 
 
             self._state.type = _type
@@ -1344,7 +1237,6 @@ class JavaLexer(Lexer):
     # $ANTLR end "SHIFT_RIGHT_ASSIGN"
 
 
-
     # $ANTLR start "STAR"
     def mSTAR(self, ):
 
@@ -1354,9 +1246,8 @@ class JavaLexer(Lexer):
 
             # Java.g:52:6: ( '*' )
             # Java.g:52:8: '*'
-            pass 
+            pass
             self.match(42)
-
 
 
             self._state.type = _type
@@ -1369,7 +1260,6 @@ class JavaLexer(Lexer):
     # $ANTLR end "STAR"
 
 
-
     # $ANTLR start "STAR_ASSIGN"
     def mSTAR_ASSIGN(self, ):
 
@@ -1379,9 +1269,8 @@ class JavaLexer(Lexer):
 
             # Java.g:53:13: ( '*=' )
             # Java.g:53:15: '*='
-            pass 
+            pass
             self.match("*=")
-
 
 
             self._state.type = _type
@@ -1394,7 +1283,6 @@ class JavaLexer(Lexer):
     # $ANTLR end "STAR_ASSIGN"
 
 
-
     # $ANTLR start "XOR"
     def mXOR(self, ):
 
@@ -1404,9 +1292,8 @@ class JavaLexer(Lexer):
 
             # Java.g:54:5: ( '^' )
             # Java.g:54:7: '^'
-            pass 
+            pass
             self.match(94)
-
 
 
             self._state.type = _type
@@ -1419,7 +1306,6 @@ class JavaLexer(Lexer):
     # $ANTLR end "XOR"
 
 
-
     # $ANTLR start "XOR_ASSIGN"
     def mXOR_ASSIGN(self, ):
 
@@ -1429,9 +1315,8 @@ class JavaLexer(Lexer):
 
             # Java.g:55:12: ( '^=' )
             # Java.g:55:14: '^='
-            pass 
+            pass
             self.match("^=")
-
 
 
             self._state.type = _type
@@ -1444,7 +1329,6 @@ class JavaLexer(Lexer):
     # $ANTLR end "XOR_ASSIGN"
 
 
-
     # $ANTLR start "ABSTRACT"
     def mABSTRACT(self, ):
 
@@ -1454,9 +1338,8 @@ class JavaLexer(Lexer):
 
             # Java.g:56:10: ( 'abstract' )
             # Java.g:56:12: 'abstract'
-            pass 
+            pass
             self.match("abstract")
-
 
 
             self._state.type = _type
@@ -1469,7 +1352,6 @@ class JavaLexer(Lexer):
     # $ANTLR end "ABSTRACT"
 
 
-
     # $ANTLR start "ASSERT"
     def mASSERT(self, ):
 
@@ -1479,9 +1361,8 @@ class JavaLexer(Lexer):
 
             # Java.g:57:8: ( 'assert' )
             # Java.g:57:10: 'assert'
-            pass 
+            pass
             self.match("assert")
-
 
 
             self._state.type = _type
@@ -1494,7 +1375,6 @@ class JavaLexer(Lexer):
     # $ANTLR end "ASSERT"
 
 
-
     # $ANTLR start "BOOLEAN"
     def mBOOLEAN(self, ):
 
@@ -1504,9 +1384,8 @@ class JavaLexer(Lexer):
 
             # Java.g:58:9: ( 'boolean' )
             # Java.g:58:11: 'boolean'
-            pass 
+            pass
             self.match("boolean")
-
 
 
             self._state.type = _type
@@ -1519,7 +1398,6 @@ class JavaLexer(Lexer):
     # $ANTLR end "BOOLEAN"
 
 
-
     # $ANTLR start "BREAK"
     def mBREAK(self, ):
 
@@ -1529,9 +1407,8 @@ class JavaLexer(Lexer):
 
             # Java.g:59:7: ( 'break' )
             # Java.g:59:9: 'break'
-            pass 
+            pass
             self.match("break")
-
 
 
             self._state.type = _type
@@ -1544,7 +1421,6 @@ class JavaLexer(Lexer):
     # $ANTLR end "BREAK"
 
 
-
     # $ANTLR start "BYTE"
     def mBYTE(self, ):
 
@@ -1554,9 +1430,8 @@ class JavaLexer(Lexer):
 
             # Java.g:60:6: ( 'byte' )
             # Java.g:60:8: 'byte'
-            pass 
+            pass
             self.match("byte")
-
 
 
             self._state.type = _type
@@ -1569,7 +1444,6 @@ class JavaLexer(Lexer):
     # $ANTLR end "BYTE"
 
 
-
     # $ANTLR start "CASE"
     def mCASE(self, ):
 
@@ -1579,9 +1453,8 @@ class JavaLexer(Lexer):
 
             # Java.g:61:6: ( 'case' )
             # Java.g:61:8: 'case'
-            pass 
+            pass
             self.match("case")
-
 
 
             self._state.type = _type
@@ -1594,7 +1467,6 @@ class JavaLexer(Lexer):
     # $ANTLR end "CASE"
 
 
-
     # $ANTLR start "CATCH"
     def mCATCH(self, ):
 
@@ -1604,9 +1476,8 @@ class JavaLexer(Lexer):
 
             # Java.g:62:7: ( 'catch' )
             # Java.g:62:9: 'catch'
-            pass 
+            pass
             self.match("catch")
-
 
 
             self._state.type = _type
@@ -1619,7 +1490,6 @@ class JavaLexer(Lexer):
     # $ANTLR end "CATCH"
 
 
-
     # $ANTLR start "CHAR"
     def mCHAR(self, ):
 
@@ -1629,9 +1499,8 @@ class JavaLexer(Lexer):
 
             # Java.g:63:6: ( 'char' )
             # Java.g:63:8: 'char'
-            pass 
+            pass
             self.match("char")
-
 
 
             self._state.type = _type
@@ -1644,7 +1513,6 @@ class JavaLexer(Lexer):
     # $ANTLR end "CHAR"
 
 
-
     # $ANTLR start "CLASS"
     def mCLASS(self, ):
 
@@ -1654,9 +1522,8 @@ class JavaLexer(Lexer):
 
             # Java.g:64:7: ( 'class' )
             # Java.g:64:9: 'class'
-            pass 
+            pass
             self.match("class")
-
 
 
             self._state.type = _type
@@ -1669,7 +1536,6 @@ class JavaLexer(Lexer):
     # $ANTLR end "CLASS"
 
 
-
     # $ANTLR start "CONTINUE"
     def mCONTINUE(self, ):
 
@@ -1679,9 +1545,8 @@ class JavaLexer(Lexer):
 
             # Java.g:65:10: ( 'continue' )
             # Java.g:65:12: 'continue'
-            pass 
+            pass
             self.match("continue")
-
 
 
             self._state.type = _type
@@ -1694,7 +1559,6 @@ class JavaLexer(Lexer):
     # $ANTLR end "CONTINUE"
 
 
-
     # $ANTLR start "DEFAULT"
     def mDEFAULT(self, ):
 
@@ -1704,9 +1568,8 @@ class JavaLexer(Lexer):
 
             # Java.g:66:9: ( 'default' )
             # Java.g:66:11: 'default'
-            pass 
+            pass
             self.match("default")
-
 
 
             self._state.type = _type
@@ -1719,7 +1582,6 @@ class JavaLexer(Lexer):
     # $ANTLR end "DEFAULT"
 
 
-
     # $ANTLR start "DO"
     def mDO(self, ):
 
@@ -1729,9 +1591,8 @@ class JavaLexer(Lexer):
 
             # Java.g:67:4: ( 'do' )
             # Java.g:67:6: 'do'
-            pass 
+            pass
             self.match("do")
-
 
 
             self._state.type = _type
@@ -1744,7 +1605,6 @@ class JavaLexer(Lexer):
     # $ANTLR end "DO"
 
 
-
     # $ANTLR start "DOUBLE"
     def mDOUBLE(self, ):
 
@@ -1754,9 +1614,8 @@ class JavaLexer(Lexer):
 
             # Java.g:68:8: ( 'double' )
             # Java.g:68:10: 'double'
-            pass 
+            pass
             self.match("double")
-
 
 
             self._state.type = _type
@@ -1769,7 +1628,6 @@ class JavaLexer(Lexer):
     # $ANTLR end "DOUBLE"
 
 
-
     # $ANTLR start "ELSE"
     def mELSE(self, ):
 
@@ -1779,9 +1637,8 @@ class JavaLexer(Lexer):
 
             # Java.g:69:6: ( 'else' )
             # Java.g:69:8: 'else'
-            pass 
+            pass
             self.match("else")
-
 
 
             self._state.type = _type
@@ -1794,7 +1651,6 @@ class JavaLexer(Lexer):
     # $ANTLR end "ELSE"
 
 
-
     # $ANTLR start "ENUM"
     def mENUM(self, ):
 
@@ -1804,9 +1660,8 @@ class JavaLexer(Lexer):
 
             # Java.g:70:6: ( 'enum' )
             # Java.g:70:8: 'enum'
-            pass 
+            pass
             self.match("enum")
-
 
 
             self._state.type = _type
@@ -1819,7 +1674,6 @@ class JavaLexer(Lexer):
     # $ANTLR end "ENUM"
 
 
-
     # $ANTLR start "EXTENDS"
     def mEXTENDS(self, ):
 
@@ -1829,9 +1683,8 @@ class JavaLexer(Lexer):
 
             # Java.g:71:9: ( 'extends' )
             # Java.g:71:11: 'extends'
-            pass 
+            pass
             self.match("extends")
-
 
 
             self._state.type = _type
@@ -1844,7 +1697,6 @@ class JavaLexer(Lexer):
     # $ANTLR end "EXTENDS"
 
 
-
     # $ANTLR start "FALSE"
     def mFALSE(self, ):
 
@@ -1854,9 +1706,8 @@ class JavaLexer(Lexer):
 
             # Java.g:72:7: ( 'false' )
             # Java.g:72:9: 'false'
-            pass 
+            pass
             self.match("false")
-
 
 
             self._state.type = _type
@@ -1869,7 +1720,6 @@ class JavaLexer(Lexer):
     # $ANTLR end "FALSE"
 
 
-
     # $ANTLR start "FINAL"
     def mFINAL(self, ):
 
@@ -1879,9 +1729,8 @@ class JavaLexer(Lexer):
 
             # Java.g:73:7: ( 'final' )
             # Java.g:73:9: 'final'
-            pass 
+            pass
             self.match("final")
-
 
 
             self._state.type = _type
@@ -1894,7 +1743,6 @@ class JavaLexer(Lexer):
     # $ANTLR end "FINAL"
 
 
-
     # $ANTLR start "FINALLY"
     def mFINALLY(self, ):
 
@@ -1904,9 +1752,8 @@ class JavaLexer(Lexer):
 
             # Java.g:74:9: ( 'finally' )
             # Java.g:74:11: 'finally'
-            pass 
+            pass
             self.match("finally")
-
 
 
             self._state.type = _type
@@ -1919,7 +1766,6 @@ class JavaLexer(Lexer):
     # $ANTLR end "FINALLY"
 
 
-
     # $ANTLR start "FLOAT"
     def mFLOAT(self, ):
 
@@ -1929,9 +1775,8 @@ class JavaLexer(Lexer):
 
             # Java.g:75:7: ( 'float' )
             # Java.g:75:9: 'float'
-            pass 
+            pass
             self.match("float")
-
 
 
             self._state.type = _type
@@ -1944,7 +1789,6 @@ class JavaLexer(Lexer):
     # $ANTLR end "FLOAT"
 
 
-
     # $ANTLR start "FOR"
     def mFOR(self, ):
 
@@ -1954,9 +1798,8 @@ class JavaLexer(Lexer):
 
             # Java.g:76:5: ( 'for' )
             # Java.g:76:7: 'for'
-            pass 
+            pass
             self.match("for")
-
 
 
             self._state.type = _type
@@ -1969,7 +1812,6 @@ class JavaLexer(Lexer):
     # $ANTLR end "FOR"
 
 
-
     # $ANTLR start "IF"
     def mIF(self, ):
 
@@ -1979,9 +1821,8 @@ class JavaLexer(Lexer):
 
             # Java.g:77:4: ( 'if' )
             # Java.g:77:6: 'if'
-            pass 
+            pass
             self.match("if")
-
 
 
             self._state.type = _type
@@ -1994,7 +1835,6 @@ class JavaLexer(Lexer):
     # $ANTLR end "IF"
 
 
-
     # $ANTLR start "IMPLEMENTS"
     def mIMPLEMENTS(self, ):
 
@@ -2004,9 +1844,8 @@ class JavaLexer(Lexer):
 
             # Java.g:78:12: ( 'implements' )
             # Java.g:78:14: 'implements'
-            pass 
+            pass
             self.match("implements")
-
 
 
             self._state.type = _type
@@ -2019,7 +1858,6 @@ class JavaLexer(Lexer):
     # $ANTLR end "IMPLEMENTS"
 
 
-
     # $ANTLR start "INSTANCEOF"
     def mINSTANCEOF(self, ):
 
@@ -2029,9 +1867,8 @@ class JavaLexer(Lexer):
 
             # Java.g:79:12: ( 'instanceof' )
             # Java.g:79:14: 'instanceof'
-            pass 
+            pass
             self.match("instanceof")
-
 
 
             self._state.type = _type
@@ -2044,7 +1881,6 @@ class JavaLexer(Lexer):
     # $ANTLR end "INSTANCEOF"
 
 
-
     # $ANTLR start "INTERFACE"
     def mINTERFACE(self, ):
 
@@ -2054,9 +1890,8 @@ class JavaLexer(Lexer):
 
             # Java.g:80:11: ( 'interface' )
             # Java.g:80:13: 'interface'
-            pass 
+            pass
             self.match("interface")
-
 
 
             self._state.type = _type
@@ -2069,7 +1904,6 @@ class JavaLexer(Lexer):
     # $ANTLR end "INTERFACE"
 
 
-
     # $ANTLR start "IMPORT"
     def mIMPORT(self, ):
 
@@ -2079,9 +1913,8 @@ class JavaLexer(Lexer):
 
             # Java.g:81:8: ( 'import' )
             # Java.g:81:10: 'import'
-            pass 
+            pass
             self.match("import")
-
 
 
             self._state.type = _type
@@ -2094,7 +1927,6 @@ class JavaLexer(Lexer):
     # $ANTLR end "IMPORT"
 
 
-
     # $ANTLR start "INT"
     def mINT(self, ):
 
@@ -2104,9 +1936,8 @@ class JavaLexer(Lexer):
 
             # Java.g:82:5: ( 'int' )
             # Java.g:82:7: 'int'
-            pass 
+            pass
             self.match("int")
-
 
 
             self._state.type = _type
@@ -2119,7 +1950,6 @@ class JavaLexer(Lexer):
     # $ANTLR end "INT"
 
 
-
     # $ANTLR start "LONG"
     def mLONG(self, ):
 
@@ -2129,9 +1959,8 @@ class JavaLexer(Lexer):
 
             # Java.g:83:6: ( 'long' )
             # Java.g:83:8: 'long'
-            pass 
+            pass
             self.match("long")
-
 
 
             self._state.type = _type
@@ -2144,7 +1973,6 @@ class JavaLexer(Lexer):
     # $ANTLR end "LONG"
 
 
-
     # $ANTLR start "NATIVE"
     def mNATIVE(self, ):
 
@@ -2154,9 +1982,8 @@ class JavaLexer(Lexer):
 
             # Java.g:84:8: ( 'native' )
             # Java.g:84:10: 'native'
-            pass 
+            pass
             self.match("native")
-
 
 
             self._state.type = _type
@@ -2169,7 +1996,6 @@ class JavaLexer(Lexer):
     # $ANTLR end "NATIVE"
 
 
-
     # $ANTLR start "NEW"
     def mNEW(self, ):
 
@@ -2179,9 +2005,8 @@ class JavaLexer(Lexer):
 
             # Java.g:85:5: ( 'new' )
             # Java.g:85:7: 'new'
-            pass 
+            pass
             self.match("new")
-
 
 
             self._state.type = _type
@@ -2194,7 +2019,6 @@ class JavaLexer(Lexer):
     # $ANTLR end "NEW"
 
 
-
     # $ANTLR start "NULL"
     def mNULL(self, ):
 
@@ -2204,9 +2028,8 @@ class JavaLexer(Lexer):
 
             # Java.g:86:6: ( 'null' )
             # Java.g:86:8: 'null'
-            pass 
+            pass
             self.match("null")
-
 
 
             self._state.type = _type
@@ -2219,7 +2042,6 @@ class JavaLexer(Lexer):
     # $ANTLR end "NULL"
 
 
-
     # $ANTLR start "PACKAGE"
     def mPACKAGE(self, ):
 
@@ -2229,9 +2051,8 @@ class JavaLexer(Lexer):
 
             # Java.g:87:9: ( 'package' )
             # Java.g:87:11: 'package'
-            pass 
+            pass
             self.match("package")
-
 
 
             self._state.type = _type
@@ -2244,7 +2065,6 @@ class JavaLexer(Lexer):
     # $ANTLR end "PACKAGE"
 
 
-
     # $ANTLR start "PRIVATE"
     def mPRIVATE(self, ):
 
@@ -2254,9 +2074,8 @@ class JavaLexer(Lexer):
 
             # Java.g:88:9: ( 'private' )
             # Java.g:88:11: 'private'
-            pass 
+            pass
             self.match("private")
-
 
 
             self._state.type = _type
@@ -2269,7 +2088,6 @@ class JavaLexer(Lexer):
     # $ANTLR end "PRIVATE"
 
 
-
     # $ANTLR start "PROTECTED"
     def mPROTECTED(self, ):
 
@@ -2279,9 +2097,8 @@ class JavaLexer(Lexer):
 
             # Java.g:89:11: ( 'protected' )
             # Java.g:89:13: 'protected'
-            pass 
+            pass
             self.match("protected")
-
 
 
             self._state.type = _type
@@ -2294,7 +2111,6 @@ class JavaLexer(Lexer):
     # $ANTLR end "PROTECTED"
 
 
-
     # $ANTLR start "PUBLIC"
     def mPUBLIC(self, ):
 
@@ -2304,9 +2120,8 @@ class JavaLexer(Lexer):
 
             # Java.g:90:8: ( 'public' )
             # Java.g:90:10: 'public'
-            pass 
+            pass
             self.match("public")
-
 
 
             self._state.type = _type
@@ -2319,7 +2134,6 @@ class JavaLexer(Lexer):
     # $ANTLR end "PUBLIC"
 
 
-
     # $ANTLR start "RETURN"
     def mRETURN(self, ):
 
@@ -2329,9 +2143,8 @@ class JavaLexer(Lexer):
 
             # Java.g:91:8: ( 'return' )
             # Java.g:91:10: 'return'
-            pass 
+            pass
             self.match("return")
-
 
 
             self._state.type = _type
@@ -2344,7 +2157,6 @@ class JavaLexer(Lexer):
     # $ANTLR end "RETURN"
 
 
-
     # $ANTLR start "SHORT"
     def mSHORT(self, ):
 
@@ -2354,9 +2166,8 @@ class JavaLexer(Lexer):
 
             # Java.g:92:7: ( 'short' )
             # Java.g:92:9: 'short'
-            pass 
+            pass
             self.match("short")
-
 
 
             self._state.type = _type
@@ -2369,7 +2180,6 @@ class JavaLexer(Lexer):
     # $ANTLR end "SHORT"
 
 
-
     # $ANTLR start "STATIC"
     def mSTATIC(self, ):
 
@@ -2379,9 +2189,8 @@ class JavaLexer(Lexer):
 
             # Java.g:93:8: ( 'static' )
             # Java.g:93:10: 'static'
-            pass 
+            pass
             self.match("static")
-
 
 
             self._state.type = _type
@@ -2394,7 +2203,6 @@ class JavaLexer(Lexer):
     # $ANTLR end "STATIC"
 
 
-
     # $ANTLR start "STRICTFP"
     def mSTRICTFP(self, ):
 
@@ -2404,9 +2212,8 @@ class JavaLexer(Lexer):
 
             # Java.g:94:10: ( 'strictfp' )
             # Java.g:94:12: 'strictfp'
-            pass 
+            pass
             self.match("strictfp")
-
 
 
             self._state.type = _type
@@ -2419,7 +2226,6 @@ class JavaLexer(Lexer):
     # $ANTLR end "STRICTFP"
 
 
-
     # $ANTLR start "SUPER"
     def mSUPER(self, ):
 
@@ -2429,9 +2235,8 @@ class JavaLexer(Lexer):
 
             # Java.g:95:7: ( 'super' )
             # Java.g:95:9: 'super'
-            pass 
+            pass
             self.match("super")
-
 
 
             self._state.type = _type
@@ -2444,7 +2249,6 @@ class JavaLexer(Lexer):
     # $ANTLR end "SUPER"
 
 
-
     # $ANTLR start "SWITCH"
     def mSWITCH(self, ):
 
@@ -2454,9 +2258,8 @@ class JavaLexer(Lexer):
 
             # Java.g:96:8: ( 'switch' )
             # Java.g:96:10: 'switch'
-            pass 
+            pass
             self.match("switch")
-
 
 
             self._state.type = _type
@@ -2469,7 +2272,6 @@ class JavaLexer(Lexer):
     # $ANTLR end "SWITCH"
 
 
-
     # $ANTLR start "SYNCHRONIZED"
     def mSYNCHRONIZED(self, ):
 
@@ -2479,9 +2281,8 @@ class JavaLexer(Lexer):
 
             # Java.g:97:14: ( 'synchronized' )
             # Java.g:97:16: 'synchronized'
-            pass 
+            pass
             self.match("synchronized")
-
 
 
             self._state.type = _type
@@ -2494,7 +2295,6 @@ class JavaLexer(Lexer):
     # $ANTLR end "SYNCHRONIZED"
 
 
-
     # $ANTLR start "THIS"
     def mTHIS(self, ):
 
@@ -2504,9 +2304,8 @@ class JavaLexer(Lexer):
 
             # Java.g:98:6: ( 'this' )
             # Java.g:98:8: 'this'
-            pass 
+            pass
             self.match("this")
-
 
 
             self._state.type = _type
@@ -2519,7 +2318,6 @@ class JavaLexer(Lexer):
     # $ANTLR end "THIS"
 
 
-
     # $ANTLR start "THROW"
     def mTHROW(self, ):
 
@@ -2529,9 +2327,8 @@ class JavaLexer(Lexer):
 
             # Java.g:99:7: ( 'throw' )
             # Java.g:99:9: 'throw'
-            pass 
+            pass
             self.match("throw")
-
 
 
             self._state.type = _type
@@ -2544,7 +2341,6 @@ class JavaLexer(Lexer):
     # $ANTLR end "THROW"
 
 
-
     # $ANTLR start "THROWS"
     def mTHROWS(self, ):
 
@@ -2554,9 +2350,8 @@ class JavaLexer(Lexer):
 
             # Java.g:100:8: ( 'throws' )
             # Java.g:100:10: 'throws'
-            pass 
+            pass
             self.match("throws")
-
 
 
             self._state.type = _type
@@ -2569,7 +2364,6 @@ class JavaLexer(Lexer):
     # $ANTLR end "THROWS"
 
 
-
     # $ANTLR start "TRANSIENT"
     def mTRANSIENT(self, ):
 
@@ -2579,9 +2373,8 @@ class JavaLexer(Lexer):
 
             # Java.g:101:11: ( 'transient' )
             # Java.g:101:13: 'transient'
-            pass 
+            pass
             self.match("transient")
-
 
 
             self._state.type = _type
@@ -2594,7 +2387,6 @@ class JavaLexer(Lexer):
     # $ANTLR end "TRANSIENT"
 
 
-
     # $ANTLR start "TRUE"
     def mTRUE(self, ):
 
@@ -2604,9 +2396,8 @@ class JavaLexer(Lexer):
 
             # Java.g:102:6: ( 'true' )
             # Java.g:102:8: 'true'
-            pass 
+            pass
             self.match("true")
-
 
 
             self._state.type = _type
@@ -2619,7 +2410,6 @@ class JavaLexer(Lexer):
     # $ANTLR end "TRUE"
 
 
-
     # $ANTLR start "TRY"
     def mTRY(self, ):
 
@@ -2629,9 +2419,8 @@ class JavaLexer(Lexer):
 
             # Java.g:103:5: ( 'try' )
             # Java.g:103:7: 'try'
-            pass 
+            pass
             self.match("try")
-
 
 
             self._state.type = _type
@@ -2644,7 +2433,6 @@ class JavaLexer(Lexer):
     # $ANTLR end "TRY"
 
 
-
     # $ANTLR start "VOID"
     def mVOID(self, ):
 
@@ -2654,9 +2442,8 @@ class JavaLexer(Lexer):
 
             # Java.g:104:6: ( 'void' )
             # Java.g:104:8: 'void'
-            pass 
+            pass
             self.match("void")
-
 
 
             self._state.type = _type
@@ -2669,7 +2456,6 @@ class JavaLexer(Lexer):
     # $ANTLR end "VOID"
 
 
-
     # $ANTLR start "VOLATILE"
     def mVOLATILE(self, ):
 
@@ -2679,9 +2465,8 @@ class JavaLexer(Lexer):
 
             # Java.g:105:10: ( 'volatile' )
             # Java.g:105:12: 'volatile'
-            pass 
+            pass
             self.match("volatile")
-
 
 
             self._state.type = _type
@@ -2694,7 +2479,6 @@ class JavaLexer(Lexer):
     # $ANTLR end "VOLATILE"
 
 
-
     # $ANTLR start "WHILE"
     def mWHILE(self, ):
 
@@ -2704,9 +2488,8 @@ class JavaLexer(Lexer):
 
             # Java.g:106:7: ( 'while' )
             # Java.g:106:9: 'while'
-            pass 
+            pass
             self.match("while")
-
 
 
             self._state.type = _type
@@ -2719,7 +2502,6 @@ class JavaLexer(Lexer):
     # $ANTLR end "WHILE"
 
 
-
     # $ANTLR start "HEX_LITERAL"
     def mHEX_LITERAL(self, ):
 
@@ -2729,7 +2511,7 @@ class JavaLexer(Lexer):
 
             # Java.g:985:13: ( '0' ( 'x' | 'X' ) ( HEX_DIGIT )+ ( INTEGER_TYPE_SUFFIX )? )
             # Java.g:985:15: '0' ( 'x' | 'X' ) ( HEX_DIGIT )+ ( INTEGER_TYPE_SUFFIX )?
-            pass 
+            pass
             self.match(48)
             if self.input.LA(1) == 88 or self.input.LA(1) == 120:
                 self.input.consume()
@@ -2750,7 +2532,7 @@ class JavaLexer(Lexer):
 
                 if alt1 == 1:
                     # Java.g:985:29: HEX_DIGIT
-                    pass 
+                    pass
                     self.mHEX_DIGIT()
 
 
@@ -2770,12 +2552,8 @@ class JavaLexer(Lexer):
                 alt2 = 1
             if alt2 == 1:
                 # Java.g:985:40: INTEGER_TYPE_SUFFIX
-                pass 
+                pass
                 self.mINTEGER_TYPE_SUFFIX()
-
-
-
-
 
 
             self._state.type = _type
@@ -2788,7 +2566,6 @@ class JavaLexer(Lexer):
     # $ANTLR end "HEX_LITERAL"
 
 
-
     # $ANTLR start "DECIMAL_LITERAL"
     def mDECIMAL_LITERAL(self, ):
 
@@ -2798,7 +2575,7 @@ class JavaLexer(Lexer):
 
             # Java.g:987:17: ( ( '0' | '1' .. '9' ( '0' .. '9' )* ) ( INTEGER_TYPE_SUFFIX )? )
             # Java.g:987:19: ( '0' | '1' .. '9' ( '0' .. '9' )* ) ( INTEGER_TYPE_SUFFIX )?
-            pass 
+            pass
             # Java.g:987:19: ( '0' | '1' .. '9' ( '0' .. '9' )* )
             alt4 = 2
             LA4_0 = self.input.LA(1)
@@ -2814,13 +2591,13 @@ class JavaLexer(Lexer):
 
             if alt4 == 1:
                 # Java.g:987:20: '0'
-                pass 
+                pass
                 self.match(48)
 
 
             elif alt4 == 2:
                 # Java.g:987:26: '1' .. '9' ( '0' .. '9' )*
-                pass 
+                pass
                 self.matchRange(49, 57)
                 # Java.g:987:35: ( '0' .. '9' )*
                 while True: #loop3
@@ -2833,13 +2610,12 @@ class JavaLexer(Lexer):
 
                     if alt3 == 1:
                         # Java.g:987:35: '0' .. '9'
-                        pass 
+                        pass
                         self.matchRange(48, 57)
 
 
                     else:
                         break #loop3
-
 
 
             # Java.g:987:46: ( INTEGER_TYPE_SUFFIX )?
@@ -2850,12 +2626,8 @@ class JavaLexer(Lexer):
                 alt5 = 1
             if alt5 == 1:
                 # Java.g:987:46: INTEGER_TYPE_SUFFIX
-                pass 
+                pass
                 self.mINTEGER_TYPE_SUFFIX()
-
-
-
-
 
 
             self._state.type = _type
@@ -2868,7 +2640,6 @@ class JavaLexer(Lexer):
     # $ANTLR end "DECIMAL_LITERAL"
 
 
-
     # $ANTLR start "OCTAL_LITERAL"
     def mOCTAL_LITERAL(self, ):
 
@@ -2878,7 +2649,7 @@ class JavaLexer(Lexer):
 
             # Java.g:989:15: ( '0' ( '0' .. '7' )+ ( INTEGER_TYPE_SUFFIX )? )
             # Java.g:989:17: '0' ( '0' .. '7' )+ ( INTEGER_TYPE_SUFFIX )?
-            pass 
+            pass
             self.match(48)
             # Java.g:989:21: ( '0' .. '7' )+
             cnt6 = 0
@@ -2892,7 +2663,7 @@ class JavaLexer(Lexer):
 
                 if alt6 == 1:
                     # Java.g:989:22: '0' .. '7'
-                    pass 
+                    pass
                     self.matchRange(48, 55)
 
 
@@ -2912,12 +2683,8 @@ class JavaLexer(Lexer):
                 alt7 = 1
             if alt7 == 1:
                 # Java.g:989:33: INTEGER_TYPE_SUFFIX
-                pass 
+                pass
                 self.mINTEGER_TYPE_SUFFIX()
-
-
-
-
 
 
             self._state.type = _type
@@ -2930,23 +2697,19 @@ class JavaLexer(Lexer):
     # $ANTLR end "OCTAL_LITERAL"
 
 
-
     # $ANTLR start "HEX_DIGIT"
     def mHEX_DIGIT(self, ):
 
         try:
             # Java.g:992:11: ( ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) )
             # Java.g:992:13: ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' )
-            pass 
+            pass
             if (48 <= self.input.LA(1) <= 57) or (65 <= self.input.LA(1) <= 70) or (97 <= self.input.LA(1) <= 102):
                 self.input.consume()
             else:
                 mse = MismatchedSetException(None, self.input)
                 self.recover(mse)
                 raise mse
-
-
-
 
 
         finally:
@@ -2956,14 +2719,13 @@ class JavaLexer(Lexer):
     # $ANTLR end "HEX_DIGIT"
 
 
-
     # $ANTLR start "INTEGER_TYPE_SUFFIX"
     def mINTEGER_TYPE_SUFFIX(self, ):
 
         try:
             # Java.g:995:21: ( ( 'l' | 'L' ) )
             # Java.g:995:23: ( 'l' | 'L' )
-            pass 
+            pass
             if self.input.LA(1) == 76 or self.input.LA(1) == 108:
                 self.input.consume()
             else:
@@ -2972,15 +2734,11 @@ class JavaLexer(Lexer):
                 raise mse
 
 
-
-
-
         finally:
 
             pass
 
     # $ANTLR end "INTEGER_TYPE_SUFFIX"
-
 
 
     # $ANTLR start "FLOATING_POINT_LITERAL"
@@ -3005,7 +2763,7 @@ class JavaLexer(Lexer):
 
             if alt17 == 1:
                 # Java.g:998:9: ( '0' .. '9' )+ ( DOT ( '0' .. '9' )* ( EXPONENT )? ( FLOAT_TYPE_SUFFIX )? | EXPONENT ( FLOAT_TYPE_SUFFIX )? | FLOAT_TYPE_SUFFIX )
-                pass 
+                pass
                 # Java.g:998:9: ( '0' .. '9' )+
                 cnt8 = 0
                 while True: #loop8
@@ -3018,7 +2776,7 @@ class JavaLexer(Lexer):
 
                     if alt8 == 1:
                         # Java.g:998:10: '0' .. '9'
-                        pass 
+                        pass
                         self.matchRange(48, 57)
 
 
@@ -3046,7 +2804,7 @@ class JavaLexer(Lexer):
 
                 if alt13 == 1:
                     # Java.g:1000:13: DOT ( '0' .. '9' )* ( EXPONENT )? ( FLOAT_TYPE_SUFFIX )?
-                    pass 
+                    pass
                     self.mDOT()
                     # Java.g:1000:17: ( '0' .. '9' )*
                     while True: #loop9
@@ -3059,7 +2817,7 @@ class JavaLexer(Lexer):
 
                         if alt9 == 1:
                             # Java.g:1000:18: '0' .. '9'
-                            pass 
+                            pass
                             self.matchRange(48, 57)
 
 
@@ -3073,9 +2831,8 @@ class JavaLexer(Lexer):
                         alt10 = 1
                     if alt10 == 1:
                         # Java.g:1000:29: EXPONENT
-                        pass 
+                        pass
                         self.mEXPONENT()
-
 
 
                     # Java.g:1000:39: ( FLOAT_TYPE_SUFFIX )?
@@ -3086,16 +2843,13 @@ class JavaLexer(Lexer):
                         alt11 = 1
                     if alt11 == 1:
                         # Java.g:1000:39: FLOAT_TYPE_SUFFIX
-                        pass 
+                        pass
                         self.mFLOAT_TYPE_SUFFIX()
-
-
-
 
 
                 elif alt13 == 2:
                     # Java.g:1001:13: EXPONENT ( FLOAT_TYPE_SUFFIX )?
-                    pass 
+                    pass
                     self.mEXPONENT()
                     # Java.g:1001:22: ( FLOAT_TYPE_SUFFIX )?
                     alt12 = 2
@@ -3105,25 +2859,19 @@ class JavaLexer(Lexer):
                         alt12 = 1
                     if alt12 == 1:
                         # Java.g:1001:22: FLOAT_TYPE_SUFFIX
-                        pass 
+                        pass
                         self.mFLOAT_TYPE_SUFFIX()
-
-
-
 
 
                 elif alt13 == 3:
                     # Java.g:1002:13: FLOAT_TYPE_SUFFIX
-                    pass 
+                    pass
                     self.mFLOAT_TYPE_SUFFIX()
-
-
-
 
 
             elif alt17 == 2:
                 # Java.g:1004:9: DOT ( '0' .. '9' )+ ( EXPONENT )? ( FLOAT_TYPE_SUFFIX )?
-                pass 
+                pass
                 self.mDOT()
                 # Java.g:1004:13: ( '0' .. '9' )+
                 cnt14 = 0
@@ -3137,7 +2885,7 @@ class JavaLexer(Lexer):
 
                     if alt14 == 1:
                         # Java.g:1004:14: '0' .. '9'
-                        pass 
+                        pass
                         self.matchRange(48, 57)
 
 
@@ -3157,9 +2905,8 @@ class JavaLexer(Lexer):
                     alt15 = 1
                 if alt15 == 1:
                     # Java.g:1004:25: EXPONENT
-                    pass 
+                    pass
                     self.mEXPONENT()
-
 
 
                 # Java.g:1004:35: ( FLOAT_TYPE_SUFFIX )?
@@ -3170,11 +2917,8 @@ class JavaLexer(Lexer):
                     alt16 = 1
                 if alt16 == 1:
                     # Java.g:1004:35: FLOAT_TYPE_SUFFIX
-                    pass 
+                    pass
                     self.mFLOAT_TYPE_SUFFIX()
-
-
-
 
 
             self._state.type = _type
@@ -3187,14 +2931,13 @@ class JavaLexer(Lexer):
     # $ANTLR end "FLOATING_POINT_LITERAL"
 
 
-
     # $ANTLR start "EXPONENT"
     def mEXPONENT(self, ):
 
         try:
             # Java.g:1008:10: ( ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ )
             # Java.g:1008:12: ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+
-            pass 
+            pass
             if self.input.LA(1) == 69 or self.input.LA(1) == 101:
                 self.input.consume()
             else:
@@ -3210,15 +2953,13 @@ class JavaLexer(Lexer):
                 alt18 = 1
             if alt18 == 1:
                 # Java.g:
-                pass 
+                pass
                 if self.input.LA(1) == 43 or self.input.LA(1) == 45:
                     self.input.consume()
                 else:
                     mse = MismatchedSetException(None, self.input)
                     self.recover(mse)
                     raise mse
-
-
 
 
             # Java.g:1008:33: ( '0' .. '9' )+
@@ -3233,7 +2974,7 @@ class JavaLexer(Lexer):
 
                 if alt19 == 1:
                     # Java.g:1008:34: '0' .. '9'
-                    pass 
+                    pass
                     self.matchRange(48, 57)
 
 
@@ -3247,14 +2988,11 @@ class JavaLexer(Lexer):
                 cnt19 += 1
 
 
-
-
         finally:
 
             pass
 
     # $ANTLR end "EXPONENT"
-
 
 
     # $ANTLR start "FLOAT_TYPE_SUFFIX"
@@ -3263,7 +3001,7 @@ class JavaLexer(Lexer):
         try:
             # Java.g:1011:19: ( ( 'f' | 'F' | 'd' | 'D' ) )
             # Java.g:1011:21: ( 'f' | 'F' | 'd' | 'D' )
-            pass 
+            pass
             if self.input.LA(1) == 68 or self.input.LA(1) == 70 or self.input.LA(1) == 100 or self.input.LA(1) == 102:
                 self.input.consume()
             else:
@@ -3272,15 +3010,11 @@ class JavaLexer(Lexer):
                 raise mse
 
 
-
-
-
         finally:
 
             pass
 
     # $ANTLR end "FLOAT_TYPE_SUFFIX"
-
 
 
     # $ANTLR start "CHARACTER_LITERAL"
@@ -3292,7 +3026,7 @@ class JavaLexer(Lexer):
 
             # Java.g:1014:5: ( '\\'' ( ESCAPE_SEQUENCE | ~ ( '\\'' | '\\\\' ) ) '\\'' )
             # Java.g:1014:9: '\\'' ( ESCAPE_SEQUENCE | ~ ( '\\'' | '\\\\' ) ) '\\''
-            pass 
+            pass
             self.match(39)
             # Java.g:1014:14: ( ESCAPE_SEQUENCE | ~ ( '\\'' | '\\\\' ) )
             alt20 = 2
@@ -3309,13 +3043,13 @@ class JavaLexer(Lexer):
 
             if alt20 == 1:
                 # Java.g:1014:16: ESCAPE_SEQUENCE
-                pass 
+                pass
                 self.mESCAPE_SEQUENCE()
 
 
             elif alt20 == 2:
                 # Java.g:1014:34: ~ ( '\\'' | '\\\\' )
-                pass 
+                pass
                 if (0 <= self.input.LA(1) <= 38) or (40 <= self.input.LA(1) <= 91) or (93 <= self.input.LA(1) <= 65535):
                     self.input.consume()
                 else:
@@ -3324,10 +3058,7 @@ class JavaLexer(Lexer):
                     raise mse
 
 
-
-
             self.match(39)
-
 
 
             self._state.type = _type
@@ -3340,7 +3071,6 @@ class JavaLexer(Lexer):
     # $ANTLR end "CHARACTER_LITERAL"
 
 
-
     # $ANTLR start "STRING_LITERAL"
     def mSTRING_LITERAL(self, ):
 
@@ -3350,7 +3080,7 @@ class JavaLexer(Lexer):
 
             # Java.g:1018:5: ( '\"' ( ESCAPE_SEQUENCE | ~ ( '\\\\' | '\"' ) )* '\"' )
             # Java.g:1018:8: '\"' ( ESCAPE_SEQUENCE | ~ ( '\\\\' | '\"' ) )* '\"'
-            pass 
+            pass
             self.match(34)
             # Java.g:1018:12: ( ESCAPE_SEQUENCE | ~ ( '\\\\' | '\"' ) )*
             while True: #loop21
@@ -3365,13 +3095,13 @@ class JavaLexer(Lexer):
 
                 if alt21 == 1:
                     # Java.g:1018:14: ESCAPE_SEQUENCE
-                    pass 
+                    pass
                     self.mESCAPE_SEQUENCE()
 
 
                 elif alt21 == 2:
                     # Java.g:1018:32: ~ ( '\\\\' | '\"' )
-                    pass 
+                    pass
                     if (0 <= self.input.LA(1) <= 33) or (35 <= self.input.LA(1) <= 91) or (93 <= self.input.LA(1) <= 65535):
                         self.input.consume()
                     else:
@@ -3380,11 +3110,9 @@ class JavaLexer(Lexer):
                         raise mse
 
 
-
                 else:
                     break #loop21
             self.match(34)
-
 
 
             self._state.type = _type
@@ -3395,7 +3123,6 @@ class JavaLexer(Lexer):
             pass
 
     # $ANTLR end "STRING_LITERAL"
-
 
 
     # $ANTLR start "ESCAPE_SEQUENCE"
@@ -3426,7 +3153,7 @@ class JavaLexer(Lexer):
 
             if alt22 == 1:
                 # Java.g:1023:9: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' )
-                pass 
+                pass
                 self.match(92)
                 if self.input.LA(1) == 34 or self.input.LA(1) == 39 or self.input.LA(1) == 92 or self.input.LA(1) == 98 or self.input.LA(1) == 102 or self.input.LA(1) == 110 or self.input.LA(1) == 114 or self.input.LA(1) == 116:
                     self.input.consume()
@@ -3436,18 +3163,16 @@ class JavaLexer(Lexer):
                     raise mse
 
 
-
             elif alt22 == 2:
                 # Java.g:1024:9: UNICODE_ESCAPE
-                pass 
+                pass
                 self.mUNICODE_ESCAPE()
 
 
             elif alt22 == 3:
                 # Java.g:1025:9: OCTAL_ESCAPE
-                pass 
+                pass
                 self.mOCTAL_ESCAPE()
-
 
 
         finally:
@@ -3455,7 +3180,6 @@ class JavaLexer(Lexer):
             pass
 
     # $ANTLR end "ESCAPE_SEQUENCE"
-
 
 
     # $ANTLR start "OCTAL_ESCAPE"
@@ -3500,63 +3224,50 @@ class JavaLexer(Lexer):
 
             if alt23 == 1:
                 # Java.g:1030:9: '\\\\' ( '0' .. '3' ) ( '0' .. '7' ) ( '0' .. '7' )
-                pass 
+                pass
                 self.match(92)
                 # Java.g:1030:14: ( '0' .. '3' )
                 # Java.g:1030:15: '0' .. '3'
-                pass 
+                pass
                 self.matchRange(48, 51)
-
 
 
                 # Java.g:1030:25: ( '0' .. '7' )
                 # Java.g:1030:26: '0' .. '7'
-                pass 
+                pass
                 self.matchRange(48, 55)
-
 
 
                 # Java.g:1030:36: ( '0' .. '7' )
                 # Java.g:1030:37: '0' .. '7'
-                pass 
+                pass
                 self.matchRange(48, 55)
-
-
-
 
 
             elif alt23 == 2:
                 # Java.g:1031:9: '\\\\' ( '0' .. '7' ) ( '0' .. '7' )
-                pass 
+                pass
                 self.match(92)
                 # Java.g:1031:14: ( '0' .. '7' )
                 # Java.g:1031:15: '0' .. '7'
-                pass 
+                pass
                 self.matchRange(48, 55)
-
 
 
                 # Java.g:1031:25: ( '0' .. '7' )
                 # Java.g:1031:26: '0' .. '7'
-                pass 
+                pass
                 self.matchRange(48, 55)
-
-
-
 
 
             elif alt23 == 3:
                 # Java.g:1032:9: '\\\\' ( '0' .. '7' )
-                pass 
+                pass
                 self.match(92)
                 # Java.g:1032:14: ( '0' .. '7' )
                 # Java.g:1032:15: '0' .. '7'
-                pass 
+                pass
                 self.matchRange(48, 55)
-
-
-
-
 
 
         finally:
@@ -3566,14 +3277,13 @@ class JavaLexer(Lexer):
     # $ANTLR end "OCTAL_ESCAPE"
 
 
-
     # $ANTLR start "UNICODE_ESCAPE"
     def mUNICODE_ESCAPE(self, ):
 
         try:
             # Java.g:1037:5: ( '\\\\' 'u' HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT )
             # Java.g:1037:9: '\\\\' 'u' HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT
-            pass 
+            pass
             self.match(92)
             self.match(117)
             self.mHEX_DIGIT()
@@ -3582,14 +3292,11 @@ class JavaLexer(Lexer):
             self.mHEX_DIGIT()
 
 
-
-
         finally:
 
             pass
 
     # $ANTLR end "UNICODE_ESCAPE"
-
 
 
     # $ANTLR start "IDENT"
@@ -3601,7 +3308,7 @@ class JavaLexer(Lexer):
 
             # Java.g:1041:5: ( JAVA_ID_START ( JAVA_ID_PART )* )
             # Java.g:1041:9: JAVA_ID_START ( JAVA_ID_PART )*
-            pass 
+            pass
             self.mJAVA_ID_START()
             # Java.g:1041:23: ( JAVA_ID_PART )*
             while True: #loop24
@@ -3614,13 +3321,12 @@ class JavaLexer(Lexer):
 
                 if alt24 == 1:
                     # Java.g:1041:24: JAVA_ID_PART
-                    pass 
+                    pass
                     self.mJAVA_ID_PART()
 
 
                 else:
                     break #loop24
-
 
 
             self._state.type = _type
@@ -3633,23 +3339,19 @@ class JavaLexer(Lexer):
     # $ANTLR end "IDENT"
 
 
-
     # $ANTLR start "JAVA_ID_START"
     def mJAVA_ID_START(self, ):
 
         try:
             # Java.g:1046:5: ( '\\u0024' | '\\u0041' .. '\\u005a' | '\\u005f' | '\\u0061' .. '\\u007a' | '\\u00c0' .. '\\u00d6' | '\\u00d8' .. '\\u00f6' | '\\u00f8' .. '\\u00ff' | '\\u0100' .. '\\u1fff' | '\\u3040' .. '\\u318f' | '\\u3300' .. '\\u337f' | '\\u3400' .. '\\u3d2d' | '\\u4e00' .. '\\u9fff' | '\\uf900' .. '\\ufaff' )
             # Java.g:
-            pass 
+            pass
             if self.input.LA(1) == 36 or (65 <= self.input.LA(1) <= 90) or self.input.LA(1) == 95 or (97 <= self.input.LA(1) <= 122) or (192 <= self.input.LA(1) <= 214) or (216 <= self.input.LA(1) <= 246) or (248 <= self.input.LA(1) <= 8191) or (12352 <= self.input.LA(1) <= 12687) or (13056 <= self.input.LA(1) <= 13183) or (13312 <= self.input.LA(1) <= 15661) or (19968 <= self.input.LA(1) <= 40959) or (63744 <= self.input.LA(1) <= 64255):
                 self.input.consume()
             else:
                 mse = MismatchedSetException(None, self.input)
                 self.recover(mse)
                 raise mse
-
-
-
 
 
         finally:
@@ -3659,14 +3361,13 @@ class JavaLexer(Lexer):
     # $ANTLR end "JAVA_ID_START"
 
 
-
     # $ANTLR start "JAVA_ID_PART"
     def mJAVA_ID_PART(self, ):
 
         try:
             # Java.g:1063:5: ( JAVA_ID_START | '\\u0030' .. '\\u0039' )
             # Java.g:
-            pass 
+            pass
             if self.input.LA(1) == 36 or (48 <= self.input.LA(1) <= 57) or (65 <= self.input.LA(1) <= 90) or self.input.LA(1) == 95 or (97 <= self.input.LA(1) <= 122) or (192 <= self.input.LA(1) <= 214) or (216 <= self.input.LA(1) <= 246) or (248 <= self.input.LA(1) <= 8191) or (12352 <= self.input.LA(1) <= 12687) or (13056 <= self.input.LA(1) <= 13183) or (13312 <= self.input.LA(1) <= 15661) or (19968 <= self.input.LA(1) <= 40959) or (63744 <= self.input.LA(1) <= 64255):
                 self.input.consume()
             else:
@@ -3675,15 +3376,11 @@ class JavaLexer(Lexer):
                 raise mse
 
 
-
-
-
         finally:
 
             pass
 
     # $ANTLR end "JAVA_ID_PART"
-
 
 
     # $ANTLR start "WS"
@@ -3695,7 +3392,7 @@ class JavaLexer(Lexer):
 
             # Java.g:1067:5: ( ( ' ' | '\\r' | '\\t' | '\\u000C' | '\\n' ) )
             # Java.g:1067:8: ( ' ' | '\\r' | '\\t' | '\\u000C' | '\\n' )
-            pass 
+            pass
             if (9 <= self.input.LA(1) <= 10) or (12 <= self.input.LA(1) <= 13) or self.input.LA(1) == 32:
                 self.input.consume()
             else:
@@ -3704,11 +3401,10 @@ class JavaLexer(Lexer):
                 raise mse
 
             #action start
-                 
-            _channel = HIDDEN
-                
-            #action end
 
+            _channel = HIDDEN
+
+            #action end
 
 
             self._state.type = _type
@@ -3721,7 +3417,6 @@ class JavaLexer(Lexer):
     # $ANTLR end "WS"
 
 
-
     # $ANTLR start "COMMENT"
     def mCOMMENT(self, ):
 
@@ -3731,7 +3426,7 @@ class JavaLexer(Lexer):
 
             # Java.g:1074:5: ( '/*' ~ ( '*' ) ( options {greedy=false; } : . )* '*/' )
             # Java.g:1074:9: '/*' ~ ( '*' ) ( options {greedy=false; } : . )* '*/'
-            pass 
+            pass
             self.match("/*")
             if (0 <= self.input.LA(1) <= 41) or (43 <= self.input.LA(1) <= 65535):
                 self.input.consume()
@@ -3760,7 +3455,7 @@ class JavaLexer(Lexer):
 
                 if alt25 == 1:
                     # Java.g:1074:49: .
-                    pass 
+                    pass
                     self.matchAny()
 
 
@@ -3768,11 +3463,10 @@ class JavaLexer(Lexer):
                     break #loop25
             self.match("*/")
             #action start
-                 
-            _channel = HIDDEN
-                
-            #action end
 
+            _channel = HIDDEN
+
+            #action end
 
 
             self._state.type = _type
@@ -3785,7 +3479,6 @@ class JavaLexer(Lexer):
     # $ANTLR end "COMMENT"
 
 
-
     # $ANTLR start "LINE_COMMENT"
     def mLINE_COMMENT(self, ):
 
@@ -3795,7 +3488,7 @@ class JavaLexer(Lexer):
 
             # Java.g:1081:5: ( '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n' )
             # Java.g:1081:7: '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n'
-            pass 
+            pass
             self.match("//")
             # Java.g:1081:12: (~ ( '\\n' | '\\r' ) )*
             while True: #loop26
@@ -3808,14 +3501,13 @@ class JavaLexer(Lexer):
 
                 if alt26 == 1:
                     # Java.g:1081:12: ~ ( '\\n' | '\\r' )
-                    pass 
+                    pass
                     if (0 <= self.input.LA(1) <= 9) or (11 <= self.input.LA(1) <= 12) or (14 <= self.input.LA(1) <= 65535):
                         self.input.consume()
                     else:
                         mse = MismatchedSetException(None, self.input)
                         self.recover(mse)
                         raise mse
-
 
 
                 else:
@@ -3828,18 +3520,16 @@ class JavaLexer(Lexer):
                 alt27 = 1
             if alt27 == 1:
                 # Java.g:1081:26: '\\r'
-                pass 
+                pass
                 self.match(13)
-
 
 
             self.match(10)
             #action start
-                 
-            _channel = HIDDEN
-                
-            #action end
 
+            _channel = HIDDEN
+
+            #action end
 
 
             self._state.type = _type
@@ -3852,7 +3542,6 @@ class JavaLexer(Lexer):
     # $ANTLR end "LINE_COMMENT"
 
 
-
     # $ANTLR start "JAVADOC_COMMENT"
     def mJAVADOC_COMMENT(self, ):
 
@@ -3862,7 +3551,7 @@ class JavaLexer(Lexer):
 
             # Java.g:1088:5: ( '/**' ( options {greedy=false; } : . )* '*/' )
             # Java.g:1088:9: '/**' ( options {greedy=false; } : . )* '*/'
-            pass 
+            pass
             self.match("/**")
             # Java.g:1088:15: ( options {greedy=false; } : . )*
             while True: #loop28
@@ -3884,7 +3573,7 @@ class JavaLexer(Lexer):
 
                 if alt28 == 1:
                     # Java.g:1088:43: .
-                    pass 
+                    pass
                     self.matchAny()
 
 
@@ -3892,11 +3581,10 @@ class JavaLexer(Lexer):
                     break #loop28
             self.match("*/")
             #action start
-                 
-            _channel = HIDDEN
-                
-            #action end
 
+            _channel = HIDDEN
+
+            #action end
 
 
             self._state.type = _type
@@ -3909,680 +3597,674 @@ class JavaLexer(Lexer):
     # $ANTLR end "JAVADOC_COMMENT"
 
 
-
     def mTokens(self):
         # Java.g:1:8: ( AND | AND_ASSIGN | ASSIGN | AT | BIT_SHIFT_RIGHT | BIT_SHIFT_RIGHT_ASSIGN | COLON | COMMA | DEC | DIV | DIV_ASSIGN | DOT | DOTSTAR | ELLIPSIS | EQUAL | GREATER_OR_EQUAL | GREATER_THAN | INC | LBRACK | LCURLY | LESS_OR_EQUAL | LESS_THAN | LOGICAL_AND | LOGICAL_NOT | LOGICAL_OR | LPAREN | MINUS | MINUS_ASSIGN | MOD | MOD_ASSIGN | NOT | NOT_EQUAL | OR | OR_ASSIGN | PLUS | PLUS_ASSIGN | QUESTION | RBRACK | RCURLY | RPAREN | SEMI | SHIFT_LEFT | SHIFT_LEFT_ASSIGN | SHIFT_RIGHT | SHIFT_RIGHT_ASSIGN | STAR | STAR_ASSIGN | XOR | XOR_ASSIGN | ABSTRACT | ASSERT | BOOLEAN | BREAK | BYTE | CASE | CATCH | CHAR | CLASS | CONTINUE | DEFAULT | DO | DOUBLE | ELSE | ENUM | EXTENDS | FALSE | FINAL | FINALLY | FLOAT | FOR | IF | IMPLEMENTS | INSTANCEOF | INTERFACE | IMPORT | INT | LONG | NATIVE | NEW | NULL | PACKAGE | PRIVATE | PROTECTED | PUBLIC | RETURN | SHORT | STATIC | STRICTFP | SUPER | SWITCH | SYNCHRONIZED | THIS | THROW | THROWS | TRANSIENT | TRUE | TRY | VOID | VOLATILE | WHILE | HEX_LITERAL | DECIMAL_LITERAL | OCTAL_LITERAL | FLOATING_POINT_LITERAL | CHARACTER_LITERAL | STRING_LITERAL | IDENT | WS | COMMENT | LINE_COMMENT | JAVADOC_COMMENT )
         alt29 = 111
         alt29 = self.dfa29.predict(self.input)
         if alt29 == 1:
             # Java.g:1:10: AND
-            pass 
+            pass
             self.mAND()
 
 
         elif alt29 == 2:
             # Java.g:1:14: AND_ASSIGN
-            pass 
+            pass
             self.mAND_ASSIGN()
 
 
         elif alt29 == 3:
             # Java.g:1:25: ASSIGN
-            pass 
+            pass
             self.mASSIGN()
 
 
         elif alt29 == 4:
             # Java.g:1:32: AT
-            pass 
+            pass
             self.mAT()
 
 
         elif alt29 == 5:
             # Java.g:1:35: BIT_SHIFT_RIGHT
-            pass 
+            pass
             self.mBIT_SHIFT_RIGHT()
 
 
         elif alt29 == 6:
             # Java.g:1:51: BIT_SHIFT_RIGHT_ASSIGN
-            pass 
+            pass
             self.mBIT_SHIFT_RIGHT_ASSIGN()
 
 
         elif alt29 == 7:
             # Java.g:1:74: COLON
-            pass 
+            pass
             self.mCOLON()
 
 
         elif alt29 == 8:
             # Java.g:1:80: COMMA
-            pass 
+            pass
             self.mCOMMA()
 
 
         elif alt29 == 9:
             # Java.g:1:86: DEC
-            pass 
+            pass
             self.mDEC()
 
 
         elif alt29 == 10:
             # Java.g:1:90: DIV
-            pass 
+            pass
             self.mDIV()
 
 
         elif alt29 == 11:
             # Java.g:1:94: DIV_ASSIGN
-            pass 
+            pass
             self.mDIV_ASSIGN()
 
 
         elif alt29 == 12:
             # Java.g:1:105: DOT
-            pass 
+            pass
             self.mDOT()
 
 
         elif alt29 == 13:
             # Java.g:1:109: DOTSTAR
-            pass 
+            pass
             self.mDOTSTAR()
 
 
         elif alt29 == 14:
             # Java.g:1:117: ELLIPSIS
-            pass 
+            pass
             self.mELLIPSIS()
 
 
         elif alt29 == 15:
             # Java.g:1:126: EQUAL
-            pass 
+            pass
             self.mEQUAL()
 
 
         elif alt29 == 16:
             # Java.g:1:132: GREATER_OR_EQUAL
-            pass 
+            pass
             self.mGREATER_OR_EQUAL()
 
 
         elif alt29 == 17:
             # Java.g:1:149: GREATER_THAN
-            pass 
+            pass
             self.mGREATER_THAN()
 
 
         elif alt29 == 18:
             # Java.g:1:162: INC
-            pass 
+            pass
             self.mINC()
 
 
         elif alt29 == 19:
             # Java.g:1:166: LBRACK
-            pass 
+            pass
             self.mLBRACK()
 
 
         elif alt29 == 20:
             # Java.g:1:173: LCURLY
-            pass 
+            pass
             self.mLCURLY()
 
 
         elif alt29 == 21:
             # Java.g:1:180: LESS_OR_EQUAL
-            pass 
+            pass
             self.mLESS_OR_EQUAL()
 
 
         elif alt29 == 22:
             # Java.g:1:194: LESS_THAN
-            pass 
+            pass
             self.mLESS_THAN()
 
 
         elif alt29 == 23:
             # Java.g:1:204: LOGICAL_AND
-            pass 
+            pass
             self.mLOGICAL_AND()
 
 
         elif alt29 == 24:
             # Java.g:1:216: LOGICAL_NOT
-            pass 
+            pass
             self.mLOGICAL_NOT()
 
 
         elif alt29 == 25:
             # Java.g:1:228: LOGICAL_OR
-            pass 
+            pass
             self.mLOGICAL_OR()
 
 
         elif alt29 == 26:
             # Java.g:1:239: LPAREN
-            pass 
+            pass
             self.mLPAREN()
 
 
         elif alt29 == 27:
             # Java.g:1:246: MINUS
-            pass 
+            pass
             self.mMINUS()
 
 
         elif alt29 == 28:
             # Java.g:1:252: MINUS_ASSIGN
-            pass 
+            pass
             self.mMINUS_ASSIGN()
 
 
         elif alt29 == 29:
             # Java.g:1:265: MOD
-            pass 
+            pass
             self.mMOD()
 
 
         elif alt29 == 30:
             # Java.g:1:269: MOD_ASSIGN
-            pass 
+            pass
             self.mMOD_ASSIGN()
 
 
         elif alt29 == 31:
             # Java.g:1:280: NOT
-            pass 
+            pass
             self.mNOT()
 
 
         elif alt29 == 32:
             # Java.g:1:284: NOT_EQUAL
-            pass 
+            pass
             self.mNOT_EQUAL()
 
 
         elif alt29 == 33:
             # Java.g:1:294: OR
-            pass 
+            pass
             self.mOR()
 
 
         elif alt29 == 34:
             # Java.g:1:297: OR_ASSIGN
-            pass 
+            pass
             self.mOR_ASSIGN()
 
 
         elif alt29 == 35:
             # Java.g:1:307: PLUS
-            pass 
+            pass
             self.mPLUS()
 
 
         elif alt29 == 36:
             # Java.g:1:312: PLUS_ASSIGN
-            pass 
+            pass
             self.mPLUS_ASSIGN()
 
 
         elif alt29 == 37:
             # Java.g:1:324: QUESTION
-            pass 
+            pass
             self.mQUESTION()
 
 
         elif alt29 == 38:
             # Java.g:1:333: RBRACK
-            pass 
+            pass
             self.mRBRACK()
 
 
         elif alt29 == 39:
             # Java.g:1:340: RCURLY
-            pass 
+            pass
             self.mRCURLY()
 
 
         elif alt29 == 40:
             # Java.g:1:347: RPAREN
-            pass 
+            pass
             self.mRPAREN()
 
 
         elif alt29 == 41:
             # Java.g:1:354: SEMI
-            pass 
+            pass
             self.mSEMI()
 
 
         elif alt29 == 42:
             # Java.g:1:359: SHIFT_LEFT
-            pass 
+            pass
             self.mSHIFT_LEFT()
 
 
         elif alt29 == 43:
             # Java.g:1:370: SHIFT_LEFT_ASSIGN
-            pass 
+            pass
             self.mSHIFT_LEFT_ASSIGN()
 
 
         elif alt29 == 44:
             # Java.g:1:388: SHIFT_RIGHT
-            pass 
+            pass
             self.mSHIFT_RIGHT()
 
 
         elif alt29 == 45:
             # Java.g:1:400: SHIFT_RIGHT_ASSIGN
-            pass 
+            pass
             self.mSHIFT_RIGHT_ASSIGN()
 
 
         elif alt29 == 46:
             # Java.g:1:419: STAR
-            pass 
+            pass
             self.mSTAR()
 
 
         elif alt29 == 47:
             # Java.g:1:424: STAR_ASSIGN
-            pass 
+            pass
             self.mSTAR_ASSIGN()
 
 
         elif alt29 == 48:
             # Java.g:1:436: XOR
-            pass 
+            pass
             self.mXOR()
 
 
         elif alt29 == 49:
             # Java.g:1:440: XOR_ASSIGN
-            pass 
+            pass
             self.mXOR_ASSIGN()
 
 
         elif alt29 == 50:
             # Java.g:1:451: ABSTRACT
-            pass 
+            pass
             self.mABSTRACT()
 
 
         elif alt29 == 51:
             # Java.g:1:460: ASSERT
-            pass 
+            pass
             self.mASSERT()
 
 
         elif alt29 == 52:
             # Java.g:1:467: BOOLEAN
-            pass 
+            pass
             self.mBOOLEAN()
 
 
         elif alt29 == 53:
             # Java.g:1:475: BREAK
-            pass 
+            pass
             self.mBREAK()
 
 
         elif alt29 == 54:
             # Java.g:1:481: BYTE
-            pass 
+            pass
             self.mBYTE()
 
 
         elif alt29 == 55:
             # Java.g:1:486: CASE
-            pass 
+            pass
             self.mCASE()
 
 
         elif alt29 == 56:
             # Java.g:1:491: CATCH
-            pass 
+            pass
             self.mCATCH()
 
 
         elif alt29 == 57:
             # Java.g:1:497: CHAR
-            pass 
+            pass
             self.mCHAR()
 
 
         elif alt29 == 58:
             # Java.g:1:502: CLASS
-            pass 
+            pass
             self.mCLASS()
 
 
         elif alt29 == 59:
             # Java.g:1:508: CONTINUE
-            pass 
+            pass
             self.mCONTINUE()
 
 
         elif alt29 == 60:
             # Java.g:1:517: DEFAULT
-            pass 
+            pass
             self.mDEFAULT()
 
 
         elif alt29 == 61:
             # Java.g:1:525: DO
-            pass 
+            pass
             self.mDO()
 
 
         elif alt29 == 62:
             # Java.g:1:528: DOUBLE
-            pass 
+            pass
             self.mDOUBLE()
 
 
         elif alt29 == 63:
             # Java.g:1:535: ELSE
-            pass 
+            pass
             self.mELSE()
 
 
         elif alt29 == 64:
             # Java.g:1:540: ENUM
-            pass 
+            pass
             self.mENUM()
 
 
         elif alt29 == 65:
             # Java.g:1:545: EXTENDS
-            pass 
+            pass
             self.mEXTENDS()
 
 
         elif alt29 == 66:
             # Java.g:1:553: FALSE
-            pass 
+            pass
             self.mFALSE()
 
 
         elif alt29 == 67:
             # Java.g:1:559: FINAL
-            pass 
+            pass
             self.mFINAL()
 
 
         elif alt29 == 68:
             # Java.g:1:565: FINALLY
-            pass 
+            pass
             self.mFINALLY()
 
 
         elif alt29 == 69:
             # Java.g:1:573: FLOAT
-            pass 
+            pass
             self.mFLOAT()
 
 
         elif alt29 == 70:
             # Java.g:1:579: FOR
-            pass 
+            pass
             self.mFOR()
 
 
         elif alt29 == 71:
             # Java.g:1:583: IF
-            pass 
+            pass
             self.mIF()
 
 
         elif alt29 == 72:
             # Java.g:1:586: IMPLEMENTS
-            pass 
+            pass
             self.mIMPLEMENTS()
 
 
         elif alt29 == 73:
             # Java.g:1:597: INSTANCEOF
-            pass 
+            pass
             self.mINSTANCEOF()
 
 
         elif alt29 == 74:
             # Java.g:1:608: INTERFACE
-            pass 
+            pass
             self.mINTERFACE()
 
 
         elif alt29 == 75:
             # Java.g:1:618: IMPORT
-            pass 
+            pass
             self.mIMPORT()
 
 
         elif alt29 == 76:
             # Java.g:1:625: INT
-            pass 
+            pass
             self.mINT()
 
 
         elif alt29 == 77:
             # Java.g:1:629: LONG
-            pass 
+            pass
             self.mLONG()
 
 
         elif alt29 == 78:
             # Java.g:1:634: NATIVE
-            pass 
+            pass
             self.mNATIVE()
 
 
         elif alt29 == 79:
             # Java.g:1:641: NEW
-            pass 
+            pass
             self.mNEW()
 
 
         elif alt29 == 80:
             # Java.g:1:645: NULL
-            pass 
+            pass
             self.mNULL()
 
 
         elif alt29 == 81:
             # Java.g:1:650: PACKAGE
-            pass 
+            pass
             self.mPACKAGE()
 
 
         elif alt29 == 82:
             # Java.g:1:658: PRIVATE
-            pass 
+            pass
             self.mPRIVATE()
 
 
         elif alt29 == 83:
             # Java.g:1:666: PROTECTED
-            pass 
+            pass
             self.mPROTECTED()
 
 
         elif alt29 == 84:
             # Java.g:1:676: PUBLIC
-            pass 
+            pass
             self.mPUBLIC()
 
 
         elif alt29 == 85:
             # Java.g:1:683: RETURN
-            pass 
+            pass
             self.mRETURN()
 
 
         elif alt29 == 86:
             # Java.g:1:690: SHORT
-            pass 
+            pass
             self.mSHORT()
 
 
         elif alt29 == 87:
             # Java.g:1:696: STATIC
-            pass 
+            pass
             self.mSTATIC()
 
 
         elif alt29 == 88:
             # Java.g:1:703: STRICTFP
-            pass 
+            pass
             self.mSTRICTFP()
 
 
         elif alt29 == 89:
             # Java.g:1:712: SUPER
-            pass 
+            pass
             self.mSUPER()
 
 
         elif alt29 == 90:
             # Java.g:1:718: SWITCH
-            pass 
+            pass
             self.mSWITCH()
 
 
         elif alt29 == 91:
             # Java.g:1:725: SYNCHRONIZED
-            pass 
+            pass
             self.mSYNCHRONIZED()
 
 
         elif alt29 == 92:
             # Java.g:1:738: THIS
-            pass 
+            pass
             self.mTHIS()
 
 
         elif alt29 == 93:
             # Java.g:1:743: THROW
-            pass 
+            pass
             self.mTHROW()
 
 
         elif alt29 == 94:
             # Java.g:1:749: THROWS
-            pass 
+            pass
             self.mTHROWS()
 
 
         elif alt29 == 95:
             # Java.g:1:756: TRANSIENT
-            pass 
+            pass
             self.mTRANSIENT()
 
 
         elif alt29 == 96:
             # Java.g:1:766: TRUE
-            pass 
+            pass
             self.mTRUE()
 
 
         elif alt29 == 97:
             # Java.g:1:771: TRY
-            pass 
+            pass
             self.mTRY()
 
 
         elif alt29 == 98:
             # Java.g:1:775: VOID
-            pass 
+            pass
             self.mVOID()
 
 
         elif alt29 == 99:
             # Java.g:1:780: VOLATILE
-            pass 
+            pass
             self.mVOLATILE()
 
 
         elif alt29 == 100:
             # Java.g:1:789: WHILE
-            pass 
+            pass
             self.mWHILE()
 
 
         elif alt29 == 101:
             # Java.g:1:795: HEX_LITERAL
-            pass 
+            pass
             self.mHEX_LITERAL()
 
 
         elif alt29 == 102:
             # Java.g:1:807: DECIMAL_LITERAL
-            pass 
+            pass
             self.mDECIMAL_LITERAL()
 
 
         elif alt29 == 103:
             # Java.g:1:823: OCTAL_LITERAL
-            pass 
+            pass
             self.mOCTAL_LITERAL()
 
 
         elif alt29 == 104:
             # Java.g:1:837: FLOATING_POINT_LITERAL
-            pass 
+            pass
             self.mFLOATING_POINT_LITERAL()
 
 
         elif alt29 == 105:
             # Java.g:1:860: CHARACTER_LITERAL
-            pass 
+            pass
             self.mCHARACTER_LITERAL()
 
 
         elif alt29 == 106:
             # Java.g:1:878: STRING_LITERAL
-            pass 
+            pass
             self.mSTRING_LITERAL()
 
 
         elif alt29 == 107:
             # Java.g:1:893: IDENT
-            pass 
+            pass
             self.mIDENT()
 
 
         elif alt29 == 108:
             # Java.g:1:899: WS
-            pass 
+            pass
             self.mWS()
 
 
         elif alt29 == 109:
             # Java.g:1:902: COMMENT
-            pass 
+            pass
             self.mCOMMENT()
 
 
         elif alt29 == 110:
             # Java.g:1:910: LINE_COMMENT
-            pass 
+            pass
             self.mLINE_COMMENT()
 
 
         elif alt29 == 111:
             # Java.g:1:923: JAVADOC_COMMENT
-            pass 
+            pass
             self.mJAVADOC_COMMENT()
-
-
-
-
-
 
 
     # lookup tables for DFA #29
@@ -4700,7 +4382,7 @@ class JavaLexer(Lexer):
         u"\73\uffff\1\0\u0135\uffff"
         )
 
-            
+
     DFA29_transition = [
         DFA.unpack(u"\2\56\1\uffff\2\56\22\uffff\1\56\1\16\1\54\1\uffff\1"
         u"\55\1\21\1\1\1\53\1\20\1\26\1\30\1\12\1\6\1\7\1\11\1\10\1\51\11"
@@ -5252,7 +4934,7 @@ class JavaLexer(Lexer):
 
             _s = s
 
-            if s == 0: 
+            if s == 0:
                 LA29_59 = input.LA(1)
 
                 s = -1
@@ -5268,8 +4950,6 @@ class JavaLexer(Lexer):
             nvae = NoViableAltException(self_.getDescription(), 29, _s, input)
             self_.error(nvae)
             raise nvae
- 
-
 
 
 def main(argv, stdin=sys.stdin, stdout=sys.stdout, stderr=sys.stderr):

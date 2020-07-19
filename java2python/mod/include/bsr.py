@@ -1,5 +1,8 @@
+"""Bitshift hack."""
+
+
 def bsr(value, bits):
-    """ bsr(value, bits) -> value shifted right by bits
+    """bsr(value, bits) -> value shifted right by bits.
 
     This function is here because an expression in the original java
     source contained the token '>>>' and/or '>>>=' (bit shift right

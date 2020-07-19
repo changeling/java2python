@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-""" setup.py -> java2python setup script.
+"""Setup.py -> java2python setup script.
 
 Simple but effective tool to translate Java source code into Python.
 

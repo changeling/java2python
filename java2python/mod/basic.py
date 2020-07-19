@@ -9,12 +9,12 @@ from re import sub as rxsub
 
 
 def shebangLine(module):
-    """ yields the canonical python shebang line. """
+    """Yield the canonical python shebang line."""
     yield '#!/usr/bin/env python'
 
 
 def encodingLine(encoding='utf-8'):
-    """ returns a function to yield the specified encoding line.
+    """Return a function to yield the specified encoding line.
 
     Note that this function isn't wired up because the encoding is
     specified for the source directly, and adding this line produces a
@@ -26,7 +26,7 @@ def encodingLine(encoding='utf-8'):
 
 
 def simpleDocString(obj):
-    """ yields multiple lines for a default docstring.
+    """Yield multiple lines for a default docstring.
 
     This generator works for modules, classes, and functions.
     """
@@ -100,9 +100,9 @@ def outputSubs(obj, text):
 
 
 def overloadedClassMethods(method):
-    """
-    NB: this implementation does not handle overloaded static (or
-    class) methods, only instance methods.
+    """NB: this implementation does not handle overloaded static (or class) methods.
+
+    Just instance methods.
     """
     cls = method.parent
     methods = [o for o in cls.children if o.isMethod and o.name == method.name]

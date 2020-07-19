@@ -73,7 +73,7 @@ class overloaded:
     def register_func(self, types, func):
         """Helper to register an implementation."""
         self.registry[tuple(types)] = func
-        self.cache = {} # Clear the cache (later we can optimize this).
+        self.cache = {}  # Clear the cache (later we can optimize this).
 
     def __call__(self, *args):
         """Call the overloaded function."""
@@ -85,7 +85,7 @@ class overloaded:
 
     def find_func(self, types):
         """Find the appropriate overloaded function; don't call it.
-        
+
         This won't work for old-style classes or classes without __mro__.
 
         """
@@ -101,9 +101,9 @@ class overloaded:
         # Find all possible candidate signatures.
         mros = tuple(t.__mro__ for t in types)
         n = len(mros)
-        candidates = [sig for sig in self.registry
-                      if len(sig) == n and
-                         all(t in mro for t, mro in zip(sig, mros))]
+        candidates = [
+            sig for sig in self.registry
+            if len(sig) == n and all(t in mro for t, mro in zip(sig, mros))]
         if not candidates:
             # No match at all -- use the default function.
             return self.default_func

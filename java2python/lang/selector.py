@@ -19,49 +19,49 @@ from java2python.lang import tokens
 
 
 class Selector(object):
-    """ Base class for concrete selectors; provides operator methods. """
+    """Base class for concrete selectors; provides operator methods."""
 
     def __add__(self, other):
-        """ E + F
+        """E + F.
 
         Like CSS "E + F": an F element immediately preceded by an E element
         """
         return AdjacentSibling(self, other)
 
     def __and__(self, other):
-        """ E & F
+        """E & F.
 
         Like CSS "E F":  an F element descendant of an E element
         """
         return Descendant(self, other)
 
     def __call__(self, *args, **kwds):
-        """ Subclasses must implement. """
+        """Must be implemented subclasses."""
         raise NotImplementedError('Selector class cannot be called.')
 
     def __getitem__(self, key):
-        """ E[n]
+        """E[n].
 
         Like CSS "E:nth-child(n)": an E element, the n-th child of its parent
         """
         return Nth(self, key)
 
     def __gt__(self, other):
-        """ E > F
+        """E > F.
 
         Like CSS: "E > F": an F element child of an E element
         """
         return Child(self, other)
 
     def __div__(self, other):
-        """ E / F
+        """E / F.
 
         Produces a AnySibling.
         """
         return AnySibling(self, other)
 
     def walk(self, tree):
-        """ Select items from the tree and from the tree children. """
+        """Select items from the tree and from the tree children."""
         for item in self(tree):
             yield item
         for child in tree.children:
@@ -70,7 +70,7 @@ class Selector(object):
 
 
 class Token(Selector):
-    """ Token(...) -> select tokens by matching attributes.
+    """Token(...) -> select tokens by matching attributes.
 
     Token is the most generic and flexible Selector; using it,
     arbitrary nodes of any type, line number, position, and/or text
@@ -90,7 +90,7 @@ class Token(Selector):
         self.attrs = attrs
         ## we support strings so that the client can refer to the
         ## token name that way instead of via lookup or worse, integer.
-        if isinstance(attrs.get('type'), (basestring, )):
+        if isinstance(attrs.get('type'), (str, )):
             self.attrs['type'] = getattr(tokens, attrs.get('type'))
 
     def __call__(self, tree):
@@ -100,7 +100,7 @@ class Token(Selector):
         def match_or_call(k, v):
             if callable(v):
                 return v(token)
-            return getattr(token, k)==v
+            return getattr(token, k) == v
 
         if all(match_or_call(k, v) for k, v in items if v is not None):
             yield tree
@@ -112,11 +112,12 @@ class Token(Selector):
 
 
 class Nth(Selector):
-    """ E[n] ->  match any slice n of E
+    """E[n] ->  match any slice n of E.
 
     Similar to the :nth-child pseudo selector in CSS, but without the
     support for keywords like 'odd', 'even', etc.
     """
+
     def __init__(self, e, key):
         self.e, self.key = e, key
 
@@ -136,7 +137,7 @@ class Nth(Selector):
 
 
 class Child(Selector):
-    """ E > F    select any F that is a child of E """
+    """E > F    select any F that is a child of E."""
 
     def __init__(self, e, f):
         self.e, self.f = e, f
@@ -151,10 +152,11 @@ class Child(Selector):
 
 
 class Type(Selector):
-    """ Type(T)    select any token of type T
+    """Type(T)    select any token of type T.
 
     Similar to the type selector in CSS.
     """
+
     def __init__(self, key, value=None):
         self.key = key if isinstance(key, int) else getattr(tokens, key)
         self.value = value
@@ -170,10 +172,11 @@ class Type(Selector):
 
 
 class Star(Selector):
-    """ *    select any
+    """*    select any.
 
     Similar to the * selector in CSS.
     """
+
     def __call__(self, tree):
         yield tree
 
@@ -182,7 +185,7 @@ class Star(Selector):
 
 
 class Descendant(Selector):
-    """ E & F    select any F that is a descendant of E """
+    """E & F    select any F that is a descendant of E."""
 
     def __init__(self, e, f):
         self.e, self.f = e, f
@@ -200,7 +203,7 @@ class Descendant(Selector):
 
 
 class AdjacentSibling(Selector):
-    """ E + F    select any F immediately preceded by a sibling E """
+    """E + F    select any F immediately preceded by a sibling E."""
 
     def __init__(self, e, f):
         self.e, self.f = e, f
@@ -221,7 +224,7 @@ class AdjacentSibling(Selector):
 
 
 class AnySibling(Selector):
-    """ E / F    select any F preceded by a sibling E """
+    """E / F    select any F preceded by a sibling E."""
 
     def __init__(self, e, f):
         self.e, self.f = e, f

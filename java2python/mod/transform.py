@@ -16,21 +16,21 @@ import types
 
 
 def invalidPythonNames():
-    """ Creates a list of valid Java identifiers that are invalid in Python. """
+    """Create a list of valid Java identifiers that are invalid in Python."""
     ts = [getattr(types, n) for n in dir(types) if not n.startswith('_')]
     ns = [t.__name__ for t in ts if isinstance(t, type)]
     return ['None', 'True', 'False', ] + ns + keyword.kwlist
 
 
 def keywordSafeIdent(node, config, invalid=invalidPythonNames()):
-    """ Validates and possibly renames a Java identifier. """
+    """Validate and possibly renames a Java identifier."""
     ident = node.token.text
     if ident in invalid:
         node.token.text = '%s_' % ident
 
 
 def makeConst(v):
-    """ Returns a closure that indiscriminately changes node text to a value. """
+    """Return a closure that indiscriminately changes node text to a value."""
     def xform(node, config):
         node.token.text = v
     return xform
@@ -44,7 +44,7 @@ true2True = makeConst('True')
 
 
 def syntaxSafeFloatLiteral(node, config):
-    """ Ensures a Java float literal is a valid Python float literal. """
+    """Ensure a Java float literal is a valid Python float literal."""
     value = node.token.text
     if value.startswith('.'):
         value = '0' + value
@@ -56,7 +56,7 @@ def syntaxSafeFloatLiteral(node, config):
 
 
 def typeSub(node, config):
-    """ Maps specific, well-known Java types to their Python counterparts.
+    """Map specific, well-known Java types to their Python counterparts.
 
     See the `java2python.config.default` module for the default type
     mapping and further discussion.
