@@ -14,12 +14,11 @@
 # this case is no exception.
 
 from io import StringIO
-from functools import partial
+from functools import partial, reduce
 from itertools import chain
 
 from java2python.lang import tokens
 from java2python.lib import FS, colors
-from functools import reduce
 
 
 class Factory(object):
@@ -162,7 +161,9 @@ class Base(object, metaclass=FactoryTypeDetector):
                     return name
                 if name in method.variables:
                     return name
-                return ('cls' if method.isStatic else 'self') + '.' + name
+                #return ('cls' if method.isStatic else 'self') + '.' + name
+                ## Below change make by VSK on Apr 16, 2020 so as to not generate any Python classmethods for ASKE
+                return ('self' if method.isStatic else 'self') + '.' + name
         return name
 
     def configHandler(self, part, suffix='Handler', default=None):
