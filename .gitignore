@@ -1,3 +1,5 @@
 *.class
 *.egg-info
 *.pyc
+venv/
+.vscode/
