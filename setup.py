@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-""" setup.py -> java2python setup script.
+"""setup.py -> java2python setup script.
 
 Simple but effective tool to translate Java source code into Python.
 
@@ -28,59 +28,60 @@ Topic :: Software Development :: Code Generators
 """
 
 
-description = __doc__.split('\n')[2]
-long_description = '\n'.join(__doc__.split('\n')[4:])
+description = __doc__.split("\n")[2]
+long_description = "\n".join(__doc__.split("\n")[4:])
 
 
 def doc_files():
-    return [path.join('doc', name) for name in listdir('doc')]
+    return [path.join("doc", name) for name in listdir("doc")]
 
 
 setup(
-    name='java2python',
-    version='0.5.1',
+    name="java2python",
+    version="0.5.1",
 
     description=description,
     long_description=long_description,
 
-    author='Troy Melhase',
-    author_email='troy@troy.io',
+    author="Troy Melhase",
+    author_email="troy@troy.io",
 
-    url='https://github.com/natural/java2python/',
-    download_url='https://github.com/downloads/natural/java2python/java2python-0.5.1.tar.gz',
+    url="https://github.com/natural/java2python/",
+    download_url="https://github.com/downloads/natural/java2python/java2python-0.5.1.tar.gz",
 
-    keywords=['java', 'java2python', 'compiler'],
-    classifiers=filter(None, classifiers.split('\n')),
+    keywords=["java", "java2python", "compiler"],
+    classifiers=filter(None, classifiers.split("\n")),
 
     packages=[
-        'java2python',
-        'java2python.compiler',
-        'java2python.config',
-        'java2python.lang',
-        'java2python.lib',
-        'java2python.mod',
-        'java2python.mod.include',
-        ],
+        "java2python",
+        "java2python.compiler",
+        "java2python.config",
+        "java2python.lang",
+        "java2python.lib",
+        "java2python.mod",
+        "java2python.mod.include",
+    ],
 
     package_data={
-        'java2python' : [
-            'license.txt',
-            'readme.md',
-            ],
-        'java2python.lang': [
-            '*.g',
-            '*.tokens',
-            ]
-        },
+        "java2python": [
+            "license.txt",
+            "readme.md",
+        ],
+        "java2python.lang": [
+            "*.g",
+            "*.tokens",
+        ],
+    },
 
     scripts=[
-        'bin/j2py',
-        ],
+        "bin/j2py",
+    ],
 
     data_files=[
-        ('doc', doc_files()),
-        ],
+        ("doc", doc_files()),
+    ],
 
-    install_requires=['antlr_python_runtime==3.1.3'],
-
-    )
+    install_requires=[
+        "antlr_python_runtime@https://github.com/altigee/antlr-python3-runtime-3.1.3/archive/master.zip",
+    ],
+)
