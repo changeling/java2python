@@ -32,7 +32,7 @@ class Memo(object):
 class Base(object):
     """Base ->  Parent class for AST visitors."""
 
-    commentSubs = list(map(recompile, ["^\s*/(\*)+", "(\*)+/\s*$", "^\s*//"]))
+    commentSubs = list(map(recompile, [r"^\s*/(\*)+", r"(\*)+/\s*$", r"^\s*//"]))
 
     def accept(self, node, memo):
         """Accept a node, possibly creating a child visitor."""

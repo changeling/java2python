@@ -173,6 +173,7 @@ class LocalTree(CommonTree):
     def colorComments(self, token):
         """Format, color, and return the comment text from the given token."""
         ttyp = tokens.map.get(token.type)
+        # TODO Should these be raw strings?
         text = token.text.replace("\n", "\\n").replace("\r", "\\r").replace("\t", "\\t")
         item = "{0} [{1}:{2}] {3}".format(ttyp, token.start, token.stop, text)
         yield colors.black(item)

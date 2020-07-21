@@ -111,7 +111,7 @@ def formatSyntaxTransf(match):
     groups = match.groupdict()
     if groups["convers"] == "n":
         # Means platform-specific line separator
-        return "\\n"  # Py converts \n to os.linesep
+        return "\\n"  # TODO Should this be raw string? Py converts \n to os.linesep
 
     result = "{"
     thous_sep = ""
