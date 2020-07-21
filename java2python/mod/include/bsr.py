@@ -1,5 +1,7 @@
 def bsr(value, bits):
-    """ bsr(value, bits) -> value shifted right by bits
+    """Shift value right by bits.
+
+    bsr(value, bits) -> value shifted right by bits.
 
     This function is here because an expression in the original java
     source contained the token '>>>' and/or '>>>=' (bit shift right
@@ -18,9 +20,9 @@ def bsr(value, bits):
         else:
             return 0
     elif bits < 0 or bits > 31:
-        raise ValueError('bad shift count')
-    tmp = (value & 0x7FFFFFFE) // 2**bits
-    if (value & minint):
-        return (tmp | (0x40000000 // 2**(bits-1)))
+        raise ValueError("bad shift count")
+    tmp = (value & 0x7FFFFFFE) // 2 ** bits
+    if value & minint:
+        return tmp | (0x40000000 // 2 ** (bits - 1))
     else:
         return tmp

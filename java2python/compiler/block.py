@@ -18,22 +18,26 @@ from java2python.compiler import template, visitor
 
 def addTypeToModule(cftuple):
     (className, factoryName) = cftuple
-    """ Constructs and adds a new type to this module. """
+    """Construct and adds a new type to this module."""
     bases = (getattr(template, className), getattr(visitor, className))
     newType = type(className, bases, dict(factoryName=factoryName))
     setattr(modules[__name__], className, newType)
 
 
-list(map(addTypeToModule, (
-        ('Annotation',    'at'),
-        ('Class',         'klass'),
-        ('Comment',       'comment'),
-        ('Enum',          'enum'),
-        ('Expression',    'expr'),
-        ('Interface',     'interface'),
-        ('Method',        'method'),
-        ('MethodContent', 'methodContent'),
-        ('Module',        'module'),
-        ('Statement',     'statement'),
-        )
-    ))
+list(
+    map(
+        addTypeToModule,
+        (
+            ("Annotation", "at"),
+            ("Class", "klass"),
+            ("Comment", "comment"),
+            ("Enum", "enum"),
+            ("Expression", "expr"),
+            ("Interface", "interface"),
+            ("Method", "method"),
+            ("MethodContent", "methodContent"),
+            ("Module", "module"),
+            ("Statement", "statement"),
+        ),
+    )
+)

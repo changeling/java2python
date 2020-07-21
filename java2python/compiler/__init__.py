@@ -11,7 +11,7 @@ from java2python.lang import Lexer, Parser, StringStream, TokenStream, TreeAdapt
 
 
 def buildAST(source):
-    """ Returns an AST for the given source. """
+    """Return an AST for the given source."""
     lexer = Lexer(StringStream(source))
     parser = Parser(TokenStream(lexer))
     adapter = TreeAdaptor(lexer, parser)
@@ -21,9 +21,10 @@ def buildAST(source):
 
 
 def buildJavaDocAST(source):
-    """ Returns an AST for the given javadoc source. """
+    """Return an AST for the given javadoc source."""
     from java2python.lang.JavaDocLexer import JavaDocLexer
     from java2python.lang.JavaDocParser import JavaDocParser
+
     lexer = JavaDocLexer(StringStream(source))
     parser = JavaDocParser(TokenStream(lexer))
     scope = parser.commentBody()
@@ -31,7 +32,7 @@ def buildJavaDocAST(source):
 
 
 def transformAST(tree, config):
-    """ Walk the tree and apply the transforms in the config. """
-    for selector, call in config.last('astTransforms', ()):
+    """Walk the tree and apply the transforms in the config."""
+    for selector, call in config.last("astTransforms", ()):
         for node in selector.walk(tree):
             call(node, config)

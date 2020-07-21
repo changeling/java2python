@@ -3,17 +3,21 @@
 from threading import RLock
 
 _locks = {}
+
+
 def lock_for_object(obj, locks=_locks):
     return locks.setdefault(id(obj), RLock())
+
 
 def synchronized(call):
     def inner(*args, **kwds):
         with lock_for_object(call):
             return call(*args, **kwds)
+
     return inner
 
-class Main(object):
 
+class Main(object):
     def __init__(self):
         self.attr = object()
 
@@ -62,27 +66,25 @@ class Main(object):
         return [cls, values, kwargs]
 
 
-
-if __name__ == '__main__':
+if __name__ == "__main__":
     x = Main()
     expected_count = 0
 
     assert x.b1() == x.b2()
-    expected_count += 1 # one for the attr, used twice
+    expected_count += 1  # one for the attr, used twice
 
     assert x.c1() == x.c2()
-    expected_count += 1 # one for the class, used twice
+    expected_count += 1  # one for the class, used twice
 
     assert x.m1() == x.m2()
-    expected_count += 1 # one for the instance, used twice
+    expected_count += 1  # one for the instance, used twice
 
     assert x.s1() == x.s2()
-    expected_count += 2 # one for each instance method
+    expected_count += 2  # one for each instance method
 
     assert x.cs1() == x.cs2()
-    expected_count += 2 # one for each class method
+    expected_count += 2  # one for each class method
 
     assert expected_count == len(_locks)
 
-    print('[PASS]')
-
+    print("[PASS]")

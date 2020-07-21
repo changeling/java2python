@@ -11,57 +11,59 @@ from java2python.lib import FS
 
 
 def shebangLine(module):
-    """ yields the canonical python shebang line. """
-    yield '#!/usr/bin/env python'
+    """Yield the canonical python shebang line."""
+    yield "#!/usr/bin/env python"
 
 
-def encodingLine(encoding='utf-8'):
-    """ returns a function to yield the specified encoding line.
+def encodingLine(encoding="utf-8"):
+    """Return a function to yield the specified encoding line.
 
     Note that this function isn't wired up because the encoding is
     specified for the source directly, and adding this line produces a
     syntax error when the compile function is used.
     """
+
     def line(module):
-        yield '# -*- coding: {0} -*-'.format(encoding)
+        yield "# -*- coding: {0} -*-".format(encoding)
+
     return line
 
 
 def simpleDocString(obj):
-    """ yields multiple lines for a default docstring.
+    """Yield multiple lines for a default docstring.
 
     This generator works for modules, classes, and functions.
     """
-    yield '""" generated source for {0} {1} """'.format(obj.typeName, obj.name)
+    yield '"""Generated source for {0} {1}."""'.format(obj.typeName, obj.name)
 
 
 def commentedImports(module, expr):
-    module.factory.comment(parent=module, left=expr, fs='#import {left}')
+    module.factory.comment(parent=module, left=expr, fs="#import {left}")
 
 
 def simpleImports(module, expr):
-    module.factory.expr(parent=module, left=expr, fs='import {left}')
+    module.factory.expr(parent=module, left=expr, fs="import {left}")
 
 
 def commentedPackages(module, expr):
-    module.factory.comment(parent=module, left=expr, fs='# package: {left}')
+    module.factory.comment(parent=module, left=expr, fs="# package: {left}")
 
 
 def namespacePackages(module, expr):
     source = module.sourceFilename
     if not source:
-        warning('namespace package not created; source input not named.')
+        warning("namespace package not created; source input not named.")
         return
-    initname = path.join(path.dirname(source), '__init__.py')
+    initname = path.join(path.dirname(source), "__init__.py")
     if path.exists(initname):
-        warning('namespace package not created; __init__.py exists.')
+        warning("namespace package not created; __init__.py exists.")
         return
-    with open(initname, 'w') as initfile:
-        initfile.write('from pkgutil import extend_path\n')
-        initfile.write('__path__ = extend_path(__path__, __name__)\n')
+    with open(initname, "w") as initfile:
+        initfile.write("from pkgutil import extend_path\n")
+        initfile.write("__path__ = extend_path(__path__, __name__)\n")
         # wrong
-        initfile.write('\nfrom {0} import {0}\n'.format(module.name))
-    info('created __init__.py file for package %s.', expr)
+        initfile.write("\nfrom {0} import {0}\n".format(module.name))
+    info("Created __init__.py file for package %s.", expr)
 
 
 def enumConstInts(enum, index, name):
@@ -80,11 +82,12 @@ if __name__ == '__main__':
 
 def scriptMainStanza(module):
     def filterClass(x):
-        return x.isClass and x.name==module.name
+        return x.isClass and x.name == module.name
 
     def filterMethod(x):
-        return x.isMethod and x.isPublic and x.isStatic and \
-               x.isVoid and x.name=='main'
+        return (
+            x.isMethod and x.isPublic and x.isStatic and x.isVoid and x.name == "main"
+        )
 
     for cls in [c for c in module.children if filterClass(c)]:
         if [m for m in cls.children if filterMethod(m)]:
@@ -93,7 +96,7 @@ def scriptMainStanza(module):
 
 
 def outputSubs(obj, text):
-    subsname = '{0}OutputSubs'.format(obj.typeName)
+    subsname = "{0}OutputSubs".format(obj.typeName)
     subs = obj.config.every(subsname, [])
     for sub in subs:
         for pattern, repl in sub:
@@ -102,75 +105,77 @@ def outputSubs(obj, text):
 
 
 def overloadedClassMethods(method):
-    """
-    NB: this implementation does not handle overloaded static (or
-    class) methods, only instance methods.
+    """NB: this implementation does not handle overloaded static (or class) methods.
+
+    Just instance methods.
     """
     cls = method.parent
-    methods = [o for o in cls.children if o.isMethod and o.name==method.name]
+    methods = [o for o in cls.children if o.isMethod and o.name == method.name]
     if len(methods) == 1:
         if methods[0].overloaded:
             yield methods[0].overloaded
         return
     for i, m in enumerate(methods[1:]):
-        args = [p['type'] for p in m.parameters]
-        args = ', '.join(args)
-        m.overloaded = '@{0}.register({1})'.format(method.name, args)
-        m.name = '{0}_{1}'.format(method.name, i)
+        args = [p["type"] for p in m.parameters]
+        args = ", ".join(args)
+        m.overloaded = "@{0}.register({1})".format(method.name, args)
+        m.name = "{0}_{1}".format(method.name, i)
     # for this one only:
-    yield '@overloaded'
+    yield "@overloaded"
 
 
 def maybeClassMethod(method):
-    if method.isStatic and 'classmethod' not in method.decorators:
-        yield '@classmethod'
+    if method.isStatic and "classmethod" not in method.decorators:
+        yield "@classmethod"
 
 
 def maybeAbstractMethod(method):
     if method.parent and method.parent.isInterface:
-        yield '@abstractmethod'
+        yield "@abstractmethod"
 
 
 def maybeSynchronizedMethod(method):
-    if 'synchronized' in method.modifiers:
-        yield '@synchronized'
+    if "synchronized" in method.modifiers:
+        yield "@synchronized"
 
 
 def globalNameCounter(original, counter=count()):
-    return '__{0}_{1}'.format(original, next(counter))
+    return "__{0}_{1}".format(original, next(counter))
 
 
 def getBsrSrc():
     from inspect import getsource
     from java2python.mod.include.bsr import bsr
+
     return getsource(bsr)
 
 
 def getSyncHelpersSrc():
     from inspect import getsource
     from java2python.mod.include import sync
+
     return getsource(sync)
 
 
 def maybeBsr(module):
-    if getattr(module, 'needsBsrFunc', False):
-        for line in getBsrSrc().split('\n'):
+    if getattr(module, "needsBsrFunc", False):
+        for line in getBsrSrc().split("\n"):
             yield line
 
 
 def maybeAbstractHelpers(module):
-    if getattr(module, 'needsAbstractHelpers', False):
-        yield 'from abc import ABCMeta, abstractmethod'
+    if getattr(module, "needsAbstractHelpers", False):
+        yield "from abc import ABCMeta, abstractmethod"
 
 
 def maybeSyncHelpers(module):
-    if getattr(module, 'needsSyncHelpers', False):
-        for line in getSyncHelpersSrc().split('\n'):
+    if getattr(module, "needsSyncHelpers", False):
+        for line in getSyncHelpersSrc().split("\n"):
             yield line
 
 
 def classContentSort(obj):
-    isMethod = lambda x:x and x.isMethod
+    isMethod = lambda x: x and x.isMethod
 
     def iterBody(body):
         group = []
@@ -202,11 +207,11 @@ def zopeInterfaceMethodParams(obj):
             yield param
     else:
         for index, param in enumerate(obj.parameters):
-            if index != 0 and param['name'] != 'self':
+            if index != 0 and param["name"] != "self":
                 yield param
 
 
-normalBases = ('object', )
+normalBases = ("object",)
 
 
 def defaultBases(obj):
@@ -214,13 +219,13 @@ def defaultBases(obj):
 
 
 def zopeInterfaceBases(obj):
-    return iter(obj.bases or ['zope.interface.Interface'])
+    return iter(obj.bases or ["zope.interface.Interface"])
 
 
 def implAny(obj):
-    for module in obj.parents(lambda x:x.isModule):
+    for module in obj.parents(lambda x: x.isModule):
         for name in obj.bases:
-            if any(module.find(lambda v:v.name == name)):
+            if any(module.find(lambda v: v.name == name)):
                 return True
 
 
@@ -231,21 +236,23 @@ def zopeImplementsClassBases(obj):
 def zopeImplementsClassHead(obj):
     if implAny(obj):
         for cls in obj.bases:
-            yield 'zope.interface.implements({})'.format(cls)
+            yield "zope.interface.implements({})".format(cls)
 
 
 def moveStaticExpressions(cls):
-    name = '{}.'.format(cls.name) # notice the dot
-    exprs = [child for child in cls.children if child.isExpression and name in str(child)]
-    module = next(cls.parents(lambda x:x.isModule))
+    name = "{}.".format(cls.name)  # notice the dot
+    exprs = [
+        child for child in cls.children if child.isExpression and name in str(child)
+    ]
+    module = next(cls.parents(lambda x: x.isModule))
     for expr in exprs:
         cls.children.remove(expr)
-        newExpr = module.factory.expr(fs=name + '{right}', right=expr)
+        newExpr = module.factory.expr(fs=name + "{right}", right=expr)
         module.adopt(newExpr, index=len(module.children))
 
 
 def castCtor(expr, node):
-    expr.fs = FS.l + '(' + FS.r + ')'
+    expr.fs = FS.l + "(" + FS.r + ")"
 
 
 def castDrop(expr, node):

@@ -21,53 +21,55 @@ from java2python.lang import tokens
 
 
 def invalidPythonNames():
-    """ Creates a list of valid Java identifiers that are invalid in Python. """
-    ts = [getattr(types, n) for n in dir(types) if not n.startswith('_')]
+    """Create a list of valid Java identifiers that are invalid in Python."""
+    ts = [getattr(types, n) for n in dir(types) if not n.startswith("_")]
     ns = [t.__name__ for t in ts if isinstance(t, type)]
-    return ['None', 'True', 'False', ] + ns + keyword.kwlist
+    return ["None", "True", "False", ] + ns + keyword.kwlist
 
 
 def keywordSafeIdent(node, config, invalid=invalidPythonNames()):
-    """ Validates and possibly renames a Java identifier. """
+    """Validate and possibly renames a Java identifier."""
     ident = node.token.text
     if ident in invalid:
-        node.token.text = '%s_' % ident
+        node.token.text = "%s_" % ident
 
 
 def makeConst(v):
-    """ Returns a closure that indiscriminately changes node text to a value. """
+    """Return a closure that indiscriminately changes node text to a value."""
+
     def xform(node, config):
         node.token.text = v
+
     return xform
 
 
 # Create transformers for mapping well-known Java idents into their
 # Python counterparts:
-null2None = makeConst('None')
-false2False = makeConst('False')
-true2True = makeConst('True')
+null2None = makeConst("None")
+false2False = makeConst("False")
+true2True = makeConst("True")
 
 
 def syntaxSafeDecimalLiteral(node, config):
-    """ Ensures a Java decimal literal is a valid Python decimal literal. """
+    """Ensure a Java decimal literal is a valid Python decimal literal."""
     value = node.token.text
-    if value.endswith(('l', 'L')):
+    if value.endswith(("l", "L")):
         value = value[:-1]
     node.token.text = value
 
 
 def syntaxSafeFloatLiteral(node, config):
-    """ Ensures a Java float literal is a valid Python float literal. """
+    """Ensure a Java float literal is a valid Python float literal."""
     value = node.token.text
-    if value.startswith('.'):
-        value = '0' + value
-    if value.lower().endswith(('f', 'd')):
+    if value.startswith("."):
+        value = "0" + value
+    if value.lower().endswith(("f", "d")):
         value = value[:-1]
     node.token.text = value
 
 
 def lengthToLen(node, config):
-    """ Transforms expressions like 'value.length()' to 'len(value)'.
+    """Transform expressions like 'value.length()' to 'len(value)'.
 
     This method changes AST branches like this:
 
@@ -91,7 +93,7 @@ def lengthToLen(node, config):
     method = dot.parent
 
     ident = dot.firstChildOfType(tokens.IDENT)
-    ident.token.text = 'len({})'.format(ident.text)
+    ident.token.text = "len({})".format(ident.text)
 
     expr = method.parent
     expr.children.remove(method)
@@ -99,52 +101,54 @@ def lengthToLen(node, config):
 
 
 def formatSyntaxTransf(match):
-    """ Helper function for formatString AST transform.
+    """Translate Java Formatter syntax into Python .format syntax.
 
-        Translates the Java Formatter syntax into Python .format syntax.
+    Helper function for formatString AST transform.
 
-        This function gets called by re.sub which matches all the %...$... groups
-        inside a format specifier string.
+    This function gets called by re.sub which matches all the %...$... groups
+    inside a format specifier string.
     """
     groups = match.groupdict()
-    if groups['convers'] == 'n':
+    if groups["convers"] == "n":
         # Means platform-specific line separator
-        return '\\n' # Py converts \n to os.linesep
+        return "\\n"  # Py converts \n to os.linesep
 
-    result = '{'
-    thous_sep = ''
+    result = "{"
+    thous_sep = ""
 
-    if(groups['idx']):
-        idx = int(groups['idx'][:-1])
-        result += str(idx - 1) # Py starts count from 0
-    result += ':'
+    if groups["idx"]:
+        idx = int(groups["idx"][:-1])
+        result += str(idx - 1)  # Py starts count from 0
+    result += ":"
 
-    if(groups['flags']):
-        if ',' in groups['flags']:
-            thous_sep = ','
-        if '+' in groups['flags']:
-            result += '+'
-        elif ' ' in groups['flags']:
-            result += ' '
-        if '#' in groups['flags']:
-            result += '#'
-        if '0' in groups['flags']:
-            result += '0'
+    if groups["flags"]:
+        if "," in groups["flags"]:
+            thous_sep = ","
+        if "+" in groups["flags"]:
+            result += "+"
+        elif " " in groups["flags"]:
+            result += " "
+        if "#" in groups["flags"]:
+            result += "#"
+        if "0" in groups["flags"]:
+            result += "0"
 
-    if(groups['width']):
-        result += groups['width']
+    if groups["width"]:
+        result += groups["width"]
     result += thous_sep
 
-    if(groups['precision']):
-        result += groups['precision']
+    if groups["precision"]:
+        result += groups["precision"]
 
-    result += groups['convers'] + '}'
+    result += groups["convers"] + "}"
 
     return result
 
+
 def formatString(node, config):
-    """ Transforms string formatting like 'String.format("%d %2$s", i, s)'
-        into '"{:d} {2:s}".format(i, s)'.
+    """Transform string formatting.
+
+    Example: 'String.format("%d %2$s", i, s)' into '"{:d} {2:s}".format(i, s)'.
     """
     dot = node.parent
     method = dot.parent
@@ -155,22 +159,27 @@ def formatString(node, config):
     # Translate format syntax (if format == string_literal)
     format = call_args[0].firstChildOfType(tokens.STRING_LITERAL)
     if format:
-        format.token.text =  \
-            re.sub(r'%(?P<idx>\d+\$)?(?P<flags>[-+# 0,]+)?(?P<width>[0-9]+)?(?P<precision>\.[0-9]+)?(?P<convers>[scdoxefgn])',
-                    formatSyntaxTransf,
-                    format.token.text,
-                    flags=re.IGNORECASE)
+        format.token.text = re.sub(
+            r"%(?P<idx>\d+\$)?(?P<flags>[-+# 0,]+)?(?P<width>[0-9]+)?(?P<precision>\.[0-9]+)?(?P<convers>[scdoxefgn])",
+            formatSyntaxTransf,
+            format.token.text,
+            flags=re.IGNORECASE,
+        )
     else:
         # Translation should happen at runtime
         format = call_args[0].firstChild()
         if format.type == tokens.IDENT:
             # String variable
-            warning('Formatting string %s is not automatically translated.'
-                % str(format.token.text))
+            warning(
+                "Formatting string %s is not automatically translated."
+                % str(format.token.text)
+            )
         else:
             # Function that returns String
-            warning('Formatting string returned by %s() is not automatically translated.'
-                % str(format.firstChildOfType(tokens.IDENT).token.text))
+            warning(
+                "Formatting string returned by %s() is not automatically translated."
+                % str(format.firstChildOfType(tokens.IDENT).token.text)
+            )
 
     left_ident = dot.children[0]
     right_ident = dot.children[1]
@@ -184,13 +193,13 @@ def formatString(node, config):
 
 
 def typeSub(node, config):
-    """ Maps specific, well-known Java types to their Python counterparts.
+    """Map specific, well-known Java types to their Python counterparts.
 
     See the `java2python.config.default` module for the default type
     mapping and further discussion.
     """
     ident = node.token.text
-    for subs in reversed(config.every('typeSubs', {})):
+    for subs in reversed(config.every("typeSubs", {})):
         if ident in subs:
             node.token.text = subs[ident]
             return

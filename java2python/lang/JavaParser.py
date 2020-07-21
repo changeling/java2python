@@ -378,10 +378,10 @@ class JavaParser(Parser):
 
         self._adaptor = None
         self.adaptor = CommonTreeAdaptor()
-                
 
 
-        
+
+
     def getTreeAdaptor(self):
         return self._adaptor
 
@@ -20918,7 +20918,7 @@ class JavaParser(Parser):
         "\uffff"
         )
 
-            
+
     DFA36_transition = [
         DFA.unpack("\1\15\17\uffff\1\1\1\uffff\1\16\22\uffff\1\25\10\uffff"
         "\1\6\1\uffff\1\16\1\uffff\1\16\2\uffff\1\16\1\22\3\uffff\1\16\1"
@@ -20968,7 +20968,7 @@ class JavaParser(Parser):
             if s == 0: 
                 LA36_2 = input.LA(1)
 
-                 
+
                 index36_2 = input.index()
                 input.rewind()
                 s = -1
@@ -20981,14 +20981,14 @@ class JavaParser(Parser):
                 elif (self.synpred44_Java()):
                     s = 18
 
-                 
+
                 input.seek(index36_2)
                 if s >= 0:
                     return s
             elif s == 1: 
                 LA36_3 = input.LA(1)
 
-                 
+
                 index36_3 = input.index()
                 input.rewind()
                 s = -1
@@ -20998,14 +20998,14 @@ class JavaParser(Parser):
                 elif (self.synpred44_Java()):
                     s = 18
 
-                 
+
                 input.seek(index36_3)
                 if s >= 0:
                     return s
             elif s == 2: 
                 LA36_4 = input.LA(1)
 
-                 
+
                 index36_4 = input.index()
                 input.rewind()
                 s = -1
@@ -21015,14 +21015,14 @@ class JavaParser(Parser):
                 elif (self.synpred44_Java()):
                     s = 18
 
-                 
+
                 input.seek(index36_4)
                 if s >= 0:
                     return s
             elif s == 3: 
                 LA36_5 = input.LA(1)
 
-                 
+
                 index36_5 = input.index()
                 input.rewind()
                 s = -1
@@ -21032,14 +21032,14 @@ class JavaParser(Parser):
                 elif (self.synpred44_Java()):
                     s = 18
 
-                 
+
                 input.seek(index36_5)
                 if s >= 0:
                     return s
             elif s == 4: 
                 LA36_6 = input.LA(1)
 
-                 
+
                 index36_6 = input.index()
                 input.rewind()
                 s = -1
@@ -21049,14 +21049,14 @@ class JavaParser(Parser):
                 elif (self.synpred44_Java()):
                     s = 18
 
-                 
+
                 input.seek(index36_6)
                 if s >= 0:
                     return s
             elif s == 5: 
                 LA36_7 = input.LA(1)
 
-                 
+
                 index36_7 = input.index()
                 input.rewind()
                 s = -1
@@ -21066,14 +21066,14 @@ class JavaParser(Parser):
                 elif (self.synpred44_Java()):
                     s = 18
 
-                 
+
                 input.seek(index36_7)
                 if s >= 0:
                     return s
             elif s == 6: 
                 LA36_8 = input.LA(1)
 
-                 
+
                 index36_8 = input.index()
                 input.rewind()
                 s = -1
@@ -21083,14 +21083,14 @@ class JavaParser(Parser):
                 elif (self.synpred44_Java()):
                     s = 18
 
-                 
+
                 input.seek(index36_8)
                 if s >= 0:
                     return s
             elif s == 7: 
                 LA36_9 = input.LA(1)
 
-                 
+
                 index36_9 = input.index()
                 input.rewind()
                 s = -1
@@ -21100,14 +21100,14 @@ class JavaParser(Parser):
                 elif (self.synpred44_Java()):
                     s = 18
 
-                 
+
                 input.seek(index36_9)
                 if s >= 0:
                     return s
             elif s == 8: 
                 LA36_10 = input.LA(1)
 
-                 
+
                 index36_10 = input.index()
                 input.rewind()
                 s = -1
@@ -21117,14 +21117,14 @@ class JavaParser(Parser):
                 elif (self.synpred44_Java()):
                     s = 18
 
-                 
+
                 input.seek(index36_10)
                 if s >= 0:
                     return s
             elif s == 9: 
                 LA36_11 = input.LA(1)
 
-                 
+
                 index36_11 = input.index()
                 input.rewind()
                 s = -1
@@ -21134,14 +21134,14 @@ class JavaParser(Parser):
                 elif (self.synpred44_Java()):
                     s = 18
 
-                 
+
                 input.seek(index36_11)
                 if s >= 0:
                     return s
             elif s == 10: 
                 LA36_12 = input.LA(1)
 
-                 
+
                 index36_12 = input.index()
                 input.rewind()
                 s = -1
@@ -21151,14 +21151,14 @@ class JavaParser(Parser):
                 elif (self.synpred44_Java()):
                     s = 18
 
-                 
+
                 input.seek(index36_12)
                 if s >= 0:
                     return s
             elif s == 11: 
                 LA36_13 = input.LA(1)
 
-                 
+
                 index36_13 = input.index()
                 input.rewind()
                 s = -1
@@ -21168,7 +21168,7 @@ class JavaParser(Parser):
                 elif (self.synpred44_Java()):
                     s = 18
 
-                 
+
                 input.seek(index36_13)
                 if s >= 0:
                     return s
@@ -21205,7 +21205,7 @@ class JavaParser(Parser):
         "\uffff"
         )
 
-            
+
     DFA43_transition = [
         DFA.unpack("\1\14\21\uffff\1\15\22\uffff\1\24\10\uffff\1\5\1\uffff"
         "\1\15\1\uffff\1\15\2\uffff\1\15\1\21\3\uffff\1\15\1\uffff\1\21"
@@ -21253,7 +21253,7 @@ class JavaParser(Parser):
             if s == 0: 
                 LA43_1 = input.LA(1)
 
-                 
+
                 index43_1 = input.index()
                 input.rewind()
                 s = -1
@@ -21263,14 +21263,14 @@ class JavaParser(Parser):
                 elif (self.synpred52_Java()):
                     s = 17
 
-                 
+
                 input.seek(index43_1)
                 if s >= 0:
                     return s
             elif s == 1: 
                 LA43_2 = input.LA(1)
 
-                 
+
                 index43_2 = input.index()
                 input.rewind()
                 s = -1
@@ -21280,14 +21280,14 @@ class JavaParser(Parser):
                 elif (self.synpred52_Java()):
                     s = 17
 
-                 
+
                 input.seek(index43_2)
                 if s >= 0:
                     return s
             elif s == 2: 
                 LA43_3 = input.LA(1)
 
-                 
+
                 index43_3 = input.index()
                 input.rewind()
                 s = -1
@@ -21297,14 +21297,14 @@ class JavaParser(Parser):
                 elif (self.synpred52_Java()):
                     s = 17
 
-                 
+
                 input.seek(index43_3)
                 if s >= 0:
                     return s
             elif s == 3: 
                 LA43_4 = input.LA(1)
 
-                 
+
                 index43_4 = input.index()
                 input.rewind()
                 s = -1
@@ -21314,14 +21314,14 @@ class JavaParser(Parser):
                 elif (self.synpred52_Java()):
                     s = 17
 
-                 
+
                 input.seek(index43_4)
                 if s >= 0:
                     return s
             elif s == 4: 
                 LA43_5 = input.LA(1)
 
-                 
+
                 index43_5 = input.index()
                 input.rewind()
                 s = -1
@@ -21331,14 +21331,14 @@ class JavaParser(Parser):
                 elif (self.synpred52_Java()):
                     s = 17
 
-                 
+
                 input.seek(index43_5)
                 if s >= 0:
                     return s
             elif s == 5: 
                 LA43_6 = input.LA(1)
 
-                 
+
                 index43_6 = input.index()
                 input.rewind()
                 s = -1
@@ -21348,14 +21348,14 @@ class JavaParser(Parser):
                 elif (self.synpred52_Java()):
                     s = 17
 
-                 
+
                 input.seek(index43_6)
                 if s >= 0:
                     return s
             elif s == 6: 
                 LA43_7 = input.LA(1)
 
-                 
+
                 index43_7 = input.index()
                 input.rewind()
                 s = -1
@@ -21365,14 +21365,14 @@ class JavaParser(Parser):
                 elif (self.synpred52_Java()):
                     s = 17
 
-                 
+
                 input.seek(index43_7)
                 if s >= 0:
                     return s
             elif s == 7: 
                 LA43_8 = input.LA(1)
 
-                 
+
                 index43_8 = input.index()
                 input.rewind()
                 s = -1
@@ -21382,14 +21382,14 @@ class JavaParser(Parser):
                 elif (self.synpred52_Java()):
                     s = 17
 
-                 
+
                 input.seek(index43_8)
                 if s >= 0:
                     return s
             elif s == 8: 
                 LA43_9 = input.LA(1)
 
-                 
+
                 index43_9 = input.index()
                 input.rewind()
                 s = -1
@@ -21399,14 +21399,14 @@ class JavaParser(Parser):
                 elif (self.synpred52_Java()):
                     s = 17
 
-                 
+
                 input.seek(index43_9)
                 if s >= 0:
                     return s
             elif s == 9: 
                 LA43_10 = input.LA(1)
 
-                 
+
                 index43_10 = input.index()
                 input.rewind()
                 s = -1
@@ -21416,14 +21416,14 @@ class JavaParser(Parser):
                 elif (self.synpred52_Java()):
                     s = 17
 
-                 
+
                 input.seek(index43_10)
                 if s >= 0:
                     return s
             elif s == 10: 
                 LA43_11 = input.LA(1)
 
-                 
+
                 index43_11 = input.index()
                 input.rewind()
                 s = -1
@@ -21433,14 +21433,14 @@ class JavaParser(Parser):
                 elif (self.synpred52_Java()):
                     s = 17
 
-                 
+
                 input.seek(index43_11)
                 if s >= 0:
                     return s
             elif s == 11: 
                 LA43_12 = input.LA(1)
 
-                 
+
                 index43_12 = input.index()
                 input.rewind()
                 s = -1
@@ -21450,7 +21450,7 @@ class JavaParser(Parser):
                 elif (self.synpred52_Java()):
                     s = 17
 
-                 
+
                 input.seek(index43_12)
                 if s >= 0:
                     return s
@@ -21487,7 +21487,7 @@ class JavaParser(Parser):
         "\uffff"
         )
 
-            
+
     DFA86_transition = [
         DFA.unpack("\1\14\55\uffff\1\5\1\uffff\1\15\1\uffff\1\15\2\uffff"
         "\1\15\1\17\3\uffff\1\15\1\uffff\1\17\2\uffff\1\13\1\uffff\1\15"
@@ -21531,7 +21531,7 @@ class JavaParser(Parser):
             if s == 0: 
                 LA86_1 = input.LA(1)
 
-                 
+
                 index86_1 = input.index()
                 input.rewind()
                 s = -1
@@ -21541,14 +21541,14 @@ class JavaParser(Parser):
                 elif (True):
                     s = 15
 
-                 
+
                 input.seek(index86_1)
                 if s >= 0:
                     return s
             elif s == 1: 
                 LA86_2 = input.LA(1)
 
-                 
+
                 index86_2 = input.index()
                 input.rewind()
                 s = -1
@@ -21558,14 +21558,14 @@ class JavaParser(Parser):
                 elif (True):
                     s = 15
 
-                 
+
                 input.seek(index86_2)
                 if s >= 0:
                     return s
             elif s == 2: 
                 LA86_3 = input.LA(1)
 
-                 
+
                 index86_3 = input.index()
                 input.rewind()
                 s = -1
@@ -21575,14 +21575,14 @@ class JavaParser(Parser):
                 elif (True):
                     s = 15
 
-                 
+
                 input.seek(index86_3)
                 if s >= 0:
                     return s
             elif s == 3: 
                 LA86_4 = input.LA(1)
 
-                 
+
                 index86_4 = input.index()
                 input.rewind()
                 s = -1
@@ -21592,14 +21592,14 @@ class JavaParser(Parser):
                 elif (True):
                     s = 15
 
-                 
+
                 input.seek(index86_4)
                 if s >= 0:
                     return s
             elif s == 4: 
                 LA86_5 = input.LA(1)
 
-                 
+
                 index86_5 = input.index()
                 input.rewind()
                 s = -1
@@ -21609,14 +21609,14 @@ class JavaParser(Parser):
                 elif (True):
                     s = 15
 
-                 
+
                 input.seek(index86_5)
                 if s >= 0:
                     return s
             elif s == 5: 
                 LA86_6 = input.LA(1)
 
-                 
+
                 index86_6 = input.index()
                 input.rewind()
                 s = -1
@@ -21626,14 +21626,14 @@ class JavaParser(Parser):
                 elif (True):
                     s = 15
 
-                 
+
                 input.seek(index86_6)
                 if s >= 0:
                     return s
             elif s == 6: 
                 LA86_7 = input.LA(1)
 
-                 
+
                 index86_7 = input.index()
                 input.rewind()
                 s = -1
@@ -21643,14 +21643,14 @@ class JavaParser(Parser):
                 elif (True):
                     s = 15
 
-                 
+
                 input.seek(index86_7)
                 if s >= 0:
                     return s
             elif s == 7: 
                 LA86_8 = input.LA(1)
 
-                 
+
                 index86_8 = input.index()
                 input.rewind()
                 s = -1
@@ -21660,14 +21660,14 @@ class JavaParser(Parser):
                 elif (True):
                     s = 15
 
-                 
+
                 input.seek(index86_8)
                 if s >= 0:
                     return s
             elif s == 8: 
                 LA86_9 = input.LA(1)
 
-                 
+
                 index86_9 = input.index()
                 input.rewind()
                 s = -1
@@ -21677,14 +21677,14 @@ class JavaParser(Parser):
                 elif (True):
                     s = 15
 
-                 
+
                 input.seek(index86_9)
                 if s >= 0:
                     return s
             elif s == 9: 
                 LA86_10 = input.LA(1)
 
-                 
+
                 index86_10 = input.index()
                 input.rewind()
                 s = -1
@@ -21694,14 +21694,14 @@ class JavaParser(Parser):
                 elif (True):
                     s = 15
 
-                 
+
                 input.seek(index86_10)
                 if s >= 0:
                     return s
             elif s == 10: 
                 LA86_11 = input.LA(1)
 
-                 
+
                 index86_11 = input.index()
                 input.rewind()
                 s = -1
@@ -21711,14 +21711,14 @@ class JavaParser(Parser):
                 elif (True):
                     s = 15
 
-                 
+
                 input.seek(index86_11)
                 if s >= 0:
                     return s
             elif s == 11: 
                 LA86_12 = input.LA(1)
 
-                 
+
                 index86_12 = input.index()
                 input.rewind()
                 s = -1
@@ -21728,7 +21728,7 @@ class JavaParser(Parser):
                 elif (True):
                     s = 15
 
-                 
+
                 input.seek(index86_12)
                 if s >= 0:
                     return s
@@ -21764,7 +21764,7 @@ class JavaParser(Parser):
         "\1\uffff\1\0\1\1\1\2\1\3\6\uffff\1\4\41\uffff"
         )
 
-            
+
     DFA88_transition = [
         DFA.unpack("\1\2\4\uffff\1\22\10\uffff\1\22\1\uffff\1\22\1\uffff"
         "\1\22\1\uffff\1\22\1\uffff\2\22\3\uffff\1\22\3\uffff\1\22\5\uffff"
@@ -21837,7 +21837,7 @@ class JavaParser(Parser):
             if s == 0: 
                 LA88_1 = input.LA(1)
 
-                 
+
                 index88_1 = input.index()
                 input.rewind()
                 s = -1
@@ -21847,14 +21847,14 @@ class JavaParser(Parser):
                 elif (self.synpred117_Java()):
                     s = 5
 
-                 
+
                 input.seek(index88_1)
                 if s >= 0:
                     return s
             elif s == 1: 
                 LA88_2 = input.LA(1)
 
-                 
+
                 index88_2 = input.index()
                 input.rewind()
                 s = -1
@@ -21864,14 +21864,14 @@ class JavaParser(Parser):
                 elif (self.synpred117_Java()):
                     s = 5
 
-                 
+
                 input.seek(index88_2)
                 if s >= 0:
                     return s
             elif s == 2: 
                 LA88_3 = input.LA(1)
 
-                 
+
                 index88_3 = input.index()
                 input.rewind()
                 s = -1
@@ -21881,14 +21881,14 @@ class JavaParser(Parser):
                 elif (True):
                     s = 18
 
-                 
+
                 input.seek(index88_3)
                 if s >= 0:
                     return s
             elif s == 3: 
                 LA88_4 = input.LA(1)
 
-                 
+
                 index88_4 = input.index()
                 input.rewind()
                 s = -1
@@ -21898,14 +21898,14 @@ class JavaParser(Parser):
                 elif (True):
                     s = 18
 
-                 
+
                 input.seek(index88_4)
                 if s >= 0:
                     return s
             elif s == 4: 
                 LA88_11 = input.LA(1)
 
-                 
+
                 index88_11 = input.index()
                 input.rewind()
                 s = -1
@@ -21915,7 +21915,7 @@ class JavaParser(Parser):
                 elif (True):
                     s = 18
 
-                 
+
                 input.seek(index88_11)
                 if s >= 0:
                     return s
@@ -21952,7 +21952,7 @@ class JavaParser(Parser):
         "\22\uffff"
         )
 
-            
+
     DFA98_transition = [
         DFA.unpack("\1\17\10\uffff\1\17\1\uffff\1\1\1\uffff\1\17\1\uffff"
         "\1\17\1\uffff\2\17\3\uffff\1\17\3\uffff\1\17\5\uffff\1\20\11\uffff"
@@ -22013,7 +22013,7 @@ class JavaParser(Parser):
         "\1\uffff\1\0\1\1\1\2\1\3\17\uffff"
         )
 
-            
+
     DFA91_transition = [
         DFA.unpack("\1\2\4\uffff\1\5\10\uffff\1\5\3\uffff\1\5\1\uffff\1"
         "\5\1\uffff\2\5\3\uffff\1\5\3\uffff\1\5\5\uffff\1\5\12\uffff\1\3"
@@ -22060,7 +22060,7 @@ class JavaParser(Parser):
             if s == 0: 
                 LA91_1 = input.LA(1)
 
-                 
+
                 index91_1 = input.index()
                 input.rewind()
                 s = -1
@@ -22070,14 +22070,14 @@ class JavaParser(Parser):
                 elif (True):
                     s = 19
 
-                 
+
                 input.seek(index91_1)
                 if s >= 0:
                     return s
             elif s == 1: 
                 LA91_2 = input.LA(1)
 
-                 
+
                 index91_2 = input.index()
                 input.rewind()
                 s = -1
@@ -22087,14 +22087,14 @@ class JavaParser(Parser):
                 elif (True):
                     s = 19
 
-                 
+
                 input.seek(index91_2)
                 if s >= 0:
                     return s
             elif s == 2: 
                 LA91_3 = input.LA(1)
 
-                 
+
                 index91_3 = input.index()
                 input.rewind()
                 s = -1
@@ -22104,14 +22104,14 @@ class JavaParser(Parser):
                 elif (True):
                     s = 19
 
-                 
+
                 input.seek(index91_3)
                 if s >= 0:
                     return s
             elif s == 3: 
                 LA91_4 = input.LA(1)
 
-                 
+
                 index91_4 = input.index()
                 input.rewind()
                 s = -1
@@ -22121,7 +22121,7 @@ class JavaParser(Parser):
                 elif (True):
                     s = 19
 
-                 
+
                 input.seek(index91_4)
                 if s >= 0:
                     return s
@@ -22157,7 +22157,7 @@ class JavaParser(Parser):
         "\3\uffff\1\0\1\1\16\uffff"
         )
 
-            
+
     DFA106_transition = [
         DFA.unpack("\1\1\4\uffff\1\5\10\uffff\1\5\3\uffff\1\5\1\uffff\1"
         "\5\1\uffff\2\5\3\uffff\1\5\3\uffff\1\5\5\uffff\1\22\12\uffff\1"
@@ -22203,7 +22203,7 @@ class JavaParser(Parser):
             if s == 0: 
                 LA106_3 = input.LA(1)
 
-                 
+
                 index106_3 = input.index()
                 input.rewind()
                 s = -1
@@ -22213,14 +22213,14 @@ class JavaParser(Parser):
                 elif (self.synpred150_Java()):
                     s = 5
 
-                 
+
                 input.seek(index106_3)
                 if s >= 0:
                     return s
             elif s == 1: 
                 LA106_4 = input.LA(1)
 
-                 
+
                 index106_4 = input.index()
                 input.rewind()
                 s = -1
@@ -22230,7 +22230,7 @@ class JavaParser(Parser):
                 elif (self.synpred150_Java()):
                     s = 5
 
-                 
+
                 input.seek(index106_4)
                 if s >= 0:
                     return s
@@ -22266,7 +22266,7 @@ class JavaParser(Parser):
         "\3\uffff\1\0\11\uffff"
         )
 
-            
+
     DFA130_transition = [
         DFA.unpack("\1\4\1\uffff\1\2\1\uffff\1\3\4\uffff\1\1\24\uffff\1"
         "\4\1\uffff\1\4\2\uffff\1\4\4\uffff\1\4\3\uffff\1\4\2\uffff\1\4"
@@ -22305,7 +22305,7 @@ class JavaParser(Parser):
             if s == 0: 
                 LA130_3 = input.LA(1)
 
-                 
+
                 index130_3 = input.index()
                 input.rewind()
                 s = -1
@@ -22315,7 +22315,7 @@ class JavaParser(Parser):
                 elif (True):
                     s = 4
 
-                 
+
                 input.seek(index130_3)
                 if s >= 0:
                     return s
@@ -22351,7 +22351,7 @@ class JavaParser(Parser):
         "\14\uffff"
         )
 
-            
+
     DFA142_transition = [
         DFA.unpack("\1\5\3\uffff\1\1\31\uffff\1\10\1\uffff\1\10\2\uffff"
         "\1\10\4\uffff\1\10\3\uffff\1\2\2\uffff\1\10\6\uffff\2\10\1\uffff"
@@ -22402,7 +22402,7 @@ class JavaParser(Parser):
         "\1\uffff\1\0\1\uffff\1\1\54\uffff"
         )
 
-            
+
     DFA146_transition = [
         DFA.unpack("\3\4\1\uffff\7\4\1\3\2\uffff\4\4\1\1\1\uffff\3\4\1\uffff"
         "\1\4\1\2\4\4\1\uffff\22\4\27\uffff\1\4"),
@@ -22474,7 +22474,7 @@ class JavaParser(Parser):
             if s == 0: 
                 LA146_1 = input.LA(1)
 
-                 
+
                 index146_1 = input.index()
                 input.rewind()
                 s = -1
@@ -22484,14 +22484,14 @@ class JavaParser(Parser):
                 elif (True):
                     s = 4
 
-                 
+
                 input.seek(index146_1)
                 if s >= 0:
                     return s
             elif s == 1: 
                 LA146_3 = input.LA(1)
 
-                 
+
                 index146_3 = input.index()
                 input.rewind()
                 s = -1
@@ -22501,7 +22501,7 @@ class JavaParser(Parser):
                 elif (True):
                     s = 4
 
-                 
+
                 input.seek(index146_3)
                 if s >= 0:
                     return s
@@ -22537,7 +22537,7 @@ class JavaParser(Parser):
         "\1\uffff\1\0\54\uffff"
         )
 
-            
+
     DFA153_transition = [
         DFA.unpack("\3\2\1\uffff\10\2\2\uffff\4\2\1\1\1\uffff\3\2\1\uffff"
         "\1\2\1\uffff\4\2\1\uffff\22\2\27\uffff\1\2"),
@@ -22607,7 +22607,7 @@ class JavaParser(Parser):
             if s == 0: 
                 LA153_1 = input.LA(1)
 
-                 
+
                 index153_1 = input.index()
                 input.rewind()
                 s = -1
@@ -22617,7 +22617,7 @@ class JavaParser(Parser):
                 elif (True):
                     s = 2
 
-                 
+
                 input.seek(index153_1)
                 if s >= 0:
                     return s
@@ -22627,7 +22627,7 @@ class JavaParser(Parser):
             nvae = NoViableAltException(self_.getDescription(), 153, _s, input)
             self_.error(nvae)
             raise nvae
- 
+
 
     FOLLOW_compilationUnit_in_javaSource4461 = frozenset([1])
     FOLLOW_annotationList_in_compilationUnit4497 = frozenset([1, 7, 44, 53, 61, 67, 70, 77, 78, 81, 84, 85, 86, 87, 90, 91, 94, 98, 102])

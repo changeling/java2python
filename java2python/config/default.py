@@ -11,12 +11,12 @@ from java2python.lang.selector import *
 
 # Leading indent character or characters.  Four spaces are used
 # because that is the recommendation of PEP 8.
-indentPrefix = ' ' * 4
+indentPrefix = " " * 4
 
 
 # Prefix character or characters for comments.  The hash+space is
 # recommended by PEP 8.
-commentPrefix = '# '
+commentPrefix = "# "
 
 
 # These values are strings or generators that yield strings
@@ -24,7 +24,7 @@ commentPrefix = '# '
 modulePrologueHandlers = [
     basic.shebangLine,
     basic.simpleDocString,
-    'from __future__ import print_function',
+    "from __future__ import print_function",
     basic.maybeBsr,
     basic.maybeAbstractHelpers,
     basic.maybeSyncHelpers,
@@ -56,7 +56,7 @@ methodParamHandlers = [
 
 # This is the name of the callable used to construct locks for an object with
 # the synchronized keyword.
-methodLockFunctionName = 'lock_for_object'
+methodLockFunctionName = "lock_for_object"
 
 classBaseHandlers = [
     basic.defaultBases,
@@ -72,7 +72,7 @@ interfaceBaseHandlers = [
 # from its input, and because it's really not very useful.
 classPostWalkHandlers = [
     basic.moveStaticExpressions,
-    ## basic.classContentSort,
+    # basic.classContentSort,
 ]
 
 
@@ -83,12 +83,11 @@ enumHeadHandlers = [
 
 interfaceHeadHandlers = [
     basic.simpleDocString,
-    '__metaclass__ = ABCMeta',
+    "__metaclass__ = ABCMeta",
 ]
 
 
-interfacePostWalkMutators = [
-]
+interfacePostWalkMutators = []
 
 
 methodHeadHandlers = [
@@ -112,7 +111,7 @@ enumValueHandler = basic.enumConstStrings
 
 # Alternatively, you can use this handler to construct enum values as
 # integers.
-#enumValueHandler = basic.enumConstInts
+# enumValueHandler = basic.enumConstInts
 
 
 # When the compiler needs to make up a variable name (for example, to
@@ -145,35 +144,31 @@ modulePackageDeclarationHandler = basic.commentedPackages
 # transformation behavior.
 
 astTransforms = [
-    (Type('NULL'),  transform.null2None),
-    (Type('FALSE'), transform.false2False),
-    (Type('TRUE'),  transform.true2True),
-    (Type('IDENT'), transform.keywordSafeIdent),
-
-    (Type('DECIMAL_LITERAL'), transform.syntaxSafeDecimalLiteral),
-    (Type('FLOATING_POINT_LITERAL'), transform.syntaxSafeFloatLiteral),
-
-    (Type('TYPE') > Type('BOOLEAN'), transform.typeSub),
-    (Type('TYPE') > Type('BYTE'), transform.typeSub),
-    (Type('TYPE') > Type('CHAR'), transform.typeSub),
-    (Type('TYPE') > Type('FLOAT'), transform.typeSub),
-    (Type('TYPE') > Type('INT'), transform.typeSub),
-    (Type('TYPE') > Type('SHORT'), transform.typeSub),
-    (Type('TYPE') > Type('LONG'), transform.typeSub),
-    (Type('TYPE') > Type('DOUBLE'), transform.typeSub),
-
-    (Type('METHOD_CALL') > Type('DOT') > Type('IDENT', 'length'),
-     transform.lengthToLen),
-
-    (Type('METHOD_CALL') > Type('DOT') > (
-        Type('IDENT', 'String') +
-        Type('IDENT', 'format')
-        ),
-     transform.formatString),
-
-    (Type('TYPE') > Type('QUALIFIED_TYPE_IDENT') > Type('IDENT'),
-     transform.typeSub),
-
+    (Type("NULL"), transform.null2None),
+    (Type("FALSE"), transform.false2False),
+    (Type("TRUE"), transform.true2True),
+    (Type("IDENT"), transform.keywordSafeIdent),
+    (Type("DECIMAL_LITERAL"), transform.syntaxSafeDecimalLiteral),
+    (Type("FLOATING_POINT_LITERAL"), transform.syntaxSafeFloatLiteral),
+    (Type("TYPE") > Type("BOOLEAN"), transform.typeSub),
+    (Type("TYPE") > Type("BYTE"), transform.typeSub),
+    (Type("TYPE") > Type("CHAR"), transform.typeSub),
+    (Type("TYPE") > Type("FLOAT"), transform.typeSub),
+    (Type("TYPE") > Type("INT"), transform.typeSub),
+    (Type("TYPE") > Type("SHORT"), transform.typeSub),
+    (Type("TYPE") > Type("LONG"), transform.typeSub),
+    (Type("TYPE") > Type("DOUBLE"), transform.typeSub),
+    (
+        Type("METHOD_CALL") > Type("DOT") > Type("IDENT", "length"),
+        transform.lengthToLen,
+    ),
+    (
+        Type("METHOD_CALL")
+        > Type("DOT")
+        > (Type("IDENT", "String") + Type("IDENT", "format")),
+        transform.formatString,
+    ),
+    (Type("TYPE") > Type("QUALIFIED_TYPE_IDENT") > Type("IDENT"), transform.typeSub),
 ]
 
 
@@ -181,7 +176,7 @@ astTransforms = [
 
 # minimum parameter count to trigger indentation of parameter names
 # in method declarations.  set to 0 to disable.
-#minIndentParams = 5
+# minIndentParams = 5
 
 # Specifies handler for cast operations of non-primitive types are handled
 # (primitive types are automatically handled).  Use basic.castDrop to leave
@@ -196,56 +191,46 @@ expressionCastHandler = basic.castDrop
 
 # module output subs.
 moduleOutputSubs = [
-    (r'System\.out\.println\((.*)\)', r'print(\1)'),
-    (r'System\.out\.print_\((.*?)\)', r'print(\1, end="")'),
-    (r'(.*?)\.equals\((.*?)\)', r'\1 == \2'),
-    (r'(.*?)\.equalsIgnoreCase\((.*?)\)', r'\1.lower() == \2.lower()'),
-    (r'([\w.]+)\.size\(\)', r'len(\1)'),
-    #(r'(\w+)\.get\((.*?)\)', r'\1[\2]'),
-    (r'(\s)(\S*?)(\.toString\(\))', r'\1\2.__str__()'),
-    (r'(\s)def toString', r'\1def __str__'),
-    (r'(\s)(\S*?)(\.toLowerCase\(\))', r'\1\2.lower()'),
-    (r'(.*?)IndexOutOfBoundsException\((.*?)\)', r'\1IndexError(\2)'),
-    (r'\.__class__\.getName\(\)', '.__class__.__name__'),
-    (r'\.getClass\(\)', '.__class__'),
-    (r'\.getName\(\)', '.__name__'),
-    (r'\.getInterfaces\(\)', '.__bases__'),
-    (r'String\.valueOf\((.*?)\)', r'str(\1)'),
-    #(r'(\s)(\S*?)(\.toString\(\))', r'\1str(\2)'),
-    (r'Math\.', ''),
+    (r"System\.out\.println\((.*)\)", r"print(\1)"),
+    (r"System\.out\.print_\((.*?)\)", r'print(\1, end="")'),
+    (r"(.*?)\.equals\((.*?)\)", r"\1 == \2"),
+    (r"(.*?)\.equalsIgnoreCase\((.*?)\)", r"\1.lower() == \2.lower()"),
+    (r"([\w.]+)\.size\(\)", r"len(\1)"),
+    # (r'(\w+)\.get\((.*?)\)', r'\1[\2]'),
+    (r"(\s)(\S*?)(\.toString\(\))", r"\1\2.__str__()"),
+    (r"(\s)def toString", r"\1def __str__"),
+    (r"(\s)(\S*?)(\.toLowerCase\(\))", r"\1\2.lower()"),
+    (r"(.*?)IndexOutOfBoundsException\((.*?)\)", r"\1IndexError(\2)"),
+    (r"\.__class__\.getName\(\)", ".__class__.__name__"),
+    (r"\.getClass\(\)", ".__class__"),
+    (r"\.getName\(\)", ".__name__"),
+    (r"\.getInterfaces\(\)", ".__bases__"),
+    (r"String\.valueOf\((.*?)\)", r"str(\1)"),
+    # (r'(\s)(\S*?)(\.toString\(\))', r'\1str(\2)'),
+    (r"Math\.", ""),
 ]
 
 
 typeSubs = {
-    'Boolean': 'bool',
-    'boolean': 'bool',
-
-    'Byte': 'int',
-    'byte': 'int',
-
-    'Char': 'str',
-    'char': 'str',
-
-    'Integer': 'int',
-    'int': 'int',
-
-    'Short': 'int',
-    'short': 'int',
-
-    'Long': 'long',
-    'long': 'long',
-
-    'Float': 'float',
-    'float': 'float',
-
-    'Double': 'float',
-    'double': 'float',
-
-    'String': 'str',
-    'java.lang.String': 'str',
-
-    'Object': 'object',
-
-    'IndexOutOfBoundsException': 'IndexError',
-    'IOException': 'IOError',
-    }
+    "Boolean": "bool",
+    "boolean": "bool",
+    "Byte": "int",
+    "byte": "int",
+    "Char": "str",
+    "char": "str",
+    "Integer": "int",
+    "int": "int",
+    "Short": "int",
+    "short": "int",
+    "Long": "long",
+    "long": "long",
+    "Float": "float",
+    "float": "float",
+    "Double": "float",
+    "double": "float",
+    "String": "str",
+    "java.lang.String": "str",
+    "Object": "object",
+    "IndexOutOfBoundsException": "IndexError",
+    "IOException": "IOError",
+}
