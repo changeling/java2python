@@ -6,13 +6,13 @@ This is all very ordinary.  We import the package bits, open and read
 a file, translate it, and write it out.
 
 """
-import io
 import sys
 from argparse import ArgumentParser, ArgumentTypeError
 from collections import defaultdict
-from logging import _nameToLevel as logLevels, exception, warning, info, basicConfig
 from os import path, makedirs
+from logging import _nameToLevel as logLevels, exception, warning, info, basicConfig
 from time import time
+from io import IOBase
 
 from java2python.compiler import Module, buildAST, transformAST
 from java2python.config import Config
@@ -57,28 +57,63 @@ def runMain(options):
     else:
         return runOneOrMany(options)
 
+# def runOneOrMany(options):
+#     """ Runs our main transformer with each of the input files. """
+#     infile, outfile = options.inputfile, options.outputfile
+
+#     if infile and not isinstance(infile, IOBase) and path.isdir(infile):
+#         if outfile and not isinstance(outfile, IOBase) and not path.isdir(outfile):
+#             warning('Must specify output directory or stdout when using input directory.')
+#             return 2
+#         def walker(arg, dirname, files):
+#             for name in [name for name in files if name.endswith('.java')]:
+#                 fullname = path.join(dirname, name)
+#                 options.inputfile = fullname
+#                 info('opening %s', fullname)
+#                 if outfile and outfile != '-' and not isinstance(outfile, IOBase):
+#                     full = path.abspath(path.join(outfile, fullname))
+#                     head, tail = path.split(full)
+#                     tail = path.splitext(tail)[0] + '.py'
+#                     if not path.exists(head):
+#                         makedirs(head)
+#                     options.outputfile = path.join(head, tail)
+#                 runTransform(options)
+#         path.walk(infile, walker, None)
+#         return 0
+#     else:
+#         return runTransform(options)
+
+
 def runOneOrMany(options):
     """ Runs our main transformer with each of the input files. """
+    # TODO Test with single files, stdout, etc.
     infile, outfile = options.inputfile, options.outputfile
 
-    if infile and not isinstance(infile, io.IOBase) and path.isdir(infile):
-        if outfile and not isinstance(outfile, io.IOBase) and not path.isdir(outfile):
+    if infile and not isinstance(infile, IOBase) and os.path.isdir(infile):
+        if outfile and not isinstance(outfile, IOBase) and not os.path.isdir(outfile):
             warning('Must specify output directory or stdout when using input directory.')
             return 2
+
         def walker(arg, dirname, files):
             for name in [name for name in files if name.endswith('.java')]:
-                fullname = path.join(dirname, name)
+                fullname = os.path.join(dirname, name)
+                print(f"current file: {fullname}")
                 options.inputfile = fullname
                 info('opening %s', fullname)
-                if outfile and outfile != '-' and not isinstance(outfile, io.IOBase):
-                    full = path.abspath(path.join(outfile, fullname))
-                    head, tail = path.split(full)
-                    tail = path.splitext(tail)[0] + '.py'
-                    if not path.exists(head):
-                        makedirs(head)
-                    options.outputfile = path.join(head, tail)
+                if outfile and outfile != '-' and not isinstance(outfile, IOBase):
+                    full = os.path.abspath(os.path.join(outfile, fullname))
+                    head, tail = os.path.split(full)
+                    head_suffix = head[len(infile):]
+                    outpath = os.path.join(outfile + head_suffix)
+                    tail = os.path.splitext(tail)[0] + '.py'
+                    if os.path.exists(outfile) and os.path.isdir(outfile) and not os.path.exists(outpath):
+                        os.makedirs(outpath)
+                    options.outputfile = os.path.join(outpath, tail)
+                    print(f"outputfile: {options.outputfile}")
                 runTransform(options)
-        path.walk(infile, walker, None)
+        for root, dirs, files in os.walk(infile):
+            walker(None, root, files)
+
         return 0
     else:
         return runTransform(options)
@@ -90,15 +125,15 @@ def runTransform(options):
     timed['overall']
 
     filein = fileout = filedefault = '-'
-    if options.inputfile and not isinstance(options.inputfile, io.IOBase):
+    if options.inputfile and not isinstance(options.inputfile, IOBase):
         filein = options.inputfile
-    if options.outputfile and not isinstance(options.outputfile, io.IOBase):
+    if options.outputfile and not isinstance(options.outputfile, IOBase):
         fileout = options.outputfile
     elif fileout != filedefault:
         fileout = '%s.py' % (path.splitext(filein)[0])
 
     configs = options.configs
-    if options.configdirs and not isinstance(filein, io.IOBase):
+    if options.configdirs and not isinstance(filein, IOBase):
         for configdir in options.configdirs:
             dirname = configFromDir(filein, configdir)
             if path.exists(dirname):
